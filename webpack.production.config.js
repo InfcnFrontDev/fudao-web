@@ -34,7 +34,7 @@ module.exports = merge(webpackBaseConfig, {
     },
     plugins: [
         new WebpackCleanupPlugin({
-            "exclude": ['images/**/*']
+            "exclude": ['css/**/*','images/**/*','vendors/**/*']
         }),
         new webpack.DefinePlugin({
             'process.env': {

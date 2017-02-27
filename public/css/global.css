@@ -19,3 +19,7 @@ body {
     padding: 20px;
     font-size: 14px;
 }
+.cover{
+    background-color:rgba(0,0,0,.7);
+    height:100%;
+}
