@@ -2,9 +2,27 @@ import styles from "./index.scss";
 import React from "react";
 
 export default class App extends React.Component {
+    constructor(){
+        super();
+        this.state={
+            date:{}
+        }
+    }
+
+    componentWillMount() {
+        let func = function() {
+            this.setState({
+                date: new Date()
+            })
+        }.bind(this)
+        func()
+        setInterval(func, 1000);
+    }
+
     componentDidMount(){
+
+
         let screenW=window.screen.width;
-        console.log(screenW)
         let oCanvas=document.getElementById('myCanvas');
         let context = oCanvas.getContext("2d");
         oCanvas.width=screenW;
@@ -27,10 +45,6 @@ export default class App extends React.Component {
             context.strokeStyle="#fff";
             context.stroke();
             context.closePath();
-
-
-
-
             /*时针的刻度*/
             for(let i = 0 ;i<24;i++){
                 context.beginPath();
@@ -41,8 +55,6 @@ export default class App extends React.Component {
                 context.lineTo(120,0)
                 context.stroke()
             }
-
-
             /*时针*/
             context.save()
             context.beginPath();
@@ -54,7 +66,6 @@ export default class App extends React.Component {
             context.lineTo(100,0)
             context.stroke()
             context.restore()
-
             //内圆环
             context.beginPath();
             context.strokeStyle="blue";
@@ -72,7 +83,6 @@ export default class App extends React.Component {
             context.stroke();
             context.fillStyle="#fff";
             context.fill();
-
             //灰色时间段
             context.save()
             context.beginPath();
@@ -83,7 +93,6 @@ export default class App extends React.Component {
             context.arc(0,0,110,0*Math.PI,2*Math.PI/24)
             context.stroke();
             context.restore();
-
             //内圈数字
             context.save();
             context.beginPath();
@@ -120,18 +129,24 @@ export default class App extends React.Component {
     }
 
     render() {
+        let date=this.state.date;
+        let minutes=date.getMinutes()
+        if(minutes<10){
+            minutes='0'+minutes;
+        }
+
         return (
             <div>
-                <div className="cover">
-                    <canvas id="myCanvas"></canvas>
-                    <div className={styles.boxBottom}>
-                        <div className={styles.textBox}>
-                            <h3 className={styles.h3Box}><span className={styles.spanBox}>13:33</span>&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; 工作阶段</h3>
-                            <p>茶歇：鸭梨，杏仁，核桃仁</p>
-                            <p>动：颈部活动操，踮脚跳，虎扑</p>
-                        </div>
+
+                <canvas id="myCanvas"></canvas>
+                <div className={styles.boxBottom}>
+                    <div className={styles.textBox}>
+                        <h3 className={styles.h3Box}>{date.getHours()}:{minutes}&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; 工作阶段</h3>
+                        <p>茶歇：鸭梨，杏仁，核桃仁</p>
+                        <p>动：颈部活动操，踮脚跳，虎扑</p>
                     </div>
                 </div>
+
             </div>
         )
     }
