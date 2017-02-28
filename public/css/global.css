@@ -64,3 +64,15 @@ body {
 #remindMes{
     width:100%;height:100%;z-index:9999999;position:fixed; display:none;
 }
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    filter: alpha(opacity=60);
+    background-color: #777;
+    opacity: 0;
+    -moz-opacity: 0.5;
+}

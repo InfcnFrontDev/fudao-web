@@ -187,17 +187,8 @@ export default class App extends React.Component {
                 _img.src = arr_cao[Math.floor(Math.random() * 4)];
                 document.getElementById("div_woniu").appendChild(_img);
             }
-            /*var huluLeftInnerHTML = cycle.day + '天<br><br>' + cycle.month + '月<br><br>' + cycle.years + '年';
-             document.getElementById('huluLeft').innerHTML = huluLeftInnerHTML;
-             var huluRightInnerHTML = cycle.weeks + '周<br><br>' + cycle.season + '季度<br><br>' + cycle.renalPeriod + '肾期';
-             document.getElementById('huluRigth').innerHTML = huluRightInnerHTML;*/
         }
 
-
-        let fun_click=function() {
-            alert(1);
-        }.bind(this);
-        fun_click();
 
     }
     render() {
