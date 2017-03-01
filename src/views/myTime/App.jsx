@@ -6,45 +6,47 @@ export default class App extends React.Component {
         fun_time();
         fun_getUpAndNextJieQi();
         window.setInterval("fun_time()", 1000);
+        function getItem(date) {
+            var h = date.getHours(), m = date.getMinutes();
+            var num = parseInt(((h + 1) * 60 + m) / 120);
+            if (num == 12) num = 0;
+            return sheets.shiershichen[num];
+        }
+        var item = getItem(new Date());
+        new RentiMap("#mapDiv", {
+            data: item
+        });
     }
     render() {
         return (
             <div>
-                <div style={{fontSize: 20, color: "#00796b", width:'70%', margin:'30px auto 10px'}}>
-                    <div style={{float:'left', textAlign: 'left'}}>
-                        <div id="ymd"></div>
-                        <div>
-                            <span id="ymd_yinli"></span>
-                            <span id="lunar"></span>
-                        </div>
+                <div className="topBox">
+                    <div>
+                        <span id="ymd" className="mg-left"></span>
+                        <span id="div_hour" className="mg-left"></span>
+                        <span id="week" className="fl-right mg-right"></span>
                     </div>
-                    <div style={{float: 'right'}} id="week"></div>
+                    <div>
+                        <span id="ymd_yinli" className="mg-left"></span>
+                        <span id="lunar" className="mg-left"></span>
+                        <span id="lunarHour" className="mg-left"></span>
+                    </div>
                 </div>
-                <div style={{clear: 'both'}}></div>
-                <div style={{fontSize: 40, color: '#00796b', margin: '50px auto 0px', textAlign: 'center', verticalAlign: 'middle'}}>
-                    <div id="div_hour"></div>
-                    <div id="lunarHour"></div>
+                <div className="centerBox">
+                    <div id="mapDiv" style={{width: '100%', height: '100%'}}>
+                    </div>
+                </div>
+                <div className="bottomBox">
+                    <div className="mg-left">
+                        <span id="festival"></span>
+                        <span id="days"></span>
+                        <span className="fl-right mg-right">建<br/>军<br/>节</span>
+                    </div>
+                    <div className="mg-left">上一节气：<span id="upJieQi"></span></div>
+                    <div className="mg-left">下一节气：<span id="nextJieQi"></span></div>
                 </div>
 
-                <div style={{marginTop:80,textAlign: 'left'}}>
-                    <img src="images/woniu.png" id="woniu" style={{display:'none',width:35,height:35,position:' relative',marginBottom:-3,marginLeft:-11}}/>
-                    <center>
-                        <div id="x1" style={{position: 'relative',zIndex: 2}}></div>
-                    </center>
-                </div>
-                <div style={{position: 'fixed', bottom: 0,fontSize: 16,  color: 'rgb(52, 83, 145)', textAlign: 'left'}}>
-                    <div style={{float:'left',margin :'0px 20px 50px 20px' }}>
-                        <div style={{marginBottom:15}}>
-                            <span id="festival"></span>
-                            <span id="days"></span>
-                        </div>
-                        <div style={{marginBottom:15}}>上一节气：<span id="upJieQi"></span></div>
-                        <div>下一节气：<span id="nextJieQi"></span></div>
-                    </div>
-                    <div style={{margin :'0px 30px 20px 0px' ,float:'right',width: 15,height:100,
-				position: 'fixed', right: 0,color:' red',fontSize: 22,fontWeight: 'bolder'}} id='jieri'></div>
-                </div>
             </div>
-        )
+        );
     }
 }

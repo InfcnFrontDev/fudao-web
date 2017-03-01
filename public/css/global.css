@@ -76,3 +76,39 @@ body {
     opacity: 0;
     -moz-opacity: 0.5;
 }
+.topBox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:10%;
+    color:#fff;
+    font-size:17px;
+    line-height:26px;
+    padding:20px 0;
+
+}
+.centerBox{
+    width:100%;
+    height:70%;
+    position:absolute;
+    top:15%;
+}
+.bottomBox{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:15%;
+    color:#fff;
+    line-height:26px;
+}
+.mg-left{
+    margin-left:8%;
+}
+.mg-right{
+    margin-right:8%;
+}
+.fl-right{
+    float:right;
+}
