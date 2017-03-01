@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>renti_map</title>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
+    <script src="js/hammer.js"></script>
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/data.js"></script>
+    <script src="js/renti-map2.js"></script>
+
+</head>
+
+
+<body>
+<!--
+    map: 指定svg目录中的地图文件;
+    jingluo: 是否显示经络，true:显示，false:不显示;
+    xuewei: 是否显示穴位，true:显示，false:不显示;
+    disease: 疾病，（血压高、痴呆、中风...）
+-->
+<div style="position:absolute; top:0; left:0; padding:50px 0px 0px 50px;">
+    <select name="" id="" class="select">
+        <option value="血压高">血压高</option>
+        <option value="痴呆">痴呆</option>
+        <option value="中风">中风</option>
+        <option value="心脏供血能力不足">心脏供血能力不足</option>
+        <option value="慢性高血糖">慢性高血糖</option>
+        <option value="骨组织结构异常">骨组织结构异常</option>
+        <option value="前列腺周边组织肥大发炎">前列腺周边组织肥大发炎</option>
+        <option value="心绞痛">心绞痛</option>
+        <option value="慢性气道阻塞">慢性气道阻塞</option>
+        <option value="麻痹震颤">麻痹震颤</option>
+        <option value="脊神经压迫">脊神经压迫</option>
+        <option value="嘌呤代谢紊乱">嘌呤代谢紊乱</option>
+        <option value="抑郁障碍">抑郁障碍</option>
+        <option value="肥胖">肥胖</option>
+        <option value="便秘">便秘</option>
+        <option value="颈椎及周围软组织病变">颈椎及周围软组织病变</option>
+        <option value="失眠">失眠</option>
+        <option value="抑郁障碍">抑郁障碍</option>
+    </select>
+    <input type="button" value="经络1" id="jlbtn1">
+    <input type="button" value="经络2" disabled="disabled" id="jlbtn2">
+    <input type="button" value="穴位" disabled="disabled" id="xwbtn">
+    <input type="button" value="部位" disabled="disabled" id="bwbtn">
+    <input type="button" value="循环系统" id="xhbtn">
+
+</div>
+
+
+<div id="mapDiv" style="width: 100%; height: 100%;">
+</div>
+<script>
+
+    var map=new RentiMap("#mapDiv", {
+        map: 'svg/'+disease[$('.select').val()].jl_map+'.svg',
+    });
+    var diseaseobj,ids,tu,xunhuan,xunhuanid,tuming,buwei;
+    var a=0;
+    $('.select').change(function() {
+        a++;
+         diseaseobj = disease[$('.select').val()]
+         ids = (diseaseobj.jl_id).split('、');
+         tu = diseaseobj.jl_map;
+         xunhuan = diseaseobj.xhxt_map;
+         xunhuanid = (diseaseobj.xhxt_id).split('、');
+         tuming = tu.split('、');
+        if(diseaseobj.xhxt_part){
+            buwei=(diseaseobj.xhxt_part).split('、');
+            $("#bwbtn").attr({"disabled":false});
+        }else{
+            $("#bwbtn").attr({"disabled":true});
+        }
+        console.log(tuming)
+        if (tuming.length > 1) {
+            $('#jlbtn2').attr({"disabled":false});
+        }
+        if (tuming.length == 1) {
+            $('#jlbtn2').attr({"disabled":true});
+        }
+        $('#jlbtn1').on('click', jlbtn1click);
+        $('#jlbtn2').on('click', jlbtn2click);
+        $('#xhbtn').on('click', xhbtnclick);
+        $('#bwbtn').on('click',bwbtnclick);
+        var map=new RentiMap("#mapDiv", {
+            map: 'svg/'+tuming[0]+'.svg',
+            noshow:false
+        });
+    });
+    if(a==0){
+        $('#xhbtn').on('click', function(){
+            var map=new RentiMap("#mapDiv", {
+                map: 'svg/'+disease[$('.select').val()].xhxt_map+'.svg',
+                xunhuanid: disease[$('.select').val()].xhxt_id.split('、'),
+                noshow:true
+            });
+        });
+        $('#jlbtn1').on('click',function(){
+            var map=new RentiMap("#mapDiv", {
+                map: 'svg/'+disease[$('.select').val()].jl_map+'.svg',
+                ids: disease[$('.select').val()].jl_id.split('、'),
+                noshow:true
+            });
+        })
+
+    }
+    var jlbtn1click=function(){
+        var map=new RentiMap("#mapDiv", {
+            map: 'svg/'+tuming[0]+'.svg',
+            ids:ids,
+            noshow:true
+        });
+    }
+    var jlbtn2click=function(){
+        var map=new RentiMap("#mapDiv", {
+            map: 'svg/'+tuming[1]+'.svg',
+            ids:ids,
+            noshow:true
+
+        });
+    }
+    var xhbtnclick=function(){
+        var map=new RentiMap("#mapDiv", {
+            map: 'svg/'+xunhuan+'.svg',
+            xunhuanid:xunhuanid,
+            noshow:true
+
+        });
+    }
+    var bwbtnclick=function(){
+        var map=new RentiMap("#mapDiv", {
+            map: 'svg/'+xunhuan+'.svg',
+            buwei:buwei,
+            noshow:true
+
+        });
+    }
+
+
+</script>
+</body>
+</html>
