@@ -13,6 +13,7 @@ export default class App extends React.Component {
             return sheets.shiershichen[num];
         }
         var item = getItem(new Date());
+        console.log(item);
         new RentiMap("#mapDiv", {
             data: item
         });

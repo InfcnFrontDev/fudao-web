@@ -17,9 +17,13 @@
             $svg.attr('style', 'display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;');
 
             var $jingluo = $('#jingluo');
+            $jingluo.children().hide();
+
 
             $(data.jl_id.split(',')).each(function () {
-                $jingluo.find('#' + this).attr('display', 'block');
+
+                $jingluo.find('#'+ this+'').show();
+                console.log($jingluo.find('#'+ this+''));
             });
 
             // Expose to window namespace for testing purposes
