@@ -112,3 +112,16 @@ body {
 .fl-right{
     float:right;
 }
+.appraisalBox{
+    width:220px;
+    height:220px;
+    background:#FFF;
+    margin:80px auto;
+}
+.pt-ab{
+    position:absolute;
+}
+.fdzs{
+    margin-top:50px;
+    font-family: Arial;
+}
