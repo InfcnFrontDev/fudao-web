@@ -117,12 +117,85 @@ body {
     width:220px;
     height:220px;
     background:#FFF;
-    margin:80px auto;
+    margin:34% auto;
+    font-family: Arial;
+    color:#316dba;
 }
 .pt-ab{
     position:absolute;
 }
 .fdzs{
-    margin-top:50px;
-    font-family: Arial;
+    margin-top:56px;
+}
+.imgtou{
+    margin-top:70px;
+}
+.appraisalBtn{
+    width:220px;
+    height:38px;
+    text-align: center;
+    margin:0 auto;
+
+    border-radius:6px;
+    display:block;
+    font-size:17px;
+    color:#316dba;
+    border:1px solid #316dba;
+}
+.circle{
+    margin:10px auto;
+    width:220px;
+    height:220px;
+    display:flex;
+    -webkit-display:flex;
+    -webkit-justify-content:center;
+    position:relative;
+}
+
+.question {
+    background-color: #FFFFFF;
+    text-align: left;
+    vertical-align: middle;
+    min-height: 50px;
+    padding: 20px 15px 10px 10px;
+    font-size: 18px;
+    line-height: 22px;
+}
+.answer {
+    padding-left: 10px;
+    font-size: 18px;
+}
+._index {
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid #8a6de9;
+    border-radius: 10px;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.mui-demo-container {
+    background-color: #fff;
+    padding: 10px 15px 0px 15px;
+}
+
+.mui-progressbar-royal span {
+    background-color: #8a6de9;
+}
+.mui-progressbar {
+    height: 5px;
+}
+.mui-input-group .mui-input-row:after {
+    left: 0px;
+}
+.shangBtn{
+    width: 100px;border: 1px solid #48bbc1;background-color: #48bbc1;color: white;
+}
+.xiaBtn{
+    width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;
+}
+.tijiaoBtn{
+    display: none;width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;
 }
