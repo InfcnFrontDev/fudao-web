@@ -6,7 +6,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <h1>It Works!</h1>
-                <p>This React project just works including <span className={styles.redBg}>module</span> local styles.
+                <p>This Rengfww11111111111111ffg <span className={styles.redBg}>module</span> local styles.
                 </p>
                 <p>Hello Enjoy!</p>
             </div>
