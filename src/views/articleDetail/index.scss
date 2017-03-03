@@ -1,6 +1,27 @@
-.redBg {
-    background-color: red;
-    border-radius: 5px;
-    color: white;
-    padding: 5px;
+.container {
+    background-color: #ffffff;
+    margin:0 auto;
 }
+.header {
+    color: #333333;
+    font-size: 29px;
+    font-family: "微软雅黑";
+}
+.content {
+    color: #343434;
+    font-size: 13px;
+    font-family: "微软雅黑";
+    line-height: 36px;
+}
+//.pic{
+//  height: 188px;
+//  width: 331px;
+//  background-image: url(../../../public/images/web-cover1.jpg);
+//  background-repeat: no-repeat;
+//}
+.left{
+    color: #a0a0a0;
+    font-size: 13px;
+    font-family: "微软雅黑";
+}
+
