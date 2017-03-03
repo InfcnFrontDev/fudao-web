@@ -2,6 +2,37 @@ var userInformation;
 /**
  * 初始化数据
  */
+function appraisal_init(){
+    var userInformation = {
+        'countSocre':'1',
+        'zhengzhuangSocre':'81',
+        'xinliSocre':'55',
+        'shehuiSocre':'64',
+        'ziceSocre':'78'
+    }
+    //document.getElementById('countSocre').innerHTML=userInformation.countSocre;
+    var svg1 = document.getElementById("svg_zhengzhuang");
+    var svg2 = document.getElementById("svg_xinli");
+    var svg3 = document.getElementById("svg_shehui");
+    var svg4 = document.getElementById("svg_zice");
+    var percent1 = Math.round(parseFloat(userInformation.zhengzhuangSocre)) / 100,
+        perimeter1 = Math.PI * 2 * 60;
+    var percent2 = Math.round(parseFloat(userInformation.xinliSocre)) / 100,
+        perimeter2 = Math.PI * 2 * 70;
+    var percent3 = Math.round(parseFloat(userInformation.shehuiSocre)) / 100,
+        perimeter3 = Math.PI * 2 * 80;
+    var percent4 = Math.round(parseFloat(userInformation.ziceSocre)) / 100,
+        perimeter4 = Math.PI * 2 * 90;
+    svg1.setAttribute('stroke-dasharray', perimeter1 * percent1 + " " + perimeter1 * (1 - percent1));
+    svg2.setAttribute('stroke-dasharray', perimeter2 * percent2 + " " + perimeter2 * (1 - percent2));
+    svg3.setAttribute('stroke-dasharray', perimeter3 * percent3 + " " + perimeter3 * (1 - percent3));
+    svg4.setAttribute('stroke-dasharray', perimeter4 * percent4 + " " + perimeter4 * (1 - percent4));
+
+}
+
+
+
+
 function main_init() {
 	// 设置上次体检的得分 开始
 	userInformation = getUserInformation(getUser().appid);
