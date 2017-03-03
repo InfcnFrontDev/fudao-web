@@ -147,7 +147,6 @@ export default class App extends React.Component {
                         <p>动：颈部活动操，踮脚跳，虎扑</p>
                     </div>
                 </div>
-
             </div>
         )
     }
