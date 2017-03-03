@@ -22,11 +22,10 @@ export default class App extends React.Component {
     componentDidMount(){
 
 
-        let screenW=window.screen.width;
+
         let oCanvas=document.getElementById('myCanvas');
         let context = oCanvas.getContext("2d");
-        oCanvas.width=screenW;
-        oCanvas.height=screenW;
+
         context.translate(oCanvas.width/2,oCanvas.height/2);
         context.rotate(-Math.PI/360);
         setInterval(drawTime,60000);
@@ -137,8 +136,10 @@ export default class App extends React.Component {
 
         return (
             <div>
+                <div className={styles.boxTop}>
+                    <canvas id="myCanvas" width="320" height="320"></canvas>
+                </div>
 
-                <canvas id="myCanvas"></canvas>
                 <div className={styles.boxBottom}>
                     <div className={styles.textBox}>
                         <h3 className={styles.h3Box}>{date.getHours()}:{minutes}&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; 工作阶段</h3>

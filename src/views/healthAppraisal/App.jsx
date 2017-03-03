@@ -10,10 +10,13 @@ export default class App extends React.Component {
             <div>
                 <div className="appraisalBox">
                     <div  style={{margin:'10px auto',width:220,height:220,display:'flex',justifyContent:'center',position:'relative'}}>
-                        <p className="pt-ab fdzs">福道指数</p>
-                        <div style={{marginTop:90,height:80}} id="countSocre">
-                            <img src="images/tou.png" />
+                        
+                        <div style={{margin:'0 auto'}}>
+                            <p className="fdzs">福道指数</p>
+                            <img src="images/tou.png" style={{height:80}}/>
                         </div>
+
+                        
                         <svg width="220" height="220" className="pt-ab">
                             <circle  cx="110" cy="110" r="70" strokeWidth="5" stroke="#C9CACA" fill="none"></circle>
                             <circle  cx="110" cy="110" r="70" strokeWidth="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang" transform="matrix(0,-1,1,0,0,220)" ></circle>
