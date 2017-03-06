@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/global.css">
+
+  <script type="text/javascript" src="venders/js/jquery.min.js"></script>
+  <script type="text/javascript" src="venders/js/source/calendar.js"></script>
+  <script src="venders/renti_map/app/vendor/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
+  <script src="venders/renti_map/app/js/hammer.js"></script>
+  <link rel="stylesheet" href="venders/renti_map/app/css/all.css">
+  <script src="venders/renti_map/app/js/data.js"></script>
+  <script src="venders/renti_map/app/js/tools.js"></script>
+  <script src="venders/renti_map/app/js/renti-map.js"></script>
+</head>
+<body style="background-color:rgba(0,0,0,.7);">
+  <div class="topBox">
+    <div>
+      <span id="ymd" class="mg-left"></span>
+      <span id="div_hour" class="mg-left"></span>
+      <span id="week" class="fl-right mg-right"></span>
+    </div>
+    <div>
+      <span id="ymd_yinli" class="mg-left"></span>
+      <span id="lunar" class="mg-left"></span>
+      <span id="lunarHour" class="mg-left"></span>
+    </div>
+  </div>
+  <div class="centerBox">
+    <div id="mapDiv" style="width: 100%; height: 100%">
+  </div>
+  </div>
+  <div class="bottomBox">
+    <div class="mg-left">
+      <span id="festival"></span>
+      <span id="days"></span>
+      <span class="fl-right mg-right">建<br/>军<br/>节</span>
+    </div>
+    <div class="mg-left">上一节气：<span id="upJieQi"></span></div>
+    <div class="mg-left">下一节气：<span id="nextJieQi"></span></div>
+  </div>
+  <script>
+      fun_time();
+      fun_getUpAndNextJieQi();
+      window.setInterval("fun_time()", 1000);
+      function getItem(date) {
+          var h = date.getHours(), m = date.getMinutes();
+          var num = parseInt(((h + 1) * 60 + m) / 120);
+          if (num == 12) num = 0;
+          return sheets.shiershichen[num];
+      }
+      var item = getItem(new Date());
+      console.log(item);
+      new RentiMap("#mapDiv", {
+          data: item
+      });
+  </script>
+
+</body>
+</html>

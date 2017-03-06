@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9b463923-0d98-4048-8620-6ba3b35a45fb" name="Default" comment="" />
+    <ignored path="fudao-web.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="fudao-web" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>img_width</find>
+      <find>img</find>
+      <find>div_woniu</find>
+      <find>woniu</find>
+      <find>Bladder-1</find>
+      <find>Kidney-2</find>
+      <find>Kidney-1</find>
+      <find>Spleen-2</find>
+      <find>..</find>
+      <find>class</find>
+      <find>GETQUESTION</find>
+      <find>fun_getCurQuestion</find>
+      <find>getAllQuestion</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>images</replace>
+      <replace>{{</replace>
+      <replace>venders</replace>
+      <replace>className</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/myHealthCycle.html" />
+        <option value="$PROJECT_DIR$/webpack.production.config.js" />
+        <option value="$PROJECT_DIR$/src/views/protocol/App.jsx" />
+        <option value="$PROJECT_DIR$/public/vendors/js.js" />
+        <option value="$PROJECT_DIR$/public/vendors/js/healthCircle.js" />
+        <option value="$PROJECT_DIR$/public/demo.html" />
+        <option value="$PROJECT_DIR$/public/venders/js/healthCircle.js" />
+        <option value="$PROJECT_DIR$/src/views/demo/index.html" />
+        <option value="$PROJECT_DIR$/src/views/demo/App.jsx" />
+        <option value="$PROJECT_DIR$/src/views/demo/index.scss" />
+        <option value="$PROJECT_DIR$/src/views/healthCircle/index.html" />
+        <option value="$PROJECT_DIR$/src/views/lifeCycle/index.scss" />
+        <option value="$PROJECT_DIR$/src/views/lifeCycle/index.html" />
+        <option value="$PROJECT_DIR$/src/views/lifeCycle/App.jsx" />
+        <option value="$PROJECT_DIR$/public/renti_map/app/svg/laoren-nan-qian.svg" />
+        <option value="$PROJECT_DIR$/public/renti_map/app/js/renti-map.js" />
+        <option value="$PROJECT_DIR$/public/venders/renti_map/app/css/all.css" />
+        <option value="$PROJECT_DIR$/src/views/myTime/App.jsx" />
+        <option value="$PROJECT_DIR$/public/venders/renti_map/app/svg/laoren-nan-qian.svg" />
+        <option value="$PROJECT_DIR$/public/venders/renti_map/app/js/renti-map.js" />
+        <option value="$PROJECT_DIR$/src/views/healthAppraisal/index.html" />
+        <option value="$PROJECT_DIR$/src/views/assessmentTest/index.html" />
+        <option value="$PROJECT_DIR$/src/views/assessmentTest/index.scss" />
+        <option value="$PROJECT_DIR$/public/css/global.css" />
+        <option value="$PROJECT_DIR$/src/views/healthCircle/index.scss" />
+        <option value="$PROJECT_DIR$/src/views/healthCircle/App.jsx" />
+        <option value="$PROJECT_DIR$/src/utils/index.js" />
+        <option value="$PROJECT_DIR$/src/utils/config.old.js" />
+        <option value="$PROJECT_DIR$/src/views/articleDetail/index.scss" />
+        <option value="$PROJECT_DIR$/src/views/articleDetail/App.jsx" />
+        <option value="$PROJECT_DIR$/public/venders/js/assessmentData.js" />
+        <option value="$PROJECT_DIR$/public/venders/js/privatejs/main.js" />
+        <option value="$PROJECT_DIR$/src/views/assessmentTest/App.jsx" />
+        <option value="$PROJECT_DIR$/src/views/myTime/index.html" />
+        <option value="$PROJECT_DIR$/src/views/healthAppraisal/App.jsx" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fudao-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fudao-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fudao1-web" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="js.eslint.eslintPackage" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\jsworks\fudao-web\src" />
+      <recent name="D:\jsworks\fudao-web\src\views\assessmentTest" />
+      <recent name="D:\jsworks\fudao-web\public\images" />
+      <recent name="D:\jsworks\fudao-web\src\views\healthAppraisal" />
+      <recent name="D:\jsworks\fudao-web\public\venders" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\jsworks\fudao-web\public\venders" />
+      <recent name="D:\jsworks\fudao-web\public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="false" name="dev" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="npm.dev" />
+      <item index="1" class="java.lang.String" itemvalue="npm.start" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="npm.start" />
+        <item index="1" class="java.lang.String" itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b463923-0d98-4048-8620-6ba3b35a45fb" name="Default" comment="" />
+      <created>1487903239886</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1487903239886</updated>
+      <workItem from="1487903241276" duration="919000" />
+      <workItem from="1487906660977" duration="2758000" />
+      <workItem from="1487928199231" duration="609000" />
+      <workItem from="1488161927648" duration="1202000" />
+      <workItem from="1488178706133" duration="15065000" />
+      <workItem from="1488245169327" duration="24863000" />
+      <workItem from="1488330345185" duration="35359000" />
+      <workItem from="1488502170498" duration="17602000" />
+      <workItem from="1488765171339" duration="11714000" />
+    </task>
+    <task id="LOCAL-00001" summary="lifeCycle 生命周期">
+      <created>1488268254617</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1488268254617</updated>
+    </task>
+    <task id="LOCAL-00002" summary="myTime 我的时间">
+      <created>1488280237954</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1488280237954</updated>
+    </task>
+    <task id="LOCAL-00003" summary="myTime 我的时间2">
+      <created>1488355494661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1488355494661</updated>
+    </task>
+    <task id="LOCAL-00004" summary="经络的隐藏显示">
+      <created>1488422055831</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1488422055831</updated>
+    </task>
+    <task id="LOCAL-00005" summary="healthAppraisal.html">
+      <created>1488439338407</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1488439338407</updated>
+    </task>
+    <task id="LOCAL-00006" summary="assessmentTest.html">
+      <created>1488451485318</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1488451485318</updated>
+    </task>
+    <task id="LOCAL-00007" summary="appraisalCount&#10;">
+      <created>1488509292420</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1488509292420</updated>
+    </task>
+    <task id="LOCAL-00008" summary="修改&#10;">
+      <created>1488521654483</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1488521654483</updated>
+    </task>
+    <task id="LOCAL-00009" summary="测评布局&#10;">
+      <created>1488538050271</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1488538050271</updated>
+    </task>
+    <task id="LOCAL-00010" summary="react change html">
+      <created>1488781879652</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1488781879653</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="110091000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22370088" sideWeight="0.44666666" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18598525" sideWeight="0.55333334" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.50666666" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lifeCycle 生命周期" />
+    <MESSAGE value="myTime 我的时间" />
+    <MESSAGE value="myTime 我的时间2" />
+    <MESSAGE value="经络的隐藏显示" />
+    <MESSAGE value="healthAppraisal.html" />
+    <MESSAGE value="assessmentTest.html" />
+    <MESSAGE value="appraisalCount&#10;" />
+    <MESSAGE value="修改&#10;" />
+    <MESSAGE value="测评布局&#10;" />
+    <MESSAGE value="react change html" />
+    <option name="LAST_COMMIT_MESSAGE" value="react change html" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/images/nian_quang.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/lifeCycle/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/js/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1083">
+          <caret line="96" column="74" lean-forward="false" selection-start-line="96" selection-start-column="74" selection-end-line="96" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/js/renti-map2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/css/all.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="89" column="21" lean-forward="true" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/svg/laoren-nan-qian.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="1784" column="20" lean-forward="false" selection-start-line="1784" selection-start-column="20" selection-end-line="1784" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/js/renti-map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="55" lean-forward="false" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/demo/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/global.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3762">
+          <caret line="202" column="10" lean-forward="false" selection-start-line="201" selection-start-column="1" selection-end-line="201" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/assessmentTest/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/urls.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/dialogs.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/tools.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/config.old.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/config.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/index.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/request.js" />
+    <entry file="file://$PROJECT_DIR$/src/views/articleDetail/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/js/privatejs/question.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/js/assessmentData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="997" column="1" lean-forward="true" selection-start-line="997" selection-start-column="1" selection-end-line="997" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/js/privatejs/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="137" column="5" lean-forward="true" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/articleDetail/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/articleDetail/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/assessmentTest/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="67" column="26" lean-forward="true" selection-start-line="45" selection-start-column="16" selection-end-line="67" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/assessmentTest/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/demo/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/dist/declare-08b5140450.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/dist/demo-08b5140450.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1482">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/articleDetail/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/js/privatejs/friendCircle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/venders/renti_map/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/protocol/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/protocol/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/myTime/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/declare/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/myTime/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/lifeCycle/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="192" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/lifeCycle/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="8" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/healthCircle/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/healthCircle/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="132" column="23" lean-forward="true" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/healthCircle/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/healthAppraisal/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/healthAppraisal/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

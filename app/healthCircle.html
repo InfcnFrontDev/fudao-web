@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/global.css">
+</head>
+<body style="background-color:rgba(0,0,0,.7)">
+	<div class="boxTop">
+		<canvas id="myCanvas" width="320" height="320"></canvas>
+	</div>
+	
+	<div class="boxBottom">
+		<div class="textBox">
+			<h3 class="h3Box">&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; 工作阶段</h3>
+			<p>茶歇：鸭梨，杏仁，核桃仁</p>
+			<p>动：颈部活动操，踮脚跳，虎扑</p>
+		</div>
+	</div>
+	<script>
+        var oCanvas=document.getElementById('myCanvas');
+        var context = oCanvas.getContext("2d");
+
+        context.translate(oCanvas.width/2,oCanvas.height/2);
+        context.rotate(-Math.PI/360);
+        setInterval(drawTime,60000);
+        drawTime();
+        function drawTime(){
+            context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
+            var now = new Date();
+            var sec = now.getSeconds();
+            var min = now.getMinutes();
+            var hr  = now.getHours();
+            hr = hr>=12 ? hr-12 : hr;
+            //白色圈底
+            context.save();
+            context.arc(0,0,110,0*Math.PI,2*Math.PI)
+            context.lineWidth= 20;
+            context.strokeStyle="#fff";
+            context.stroke();
+            context.closePath();
+			/*时针的刻度*/
+            for(var i = 0 ;i<24;i++){
+                context.beginPath();
+                context.lineWidth= 1;
+                context.strokeStyle="blue";
+                context.rotate(Math.PI/12)
+                context.moveTo(100,0)
+                context.lineTo(120,0)
+                context.stroke()
+            }
+			/*时针*/
+            context.save()
+            context.beginPath();
+            context.lineWidth = 4;
+            context.strokeStyle="#fff";
+            context.rotate((hr+min/60+sec/3600)*(Math.PI/6))
+            context.rotate(-Math.PI/2)
+            context.moveTo(5,0)
+            context.lineTo(100,0)
+            context.stroke()
+            context.restore()
+            //内圆环
+            context.beginPath();
+            context.strokeStyle="blue";
+            context.arc(0,0,100,0, Math.PI*2) ;
+            context.stroke();
+            //外圆环
+            context.beginPath();
+            context.strokeStyle="blue";
+            context.arc(0,0,120,0, Math.PI*2) ;
+            context.stroke();
+            //圆心小圆圈
+            context.beginPath();
+            context.strokeStyle="blue";
+            context.arc(0,0,5,0, Math.PI*2) ;
+            context.stroke();
+            context.fillStyle="#fff";
+            context.fill();
+            //灰色时间段
+            context.save()
+            context.beginPath();
+            context.lineWidth = 20;
+            context.strokeStyle="#ccc";
+            context.rotate((hr)*(Math.PI/6))
+            context.rotate(-Math.PI/2)
+            context.arc(0,0,110,0*Math.PI,2*Math.PI/24)
+            context.stroke();
+            context.restore();
+            //内圈数字
+            context.save();
+            context.beginPath();
+            for(var i=1;i<13;i++){
+                var x1=Math.sin(i*2*Math.PI/12);
+                var y1=-Math.cos(i*2*Math.PI/12);
+                context.fillStyle="#a1cc00";
+                context.font="bold 20px Arial";
+                context.textAlign='center';
+                context.textBaseline='middle';
+                context.fillText(i,x1*80,y1*80);
+
+            }
+            context.closePath();
+            context.restore();
+
+
+            //外圈数字
+            context.save();
+            context.beginPath();
+            for(var i=13;i<25;i++){
+                var x1=Math.sin(i*2*Math.PI/12);
+                var y1=-Math.cos(i*2*Math.PI/12);
+                context.fillStyle="#a1cc00";
+                context.font="bold 20px Arial";
+                context.textAlign='center';
+                context.textBaseline='middle';
+                context.fillText(i,x1*144,y1*144);
+            }
+            context.closePath();
+            context.restore();
+        }
+
+        }
+	</script>
+</body>
+</html>

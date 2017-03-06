@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello MUI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!--标准mui.css-->
+  <link rel="stylesheet" href="venders/css/mui.min.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="venders/css/common.css" type="text/css" charset="utf-8" />
+</head>
+<style>
+  .question {
+    background-color: #FFFFFF;
+    text-align: left;
+    vertical-align: middle;
+    min-height: 50px;
+    padding: 20px 15px 10px 10px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .answer {
+    padding-left: 10px;
+    font-size: 18px;
+  }
+
+  ._index {
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid #8a6de9;
+    border-radius: 10px;
+    line-height: 20px;
+    font-size: 14px;
+  }
+
+  .mui-demo-container {
+    background-color: #fff;
+    padding: 10px 15px 0px 15px;
+  }
+
+  .mui-progressbar-royal span {
+    background-color: #8a6de9;
+  }
+
+  .mui-progressbar {
+    height: 5px;
+  }
+  .mui-input-group .mui-input-row:after {
+    left: 0px;
+  }
+</style>
+
+<body>
+<div>
+  <!-- 问卷类型 being-->
+  <div id="title" style="background-color: #FFFFFF; text-align: left; vertical-align: middle; height: 20px; font-size: 18px; padding: 20px 10px 50px 10px"></div>
+  <!-- 问卷类型 end-->
+  <!-- 进度条being -->
+  <div style="border:  1px solid #c8c7cc;width: 90%;margin: auto auto;">
+    <div id="demo5" class="mui-demo-container" style="height: 45px;">
+      <span style="float: left; margin-bottom: 5px;">测评进度</span>
+      <div class="mui-btn mui-btn-link mui-pull-right" id="sum" style="color: #8a6de9; float: right;"></div>
+      <p id="answerProgress" class="mui-progressbar mui-progressbar-royal" data-progress="80"><span></span></p>
+    </div>
+    <div style="margin-top:10px;border-bottom: 1px solid #c8c7cc"></div>
+    <!-- 进度条end -->
+    <div id="question" class="question" style='padding-top:20px;'>对对对</div>
+    <div class="mui-input-group">
+      <div class="mui-input-row mui-radio mui-right answer" id="answer1">
+      </div>
+      <div class="mui-input-row mui-radio mui-right answer" id="answer2">
+      </div>
+      <div class="mui-input-row mui-radio mui-right answer" id="answer3">
+      </div>
+      <div class="mui-input-row mui-radio mui-right answer" id="answer4">
+      </div>
+      <div class="mui-input-row mui-radio mui-right answer" id="answer5">
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="mui-bar mui-bar-footer" style="padding:0px 20px 50px 20px;">
+  <button type="button" class="mui-btn mui-pull-left" style="width: 100px;border: 1px solid #48bbc1;background-color: #48bbc1;color: white;" id="up">上一题</button>
+  <button type="button" class="mui-btn mui-pull-right" style="width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;" id="next">下一题</button>
+  <button type="button" class="mui-btn mui-pull-right" style="display: none;width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;" id="submit">提交</button>
+</footer>
+<script>
+
+</script>
+</body>
+
+</html>

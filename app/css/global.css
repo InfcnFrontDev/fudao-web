@@ -1,0 +1,231 @@
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+#loading {
+    margin: 10px;
+}
+
+.container {
+}
+
+.header {
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 25px;
+}
+.cover{
+    background-color:rgba(0,0,0,.7);
+    height:100%;
+}
+.mui-content {
+    background-color: #ffffff;
+}
+
+.pop_up_window {
+    position: relative;
+    background: rgb(109, 201, 205);
+    width: 300px;
+    border-radius: 20px;
+    height: 180px;
+    top: 160px;
+    color: #FFFFFF;
+}
+
+.td_hand {
+    cursor: pointer;
+}
+
+#beijing {
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 9
+}
+
+.jieduanlouti{
+    overflow: hidden;
+    background:url(../images/jieduanlouti.png);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.beijing{
+    display:none;
+}
+#remindMes{
+    width:100%;height:100%;z-index:9999999;position:fixed; display:none;
+}
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    filter: alpha(opacity=60);
+    background-color: #777;
+    opacity: 0;
+    -moz-opacity: 0.5;
+}
+.topBox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:10%;
+    color:#fff;
+    font-size:17px;
+    line-height:26px;
+    padding:20px 0;
+
+}
+.centerBox{
+    width:100%;
+    height:70%;
+    position:absolute;
+    top:15%;
+}
+.bottomBox{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:15%;
+    color:#fff;
+    line-height:26px;
+}
+.mg-left{
+    margin-left:8%;
+}
+.mg-right{
+    margin-right:8%;
+}
+.fl-right{
+    float:right;
+}
+.appraisalBox{
+    width:220px;
+    height:220px;
+    background:#FFF;
+    margin:34% auto;
+    font-family: Arial;
+    color:#316dba;
+}
+.pt-ab{
+    position:absolute;
+    left:0;
+}
+.fdzs{
+    margin-top:56px;
+}
+.imgtou{
+    margin-top:70px;
+}
+.appraisalBtn{
+    width:220px;
+    height:38px;
+    text-align: center;
+    margin:0 auto;
+    text-decoration: none;
+    line-height:38px;
+    background:#fff;
+    border-radius:6px;
+    display:block;
+    font-size:17px;
+    color:#316dba;
+    border:1px solid #316dba;
+}
+.circle{
+    margin:10px auto;
+    width:220px;
+    height:220px;
+    display:flex;
+    -webkit-display:flex;
+    -webkit-justify-content:center;
+    position:relative;
+}
+
+.question {
+    background-color: #FFFFFF;
+    text-align: left;
+    vertical-align: middle;
+    min-height: 50px;
+    padding: 20px 15px 10px 10px;
+    font-size: 18px;
+    line-height: 22px;
+}
+.answer {
+    padding-left: 10px;
+    font-size: 18px;
+}
+._index {
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid #8a6de9;
+    border-radius: 10px;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.mui-demo-container {
+    background-color: #fff;
+    padding: 10px 15px 0px 15px;
+}
+
+.mui-progressbar-royal span {
+    background-color: #8a6de9;
+}
+.mui-progressbar {
+    height: 5px;
+}
+.mui-input-group .mui-input-row:after {
+    left: 0px;
+}
+.shangBtn{
+    width: 100px;border: 1px solid #48bbc1;background-color: #48bbc1;color: white;
+}
+.xiaBtn{
+    width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;
+}
+.tijiaoBtn{
+    display: none;width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;
+}
+.boxTop{
+    width:320px;
+    height:320px;
+    margin:20px auto;
+}
+.boxBottom{
+    width:100%;
+    height:200px;
+    color:#fff;
+    font-size:20px;
+    position:fixed;
+    bottom:30px;
+}
+.textBox{
+    line-height:20px;
+    width:280px;
+    height:200px;
+    margin:0 auto;
+}
+.h3Box{
+    display: flex;
+    justify-content:center;
+}
+.spanBox{
+    font-family:'Arial';
+    font-size:25px;
+}
