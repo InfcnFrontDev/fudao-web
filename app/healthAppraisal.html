@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
   <link rel="stylesheet" href="css/global.css">
   <script src="js/privatejs/main.js"></script>
+  <script src="js/jquery.min.js"></script>
+
 </head>
 <body style="background-color:rgba(0,0,0,.7);">
   <div class="appraisalBox">
     <div  style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
       <div style="margin:0 auto">
-      <p class="fdzs">福道指数</p>
-      <img src="images/tou.png" style="height:80px"/>
+        <p class="fdzs">福道指数</p>
+        <div class="img_div">
+          <img src="images/tou.png" style="height:80px"/>
+        </div>
+
       </div>
       <svg width="220" height="220" class="pt-ab">
         <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
@@ -38,6 +43,20 @@
   </a>
   <script>
       appraisal_init();
+      function getQueryString(name) {
+          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) return unescape(r[2]); return null;
+      }
+      var parameter=getQueryString('result')
+      console.log(parameter);
+      if(parameter == null){
+          var str='<img src="images/tou.png" style="height:80px"/>'
+          $(".img_div").html(str);
+      }else{
+          $(".img_div").html(parseInt(parameter));
+      }
+
   </script>
 
 </body>
