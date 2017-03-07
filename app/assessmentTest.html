@@ -10,6 +10,8 @@
   <!--标准mui.css-->
   <link rel="stylesheet" href="venders/css/mui.min.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="venders/css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/_all.css">
+  <link rel="stylesheet" href="css/custom.css">
   <script src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/mui.min.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
@@ -32,6 +34,7 @@
   .answer {
     padding-left: 10px;
     font-size: 18px;
+    white-space: nowrap;
   }
 
   ._index {
@@ -78,15 +81,16 @@
     <!-- 进度条end -->
     <div id="question" class="question" style='padding-top:20px;'>对对对</div>
     <div class="mui-input-group">
-      <div class="mui-input-row mui-radio mui-right answer" id="answer1">
+      <div class="mui-input-row mui-right answer" id="answer1" >
+
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer2">
+      <div class="mui-input-row  mui-right answer" id="answer2">
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer3">
+      <div class="mui-input-row  mui-right answer" id="answer3">
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer4">
+      <div class="mui-input-row  mui-right answer" id="answer4">
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer5">
+      <div class="mui-input-row  mui-right answer" id="answer5">
       </div>
     </div>
   </div>
@@ -154,19 +158,21 @@
 
     // 生成单选按钮
     function fun_createRadio(question, answer) {
-        var _radio = '<input type="radio" name="' + question.num + '"';
+        var _radio = '<input class="iradio_square-blue" type="radio" style="-webkit-appearance: none" name="' + question.num + '"';
         _radio += ' value="' + question[answer] + '"';
         if(answers[question.num] == question[answer]) {
             _radio += ' checked="checked"';
         }
-        _radio += ' onclick="fun_recordingAnswer(this);" />';
+        _radio += ' onclick="fun_recordingAnswer(this);">';
         return _radio;
     }
     // 记录答案
     function fun_recordingAnswer(obj) {
+        $(obj).addClass('checked');
         if(index == 62) {
             fun_showProgress(63);
             answers[obj.name] = obj.value;
+            console.log(answers);
             fun_submit();
             return false;
         }
@@ -223,8 +229,7 @@
             type: 'post',
             timeout: 20000, //超时时间设置为20秒；
             success: function(data) {
-                console.log(data);
-                window.location.href="healthAppraisal.html?result="+data.obj.countSocre;
+                window.location.href="healthAppraisal.html?result="+data.obj.countSocre+"&shehuiSocre="+data.obj.shehuiSocre+"&xinliSocre="+data.obj.xinliSocre+"&zhengzhuangSocre="+data.obj.zhengzhuangSocre+"&ziceSocre="+data.obj.ziceSocre;
 
             },
             error: function(xhr, type, errorThrown) {
