@@ -5,38 +5,43 @@
   <title>Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/articleDetail.css" type="text/css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container">
 		<h2 class="content_title_text">高血压的症状，高血压的早期症状</h2>
 		<div class="source_view_t">
 			<p class="source_text">来自&nbsp;&nbsp;:&nbsp;&nbsp;养生堂<span class="source_update_text">15分钟前</span></p>
-			<p class="source_text">收藏</p>
+			<img class="source_icon" src="images/addcollection.png" alt=""/>
 	  </div>
 	  <div class="source_view_b">
-	    <img class="source_pic" src="images/web-cover1.jpg" alt=""/>
+	  	<img class="source_pic" src="images/web-cover1.jpg" alt=""/>
 	  </div>
-	    <p class="content_text">&emsp;&emsp;1、世界东方航空撒谎法律发哈厉害辐射防系啊是假发加法<br/>；啊就分手放假啊；防腐剂是放假啊发生纠纷；阿飞；啊护<br/>&emsp;&emsp;2、是放假啊链接发啦发烧；计算法<br/>&emsp;&emsp;3、舒服了手机发哦放假啊杀是；飞咖啡；系啊防守反击啊<br/>；就发的假发假发发夹；阿三；放假啊减肥；啊放假啊孙菲菲菌<br/>法沙发说服力手机上了飞机啊算了发</p>
+	    <p class="content_text">&emsp;&emsp;1、沐浴可使身体的血液循环良好，促进新<br/>陈代谢，并能洗涤身体污垢，使身心健康，精<br/>神爽快，也是一种减肥的疗法。<br/>&emsp;&emsp;2、如果水中再加入特殊浴剂(如减肥沐浴<br/>液)，会使身体内部产生热量，使新陈代谢活跃，<br/>促使发汗。<br/>&emsp;&emsp;3、如果水中再加入特殊浴剂(如减肥沐浴<br/>液)，会使身体内部产生热量，使新陈代谢活跃，<br/>促使发汗。</p>
 	</div>
-	<!--<script type="text/javascript">
-		autodivheight();
-		function autodivheight(){ //函数：获取尺寸
-	    //获取浏览器窗口高度
-	    var winHeight=0;
-	    if (window.innerHeight)
-	        winHeight = window.innerHeight;
-	    else if ((document.body) && (document.body.clientHeight))
-	        winHeight = document.body.clientHeight;
-	    //通过深入Document内部对body进行检测，获取浏览器窗口高度
-	    if (document.documentElement && document.documentElement.clientHeight)
-	        winHeight = document.documentElement.clientHeight;
-	    //DIV高度为浏览器窗口的高度
-	    //document.getElementById("test").style.height= winHeight +"px";
-	    //DIV高度为浏览器窗口高度的一半
-	    document.getElementById("container").style.height= winHeight/2 +"px";
-		}
-		window.onresize=autodivheight; //浏览器窗口发生变化时同时变化DIV高度
-
-	</script>-->
+	
+	<script type="text/javascript">
+		var url="http://192.168.3.126:18080/fudao-svc/app/myTerritoryAction!detail.action?id=359";
+		$.ajax({
+			type:"get",
+			url:url,
+			data:{}, 
+			async:true,
+			success:function(msg){
+				//console.log(msg);
+				var jsonObj= JSON.parse(msg).obj;
+				//console.log(jsonObj);
+				$('.content_title_text').html(jsonObj.title);
+				$('.source_text').html(jsonObj.source);
+				$('.content_text').html(jsonObj.zhengwen);
+				
+			},
+			error:function(){
+				alert('error');  
+			}
+			
+		});
+		
+	</script>
 </body>
 </html>
