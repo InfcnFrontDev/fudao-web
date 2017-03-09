@@ -126,7 +126,8 @@ body {
     left:0;
 }
 .fdzs{
-    margin-top:56px;
+    margin-bottom: 0;
+    text-align: center;
 }
 .imgtou{
     margin-top:70px;
@@ -249,3 +250,11 @@ body {
     font-size: 13px;
     font-family: "微软雅黑";
 }
+.img_div{
+    font-size:60px;
+    font-weight:900;
+    color:#0062cc;
+    font-family: Arial;
+    text-align:center;
+}
+

@@ -1766,12 +1766,12 @@ input[type=submit]:enabled:active {
 
 .mui-table-view-cell.mui-checkbox input[type=checkbox],
 .mui-table-view-cell.mui-radio input[type=radio] {
-	top: 8px
+	/*top: 8px*/
 }
 
 .mui-table-view-cell.mui-checkbox.mui-left,
 .mui-table-view-cell.mui-radio.mui-left {
-	padding-left: 58px
+	/*padding-left: 58px*/
 }
 
 .mui-table-view-cell.mui-active {
@@ -2531,31 +2531,31 @@ select:focus {
 
 .mui-checkbox,
 .mui-radio {
-	position: relative
+	/*position: relative*/
 }
 
 .mui-checkbox label,
 .mui-radio label {
-	display: inline-block;
+	/*display: inline-block;
 	float: none;
 	width: 100%;
-	padding-right: 58px
+	padding-right: 58px*/
 }
 
 .mui-checkbox.mui-left input[type=checkbox],
 .mui-radio.mui-left input[type=radio] {
-	left: 20px
+	/*left: 20px*/
 }
 
 .mui-checkbox.mui-left label,
 .mui-radio.mui-left label {
-	padding-right: 15px;
-	padding-left: 58px
+	/*padding-right: 15px;
+	padding-left: 58px*/
 }
 
 .mui-checkbox input[type=checkbox],
 .mui-radio input[type=radio] {
-	position: absolute;
+	/*position: absolute;
 	top: 4px;
 	right: 20px;
 	display: inline-block;
@@ -2563,46 +2563,47 @@ select:focus {
 	height: 26px;
 	border: 0;
 	outline: 0!important;
-	background-color: transparent;
+	background-color: transparent;*/
 	-webkit-appearance: none
 }
 
 .mui-checkbox input[type=checkbox][disabled]:before,
 .mui-radio input[type=radio][disabled]:before {
-	opacity: .3
+	opacity: 0
 }
 
 .mui-checkbox input[type=checkbox]:before,
 .mui-radio input[type=radio]:before {
-	font-family: Muiicons;
+/*	font-family: Muiicons;
 	font-size: 28px;
 	font-weight: 400;
 	line-height: 1;
 	text-decoration: none;
-	color: #aaa;
+	color: #fff;
 	border-radius: 0;
 	background: 0 0;
-	-webkit-font-smoothing: antialiased
+	-webkit-font-smoothing: antialiased*/
+	display:none;
 }
 
 .mui-checkbox input[type=checkbox]:checked:before,
 .mui-radio input[type=radio]:checked:before {
-	color: #007aff
+	/*color: #007aff*/
 }
 
 .mui-checkbox label.mui-disabled,
 .mui-checkbox.mui-disabled label,
 .mui-radio label.mui-disabled,
 .mui-radio.mui-disabled label {
-	opacity: .4
+	/*opacity: .4*/
 }
 
 .mui-radio input[type=radio]:before {
-	content: '\e411'
+	/*content: '\e411'*/
 }
 
 .mui-radio input[type=radio]:checked:before {
-	content: '\e441'
+	/*content: '\e441'*/
 }
 
 .mui-checkbox input[type=checkbox]:before {
@@ -4047,12 +4048,12 @@ body>.mui-progressbar {
 	margin: 2px 8px
 }
 
-@font-face {
+/*@font-face {
 	font-family: Muiicons;
 	font-weight: 400;
 	font-style: normal;
 	src: url(../fonts/mui.ttf) format('truetype')
-}
+}*/
 
 .mui-icon {
 	font-family: Muiicons;

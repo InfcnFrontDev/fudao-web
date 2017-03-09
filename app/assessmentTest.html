@@ -10,6 +10,15 @@
   <!--标准mui.css-->
   <link rel="stylesheet" href="venders/css/mui.min.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="venders/css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/_all.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/mui.min.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/source/config.js"></script>
+  <script type="text/javascript" src="js/source/localstorage.js"></script>
+  <script type="text/javascript" src="js/source/public.js"></script>
+  <script type="text/javascript" src="js/privatejs/question.js"></script>
 </head>
 <style>
   .question {
@@ -25,6 +34,7 @@
   .answer {
     padding-left: 10px;
     font-size: 18px;
+    white-space: nowrap;
   }
 
   ._index {
@@ -71,15 +81,16 @@
     <!-- 进度条end -->
     <div id="question" class="question" style='padding-top:20px;'>对对对</div>
     <div class="mui-input-group">
-      <div class="mui-input-row mui-radio mui-right answer" id="answer1">
+      <div class="mui-input-row mui-right answer" id="answer1" >
+
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer2">
+      <div class="mui-input-row  mui-right answer" id="answer2">
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer3">
+      <div class="mui-input-row  mui-right answer" id="answer3">
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer4">
+      <div class="mui-input-row  mui-right answer" id="answer4">
       </div>
-      <div class="mui-input-row mui-radio mui-right answer" id="answer5">
+      <div class="mui-input-row  mui-right answer" id="answer5">
       </div>
     </div>
   </div>
@@ -90,6 +101,143 @@
   <button type="button" class="mui-btn mui-pull-right" style="display: none;width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;" id="submit">提交</button>
 </footer>
 <script>
+    var url = "http://192.168.3.126:18080/fudao-svc/app/questionnaireAction!getQuestionByType.action";
+    $.ajax({
+        dataType: "json",
+        url: url,
+        success: function(data){
+            var questions = data.obj;
+            localStorage.setItem('questions', JSON.stringify(questions));
+        }
+    });
+    var index=1;
+    var questionTypes = [];
+    questionTypes[1] = '生理自评';
+    questionTypes[2] = '心理自评';
+    questionTypes[3] = '社会关系';
+    questionTypes[4] = '生活习惯';
+    fun_getCurQuestion();
+    mui('.mui-bar-footer').on('tap', 'button', function() {
+        var btnId = this.getAttribute('id');
+        if(btnId == 'up') {
+            index--;
+        } else if(btnId == 'next') {
+            index++;
+        } else {
+            fun_submit();
+            return false;
+        }
+        fun_getCurQuestion();
+    });
+    var answers = {};
+    // 设置当前问题及答案
+    function fun_getCurQuestion() {
+        fun_setButton();
+        var _json = JSON.parse(localStorage.getItem('questions'));
+        document.getElementById("sum").innerHTML = index + "/" + _json.length;
+        var curQuestion = _json[index - 1];
+        document.getElementById("title").innerHTML = questionTypes[curQuestion.type];
+        document.getElementById("question").innerHTML = "<div class='_index'>" + index + "</div>&nbsp; " + curQuestion.question;
+        document.getElementById("answer1").innerHTML = fun_createRadio(curQuestion, 'asnwerAScore') + "<label style ='text-align:left'>" + curQuestion.answerA + "</label>";
+        document.getElementById("answer2").innerHTML = fun_createRadio(curQuestion, 'asnwerBScore') + "<label style ='text-align:left'>" + curQuestion.answerB + "</label>";
+        document.getElementById("answer3").innerHTML = fun_createRadio(curQuestion, 'asnwerCScore') + "<label style ='text-align:left'>" + curQuestion.answerC + "</label>";
+        document.getElementById("answer4").innerHTML = fun_createRadio(curQuestion, 'asnwerDScore') + "<label style ='text-align:left'>" + curQuestion.answerD + "</label>";
+        document.getElementById("answer5").innerHTML = fun_createRadio(curQuestion, 'asnwerEScore') + "<label style ='text-align:left'>" + curQuestion.answerE + "</label>";
+        fun_showProgress(index);
+    }
+
+    function fun_showProgress(index) {
+        answerProgress.setAttribute('data-progress', (index - 1) / 62 * 100);
+        // 显示进度
+        mui("#demo5 .mui-progressbar").each(function() {
+            mui(this).progressbar({
+                progress: this.getAttribute("data-progress")
+            }).show();
+        });
+    }
+
+    // 生成单选按钮
+    function fun_createRadio(question, answer) {
+        var _radio = '<input class="iradio_square-blue" type="radio" style="-webkit-appearance: none" name="' + question.num + '"';
+        _radio += ' value="' + question[answer] + '"';
+        if(answers[question.num] == question[answer]) {
+            _radio += ' checked="checked"';
+        }
+        _radio += ' onclick="fun_recordingAnswer(this);">';
+        return _radio;
+    }
+    // 记录答案
+    function fun_recordingAnswer(obj) {
+        $(obj).addClass('checked');
+        if(index == 62) {
+            fun_showProgress(63);
+            answers[obj.name] = obj.value;
+            console.log(answers);
+            fun_submit();
+            return false;
+        }
+        answers[obj.name] = obj.value;
+        index++;
+        window.setTimeout("fun_getCurQuestion()", 800);
+    }
+
+    // 设置问题上一题/下一题按钮是否可用
+    function fun_setButton() {
+        if(index == 1) {
+            //plus.nativeUI.toast('当前问题已经是第一题');
+            document.getElementById("up").style.display = 'none';
+        } else if(index == 62) {
+            document.getElementById("next").style.display = 'none';
+            document.getElementById("submit").style.display = 'block';
+        } else {
+            document.getElementById("up").style.display = 'block';
+            document.getElementById("next").style.display = 'block';
+            document.getElementById("submit").style.display = 'none';
+        }
+    }
+    // 提交答案
+    function fun_submit() {
+        var btnArray;
+        btnArray = ['取消', '确定'];
+        mui.confirm('是否提交问卷', '温馨提示',btnArray, function(e) {
+
+            var _json = JSON.parse(localStorage.getItem('questions'));
+            for(var indx in _json) {
+                var _key = _json[indx].num;
+                if(answers[_key] == null) {
+                    answers[_key] = 5;
+                }
+            }
+
+
+            if (e.index == 1) {
+                countScore(answers)
+            } else {
+
+            }
+
+        });
+    }
+
+    function countScore(answers){
+        $.ajax("http://192.168.3.126:18080/fudao-svc/app/questionnaireAction!calculateScore.action", {
+            data: {
+                appID:'867200022156895,86720002215690328312757',
+                scoreMap:answers
+            },
+            dataType: 'json',
+            type: 'post',
+            timeout: 20000, //超时时间设置为20秒；
+            success: function(data) {
+                window.location.href="healthAppraisal.html?result="+data.obj.countSocre+"&shehuiSocre="+data.obj.shehuiSocre+"&xinliSocre="+data.obj.xinliSocre+"&zhengzhuangSocre="+data.obj.zhengzhuangSocre+"&ziceSocre="+data.obj.ziceSocre;
+
+            },
+            error: function(xhr, type, errorThrown) {
+            }
+        });
+
+    }
+
 
 </script>
 </body>

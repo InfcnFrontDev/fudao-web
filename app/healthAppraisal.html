@@ -6,30 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
   <link rel="stylesheet" href="css/global.css">
   <script src="js/privatejs/main.js"></script>
+  <script src="js/jquery.min.js"></script>
+
 </head>
 <body style="background-color:rgba(0,0,0,.7);">
   <div class="appraisalBox">
     <div  style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
-      <div style="margin:0 auto">
-      <p class="fdzs">福道指数</p>
-      <img src="images/tou.png" style="height:80px"/>
+      <div id="div_img" style="display:none;">
+        <img src="images/load_fudaozhishu.gif" width="220" height="220" style="position:absolute;top:0;left:0; z-index: 0;" />
       </div>
-      <svg width="220" height="220" class="pt-ab">
-        <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
-        <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang" transform="matrix(0,-1,1,0,0,220)" ></circle>
-      </svg>
-      <svg width="220" height="220" class="pt-ab">
-        <circle  cx="110" cy="110" r="80" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
-        <circle  cx="110" cy="110" r="80" stroke-width="5" stroke="#66cc00" fill="none" id="svg_xinli" transform="matrix(0,-1,1,0,0,220)" ></circle>
-      </svg>
-      <svg width="220" height="220" class="pt-ab">
-        <circle  cx="110" cy="110" r="90" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
-        <circle  cx="110" cy="110" r="90" stroke-width="5" stroke="#cc9900" fill="none" id="svg_shehui" transform="matrix(0,-1,1,0,0,220)" ></circle>
-      </svg>
-      <svg width="220" height="220" class="pt-ab">
-        <circle  cx="110" cy="110" r="100" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
-        <circle  cx="110" cy="110" r="100" stroke-width="5" stroke="#ff9900" fill="none" id="svg_zice" transform="matrix(0,-1,1,0,0,220)" ></circle>
-      </svg>
+      <div id="div_svg" >
+        <svg width="220" height="220" class="pt-ab">
+          <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
+          <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang" transform="matrix(0,-1,1,0,0,220)" ></circle>
+        </svg>
+        <svg width="220" height="220" class="pt-ab">
+          <circle  cx="110" cy="110" r="80" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
+          <circle  cx="110" cy="110" r="80" stroke-width="5" stroke="#66cc00" fill="none" id="svg_xinli" transform="matrix(0,-1,1,0,0,220)" ></circle>
+        </svg>
+        <svg width="220" height="220" class="pt-ab">
+          <circle  cx="110" cy="110" r="90" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
+          <circle  cx="110" cy="110" r="90" stroke-width="5" stroke="#cc9900" fill="none" id="svg_shehui" transform="matrix(0,-1,1,0,0,220)" ></circle>
+        </svg>
+        <svg width="220" height="220" class="pt-ab">
+          <circle  cx="110" cy="110" r="100" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
+          <circle  cx="110" cy="110" r="100" stroke-width="5" stroke="#ff9900" fill="none" id="svg_zice" transform="matrix(0,-1,1,0,0,220)" ></circle>
+        </svg>
+      </div>
+
+      <div style="position:absolute;width:100px; height:100px; top:50px; left:60px;">
+        <p class="fdzs">福道指数</p>
+        <div class="img_div">
+          <img src="images/tou.png" style="height:80px"/>
+        </div>
+      </div>
     </div>
   
   </div>
@@ -37,7 +47,59 @@
     一键测评
   </a>
   <script>
-      appraisal_init();
+
+      function getQueryString(name) {
+          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) return unescape(r[2]); return null;
+      }
+      var result=getQueryString('result')
+      console.log(result);
+      if(result == null){
+          var str='<img src="images/tou.png" style="height:80px"/>'
+          $(".img_div").html(str);
+      }else{
+          $(".img_div").html(parseInt(result));
+          $("#div_svg").hide()
+          $("#div_img").show()
+          setTimeout(function(){
+              $("#div_svg").show()
+              $("#div_img").hide()
+          },2000)
+          var shehuiSocre=getQueryString('shehuiSocre');
+          var xinliSocre=getQueryString('xinliSocre');
+          var zhengzhuangSocre=getQueryString('zhengzhuangSocre');
+          var ziceSocre=getQueryString('ziceSocre');
+          appraisal_init(shehuiSocre,xinliSocre,zhengzhuangSocre,ziceSocre);
+
+      }
+      function appraisal_init(a,b,c,d){
+          var userInformation = {
+              'zhengzhuangSocre':a,
+              'xinliSocre':b,
+              'shehuiSocre':c,
+              'ziceSocre':d
+          }
+          //document.getElementById('countSocre').innerHTML=userInformation.countSocre;
+          var svg1 = document.getElementById("svg_zhengzhuang");
+          var svg2 = document.getElementById("svg_xinli");
+          var svg3 = document.getElementById("svg_shehui");
+          var svg4 = document.getElementById("svg_zice");
+          var percent1 = Math.round(parseFloat(userInformation.zhengzhuangSocre)) / 100,
+              perimeter1 = Math.PI * 2 * 60;
+          var percent2 = Math.round(parseFloat(userInformation.xinliSocre)) / 100,
+              perimeter2 = Math.PI * 2 * 70;
+          var percent3 = Math.round(parseFloat(userInformation.shehuiSocre)) / 100,
+              perimeter3 = Math.PI * 2 * 80;
+          var percent4 = Math.round(parseFloat(userInformation.ziceSocre)) / 100,
+              perimeter4 = Math.PI * 2 * 90;
+          svg1.setAttribute('stroke-dasharray', perimeter1 * percent1 + " " + perimeter1 * (1 - percent1));
+          svg2.setAttribute('stroke-dasharray', perimeter2 * percent2 + " " + perimeter2 * (1 - percent2));
+          svg3.setAttribute('stroke-dasharray', perimeter3 * percent3 + " " + perimeter3 * (1 - percent3));
+          svg4.setAttribute('stroke-dasharray', perimeter4 * percent4 + " " + perimeter4 * (1 - percent4));
+
+      }
+
   </script>
 
 </body>
