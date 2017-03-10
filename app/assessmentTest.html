@@ -113,6 +113,7 @@
      success: function(data){
        var questions = data.obj;
        localStorage.setItem('questions', JSON.stringify(questions));
+       fun_getCurQuestion();
      }
    });
    var index=1;
@@ -121,7 +122,7 @@
    questionTypes[2] = '心理自评';
    questionTypes[3] = '社会关系';
    questionTypes[4] = '生活习惯';
-   fun_getCurQuestion();
+
 
    mui('.mui-bar-footer').on('tap', 'button', function() {
      var btnId = this.getAttribute('id');
@@ -141,7 +142,8 @@
   function fun_getCurQuestion() {
     fun_setButton();
     var _json = JSON.parse(localStorage.getItem('questions'));
-    document.getElementById("sum").innerHTML = index + "/" + _json.length;
+    console.log()
+    $("#sum").html(index + "/" + _json.length);
     var curQuestion = _json[index - 1];
     document.getElementById("title").innerHTML = questionTypes[curQuestion.type];
     document.getElementById("question").innerHTML = "<div class='_index'>" + index + "</div>&nbsp; " + curQuestion.question;

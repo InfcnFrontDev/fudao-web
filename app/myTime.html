@@ -14,6 +14,22 @@
   <script src="venders/renti_map/app/js/data.js"></script>
   <script src="venders/renti_map/app/js/tools.js"></script>
   <script src="venders/renti_map/app/js/renti-map.js"></script>
+  <script>
+    window.onload=function(){
+      var item = getItem(new Date());
+      console.log(item);
+      new RentiMap("#mapDiv", {
+        data: item
+      });
+      function getItem(date) {
+        var h = date.getHours(), m = date.getMinutes();
+        var num = parseInt(((h + 1) * 60 + m) / 120);
+        if (num == 12) num = 0;
+        return sheets.shiershichen[num];
+      }
+
+    }
+  </script>
 </head>
 <body style="background-color:rgba(0,0,0,.7);">
   <div class="topBox">
@@ -45,17 +61,7 @@
       fun_time();
       fun_getUpAndNextJieQi();
       window.setInterval("fun_time()", 1000);
-      function getItem(date) {
-          var h = date.getHours(), m = date.getMinutes();
-          var num = parseInt(((h + 1) * 60 + m) / 120);
-          if (num == 12) num = 0;
-          return sheets.shiershichen[num];
-      }
-      var item = getItem(new Date());
-      console.log(item);
-      new RentiMap("#mapDiv", {
-          data: item
-      });
+
   </script>
 
 </body>
