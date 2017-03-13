@@ -7,14 +7,99 @@
   <link rel="stylesheet" href="css/global.css">
 
   <script type="text/javascript" src="js/jquery.min.js"></script>
+ <!-- <script src="js/renti-map.js"></script>-->
   <script type="text/javascript" src="js/source/calendar.js"></script>
-  <script src="venders/renti_map/app/vendor/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
-  <script src="venders/renti_map/app/js/hammer.js"></script>
-  <link rel="stylesheet" href="venders/renti_map/app/css/all.css">
-  <script src="venders/renti_map/app/js/data.js"></script>
-  <script src="venders/renti_map/app/js/tools.js"></script>
-  <script src="venders/renti_map/app/js/renti-map.js"></script>
+  <!--<script src="js/svg-pan-zoom.js"></script>-->
+  <script src="js/hammer.js"></script>
+  <link rel="stylesheet" href="css/all.css">
+  <script src="js/data.js"></script>
+ <!-- <script src="venders/renti_map/app/js/tools.js"></script>-->
+
   <script>
+    (function () {
+      'use strict';
+
+      var RentiMap = function (element, options) {
+
+        var $popover = $('<div class="popover-box popover-hide"><div class="popover" transition="modal"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div></div>');
+
+        $(element).after($popover);
+
+        var data = options.data;
+
+        var jl_maps = data.jl_map.split(',');
+
+        $(element).empty();
+        $(element).load('venders/renti_map/app/svg/' + jl_maps[0] + '.svg', function () {
+          var $svg = $("#svg");
+          $svg.attr('style', 'display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;');
+
+          var $jingluo = $('#jingluo');
+          $jingluo.children().hide();
+
+
+          $(data.jl_id.split(',')).each(function () {
+
+            $jingluo.find('#'+ this+'').show();
+            console.log($jingluo.find('#'+ this+''));
+          });
+
+          // Expose to window namespace for testing purposes
+         /* var panZoom = svgPanZoom("#svg", {
+            zoomEnabled: true,
+            panEnabled: true,
+            controlIconsEnabled: false,
+            zoomScaleSensitivity: 0.5,
+            minZoom: 0,
+            maxZoom: 50,
+            fit: 1,
+            center: 1
+          });*/
+
+          showJlInfo(data);
+        });
+
+        function showJlInfo(data) {
+
+          var title = "<strong>健康提醒：</strong>" + data.tixing;
+          var content = "<p><strong>循行筋络：</strong>" + data.jl_name + "</p>";
+          content += "<p><strong>当令器官：</strong>" + data.qiguan + "</p>";
+          content += "<p><strong>身体状况：</strong>" + data.zhuangkuang + "</p>";
+          content += "<p><strong>常见症状：</strong>" + data.zhengzhuang + "</p>";
+          content += "<p><strong>宜：</strong>" + data.yi + "</p>";
+          content += "<p><strong>忌：</strong>" + data.ji + "</p>";
+          content += "<p><strong>养生方法：</strong>" + data.yangsheng + "</p>";
+          content += "<p><strong>健康小贴士：</strong>" + data.laonianren + "</p>";
+          showPopover(title, content);
+        }
+
+        function showPopover(title, content) {
+          //$popover.find('.popover-title').html(title);
+          $popover.find('.popover-title').html(title);
+          $popover.find('.popover-content').html(content);
+          $popover.removeClass('popover-hide').addClass('popover-show');
+          //$popover.removeClass('popover-hide').addClass('popover-show');
+
+        }
+
+        function hidePopover() {
+          $popover.removeClass('popover-show').addClass('popover-hide');
+        }
+
+        function clickPopover() {
+          var ele = event.srcElement || event.target;
+
+          if ($(ele).parents('.popover').length == 0) {
+            hidePopover();
+          }
+        }
+
+        $popover.on("click", clickPopover);
+      };
+
+      window.RentiMap = RentiMap;
+
+    })();
     window.onload=function(){
       var item = getItem(new Date());
       console.log(item);
@@ -31,7 +116,7 @@
     }
   </script>
 </head>
-<body style="background-color:rgba(0,0,0,.7);">
+<body>
   <div class="topBox">
     <div>
       <span id="ymd" class="mg-left"></span>
@@ -49,13 +134,16 @@
   </div>
   </div>
   <div class="bottomBox">
-    <div class="mg-left">
-      <span id="festival"></span>
-      <span id="days"></span>
-      <span class="fl-right mg-right">建<br/>军<br/>节</span>
+    <div style="width:70%; float:left;border-right:1px solid #d8d8d8;">
+      <div class="mg-left">
+        <span id="festival"></span>
+        <span id="days"></span>
+      </div>
+      <div class="mg-left">上一节气：<span id="upJieQi"></span></div>
+      <div class="mg-left">下一节气：<span id="nextJieQi"></span></div>
     </div>
-    <div class="mg-left">上一节气：<span id="upJieQi"></span></div>
-    <div class="mg-left">下一节气：<span id="nextJieQi"></span></div>
+
+    <div style="width:28%; float:right; text-align:center;  line-height: 80px;">建军节</div>
   </div>
   <script>
       fun_time();
