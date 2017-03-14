@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="./css/global.css">
   <script src="js/privatejs/main.js"></script>
   <script src="js/jquery.min.js"></script>
 
@@ -41,11 +41,21 @@
         </div>
       </div>
     </div>
+    <div class="appraisalMark">
+      <a href="assessmentTest.html" class="appraisalBtn" >
+        一键测评
+      </a>
+      <h5 style="display:none;">您的健康水平为良好哦，再接在厉</h5>
+      <p style="display:none;">生理健康指数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="physiology">56</span></p>
+      <p style="display:none;">心理健康指数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mentality">76</span></p>
+      <p style="display:none;">社会健康指数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="society">56</span></p>
+      <p style="display:none;">自测健康指数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="oneself">66</span></p>
+    </div>
   
   </div>
-  <a href="assessmentTest.html" class="appraisalBtn">
-    一键测评
-  </a>
+
+
+
   <script>
 
       function getQueryString(name) {
@@ -71,6 +81,13 @@
           var zhengzhuangSocre=getQueryString('zhengzhuangSocre');
           var ziceSocre=getQueryString('ziceSocre');
           appraisal_init(shehuiSocre,xinliSocre,zhengzhuangSocre,ziceSocre);
+        $('.appraisalBtn').hide();
+        $('.appraisalMark p').show();
+        $('.appraisalMark h5').show();
+        $('.physiology').html(parseInt(shehuiSocre));
+        $('.mentality').html(parseInt(xinliSocre));
+        $('.society').html(parseInt(zhengzhuangSocre));
+        $('.oneself').html(parseInt(ziceSocre));
 
       }
       function appraisal_init(a,b,c,d){

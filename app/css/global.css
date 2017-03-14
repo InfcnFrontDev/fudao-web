@@ -107,8 +107,11 @@ body {
     border-top:1px solid #d8d8d8;
     font-size:14px;
 }
-.mg-left{
-    margin-left:8%;
+.mg-left-4{
+    margin-left:4%;
+}
+.mg-left-8{
+    margin-left:6%;
 }
 .mg-right{
     margin-right:8%;
@@ -117,13 +120,45 @@ body {
     float:right;
 }
 .appraisalBox{
-    width:220px;
+    width:240px;
     height:220px;
     background:#FFF;
-    margin:26% auto;
+    margin:22% auto;
     font-family: Arial;
     color:#316dba;
 }
+.appraisalMark{
+    padding-top:40px;
+
+}
+.appraisalMark h5,.appraisalMark p{
+    display:flex;
+    justify-content:center;
+    line-height:4px;
+}
+.appraisalMark h5{
+    font-size:16px;
+}
+.appraisalMark p{
+    color:#333333;
+}
+.physiology{
+    color:#00d3eb;
+}
+.mentality{
+    color:#7bc702;
+}
+.society{
+    color:#ffa200;
+}
+.oneself{
+    color:#e67d00;
+}
+
+
+
+
+
 .pt-ab{
     position:absolute;
     left:0;
@@ -137,7 +172,7 @@ body {
     margin-top:70px;
 }
 .appraisalBtn{
-    width:220px;
+    width:240px;
     height:38px;
     text-align: center;
     margin:0 auto;

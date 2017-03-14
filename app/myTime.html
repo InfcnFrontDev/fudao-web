@@ -118,16 +118,24 @@
 </head>
 <body>
   <div class="topBox">
-    <div>
-      <span id="ymd" class="mg-left"></span>
-      <span id="div_hour" class="mg-left"></span>
-      <span id="week" class="fl-right mg-right"></span>
+    <div style="width:75%; height:100%;float:left;">
+      <div>
+        <span id="ymd" class="mg-left-8"></span>
+        <span id="div_hour" class="mg-left-4"></span>
+        <span id="week" class=" mg-left-4"></span>
+      </div>
+
+      <div>
+        <span id="ymd_yinli" class="mg-left-8"></span>
+        <span id="lunar" class="mg-left-8"></span>
+        <span id="lunarHour" class="mg-left-8"></span>
+      </div>
     </div>
-    <div>
-      <span id="ymd_yinli" class="mg-left"></span>
-      <span id="lunar" class="mg-left"></span>
-      <span id="lunarHour" class="mg-left"></span>
+
+    <div style="width:25%; height:100%;float:right;">
+      <div style="width:100%; float:right;height:40px;"></div>
     </div>
+
   </div>
   <div class="centerBox">
     <div id="mapDiv" style="width: 100%; height: 100%">
@@ -135,12 +143,12 @@
   </div>
   <div class="bottomBox">
     <div style="width:70%; float:left;border-right:1px solid #d8d8d8;">
-      <div class="mg-left">
+      <div class="mg-left-8">
         <span id="festival"></span>
         <span id="days"></span>
       </div>
-      <div class="mg-left">上一节气：<span id="upJieQi"></span></div>
-      <div class="mg-left">下一节气：<span id="nextJieQi"></span></div>
+      <div class="mg-left-8">上一节气：<span id="upJieQi"></span></div>
+      <div class="mg-left-8">下一节气：<span id="nextJieQi"></span></div>
     </div>
 
     <div style="width:28%; float:right; text-align:center;  line-height: 80px;">建军节</div>
