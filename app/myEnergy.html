@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+  <style>
+    body{
+      width:100%;
+      height:100%;
+      margin:0;
+      padding:0;
+    }
+    .topBox{
+      width:100%;
+      height:50%;
+    }
+    .bottomBox{
+      width:100%;
+      height:50%;
+      position:fixed;
+      bottom:0;
+    }
+  </style>
+  <script src="js/echarts.common.min.js"></script>
+</head>
+<body>
+<div class="topBox">
+  <img src="images/energy.jpg" style="width:100%; height:100%; margin-top:20px"alt="">
+</div>
+<div class="bottomBox" >
+  <div id="main" style="width:95%; height:280px;;"></div>
+</div>
+<script>
+  var myChart = echarts.init(document.getElementById('main'));
+ // app.title = '堆叠条形图';
+
+  option = {
+    tooltip : {
+      trigger: 'axis',
+      axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    legend: {
+      data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis:  {
+      type: 'value'
+    },
+    yAxis: {
+      type: 'category',
+      data: ['地域','文化区','血缘','民族','学历']
+    },
+    series: [
+      {
+        name: '直接访问',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'insideRight'
+          }
+        },
+        data: [320, 302, 301, 334, 390]
+      },
+      {
+        name: '邮件营销',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'insideRight'
+          }
+        },
+        data: [120, 132, 101, 134, 90]
+      },
+      {
+        name: '联盟广告',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'insideRight'
+          }
+        },
+        data: [220, 182, 191, 234, 290]
+      },
+      {
+        name: '视频广告',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'insideRight'
+          }
+        },
+        data: [150, 212, 201, 154, 190]
+      },
+      {
+        name: '搜索引擎',
+        type: 'bar',
+        stack: '总量',
+        label: {
+          normal: {
+            show: true,
+            position: 'insideRight'
+          }
+        },
+        data: [820, 832, 901, 934, 1290]
+      }
+    ]
+  };
+  myChart.setOption(option);
+</script>
+
+</body>
+</html>
