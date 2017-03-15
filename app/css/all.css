@@ -76,11 +76,11 @@ body {
 }
 
 .popover {
-    position: relative;
+    position: fixed;
     margin: auto;
-    top: -30px;
-    left: 0;
-    width: 80%;
+    top:50%;
+    left: 20px;
+    width: 120px;
     padding: 1px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -135,6 +135,12 @@ body {
 
 .popover-content {
     padding: 9px 14px;
+    width:100px;
+    height:200px;
+    overflow: scroll;
+}
+.popover-content p{
+    margin:0;
 }
 
 .popover > .arrow,

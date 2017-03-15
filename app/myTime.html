@@ -21,7 +21,7 @@
 
       var RentiMap = function (element, options) {
 
-        var $popover = $('<div class="popover-box popover-hide"><div class="popover" transition="modal"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div></div>');
+        var $popover = $('<div class="popover-box popover-hide"><div class="popover" transition="modal"><div class="popover-content"></div></div></div>');
 
         $(element).after($popover);
 
@@ -41,7 +41,10 @@
           $(data.jl_id.split(',')).each(function () {
 
             $jingluo.find('#'+ this+'').show();
-            console.log($jingluo.find('#'+ this+''));
+            $jingluo.find('#'+ this+'').click(function(){
+              showJlInfo(data);
+            })
+            //console.log($jingluo.find('#'+ this+''));
           });
 
           // Expose to window namespace for testing purposes
@@ -56,8 +59,10 @@
             center: 1
           });*/
 
-          showJlInfo(data);
+
         });
+
+
 
         function showJlInfo(data) {
 
@@ -75,7 +80,7 @@
 
         function showPopover(title, content) {
           //$popover.find('.popover-title').html(title);
-          $popover.find('.popover-title').html(title);
+          //$popover.find('.popover-title').html(title);
           $popover.find('.popover-content').html(content);
           $popover.removeClass('popover-hide').addClass('popover-show');
           //$popover.removeClass('popover-hide').addClass('popover-show');
@@ -102,7 +107,7 @@
     })();
     window.onload=function(){
       var item = getItem(new Date());
-      console.log(item);
+      //console.log(item);
       new RentiMap("#mapDiv", {
         data: item
       });
@@ -118,7 +123,7 @@
 </head>
 <body>
   <div class="topBox">
-    <div style="width:75%; height:100%;float:left;">
+    <div style="width:70%; height:100%;float:left;">
       <div>
         <span id="ymd" class="mg-left-8"></span>
         <span id="div_hour" class="mg-left-4"></span>
@@ -132,8 +137,16 @@
       </div>
     </div>
 
-    <div style="width:25%; height:100%;float:right;">
-      <div style="width:100%; float:right;height:40px;"></div>
+    <div style="width:30%; height:100%;float:right;">
+      <div style="width:100%; float:right;height:40px;">
+        <div style="width:40%; height:100%; float:left;">
+          <img src="images/weather/00.png" style="width:100%;height:100%; margin-top:6px;" alt="" id="weatherImg">
+        </div>
+        <div style="width:60%; float:left;">
+          <div id="jieqi"></div>
+          <div class="wendu">1-5几点</div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -151,12 +164,33 @@
       <div class="mg-left-8">下一节气：<span id="nextJieQi"></span></div>
     </div>
 
-    <div style="width:28%; float:right; text-align:center;  line-height: 80px;">建军节</div>
+    <div style="width:28%; float:right; text-align:center;  line-height: 80px;">清明节</div>
   </div>
   <script>
       fun_time();
       fun_getUpAndNextJieQi();
       window.setInterval("fun_time()", 1000);
+      console.log($('#upJieQi').text().split('(')[0]);
+      $('#jieqi').html($('#upJieQi').text().split('(')[0])
+      var url='http://192.168.3.126:18080/fudao-svc/app/weatherAction!getWeather.action?city=北京市';
+      $.ajax({
+        dataType: "json",
+        url: url,
+        success: function(data){
+          console.log(data);
+          var dataobj=JSON.parse(data.obj).result;
+          console.log(dataobj);
+          $('.wendu').html(dataobj.temperature);
+          if(dataobj.weather=='多云'){
+            $('#weatherImg').attr('src','images/weather/01.png')
+          }else if(dataobj.weather=='晴'){
+            $('#weatherImg').attr('src','images/weather/00.png')
+          }else if(dataobj.weather=='阴'){
+            $('#weatherImg').attr('src','images/weather/02.png')
+          };
+
+        }
+      });
 
   </script>
 
