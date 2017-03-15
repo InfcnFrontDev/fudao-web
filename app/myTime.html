@@ -41,7 +41,7 @@
           $(data.jl_id.split(',')).each(function () {
 
             $jingluo.find('#'+ this+'').show();
-            $jingluo.find('#'+ this+'').click(function(){
+            $jingluo.find('#'+ this+'').on('click',function(){
               showJlInfo(data);
             })
             //console.log($jingluo.find('#'+ this+''));
@@ -75,10 +75,10 @@
           content += "<p><strong>忌：</strong>" + data.ji + "</p>";
           content += "<p><strong>养生方法：</strong>" + data.yangsheng + "</p>";
           content += "<p><strong>健康小贴士：</strong>" + data.laonianren + "</p>";
-          showPopover(title, content);
+          showPopover( content);
         }
 
-        function showPopover(title, content) {
+        function showPopover( content) {
           //$popover.find('.popover-title').html(title);
           //$popover.find('.popover-title').html(title);
           $popover.find('.popover-content').html(content);

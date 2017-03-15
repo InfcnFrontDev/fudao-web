@@ -8,8 +8,9 @@
 	<script src="js/jquery.min.js"></script>
 </head>
 <body>
+    <div class="header-box">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的健康环</div>
 	<div class="boxTop">
-		<canvas id="myCanvas" width="320" height="320"></canvas>
+		<canvas id="myCanvas" width="280" height="280"></canvas>
 	</div>
 	
 	<div class="boxBottom">
@@ -45,10 +46,10 @@
             var min = now.getMinutes();
             var hr  = now.getHours();
             hr = hr>=12 ? hr-12 : hr;
-            //白色圈底
+            //灰色色圈底
             context.save();
-            context.arc(0,0,110,0*Math.PI,2*Math.PI);
-            context.lineWidth= 20;
+            context.arc(0,0,98,0*Math.PI,2*Math.PI);
+            context.lineWidth= 16;
             context.strokeStyle="#d3d3d3";
             context.stroke();
             context.closePath();
@@ -58,8 +59,8 @@
                 context.lineWidth= 1;
                 context.strokeStyle="#939592";
                 context.rotate(Math.PI/12);
-                context.moveTo(100,0);
-                context.lineTo(120,0);
+                context.moveTo(90,0);
+                context.lineTo(106,0);
                 context.stroke();
             }
 			/*时针*/
@@ -70,18 +71,18 @@
             context.rotate((hr+min/60+sec/3600)*(Math.PI/6));
             context.rotate(-Math.PI/2);
             context.moveTo(5,0);
-            context.lineTo(100,0);
+            context.lineTo(90,0);
             context.stroke();
             context.restore();
             //内圆环
             context.beginPath();
             context.strokeStyle="#939592";
-            context.arc(0,0,100,0, Math.PI*2) ;
+            context.arc(0,0,90,0, Math.PI*2) ;
             context.stroke();
             //外圆环
             context.beginPath();
             context.strokeStyle="#939592";
-            context.arc(0,0,120,0, Math.PI*2) ;
+            context.arc(0,0,106,0, Math.PI*2) ;
             context.stroke();
             //圆心小圆圈
             context.beginPath();
@@ -93,11 +94,11 @@
             //绿色时间段
             context.save();
             context.beginPath();
-            context.lineWidth = 20;
+            context.lineWidth = 16;
             context.strokeStyle="#a1cc01";
             context.rotate((hr)*(Math.PI/6));
             context.rotate(-Math.PI/2);
-            context.arc(0,0,110,0*Math.PI,4*Math.PI/24);
+            context.arc(0,0,98,0*Math.PI,4*Math.PI/24);
             context.stroke();
             context.restore();
             //内圈数字
@@ -107,10 +108,10 @@
                 var x1=Math.sin(i*2*Math.PI/12);
                 var y1=-Math.cos(i*2*Math.PI/12);
                 context.fillStyle="#0097bc";
-                context.font="bold 20px Arial";
+                context.font="20px Arial";
                 context.textAlign='center';
                 context.textBaseline='middle';
-                context.fillText(i,x1*80,y1*80);
+                context.fillText(i,x1*76,y1*76);
 
             }
             context.closePath();
@@ -124,10 +125,10 @@
                 var x1=Math.sin(i*2*Math.PI/12);
                 var y1=-Math.cos(i*2*Math.PI/12);
                 context.fillStyle="#0097bc";
-                context.font="bold 20px Arial";
+                context.font=" 20px Arial";
                 context.textAlign='center';
                 context.textBaseline='middle';
-                context.fillText(i,x1*140,y1*140);
+                context.fillText(i,x1*120,y1*120);
             }
             context.closePath();
             context.restore();
