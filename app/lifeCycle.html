@@ -198,16 +198,17 @@
           div_background.style.height = (count_height + 32) + "px";
           document.getElementById("div_woniu").appendChild(div_background);
           //随机出多少个草
-          var arr_cao = ["images/cao_1.png", "images/cao_2.png", "images/cao_3.png", "images/cao_1.png"];
+          var arr_cao = ["images/cao_1.png", "images/cao_2.png", "images/cao_3.png", "images/cao_4.png", "images/cao_5.png"];
           var xiaoge = document.getElementsByName("xiaoge");
-          var random_cao_count = 0;
+          var random_cao_count = 11;
           for(var i = 0; i < random_cao_count; i++) {
               var _idx = Math.floor(Math.random() * xiaoge.length);
               var _img = document.createElement("img");
-              _img.style.width = "30px";
-              _img.style.height = "30px";
+              _img.style.width = "16px";
+              _img.style.height = "16px";
               _img.style.position = "absolute";
-              _img.style.bottom = (parseInt(xiaoge[_idx].style.bottom) + 35) + "px";
+            _img.style.zIndex=1000;
+              _img.style.bottom = (parseInt(xiaoge[_idx].style.bottom) + 32) + "px";
               _img.style.marginBottom = xiaoge[_idx].style.marginBottom;
               if(xiaoge[_idx].style.right == "") {
                   _img.style.left = (parseFloat(xiaoge[_idx].style.left)) + "%";
@@ -226,6 +227,7 @@
 
           mui.alert(hulu,'查看肾期');
       }
+    document.getElementById("div_woniu").style.fontSize="12px";
   </script>
 
 </body>

@@ -21,13 +21,14 @@
 
       var RentiMap = function (element, options) {
 
-        var $popover = $('<div class="popover-box popover-hide"><div class="popover" transition="modal"><div class="popover-content"></div></div></div>');
+        var $popover = $('<div class="popover-box popover-hide"><div class="popover" transition="modal"><img src="images/zhishi.png" class="zhishi"><div class="popover-content"></div></div></div>');
 
         $(element).after($popover);
 
         var data = options.data;
 
         var jl_maps = data.jl_map.split(',');
+        showJlInfo(data);
 
         $(element).empty();
         $(element).load('venders/renti_map/app/svg/' + jl_maps[0] + '.svg', function () {
@@ -140,11 +141,11 @@
     <div style="width:30%; height:100%;float:right;">
       <div style="width:100%; float:right;height:40px;">
         <div style="width:40%; height:100%; float:left;">
-          <img src="images/weather/00.png" style="width:100%;height:100%; margin-top:6px;" alt="" id="weatherImg">
+          <img src="" style="width:100%;height:100%; margin-top:6px;" alt="" id="weatherImg">
         </div>
         <div style="width:60%; float:left;">
           <div id="jieqi"></div>
-          <div class="wendu">1-5几点</div>
+          <div class="wendu">1-5</div>
         </div>
       </div>
     </div>
@@ -170,7 +171,7 @@
       fun_time();
       fun_getUpAndNextJieQi();
       window.setInterval("fun_time()", 1000);
-      console.log($('#upJieQi').text().split('(')[0]);
+
       $('#jieqi').html($('#upJieQi').text().split('(')[0])
       var url='http://192.168.3.126:18080/fudao-svc/app/weatherAction!getWeather.action?city=北京市';
       $.ajax({
@@ -178,16 +179,11 @@
         url: url,
         success: function(data){
           console.log(data);
-          var dataobj=JSON.parse(data.obj).result;
+          var dataobj=data.result;
           console.log(dataobj);
           $('.wendu').html(dataobj.temperature);
-          if(dataobj.weather=='多云'){
-            $('#weatherImg').attr('src','images/weather/01.png')
-          }else if(dataobj.weather=='晴'){
-            $('#weatherImg').attr('src','images/weather/00.png')
-          }else if(dataobj.weather=='阴'){
-            $('#weatherImg').attr('src','images/weather/02.png')
-          };
+          var num=parseInt(dataobj.weatid)-1;
+          $('#weatherImg').attr('src','images/weather/d1/'+num+'.png')
 
         }
       });

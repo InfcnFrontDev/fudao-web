@@ -19,7 +19,7 @@
       margin-left:20px;
     }
     .tubiao img{
-      width:80px;
+      width:60px;
       height:60px;
     }
     .tubiao,.wendu,.tianqi,.shidu{
@@ -36,10 +36,12 @@
   <script src="js/jquery.min.js"></script>
 </head>
 <body>
+
+
 <div class="weather-box">
   <div class="weizhi"><img src="images/dingwei.jpg" alt="">&nbsp;&nbsp;中国>北京>海淀</div>
   <div class="tubiao">
-    <img src="images/weather/00.png" alt="" id="weatherImg">
+    <img src="" alt="" id="weatherImg">
   </div>
   <div class="wendu"></div>
   <div class="tianqi">
@@ -53,32 +55,29 @@
 </body>
 </html>
 <script type="text/javascript">
+  //http://localhost:3000/myLocation.html?position={%22lastPosition%22:{%22mocked%22:false,%22timestamp%22:1489645857103,%22coords%22:{%22speed%22:0,%22heading%22:0,%22accuracy%22:35,%22longitude%22:116.32753,%22altitude%22:0,%22latitude%22:39.983471}}};
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
     var loc=getQueryString('position');
+    $('.abc').html(loc);
     var longitude=JSON.parse(loc).lastPosition.coords.longitude;
     var latitude=JSON.parse(loc).lastPosition.coords.latitude;
 
-  var url='http://192.168.3.126:18080/fudao-svc/app/weatherAction!getWeather.action?city=北京市';
+  var url='http://192.168.3.126:18080/fudao-svc/app/weatherAction!getWeather.action?city=北京';
   $.ajax({
     dataType: "json",
     url: url,
     success: function(data){
       console.log(data);
-      var dataobj=JSON.parse(data.obj).result;
+      var dataobj=data.result;
       console.log(dataobj);
       $('.wendu').html(dataobj.temperature);
-      $('.weather').html(dataobj.weather);
-      if(dataobj.weather=='多云'||dataobj.weather=='多云转晴'){
-        $('#weatherImg').attr('src','images/weather/01.png')
-      }else if(dataobj.weather=='晴'){
-        $('#weatherImg').attr('src','images/weather/00.png')
-      }else if(dataobj.weather=='阴'){
-        $('#weatherImg').attr('src','images/weather/02.png')
-      };
+      $('.weather').html(dataobj.weather_curr);
+      var num=parseInt(dataobj.weatid)-1;
+      $('#weatherImg').attr('src','images/weather/d1/'+num+'.png')
       $('.wind').html(dataobj.wind);
       $('.shidu').html('相对湿度'+dataobj.humidity);
     }
