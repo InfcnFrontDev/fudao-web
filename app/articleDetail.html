@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
 	<script src="js/mui.min.js"></script>
 	<link rel="stylesheet" href="venders/css/mui.min.css">
+	<script src="js/config.js"></script>
 </head>
 <body>
 	<div style="margin:15px; font-family: Arial">
@@ -46,7 +47,7 @@
 			},
 			dataType: 'json',
 			type:"post",
-			url:url,
+			url:urls.ARTICLA_DETAIL,
 			timeout:1000,
 			success:function(msg){
 				isCollection=msg.obj.isCollection
@@ -97,7 +98,7 @@
 					},
 					dataType: 'json',
 					type:"post",
-					url:url,
+					url:urls.ADD_COLLECT,
 					timeout:1000,
 					success:function(){
 						mui.alert('成功',"收藏提示")
