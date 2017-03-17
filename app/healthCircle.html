@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link rel="stylesheet" href="css/global.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="js/config.js"></script>
+	<script src="js/hidpi-canvas.js"></script>
 </head>
 <body>
     <div class="header-box">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的健康环</div>
@@ -22,6 +23,7 @@
 		</div>
 	</div>
 	<script>
+
         var func = function() {
 			var date=new Date();
 			var hours=date.getHours();
@@ -35,21 +37,22 @@
         setInterval(func,1000);
         var oCanvas=document.getElementById('myCanvas');
         var context = oCanvas.getContext("2d");
-
-        context.translate(oCanvas.width/2,oCanvas.height/2);
-        context.rotate(-Math.PI/360);
+		var canvas = document.querySelector('canvas');
+        context.translate(140,140);
+        //context.rotate(-Math.PI/360);
         setInterval(drawTime,1000);
         drawTime();
         function drawTime(){
-            context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
+            //context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
             var now = new Date();
             var sec = now.getSeconds();
             var min = now.getMinutes();
             var hr  = now.getHours();
             hr = hr>=12 ? hr-12 : hr;
+			var num=84;//环的半径
             //灰色色圈底
             context.save();
-            context.arc(0,0,98,0*Math.PI,2*Math.PI);
+            context.arc(0,0,num+8,0*Math.PI,2*Math.PI);
             context.lineWidth= 16;
             context.strokeStyle="#d3d3d3";
             context.stroke();
@@ -60,8 +63,8 @@
                 context.lineWidth= 1;
                 context.strokeStyle="#939592";
                 context.rotate(Math.PI/12);
-                context.moveTo(90,0);
-                context.lineTo(106,0);
+                context.moveTo(num,0);
+                context.lineTo(num+16,0);
                 context.stroke();
             }
 			/*时针*/
@@ -72,18 +75,18 @@
             context.rotate((hr+min/60+sec/3600)*(Math.PI/6));
             context.rotate(-Math.PI/2);
             context.moveTo(5,0);
-            context.lineTo(90,0);
+            context.lineTo(num,0);
             context.stroke();
             context.restore();
             //内圆环
             context.beginPath();
             context.strokeStyle="#939592";
-            context.arc(0,0,90,0, Math.PI*2) ;
+            context.arc(0,0,num,0, Math.PI*2) ;
             context.stroke();
             //外圆环
             context.beginPath();
             context.strokeStyle="#939592";
-            context.arc(0,0,106,0, Math.PI*2) ;
+            context.arc(0,0,num+16,0, Math.PI*2) ;
             context.stroke();
             //圆心小圆圈
             context.beginPath();
@@ -99,7 +102,7 @@
             context.strokeStyle="#a1cc01";
             context.rotate((hr)*(Math.PI/6));
             context.rotate(-Math.PI/2);
-            context.arc(0,0,98,0*Math.PI,4*Math.PI/24);
+            context.arc(0,0,num+8,0*Math.PI,4*Math.PI/24);
             context.stroke();
             context.restore();
             //内圈数字
@@ -112,7 +115,7 @@
                 context.font="20px Arial";
                 context.textAlign='center';
                 context.textBaseline='middle';
-                context.fillText(i,x1*76,y1*76);
+                context.fillText(i,x1*(num-14),y1*(num-14));
 
             }
             context.closePath();
@@ -129,7 +132,7 @@
                 context.font=" 20px Arial";
                 context.textAlign='center';
                 context.textBaseline='middle';
-                context.fillText(i,x1*120,y1*120);
+                context.fillText(i,x1*(num+30),y1*(num+30));
             }
             context.closePath();
             context.restore();
