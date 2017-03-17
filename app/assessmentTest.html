@@ -106,6 +106,9 @@
 </footer>
 <script>
 
+  var userid=getQueryString('userId');
+  //alert(userid);
+
 
 
    $.ajax({
@@ -234,7 +237,7 @@
     $.ajax({
       url:urls.CALCULATE_SCORE,
       data: {
-        appID:'867200022156895,86720002215690328312757',
+        appID:userid,
         scoreMap:answers
       },
       dataType: 'json',
@@ -242,7 +245,7 @@
       timeout: 20000, //超时时间设置为20秒；
       success: function(data) {
         console.log(JSON.stringify(data));
-        window.location.href="healthAppraisal.html?result="+data.obj.countSocre+"&shehuiSocre="+data.obj.shehuiSocre+"&xinliSocre="+data.obj.xinliSocre+"&zhengzhuangSocre="+data.obj.zhengzhuangSocre+"&ziceSocre="+data.obj.ziceSocre;
+        window.location.href="healthAppraisal.html?result="+data.obj.countSocre+"&shehuiSocre="+data.obj.shehuiSocre+"&xinliSocre="+data.obj.xinliSocre+"&zhengzhuangSocre="+data.obj.zhengzhuangSocre+"&ziceSocre="+data.obj.ziceSocre+"&userId="+userid;
 
       },
       error: function(xhr, type, errorThrown) {

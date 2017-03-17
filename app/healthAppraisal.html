@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="appraisalMark">
-      <a href="assessmentTest.html" class="appraisalBtn" >
+      <a class="appraisalBtn" >
         一键测评
       </a>
       <h5 style="display:none;">您的健康水平为良好哦，再接在厉</h5>
@@ -58,17 +58,22 @@
 
 
   <script>
-
-      function getQueryString(name) {
-          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-          var r = window.location.search.substr(1).match(reg);
-          if (r != null) return unescape(r[2]); return null;
-      }
-      var result=getQueryString('result')
-      console.log(result);
+    //http://localhost:3000/healthAppraisal.html?userId=867200022156895,86720002215690328312757
+      var result=getQueryString('result');
+      var userid=getQueryString('userId');
+      //alert(localStorage.getItem(userid));
+      $('.appraisalBtn').click(function(){
+        location.href="assessmentTest.html?userid="+userid;
+      })
       if(result == null){
+        if(localStorage.getItem(userid)==null){
           var str='<img src="images/tou.png" style="height:80px"/>'
           $(".img_div").html(str);
+        }else{
+          $(".img_div").html(localStorage.getItem(userid).split(',')[0]);
+          appraisal_init(localStorage.getItem(userid).split(',')[1],localStorage.getItem(userid).split(',')[2],localStorage.getItem(userid).split(',')[3],localStorage.getItem(userid).split(',')[4]);
+        }
+
       }else{
           $(".img_div").html(parseInt(result));
           $("#div_svg").hide()
@@ -89,6 +94,8 @@
         $('.mentality').html(parseInt(xinliSocre));
         $('.society').html(parseInt(zhengzhuangSocre));
         $('.oneself').html(parseInt(ziceSocre));
+        var arr=[parseInt(result),parseInt(shehuiSocre),parseInt(xinliSocre),parseInt(zhengzhuangSocre),parseInt(ziceSocre)]
+        localStorage.setItem(userid,arr);
 
       }
       function appraisal_init(a,b,c,d){

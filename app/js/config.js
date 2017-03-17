@@ -13,3 +13,9 @@ var urls={
     //计算得分
     CALCULATE_SCORE:apiPath +'app/questionnaireAction!calculateScore.action'
 }
+
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
