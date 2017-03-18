@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/hidpi-canvas.js"></script>
+  <script src="js/picker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head>
+<body style="width:100%; height:400px; background:url(images/beijing.png) no-repeat; background-size:100%;">
+
+<div style="width:320px; height:320px; margin:0 auto; ">
+  <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; background-size:290px; background-position: 20px 20px;" width="320" height="320"></canvas>
+</div>
+<canvas id="clock8_" width="200px" height="200px">
+</canvas>
+
+<section class="main-content">
+  <h3>单列筛选器</h3>
+
+  <div id="picker1">点击选择</div>
+
+
+
+
+</section>
+
+<script>
+  var oCanvas=document.getElementById('myCanvas');
+  var context = oCanvas.getContext("2d");
+  var canvas = document.querySelector('canvas');
+
+  context.translate(160,160);
+  //context.rotate(-Math.PI/360);
+  setInterval(drawTime,1000);
+  drawTime();
+  function drawTime(){
+    context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
+    var now = new Date();
+    var sec = now.getSeconds();
+    var min = now.getMinutes();
+    var hr  = now.getHours();
+
+
+   // hr = hr>=12 ? hr-12 : hr;
+    var num=80;//环的半径
+
+
+
+    /*时针的刻度*/
+    for(var i = 0 ;i<24;i++){
+      context.beginPath();
+      context.lineWidth= 2;
+      context.strokeStyle="#f4b905";
+      if(i>12){
+        context.strokeStyle="#000";
+      }
+      context.rotate(-Math.PI/12);
+      context.moveTo(num,0);
+      context.lineTo(num+10,0);
+      context.stroke();
+    }
+    //分钟刻度
+    for(var i = 0 ;i<120;i++){
+      context.beginPath();
+      context.lineWidth= 1;
+      context.strokeStyle="#f4b905";
+      if(i>65){
+        context.strokeStyle="#000";
+      }
+      context.rotate(-Math.PI/60);
+      context.moveTo(num+5,0);
+      context.lineTo(num+10,0);
+      context.stroke();
+    }
+    //渐变时间段
+    var gradient=context.createLinearGradient(0,70,100,0);
+    //gradient.addColorStop("0","#022277");
+    gradient.addColorStop("0","#022277");
+    gradient.addColorStop("1.0","#f4b905");
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle=gradient//"#022277";
+    //context.rotate((hr/2)*(Math.PI/6));
+    //context.rotate(-Math.PI/2);
+    context.arc(0,0,num+18,2*Math.PI/360*2,2*Math.PI/360*160);
+    context.stroke();
+    context.restore();
+    //黄色时间段
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*162,2*Math.PI/360*190);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*192,2*Math.PI/360*210);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*212,2*Math.PI/360*240);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*242,2*Math.PI/360*270);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*272,2*Math.PI/360*300);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*302,2*Math.PI/360*310);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*312,2*Math.PI/360*325);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle="#f4b905";
+    context.arc(0,0,num+18,2*Math.PI/360*327,2*Math.PI/360*360);
+    context.stroke();
+    context.restore();
+
+
+
+    blueTime(num,''+hr+':00',''+(parseInt(hr)+1)+':00')
+
+
+    //内圈数字
+    context.save();
+    context.beginPath();
+    for(var i=-12;i<12;i++){
+      var x1=Math.sin(i*2*Math.PI/24);
+      //console.log(Math.PI);
+      var y1=-Math.cos(i*2*Math.PI/24);
+      context.fillStyle="#f4b905";
+      if(i<-7||i>5){
+        context.fillStyle="#000";
+      }
+      context.font="12px Arial";
+      context.textAlign='center';
+      context.textBaseline='middle';
+      context.fillText(i+12,x1*(num-7),y1*(num-7));
+    }
+    context.closePath();
+    //context.rotate(Math.PI*2);
+    //context.restore();
+
+  }
+  //文本时间转度数
+  function blueTime_timeToAngle(time){
+    var hr=time.split(':')[0];
+    var angle=(24-parseInt(hr))*15
+    var min=time.split(':')[1];
+
+      angle=angle-15/60*min;
+
+    return angle;
+  }
+  //弧度时间转度数
+  function blueDuan_timeToAngle(time){
+    var hr=time.split(':')[0];
+    var min=time.split(':')[1];
+    var angle;
+    if(hr<18){
+      angle=parseInt(hr)*15+90;
+      angle=angle+15/60*min;
+    }else{
+      angle=(parseInt(hr)-18)*15;
+      angle=angle+15/60*min;
+    }
+    return angle;
+  }
+  //绿色时间段的显示
+  function blueTime(num,startTime,overTime){
+    var startDuan=blueDuan_timeToAngle(startTime);
+    var overDuan=blueDuan_timeToAngle(overTime);
+    //绿色时间段
+    context.save();
+    context.beginPath();
+    context.lineWidth = 16;
+    context.strokeStyle="#a1cc01";
+    //context.rotate((hr)*(Math.PI/6));
+    //context.rotate(-Math.PI/2);
+    context.arc(0,0,num+21,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
+    context.stroke();
+    context.restore();
+    var startText=blueTime_timeToAngle(startTime);
+    var overText=blueTime_timeToAngle(overTime);
+
+    var centerText=overText+10;
+    if(overText-startText<10){
+      centerText=overText+5;
+    }
+
+
+
+    //绿色斜线
+    context.beginPath();
+    context.strokeStyle="#a1cc01";
+    context.lineWidth="1";
+    //context.rotate(min*Math.PI/30);
+    context.moveTo( Math.sin(2*Math.PI / 360*centerText) * (num+29),Math.cos(2*Math.PI / 360*centerText) * (num+29));
+    context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    context.stroke();
+    //绿色横线
+    context.beginPath();
+    context.strokeStyle="#a1cc01";
+    context.lineWidth="1";
+    //context.rotate(min*Math.PI/30);
+    context.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    if(overText<=180){
+      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)+10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    }else{
+      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)-10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    }
+    context.stroke();
+
+    //绿色字体
+    context.save();
+    context.beginPath();
+    context.fillStyle="#a1cc01";
+    context.font="12px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    if(overText<=180){
+      context.fillText('休息时段',Math.sin(2*Math.PI / 360*centerText) * (num+40)+20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-30);
+    }else{
+      context.fillText('休息时段',Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
+    }
+    context.closePath();
+
+
+
+    //绿色开始时间12:00
+    context.save();
+    context.beginPath();
+    context.fillStyle="#a1cc01";
+    context.font="10px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    context.fillText(startTime,Math.sin(2*Math.PI / 360*startText) * (num+40),Math.cos(2*Math.PI / 360*startText) * (num+40));
+    context.closePath();
+
+
+
+    //绿色结束时间14:00
+    context.save();
+    context.beginPath();
+    context.fillStyle="#a1cc01";
+    context.font="10px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    context.fillText(overTime,Math.sin(2*Math.PI / 360*overText) * (num+40),Math.cos(2*Math.PI / 360*overText) * (num+40));
+    context.closePath();
+  }
+
+  var data1 = [
+    {
+      text: '剧毒',
+      value: 1
+    }, {
+      text: '蚂蚁',
+      value: 2
+    },
+    {
+      text: '幽鬼',
+      value: 3
+    },
+    {
+      text: '主宰',
+      value: 4
+    },
+    {
+      text: '卡尔',
+      value: 5
+    },
+    {
+      text: '宙斯',
+      value: 6
+    },
+    {
+      text: '巫医',
+      value: 7
+    }, {
+      text: '巫妖',
+      value: 8
+    },
+    {
+      text: '神谕者',
+      value: 9
+    },
+    {
+      text: '撼地神牛',
+      value: 10
+    },
+    {
+      text: '蓝胖子',
+      value: 11
+    },
+    {
+      text: '水晶室女',
+      value: 12
+    },
+    {
+      text: '莉娜',
+      value: 13
+    },
+    {
+      text: '斯拉克',
+      value: 14
+    },
+    {
+      text: '斯拉达',
+      value: 15
+    }
+  ];
+
+
+
+  var picker1El = document.getElementById('picker1');
+
+
+  var picker1 = new Picker({
+    data: [data1]
+  });
+  picker1.show();
+  var a=1;
+
+
+
+  picker1.on('picker.select', function (selectedVal, selectedIndex) {
+    console.log(selectedIndex[0]);
+    picker1El.innerText = data1[selectedIndex[0]].text;
+
+  });
+
+  picker1.on('picker.change', function (index, selectedIndex) {
+    console.log(index);
+  });
+
+  picker1.on('picker.valuechange', function (selectedVal, selectedIndex) {
+    console.log(selectedVal);
+  });
+
+
+  picker1El.addEventListener('click', function () {
+
+  });
+
+
+
+</script>
+
+</body>
+</html>

@@ -43,7 +43,7 @@
         setInterval(drawTime,1000);
         drawTime();
         function drawTime(){
-            //context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
+            context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
             var now = new Date();
             var sec = now.getSeconds();
             var min = now.getMinutes();
