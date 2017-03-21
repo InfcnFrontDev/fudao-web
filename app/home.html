@@ -7,15 +7,11 @@
   <script src="js/hidpi-canvas.js"></script>
   <script src="js/picker/picker.js"></script>
   <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
-  <!--<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">-->
   <script src="js/jquery.min.js"></script>
 </head>
 <body style="width:100%; height:400px; background:url(images/beijing.png) no-repeat; background-size:100%;">
 
-<div style="width:320px; height:320px; margin:0 auto; position:relative;">
+<div style="width:320px; height:320px; margin:0 auto; position:relative; margin-top:40px;">
   <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; background-size:290px; background-position: 20px 20px;" width="320" height="320"></canvas>
 
   <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
@@ -23,276 +19,10 @@
   <div style="width:30px; height:30px;  position:absolute;top:182px; left:145px;" class="">
     <img src="images/xiaoren.png" alt="" style="width:30px; height:30px;">
   </div>
-  <span style="width:auto;position:absolute" class="lv-zhishi">111</span>
 </div>
 
 
 <script>
-  var oCanvas=document.getElementById('myCanvas');
-  var context = oCanvas.getContext("2d");
-  var canvas = document.querySelector('canvas');
-
-  context.translate(160,160);
-  //context.rotate(-Math.PI/360);
-  setInterval(drawTime,1000);
-  drawTime();
-  function drawTime(){
-    context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
-    var now = new Date();
-    var sec = now.getSeconds();
-    var min = now.getMinutes();
-    var hr  = now.getHours();
-
-
-   // hr = hr>=12 ? hr-12 : hr;
-    var num=80;//环的半径
-
-
-
-    /*时针的刻度*/
-    for(var i = 0 ;i<24;i++){
-      context.beginPath();
-      context.lineWidth= 2;
-      context.strokeStyle="#f4b905";
-      if(i>12){
-        context.strokeStyle="#000";
-      }
-      context.rotate(-Math.PI/12);
-      context.moveTo(num,0);
-      context.lineTo(num+10,0);
-      context.stroke();
-    }
-    //分钟刻度
-    for(var i = 0 ;i<120;i++){
-      context.beginPath();
-      context.lineWidth= 1;
-      context.strokeStyle="#f4b905";
-      if(i>65){
-        context.strokeStyle="#000";
-      }
-      context.rotate(-Math.PI/60);
-      context.moveTo(num+5,0);
-      context.lineTo(num+10,0);
-      context.stroke();
-    }
-    //渐变时间段
-    var gradient=context.createLinearGradient(0,70,100,0);
-    //gradient.addColorStop("0","#022277");
-    gradient.addColorStop("0","#022277");
-    gradient.addColorStop("1.0","#f4b905");
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle=gradient//"#022277";
-    //context.rotate((hr/2)*(Math.PI/6));
-    //context.rotate(-Math.PI/2);
-    context.arc(0,0,num+18,2*Math.PI/360*2,2*Math.PI/360*160);
-    context.stroke();
-    context.restore();
-    //黄色时间段
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*162,2*Math.PI/360*190);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*192,2*Math.PI/360*210);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*212,2*Math.PI/360*240);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*242,2*Math.PI/360*270);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*272,2*Math.PI/360*300);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*302,2*Math.PI/360*310);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*312,2*Math.PI/360*325);
-    context.stroke();
-    context.restore();
-
-    context.save();
-    context.beginPath();
-    context.lineWidth = 4;
-    context.strokeStyle="#f4b905";
-    context.arc(0,0,num+18,2*Math.PI/360*327,2*Math.PI/360*360);
-    context.stroke();
-    context.restore();
-
-
-
-    //blueTime(num,''+hr+':00',''+(parseInt(hr)+1)+':00')
-    blueTime(num,'18:40','20:00')
-
-
-    //内圈数字
-    context.save();
-    context.beginPath();
-    for(var i=-12;i<12;i++){
-      var x1=Math.sin(i*2*Math.PI/24);
-      //console.log(Math.PI);
-      var y1=-Math.cos(i*2*Math.PI/24);
-      context.fillStyle="#f4b905";
-      if(i<-7||i>5){
-        context.fillStyle="#000";
-      }
-      context.font="12px Arial";
-      context.textAlign='center';
-      context.textBaseline='middle';
-      context.fillText(i+12,x1*(num-7),y1*(num-7));
-    }
-    context.closePath();
-    //context.rotate(Math.PI*2);
-    //context.restore();
-
-  }
-  //文本时间转度数
-  function blueTime_timeToAngle(time){
-    var hr=time.split(':')[0];
-    var angle=(24-parseInt(hr))*15
-    var min=time.split(':')[1];
-
-      angle=angle-15/60*min;
-
-    return angle;
-  }
-  //弧度时间转度数
-  function blueDuan_timeToAngle(time){
-    var hr=time.split(':')[0];
-    var min=time.split(':')[1];
-    var angle;
-    if(hr<18){
-      angle=parseInt(hr)*15+90;
-      angle=angle+15/60*min;
-    }else{
-      angle=(parseInt(hr)-18)*15;
-      angle=angle+15/60*min;
-    }
-    return angle;
-  }
-  //绿色时间段的显示
-  function blueTime(num,startTime,overTime){
-    var startDuan=blueDuan_timeToAngle(startTime);
-    var overDuan=blueDuan_timeToAngle(overTime);
-    //绿色时间段
-    context.save();
-    context.beginPath();
-    context.lineWidth = 16;
-    context.strokeStyle="#a1cc01";
-    //context.rotate((hr)*(Math.PI/6));
-    //context.rotate(-Math.PI/2);
-    context.arc(0,0,num+21,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
-    context.stroke();
-    context.restore();
-    var startText=blueTime_timeToAngle(startTime);
-    var overText=blueTime_timeToAngle(overTime);
-
-    var centerText=overText+5;
-
-
-
-
-    //绿色斜线
-    context.beginPath();
-    context.strokeStyle="#a1cc01";
-    context.lineWidth="1";
-    //context.rotate(min*Math.PI/30);
-    context.moveTo( Math.sin(2*Math.PI / 360*centerText) * (num+29),Math.cos(2*Math.PI / 360*centerText) * (num+29));
-    context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
-    context.stroke();
-    //绿色横线
-    context.beginPath();
-    context.strokeStyle="#a1cc01";
-    context.lineWidth="1";
-    //context.rotate(min*Math.PI/30);
-    context.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
-    if(overText<=180){
-      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)+10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
-    }else{
-      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)-10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
-    }
-    context.stroke();
-
-    //绿色字体
-    context.save();
-    context.beginPath();
-    context.fillStyle="#a1cc01";
-    context.font="12px Arial";
-    context.textAlign='center';
-    context.textBaseline='middle';
-    if(overText<=180){
-
-      if(startText-overText>=18){
-        context.fillText('休息时段',Math.sin(2*Math.PI / 360*centerText) * (num+40)+20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
-      }else{
-        context.fillText('休息时段',Math.sin(2*Math.PI / 360*centerText) * (num+40)+20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-30);
-      }
-    }else{
-      context.fillText('休息时段',Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
-    }
-    context.closePath();
-
-
-
-
-    //绿色开始时间12:00
-    context.save();
-    context.beginPath();
-    context.fillStyle="#a1cc01";
-    context.font="10px Arial";
-    context.textAlign='center';
-    context.textBaseline='middle';
-    context.fillText(startTime,Math.sin(2*Math.PI / 360*startText) * (num+40),Math.cos(2*Math.PI / 360*startText) * (num+40));
-    context.closePath();
-
-
-
-    //绿色结束时间14:00
-    context.save();
-    context.beginPath();
-    context.fillStyle="#a1cc01";
-    context.font="10px Arial";
-    context.textAlign='center';
-    context.textBaseline='middle';
-    context.fillText(overTime,Math.sin(2*Math.PI / 360*overText) * (num+40),Math.cos(2*Math.PI / 360*overText) * (num+40));
-    context.closePath();
-  }
-
   var data1 = [
     {
       text: '休息：扣齿10次',
@@ -351,11 +81,336 @@
     console.log(selectedIndex);
   });
 
-$('#abc').html(document.getElementsByClassName('picker')[0]);
+  $('#abc').html(document.getElementsByClassName('picker')[0]);
+
+  var oCanvas=document.getElementById('myCanvas');
+  var context = oCanvas.getContext("2d");
+  var canvas = document.querySelector('canvas');
+
+  context.translate(160,160);
+  //context.rotate(-Math.PI/360);
+  setInterval(drawTime,60000);
+  drawTime();
+  function drawTime(){
+    context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
+    var now = new Date();
+    var sec = now.getSeconds();
+    var min = now.getMinutes();
+    var hr  = now.getHours();
+    var num=80;//环的半径
+    var arr=[{
+      doing:"起床早饭",
+      starttime:'6:00',
+      overtime:'7:30'
+    },
+      {
+        doing:"在路上",
+        starttime:'7:30',
+        overtime:'8:30'
+      },
+      {
+        doing:"工作阶段",
+        starttime:'8:30',
+        overtime:'12:00'
+      },
+      {
+        doing:"中午饭",
+        starttime:'12:00',
+        overtime:'13:00'
+      },
+      {
+        doing:"工作阶段",
+        starttime:'13:00',
+        overtime:'14:00'
+      },
+      {
+        doing:"休息",
+        starttime:'14:00',
+        overtime:'16:00'
+      },
+      {
+        doing:"工作阶段",
+        starttime:'16:00',
+        overtime:'17:30'
+      },
+      {
+        doing:"学习",
+        starttime:'17:30',
+        overtime:'18:30'
+      },
+      {
+        doing:"晚饭",
+        starttime:'18:30',
+        overtime:'19:30'
+      },
+      {
+        doing:"运动",
+        starttime:'19:30',
+        overtime:'20:30'
+      },
+      {
+        doing:"学习",
+        starttime:'20:30',
+        overtime:'22:30'
+      },
+      {
+        doing:"睡觉",
+        starttime:'22:30',
+        overtime:'6:00'
+      }];
+    //时针的刻度
+    for(var i = 0 ;i<24;i++){
+      context.beginPath();
+      context.lineWidth= 2;
+      context.strokeStyle="#f4b905";
+      if(i>11&&i<22){
+        context.strokeStyle="#000";
+      }
+      context.rotate(-Math.PI/12);
+      context.moveTo(num,0);
+      context.lineTo(num+10,0);
+      context.stroke();
+    }
+    //分钟刻度
+    for(var i = 0 ;i<120;i++){
+      context.beginPath();
+      context.lineWidth= 1;
+      context.strokeStyle="#f4b905";
+      if(i>60&&i<114){
+        context.strokeStyle="#000";
+      }
+      context.rotate(-Math.PI/60);
+      context.moveTo(num+5,0);
+      context.lineTo(num+10,0);
+      context.stroke();
+    }
+    var index;
+    for(var i=0; i<arr.length; i++){
+      yellowTimeDuan(num,arr[i].starttime,arr[i].overtime);
+      var startDuan=blueDuan_timeToAngle(arr[i].starttime);
+      var overDuan=blueDuan_timeToAngle(arr[i].overtime);
+      var newdate=hr+":"+min;
+      var newdian=blueDuan_timeToAngle(newdate);
+      if(startDuan>overDuan){
+        if(newdian<(overDuan+360)&&newdian>=startDuan){
+          blueTime(num,arr[i].starttime,arr[i].overtime,arr[i].doing)
+          index=i
+        }
+      }
+      console.log(newdian);
+      if(startDuan<overDuan){
+        if(newdian<=overDuan&&newdian>=startDuan){
+
+          blueTime(num,arr[i].starttime,arr[i].overtime,arr[i].doing)
+          index=i
+        }
+      }
+    }
+
+    index=index+1;
+    //下个时间段的指示
+
+    nextTime(num,arr[index].starttime,arr[index].overtime,arr[index].doing)
+    index=index+1;
+    //下下个时间段的指示
+    nextTime(num,arr[index].starttime,arr[index].overtime,arr[index].doing)
+
+    //nextTime(num,'7:00','8:00','haohao')
+    //blueTime(num,''+hr+':00',''+(parseInt(hr)+1)+':00')
+    //blueTime(num,'18:40','20:00')
+
+
+    //内圈数字
+    context.save();
+    context.beginPath();
+    for(var i=-12;i<12;i++){
+      var x1=Math.sin(i*2*Math.PI/24);
+      var y1=-Math.cos(i*2*Math.PI/24);
+      context.fillStyle="#f4b905";
+      if(i<-6||i>7){
+        context.fillStyle="#000";
+      }
+      context.font="12px Arial";
+      context.textAlign='center';
+      context.textBaseline='middle';
+      context.fillText(i+12,x1*(num-7),y1*(num-7));
+    }
+    context.closePath();
+    //context.rotate(Math.PI*2);
+    //context.restore();
+
+  }
+  //黄色时间段
+  function yellowTimeDuan(num,startTime,overTime){
+    var startDuan=blueDuan_timeToAngle(startTime);
+    var overDuan=blueDuan_timeToAngle(overTime);
+    context.save();
+    context.beginPath();
+    context.lineWidth = 4;
+    if(startDuan>15&&startDuan<160&&overDuan>15&&overDuan<160){
+      context.strokeStyle="#022277";
+    }else if(startDuan>15&&startDuan<160&&overDuan>160){
+      var gradient=context.createLinearGradient(0,2,0,12);
+      gradient.addColorStop("0","#f4b905");
+      gradient.addColorStop("1.0","#022277");
+      context.strokeStyle=gradient;
+    }else if(overDuan>15&&overDuan<160&&startDuan<15){
+      var gradient=context.createLinearGradient(0,20,0,30);
+      gradient.addColorStop("0","#f4b905");
+      gradient.addColorStop("1.0","#022277");
+      context.strokeStyle=gradient;
+    }else{
+      context.strokeStyle="#f4b905";
+    }
+    context.arc(0,0,num+18,2*Math.PI/360*(startDuan+2),2*Math.PI/360*overDuan);
+    context.stroke();
+    context.restore();
+  }
+  //文本时间转度数
+  function blueTime_timeToAngle(time){
+    var hr=time.split(':')[0];
+    var angle=(24-parseInt(hr))*15
+    var min=time.split(':')[1];
+
+      angle=angle-15/60*min;
+
+    return angle;
+  }
+  //弧度时间转度数
+  function blueDuan_timeToAngle(time){
+    var hr=time.split(':')[0];
+    var min=time.split(':')[1];
+    var angle;
+    if(hr<18){
+      angle=parseInt(hr)*15+90;
+      angle=angle+15/60*min;
+    }else{
+      angle=(parseInt(hr)-18)*15;
+      angle=angle+15/60*min;
+    }
+    return angle;
+  }
+  //绿色时间段的显示
+  function blueTime(num,startTime,overTime,doing){
+    var startDuan=blueDuan_timeToAngle(startTime);
+    var overDuan=blueDuan_timeToAngle(overTime);
+    //绿色时间段
+    context.save();
+    context.beginPath();
+    context.lineWidth = 16;
+    context.strokeStyle="#a1cc01";
+    //context.rotate((hr)*(Math.PI/6));
+    //context.rotate(-Math.PI/2);
+    context.arc(0,0,num+21,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
+    context.stroke();
+    context.restore();
+    var startText=blueTime_timeToAngle(startTime);
+    var overText=blueTime_timeToAngle(overTime);
+
+    var centerText=overText+5;
 
 
 
 
+    //绿色斜线
+    context.beginPath();
+    context.strokeStyle="#a1cc01";
+    context.lineWidth="1";
+    //context.rotate(min*Math.PI/30);
+    context.moveTo( Math.sin(2*Math.PI / 360*centerText) * (num+29),Math.cos(2*Math.PI / 360*centerText) * (num+29));
+    context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    context.stroke();
+    //绿色横线
+    context.beginPath();
+    context.strokeStyle="#a1cc01";
+    context.lineWidth="1";
+    //context.rotate(min*Math.PI/30);
+    context.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    if(overText<=180){
+      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)+10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    }else{
+      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)-10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
+    }
+    context.stroke();
+
+    //绿色字体
+    context.save();
+    context.beginPath();
+    context.fillStyle="#a1cc01";
+    context.font="12px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    if(overText<=180){
+      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)+14,Math.cos(2*Math.PI / 360*centerText) * (num+40)-15);
+    }else{
+      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
+    }
+    context.closePath();
+
+
+
+
+    //绿色开始时间12:00
+    context.save();
+    context.beginPath();
+    context.fillStyle="#a1cc01";
+    context.font="10px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    context.fillText(startTime,Math.sin(2*Math.PI / 360*startText) * (num+40),Math.cos(2*Math.PI / 360*startText) * (num+40));
+    context.closePath();
+
+
+
+    //绿色结束时间14:00
+    context.save();
+    context.beginPath();
+    context.fillStyle="#a1cc01";
+    context.font="10px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    context.fillText(overTime,Math.sin(2*Math.PI / 360*overText) * (num+40),Math.cos(2*Math.PI / 360*overText) * (num+40));
+    context.closePath();
+  }
+  //下个时间段的指示的显示方法
+  function nextTime(num,startTime,overTime,doing){
+    var startText=blueTime_timeToAngle(startTime);
+    var overText=blueTime_timeToAngle(overTime);
+    var centerText=overText+5;
+    //白色斜线
+    context.beginPath();
+    context.strokeStyle="#fff";
+    context.lineWidth="1";
+    //context.rotate(min*Math.PI/30);
+    context.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+20),Math.cos(2*Math.PI / 360*centerText) * (num+20));
+    context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+40),Math.cos(2*Math.PI / 360*centerText) * (num+40));
+    context.stroke();
+    //白色横线
+    context.beginPath();
+    context.strokeStyle="#fff";
+    context.lineWidth="1";
+    //context.rotate(min*Math.PI/30);
+    context.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+40),Math.cos(2*Math.PI / 360*centerText) * (num+40));
+    if(overText<=180){
+      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+40)+10,Math.cos(2*Math.PI / 360*centerText) * (num+40));
+    }else{
+      context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+40)-10,Math.cos(2*Math.PI / 360*centerText) * (num+40));
+    }
+    context.stroke();
+    //白色字体
+    context.save();
+    context.beginPath();
+    context.fillStyle="#fff";
+    context.font="10px Arial";
+    context.textAlign='center';
+    context.textBaseline='middle';
+    if(overText<=180){
+      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)+20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
+    }else{
+      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)-20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10)
+    }
+    context.closePath();
+  }
 </script>
 
 </body>
