@@ -43,6 +43,7 @@
           url: urls.LIFE_CYCLE,
           success: function(data){
              cycle = data.obj;
+              //{"appid":"867200022156895,86720002215690328312757","day":0,"month":2,"renalPeriod":3,"season":2,"sex":0,"weeks":3,"years":1}
               fun_showCycle(cycle, sex, birthdate);
           }
       });
