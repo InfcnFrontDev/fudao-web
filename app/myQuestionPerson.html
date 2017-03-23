@@ -18,7 +18,7 @@
 <body> 
 <div style="position:absolute; top:10px; right:20px; ">
 	
-		<button id="jlbtn1" >相关<br>经络</button>
+		<button id="jlbtn1" class='start'>相关<br>经络</button>
 		<button id="bwbtn"  >相关<br>部位</button>
 		<button id="xhbtn"  >循环<br>系统</button>
     <!--<input type="button" value="经络2" id="jlbtn2">
@@ -32,18 +32,26 @@
 </div>
 
 <script>
-	var question_title='心绞痛';
+	var searchURL = window.location.search;
+	var targetPageId = searchURL.split("=")[1]; 
+	var question_title=decodeURI(targetPageId);
     var diseaseobj,ids,tu,xunhuan,xunhuanid,tuming,buwei;
-
          diseaseobj = disease[question_title]
+         if(!diseaseobj){
+         	diseaseobj = disease['痴呆'];
+         }
          ids = (diseaseobj.jl_id).split('、');
          tu = diseaseobj.jl_map;
          xunhuan = diseaseobj.xhxt_map;
          xunhuanid = (diseaseobj.xhxt_id).split('、');
          tuming = tu.split('、');
+         if(diseaseobj.xhxt_part){
+         	buwei=(diseaseobj.xhxt_part).split('、');
+         }
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+tuming[0]+'.svg',
-            noshow:false
+            ids:ids,
+            noshow:true
         });
 
     var jlbtn1click=function(){
@@ -63,6 +71,7 @@
 //  }
 
     var bwbtnclick=function(){
+    	$("button.start").removeClass('start');
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+xunhuan+'.svg',
             buwei:buwei,
@@ -70,7 +79,9 @@
 
         });
     }
+    
     var xhbtnclick=function(){
+    	$("button.start").removeClass('start');
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+xunhuan+'.svg',
             xunhuanid:xunhuanid,
