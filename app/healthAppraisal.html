@@ -17,19 +17,19 @@
         <img src="images/load_fudaozhishu.gif" width="220" height="220" style="position:absolute;top:0;left:0; z-index: 0;" />
       </div>
       <div id="div_svg" >
-        <svg width="220" height="220" class="pt-ab">
+        <svg width="220" height="220" class="pt-ab pt1">
           <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
           <circle  cx="110" cy="110" r="70" stroke-width="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang" transform="matrix(0,-1,1,0,0,220)" ></circle>
         </svg>
-        <svg width="220" height="220" class="pt-ab">
+        <svg width="220" height="220" class="pt-ab pt2">
           <circle  cx="110" cy="110" r="80" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
           <circle  cx="110" cy="110" r="80" stroke-width="5" stroke="#66cc00" fill="none" id="svg_xinli" transform="matrix(0,-1,1,0,0,220)" ></circle>
         </svg>
-        <svg width="220" height="220" class="pt-ab">
+        <svg width="220" height="220" class="pt-ab pt3">
           <circle  cx="110" cy="110" r="90" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
           <circle  cx="110" cy="110" r="90" stroke-width="5" stroke="#cc9900" fill="none" id="svg_shehui" transform="matrix(0,-1,1,0,0,220)" ></circle>
         </svg>
-        <svg width="220" height="220" class="pt-ab">
+        <svg width="220" height="220" class="pt-ab pt4">
           <circle  cx="110" cy="110" r="100" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
           <circle  cx="110" cy="110" r="100" stroke-width="5" stroke="#ff9900" fill="none" id="svg_zice" transform="matrix(0,-1,1,0,0,220)" ></circle>
         </svg>
@@ -58,7 +58,7 @@
 
 
   <script>
-    //http://localhost:3000/healthAppraisal.html?userId=867200022156895,86720002215690328312757
+    //http://localhost:3000/healthAppraisal.html?result=64.6962555436&shehuiSocre=30.9627&xinliSocre=78.4536&zhengzhuangSocre=86.8331&ziceSocre=48.4512&userId=867200022156895,86720002215690328312757
       var result=getQueryString('result');
       var userid=getQueryString('userId');
       //alert(localStorage.getItem(userid));
@@ -122,6 +122,7 @@
           svg2.setAttribute('stroke-dasharray', perimeter2 * percent2 + " " + perimeter2 * (1 - percent2));
           svg3.setAttribute('stroke-dasharray', perimeter3 * percent3 + " " + perimeter3 * (1 - percent3));
           svg4.setAttribute('stroke-dasharray', perimeter4 * percent4 + " " + perimeter4 * (1 - percent4));
+
 
       }
 

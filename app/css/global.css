@@ -166,6 +166,12 @@ body {
     position:absolute;
     left:0;
 }
+.pt1{transform:rotate(49deg)}
+.pt2{transform:rotate(42deg)}
+.pt3{transform:rotate(37deg)}
+.pt4{transform:rotate(33deg)}
+
+
 .fdzs{
     margin-bottom: 0;
     text-align: center;
