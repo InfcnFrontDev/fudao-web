@@ -1,128 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-  <style>
-    body{
-      width:100%;
-      height:100%;
-      margin:0;
-      padding:0;
-    }
-    .topBox{
-      width:100%;
-      height:50%;
-    }
-    .bottomBox{
-      width:100%;
-      height:50%;
-      position:fixed;
-      bottom:0;
-    }
-  </style>
-  <script src="js/echarts.common.min.js"></script>
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>Title</title>
+  	<script src="js/echarts.js"></script>
 </head>
 <body>
-<div class="topBox">
-  <img src="images/energy.jpg" style="width:100%; height:100%; margin-top:20px"alt="">
-</div>
-<div class="bottomBox" >
-  <div id="main" style="width:95%; height:280px;;"></div>
-</div>
+  	<div id="main" style="width:95%; height:300px;"></div>
+  	<div id="main1" style="width:95%; height:500px;"></div>
 <script>
-  var myChart = echarts.init(document.getElementById('main'));
- // app.title = '堆叠条形图';
-
-  option = {
-    tooltip : {
-      trigger: 'axis',
-      axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-      }
-    },
-    legend: {
-      data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis:  {
-      type: 'value'
-    },
-    yAxis: {
-      type: 'category',
-      data: ['地域','文化区','血缘','民族','学历']
-    },
-    series: [
-      {
-        name: '直接访问',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'insideRight'
-          }
+	var myChart = echarts.init(document.getElementById('main'));
+ 	var dataBJ = [
+        [1,50,"山川"],
+        [2,50,"河流"],
+        [3,100,"固定场所"],
+        [4,90,"风"],
+        [5,60,"雨"],
+        [6,0,"雷电"],
+        [7,40,"空气"],
+        [8,70,"日照"],
+        [9,60,"月相"],
+        [10,10,"星辰"],
+        [11,85,"性别"],
+        [12,50,"民族"],
+        [13,90,"姓氏"],
+        [14,100,"感情状态"],
+        [15,60,"学历"],
+        [16,70,"高校类型"],
+        [17,90,"行业"],
+        [18,60,"职业"],
+        [19,75,"专业"],
+        [20,50,"宗教"],
+        [21,90,"双亲情况"],
+        [22,10,"家庭情况"]
+    ];
+	var dataGZ = [
+		[1,50,"动植物"],
+		[2,50,"婚姻幸福度"],
+		[3,100,"学习意愿"],
+		[4,50,"学习能力"],
+		[5,20,"学习渠道"],
+		[6,80,"学习类型"],
+		[7,50,"健康程度"],
+		[8,50,"健康习惯"],
+		[9,100,"重视程度"],
+		[10,50,"文艺生活"],
+		[11,20,"宠物"],
+		[12,50,"旅游"],
+		[13,0,"运动"],
+		[14,50,"花茶艺"],
+		[15,20,"电脑活动"],
+		[16,50,"棋牌"],
+		[17,50,"收藏"],
+		[18,20,"个人态度"],
+		[19,80,"个人心境"],
+		[20,80,"语气"],
+		[21,90,"声音"],
+		[22,70,"语调"]
+    ];
+    var dataSH = [
+		[1,90,"语言"],
+		[2,16,"对人应激"],
+		[3,36,"对事应激"],
+		[4,80,"约束力"],
+		[5,50,"爱国情"],
+		[6,20,"乡情"],
+		[7,40,"家庭情况"],
+		[8,90,"家庭情感"],
+		[9,90,"友情空间"],
+		[10,10,"友情时间"],
+		[11,90,"友情价值"],
+		[12,90,"友情目的"],
+		[13,75,"关系维度"],
+		[14,90,"爱情亲密度"],
+		[15,90,"爱情激情度"],
+		[16,90,"爱情承诺度"],
+		[17,60,"爱情类型"],
+		[18,100,"道德感"],
+		[19,100,"教育理智感"],
+		[20,60,"事物理智感"],
+		[21,34,"政治理智感"],
+		[22,44,"社会群体"]
+    ];
+    var schema = [
+          {name: 'date', index: 0, text: ''},
+          {name: 'score', index: 1, text: '指数'}
+    ];
+    var itemStyle = {
+		normal: {
+			opacity: 0.8,
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+         }
+	};
+	option = {
+		backgroundColor: '#404a59',
+        color: [
+            '#dd4444', '#fec42c', '#80F1BE'
+        ],
+        tooltip: {
+            padding: 10,
+            backgroundColor: '#222',
+            borderColor: '#777',
+            borderWidth: 1,
+            formatter: function (obj) {
+                var value = obj.value;
+                return '<div align="center" style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                    + value[2]
+                    + '</div>'
+                    + schema[1].text + '：' + value[1] + '<br>';
+            }
         },
-        data: [320, 302, 301, 334, 390]
-      },
-      {
-        name: '邮件营销',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'insideRight'
-          }
+        xAxis: {
+            type: 'value',
+            name: '',
+            nameGap: 16,
+            nameTextStyle: {
+                color: '#fff',
+                fontSize: 14
+            },
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
         },
-        data: [120, 132, 101, 134, 90]
-      },
-      {
-        name: '联盟广告',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'insideRight'
-          }
+        yAxis: {
+            type: 'value',
+            name: '指数',
+            nameLocation: 'end',
+            nameGap: 20,
+            nameTextStyle: {
+                color: '#fff',
+                fontSize: 16
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            },
+            splitLine: {
+                show: false
+            }
         },
-        data: [220, 182, 191, 234, 290]
-      },
-      {
-        name: '视频广告',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'insideRight'
-          }
-        },
-        data: [150, 212, 201, 154, 190]
-      },
-      {
-        name: '搜索引擎',
-        type: 'bar',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'insideRight'
-          }
-        },
-        data: [820, 832, 901, 934, 1290]
-      }
-    ]
-  };
-  myChart.setOption(option);
+        visualMap: [
+            {
+                dimension: 1,
+                min: 0,
+                max: 100,
+                show:false,
+                inRange: {
+                    symbolSize: [10, 70]
+                },
+                outOfRange: {
+                    symbolSize: [10, 70],
+                    color: ['rgba(255,255,255,.2)']
+                },
+                controller: {
+                    inRange: {
+                        color: ['#c23531']
+                    },
+                    outOfRange: {
+                        color: ['#444']
+                    }
+                }
+            },
+            {
+                dimension: 1,
+                min: 0,
+                max: 100,
+                show:false,
+                inRange: {
+                    colorLightness: [1, 0.5]
+                },
+                outOfRange: {
+                    color: ['rgba(255,255,255,.2)']
+                },
+                controller: {
+                    inRange: {
+                        color: ['#c23531']
+                    },
+                    outOfRange: {
+                        color: ['#444']
+                    }
+                }
+            }
+        ],
+        series: [
+            {
+                name: '地理',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataBJ
+            },
+            {
+                name: '气候',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataGZ
+            },
+            {
+                name: '美食',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataSH
+            }
+        ]
+    };
+	myChart.setOption(option);
+	
+	var myChart1 = echarts.init(document.getElementById('main1'));
+	var option1 = {
+	    xAxis: {
+	        splitLine:{ show:false}
+	    },
+	    yAxis: {
+	        data: ["山川","河流","固定场所","风","雨","雷电"]
+	    },
+	    tooltip: {
+	        trigger: 'axis',
+	        axisPointer: {
+	            type: 'shadow'
+	        }
+	    },
+	    series: [{
+            name: '指标',
+            type: 'bar',
+            data: [19, 15, 40, 32,19, 15],
+            barWidth : 30,
+            itemStyle: {   
+                normal:{  
+                    color: function (params){
+                    	var colorList0 = ['#FEFCFC','#D4C293','#B4D2C7'];
+                    	var colorList1 = ['#B5282A','#D39C0C','#80F1BE'];
+                        return new echarts.graphic.LinearGradient(
+	                           0, 0, 1, 0,
+	                            [
+	                                {offset: 0, color: colorList0[params.dataIndex%3]},
+	                                {offset: 1, color: colorList1[params.dataIndex%3]},
+	                            ]
+	                        );
+                    }
+                },
+                emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    position: 'right'
+                }
+            }
+        }]
+	};
+	myChart1.setOption(option1);
 </script>
-
 </body>
 </html>
