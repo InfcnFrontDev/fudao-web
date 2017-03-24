@@ -11,8 +11,16 @@ button{
 	line-height:13px;
 }
 
-
-button:focus{
+.start {
 	background:#A1CC00;
 	color:#fff;
 }
+.notStart {
+	background:#E5E5E5;
+	color:#000;
+}
+
+/*button:focus{
+	background:#A1CC00;
+	color:#fff;
+}*/

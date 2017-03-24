@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="css/myQuestionPerson.css">
     <script src="js/data.js"></script>
     <script src="js/renti-map2.js"></script>
-
+    
 </head>
 
 
-<body> 
+<body style="width: 100%; height: 100%;"> 
 <div style="position:absolute; top:10px; right:20px; ">
 	
-		<button id="jlbtn1" >相关<br>经络</button>
+		<button id="jlbtn1" class='start'>相关<br>经络</button>
 		<button id="bwbtn"  >相关<br>部位</button>
 		<button id="xhbtn"  >循环<br>系统</button>
     <!--<input type="button" value="经络2" id="jlbtn2">
@@ -28,25 +28,38 @@
 
 </div>
 
-<div id="mapDiv" style="width: 90%; height: 90%;margin-top: -50px;margin-left: 20px;">
+<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -25%;">
 </div>
 
 <script>
-	var question_title='心绞痛';
+	
+	
+	var searchURL = window.location.search;
+	var targetPageId = searchURL.split("=")[1]; 
+	var question_title=decodeURI(targetPageId);
     var diseaseobj,ids,tu,xunhuan,xunhuanid,tuming,buwei;
-
          diseaseobj = disease[question_title]
+         if(!diseaseobj){
+         	diseaseobj = disease['痴呆'];
+         }
          ids = (diseaseobj.jl_id).split('、');
          tu = diseaseobj.jl_map;
          xunhuan = diseaseobj.xhxt_map;
          xunhuanid = (diseaseobj.xhxt_id).split('、');
          tuming = tu.split('、');
+         if(diseaseobj.xhxt_part){
+         	buwei=(diseaseobj.xhxt_part).split('、');
+         }
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+tuming[0]+'.svg',
-            noshow:false
+            ids:ids,
+            noshow:true
         });
 
+
     var jlbtn1click=function(){
+    	$("button.start").removeClass('start');
+    	$(this).addClass('start');
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+tuming[0]+'.svg',
             ids:ids,
@@ -58,11 +71,12 @@
 //          map: 'svg/'+tuming[1]+'.svg',
 //          ids:ids,
 //          noshow:true
-//
 //      });
 //  }
 
     var bwbtnclick=function(){
+    	$("button.start").removeClass('start');
+    	$(this).addClass('start');
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+xunhuan+'.svg',
             buwei:buwei,
@@ -70,7 +84,10 @@
 
         });
     }
+    
     var xhbtnclick=function(){
+    	$("button.start").removeClass('start');
+    	$(this).addClass('start');
         var map=new RentiMap("#mapDiv", {
             map: 'svg/'+xunhuan+'.svg',
             xunhuanid:xunhuanid,
