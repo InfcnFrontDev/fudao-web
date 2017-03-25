@@ -24,31 +24,54 @@
 	</div>
 	<script>
 
-        var func = function() {
+        var func = function(jieduan) {
 			var date=new Date();
 			var hours=date.getHours();
 			var minutes=date.getMinutes();
 			if(minutes<10){
 			    minutes="0"+minutes;
 			}
-			$('.h3Box').html(''+hours+':'+minutes+'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;工作阶段')
+			$('.h3Box').html(''+hours+':'+minutes+'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;'+jieduan+'')
         };
-        func();
-        setInterval(func,1000);
+
+
         var oCanvas=document.getElementById('myCanvas');
         var context = oCanvas.getContext("2d");
 		var canvas = document.querySelector('canvas');
         context.translate(140,140);
         //context.rotate(-Math.PI/360);
+		var userid=getQueryString('userid');
+		var renqun=getQueryString('renqun')
+		var arr=null;
+		$.ajax({
+			data:{
+				userId :userid,
+				renqunId :renqun,
+				location :1,
+				daytype:1,
+				seasonId:1
+
+			},
+			dataType: "json",
+			url: urls.MYHABIT,
+			success: function(data){
+				arr=JSON.parse(data.obj.data);
+
+			}
+		});
+		setTimeout(function(){
+			console.log(arr)
+		},1000)
+		;
         setInterval(drawTime,1000);
-        drawTime();
+		setTimeout(drawTime,500)
         function drawTime(){
             context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
             var now = new Date();
             var sec = now.getSeconds();
             var min = now.getMinutes();
             var hr  = now.getHours();
-            hr = hr>=12 ? hr-12 : hr;
+            //hr = hr>=12 ? hr-12 : hr;
 			var num=84;//环的半径
             //灰色色圈底
             context.save();
@@ -96,15 +119,30 @@
             context.fillStyle="#0096bd";
             context.fill();
             //绿色时间段
-            context.save();
-            context.beginPath();
-            context.lineWidth = 16;
-            context.strokeStyle="#a1cc01";
-            context.rotate((hr)*(Math.PI/6));
-            context.rotate(-Math.PI/2);
-            context.arc(0,0,num+8,0*Math.PI,4*Math.PI/24);
-            context.stroke();
-            context.restore();
+
+			var index;
+			for(var i=0; i<arr.length; i++){
+				var startDuan=blueDuan_time(arr[i].startTime);
+				var overDuan=blueDuan_time(arr[i].endTime);
+				//(parseInt(hr)+2)
+				var newdate=(parseInt(hr))+":"+min;
+				var newdian=blueDuan_time(newdate);
+				if(startDuan>overDuan){
+					if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
+						blueDuan(num,arr[i].startTime,arr[i].endTime)
+						index=i;
+					}
+				}
+				if(startDuan<overDuan){
+					if(newdian<overDuan&&newdian>=startDuan){
+						blueDuan(num,arr[i].startTime,arr[i].endTime)
+						index=i;
+					}
+				}
+
+			}
+			func(arr[index].name)
+
             //内圈数字
             context.save();
             context.beginPath();
@@ -138,7 +176,50 @@
             context.restore();
 
 
+
         }
+        function blueDuan(num,startTime,endTime){
+
+			var startDuan=blueDuan_timeToAngle(startTime);
+			var overDuan=blueDuan_timeToAngle(endTime);
+			context.save();
+			context.beginPath();
+			context.lineWidth = 16;
+			context.strokeStyle="#a1cc01";
+			context.arc(0,0,num+8,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
+			context.stroke();
+			context.restore();
+		}
+
+		function blueDuan_timeToAngle(time){
+			var hr=time.split(':')[0];
+			var min=time.split(':')[1];
+			var angle;
+			if(hr>=12){
+				hr=hr-12;
+			}
+			if(hr>=3){
+				angle=(parseInt(hr)-3)*30;
+				angle=angle+30/60*min;
+			}else{
+				angle=parseInt(hr)*30+270;
+				angle=angle+30/60*min;
+			}
+			return angle;
+		}
+		function blueDuan_time(time){
+			var hr=time.split(':')[0];
+			var min=time.split(':')[1];
+			var angle;
+			if(hr<18){
+				angle=parseInt(hr)*15+90;
+				angle=angle+15/60*min;
+			}else{
+				angle=(parseInt(hr)-18)*15;
+				angle=angle+15/60*min;
+			}
+			return angle;
+		}
 	</script>
 </body>
 </html>

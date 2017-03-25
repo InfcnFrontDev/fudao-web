@@ -8,6 +8,7 @@
   <script src="js/picker/picker.js"></script>
   <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
   <script src="js/jquery.min.js"></script>
+  <script src="js/config.js"></script>
   <style>
     html{
       width:100%;
@@ -53,10 +54,11 @@
       display:none;
     }
   </style>
+
 </head>
 <body style="width:100%; height:100%;">
   <div style="width:100%; height:100%; background:url(images/beijing.png) no-repeat; background-size:100% 100% ;">
-    <img src="images/yangguang.png" style="position:absolute; top:40px; right:0;">
+    <img src="images/yangguang.png" style="position:absolute; top:60px; right:0;">
 
     <div style="width:320px; height:60%; margin:0 auto; position:relative; ">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
@@ -86,6 +88,8 @@
 
 
 <script>
+  //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqunId=high_quality_population&location=1&daytype=2&seasonId=1
+
   var data1 = [
     {
       text: '休息：扣齿10次',
@@ -152,8 +156,32 @@
 
   context.translate(160,160);
   //context.rotate(-Math.PI/360);
+  var userid=getQueryString('userid');
+  var renqun=getQueryString('renqun')
+  var arr=null;
+  $.ajax({
+    data:{
+      userId :userid,
+      renqunId :renqun,
+      location :1,
+      daytype:1,
+      seasonId:1
+      /*userId :用户的ID
+       renqunId(默认high_quality_population) ：人群
+       location(默认1) :地区类型1：除新疆、西藏外的所有地区2：新疆、西藏地区
+       daytype(默认1) :天类型1:工作日2:周末
+       seasonId :季节id(1春季2夏季3秋季 4冬季),不传则系统自动计算*/
+    },
+    dataType: "json",
+    url: urls.MYHABIT,
+    success: function(data){
+      arr=JSON.parse(data.obj.data);
+    }
+  });
+
   setInterval(drawTime,1000);
-  drawTime();
+  setTimeout(drawTime,500)
+
   function drawTime(){
     context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
     var now = new Date();
@@ -161,66 +189,9 @@
     var min = now.getMinutes();
     var hr  = now.getHours();
     var num=84;//环的半径
-    var arr=[{
-      doing:"起床早饭",
-      starttime:'6:00',
-      overtime:'7:30'
-    },
-      {
-        doing:"在路上",
-        starttime:'7:30',
-        overtime:'8:30'
-      },
-      {
-        doing:"工作阶段",
-        starttime:'8:30',
-        overtime:'12:00'
-      },
-      {
-        doing:"中午饭",
-        starttime:'12:00',
-        overtime:'13:00'
-      },
-      {
-        doing:"工作阶段",
-        starttime:'13:00',
-        overtime:'13:55'
-      },
-      {
-        doing:"休息",
-        starttime:'13:55',
-        overtime:'16:00'
-      },
-      {
-        doing:"工作阶段",
-        starttime:'16:00',
-        overtime:'17:36'
-      },
-      {
-        doing:"学习",
-        starttime:'17:36',
-        overtime:'18:30'
-      },
-      {
-        doing:"晚饭",
-        starttime:'18:30',
-        overtime:'19:30'
-      },
-      {
-        doing:"运动",
-        starttime:'19:30',
-        overtime:'20:30'
-      },
-      {
-        doing:"学习",
-        starttime:'20:30',
-        overtime:'22:30'
-      },
-      {
-        doing:"睡觉",
-        starttime:'22:30',
-        overtime:'6:00'
-      }];
+
+
+
 
     //时针的刻度
     for(var i = 0 ;i<24;i++){
@@ -251,21 +222,21 @@
     var index;
     // 遍历所有黄色时间段
     for(var i=0; i<arr.length; i++){
-      yellowTimeDuan(num,arr[i].starttime,arr[i].overtime);
-      var startDuan=blueDuan_timeToAngle(arr[i].starttime);
-      var overDuan=blueDuan_timeToAngle(arr[i].overtime);
+      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime);
+      var startDuan=blueDuan_timeToAngle(arr[i].startTime);
+      var overDuan=blueDuan_timeToAngle(arr[i].endTime);
       //(parseInt(hr)+2)
       var newdate=hr+":"+min;
       var newdian=blueDuan_timeToAngle(newdate);
       if(startDuan>overDuan){
         if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
-          blueTime(num,arr[i].starttime,arr[i].overtime,arr[i].doing)
+          blueTime(num,arr[i].startTime,arr[i].endTime,arr[i].name)
           index=i
         }
       }
       if(startDuan<overDuan){
         if(newdian<overDuan&&newdian>=startDuan){
-          blueTime(num,arr[i].starttime,arr[i].overtime,arr[i].doing)
+          blueTime(num,arr[i].startTime,arr[i].endTime,arr[i].name)
           index=i
         }
       }
@@ -275,13 +246,13 @@
     //下个时间段的指示
 
 
-    nextTime(num,arr[index].starttime,arr[index].overtime,arr[index].doing)
+    nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
     index=index+1;
     //下下个时间段的指示
       if(index==arr.length){
           index=0
       }
-    nextTime(num,arr[index].starttime,arr[index].overtime,arr[index].doing)
+    nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
 
     //nextTime(num,'7:00','8:00','haohao')
     //blueTime(num,''+hr+':00',''+(parseInt(hr)+1)+':00')
@@ -309,9 +280,9 @@
 
   }
   //黄色时间段
-  function yellowTimeDuan(num,startTime,overTime){
+  function yellowTimeDuan(num,startTime,endTime){
     var startDuan=blueDuan_timeToAngle(startTime);
-    var overDuan=blueDuan_timeToAngle(overTime);
+    var overDuan=blueDuan_timeToAngle(endTime);
     context.save();
     context.beginPath();
     context.lineWidth = 5;
@@ -322,15 +293,15 @@
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
-    }else if(overDuan>15&&overDuan<160&&startDuan<15){
-      var gradient=context.createLinearGradient(0,20,0,30);
+    }else if(overDuan>15&&overDuan<160&&startDuan<=15){
+      var gradient=context.createLinearGradient(0,30,0,40);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
     }else{
       context.strokeStyle="#f4b905";
     }
-    context.arc(0,0,num+18,2*Math.PI/360*(startDuan+2),2*Math.PI/360*overDuan);
+    context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
     context.stroke();
     context.restore();
   }
@@ -359,9 +330,9 @@
     return angle;
   }
   //绿色时间段的显示
-  function blueTime(num,startTime,overTime,doing){
+  function blueTime(num,startTime,endTime,name){
     var startDuan=blueDuan_timeToAngle(startTime);
-    var overDuan=blueDuan_timeToAngle(overTime);
+    var overDuan=blueDuan_timeToAngle(endTime);
     //绿色时间段
     context.save();
     context.beginPath();
@@ -373,7 +344,7 @@
     context.stroke();
     context.restore();
     var startText=blueTime_timeToAngle(startTime);
-    var overText=blueTime_timeToAngle(overTime);
+    var overText=blueTime_timeToAngle(endTime);
 
     var centerText=overText+3;
 
@@ -410,13 +381,13 @@
     context.textBaseline='middle';
     if(overText<=180){
         if(overText>120){
-            context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)+18,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20);
+            context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)+18,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20);
         }else{
-            context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)+18,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
+            context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)+18,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
         }
 
     }else{
-      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
+      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
     }
     context.closePath();
 
@@ -439,14 +410,14 @@
     context.font="10px Arial";
     context.textAlign='center';
     context.textBaseline='middle';
-    context.fillText(overTime,Math.sin(2*Math.PI / 360*overText) * (num+40),Math.cos(2*Math.PI / 360*overText) * (num+40));
+    context.fillText(endTime,Math.sin(2*Math.PI / 360*overText) * (num+40),Math.cos(2*Math.PI / 360*overText) * (num+40));
     context.closePath();
   }
   //下个时间段的指示的显示方法
-  function nextTime(num,startTime,overTime,doing){
+  function nextTime(num,startTime,endTime,name){
     var startText=blueTime_timeToAngle(startTime);
-    var overText=blueTime_timeToAngle(overTime);
-    var centerText=overText+5;
+    var overText=blueTime_timeToAngle(endTime);
+    var centerText=overText+2;
     //白色斜线
     context.beginPath();
     context.strokeStyle="#fff";
@@ -475,9 +446,9 @@
     context.textAlign='center';
     context.textBaseline='middle';
     if(overText<=180){
-      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)+20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
+      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)+10,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
     }else{
-      context.fillText(doing,Math.sin(2*Math.PI / 360*centerText) * (num+40)-20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10)
+      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10)
     }
     context.closePath();
   }
