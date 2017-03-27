@@ -7,8 +7,8 @@
   	<script src="js/echarts.js"></script>
 </head>
 <body>
-  	<div id="main" style="width:95%; height:300px;"></div>
-  	<div id="main1" style="width:95%; height:500px;"></div>
+  	<div id="main" align="center" style="min-height: 300px;"></div>
+  	<div id="main1" align="center" style="width:95%;height: 1800px;"></div>
 <script>
 	var myChart = echarts.init(document.getElementById('main'));
  	var dataBJ = [
@@ -214,6 +214,14 @@
         ]
     };
 	myChart.setOption(option);
+
+	var data_x = ["社会群体","政治理智感","事物理智感","教育理智感","道德感","爱情类型","爱情承诺度","爱情激情度","爱情亲密度","关系维度","友情目的","友情价值","友情时间","友情空间","家庭情感","家庭情况","乡情","爱国情","约束力","对事应激","对人应激","语言",
+				 "语调","声音","语气","个人心境","个人态度","收藏","棋牌","电脑活动","花茶艺","运动","旅游","宠物","文艺生活","重视程度","健康习惯","健康程度","学习类型","学习渠道","学习能力","学习意愿","婚姻幸福度","动植物",
+				 "家庭情况","双亲情况","宗教","专业","职业","行业","高校类型","学历","感情状态","姓氏","民族","性别","星辰","月相","日照","空气","雷电","雨","风","固定场所","河流","山川"];
+	
+	var data_y = [44,34,60,100,100,60,90,90,90,75,90,90,10,90,90,40,20,50,80,36,16,90,
+		          70,90,80,80,20,50,50,20,50,0,50,20,50,100,50,50,80,20,50,100,50,50,
+		             10,90,50,75,60,90,70,60,100,90,50,85,10,60,70,40,0,60,90,100,50,50];
 	
 	var myChart1 = echarts.init(document.getElementById('main1'));
 	var option1 = {
@@ -221,7 +229,8 @@
 	        splitLine:{ show:false}
 	    },
 	    yAxis: {
-	        data: ["山川","河流","固定场所","风","雨","雷电"]
+	    	type: 'category',
+	        data: data_x
 	    },
 	    tooltip: {
 	        trigger: 'axis',
@@ -229,11 +238,15 @@
 	            type: 'shadow'
 	        }
 	    },
+	    grid: {
+	        left: '1%',
+	        containLabel: true
+	    },
 	    series: [{
             name: '指标',
             type: 'bar',
-            data: [19, 15, 40, 32,19, 15],
-            barWidth : 30,
+            data: data_y,
+            barWidth : 20,
             itemStyle: {   
                 normal:{  
                     color: function (params){
