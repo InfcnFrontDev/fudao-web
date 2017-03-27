@@ -7,7 +7,7 @@
   	<script src="js/echarts.min.js"></script>
 </head>
 <body>
-  	<div id="main" align="center" style="width:100%;min-height: 300px;margin-left: 1.5px;"></div>
+  	<div id="main" align="center" style="width:100%;min-height: 300px;margin-left: 1px;"></div>
   	<div id="main1" align="center" style="width:95%;height: 1700px;"></div>
 <script>
 	var myChart = echarts.init(document.getElementById('main'));
@@ -246,6 +246,7 @@
 	    },
 	    grid: {
 	        left: '1%',
+	        bottom: 5,
 	        containLabel: true
 	    },
 	    series: [{
