@@ -28,6 +28,7 @@
       margin:auto;
       border-radius: 5px;
       padding: 5px 10px;
+      display:none;
     }
     .triangle-up {
       width: 0;
@@ -66,19 +67,22 @@
 
       <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
       </div>
-      <div style="width:30px; height:30px;  position:relative;top:-210px; left:125px;" class="">
+      <div style="width:30px; height:30px;  position:relative;top:-210px; left:125px;" class="dongzuo">
         <img src="images/cetititun.gif" alt="" style="width:70px; height:50px;">
       </div>
     </div>
     <div class="warn">
       <div class="triangle-up"></div>
-      <p style="color:#333; line-height:28px; font-size:15px;">
+      <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
         轻松的运动过后喝杯红茶，
         闻闻茶香吧眺望远方深呼吸一下
       </p>
     </div>
     <div class="warnCover">
 
+    </div>
+    <div style="margin:0 auto;width:300px; height:300px;position: absolute; top:0; bottom:0; left:0; right:0; display:none;" class="bigimg">
+      <img src="images/cetititun.gif" alt=""  style="width:300px; height:300px;">
     </div>
 
   </div>
@@ -88,6 +92,15 @@
 
 
 <script>
+  $('.dongzuo').click(function(e){
+    e.stopPropagation();
+    $('.bigimg').show();
+  });
+  $(document).click(function(e){
+    e.preventDefault();
+    $('.bigimg').hide();
+  });
+
   //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqunId=high_quality_population&location=1&daytype=2&seasonId=1
 
   var data1 = [
@@ -155,7 +168,6 @@
   var canvas = document.querySelector('canvas');
 
   context.translate(160,160);
-  //context.rotate(-Math.PI/360);
   var userid=getQueryString('userid');
   var renqun=getQueryString('renqun');
   var arr=null;
@@ -191,8 +203,6 @@
     var num=84;//环的半径
 
 
-
-
     //时针的刻度
     for(var i = 0 ;i<24;i++){
       context.beginPath();
@@ -222,7 +232,7 @@
     var index;
     // 遍历所有黄色时间段
     for(var i=0; i<arr.length; i++){
-      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime);
+      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime,arr[i].name);
       var startDuan=blueDuan_timeToAngle(arr[i].startTime);
       var overDuan=blueDuan_timeToAngle(arr[i].endTime);
       //(parseInt(hr)+2)
@@ -244,8 +254,6 @@
 
     index=index+1;
     //下个时间段的指示
-
-
     nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
     index=index+1;
     //下下个时间段的指示
@@ -253,10 +261,6 @@
           index=0
       }
     nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
-
-    //nextTime(num,'7:00','8:00','haohao')
-    //blueTime(num,''+hr+':00',''+(parseInt(hr)+1)+':00')
-    //blueTime(num,'18:40','20:00')
 
 
     //内圈数字
@@ -275,12 +279,9 @@
       context.fillText(i+12,x1*(num-7),y1*(num-7));
     }
     context.closePath();
-    //context.rotate(Math.PI*2);
-    //context.restore();
-
   }
   //黄色时间段
-  function yellowTimeDuan(num,startTime,endTime){
+  function yellowTimeDuan(num,startTime,endTime,name){
     var startDuan=blueDuan_timeToAngle(startTime);
     var overDuan=blueDuan_timeToAngle(endTime);
     context.save();
@@ -302,6 +303,30 @@
       context.strokeStyle="#f4b905";
     }
     context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
+    var y1=Math.sin(2*Math.PI/360*startDuan)*105+160
+    var y2=Math.sin(2*Math.PI/360*overDuan)*105+160
+    var x1=Math.cos(2*Math.PI/360*startDuan)*105+160
+    var x2=Math.cos(2*Math.PI/360*overDuan)*105+160
+    oCanvas.addEventListener('click', function(e){
+      p = getEventPosition(e);
+      if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
+        $('.warn').show();
+        $('.tishi').html(name);
+      }
+      if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
+        $('.warn').show();
+        $('.tishi').html(name);
+      }
+      if(p.x<=x1&&p.x>=x2&&p.y>=y1&&p.y<=y2){
+        $('.warn').show();
+        $('.tishi').html(name);
+      }
+      if(p.x<=x1&&p.x>=x2&&p.y<=y1&&p.y>=y2){
+        $('.warn').show();
+        $('.tishi').html(name);
+      }
+
+    }, false);
     context.stroke();
     context.restore();
   }
@@ -338,24 +363,18 @@
     context.beginPath();
     context.lineWidth = 16;
     context.strokeStyle="#a1cc01";
-    //context.rotate((hr)*(Math.PI/6));
-    //context.rotate(-Math.PI/2);
     context.arc(0,0,num+21,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
     context.stroke();
     context.restore();
+
     var startText=blueTime_timeToAngle(startTime);
     var overText=blueTime_timeToAngle(endTime);
-
     var centerText=overText+3;
-
-
-
 
     //绿色斜线
     context.beginPath();
     context.strokeStyle="#a1cc01";
     context.lineWidth="1";
-    //context.rotate(min*Math.PI/30);
     context.moveTo( Math.sin(2*Math.PI / 360*centerText) * (num+29),Math.cos(2*Math.PI / 360*centerText) * (num+29));
     context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
     context.stroke();
@@ -363,7 +382,6 @@
     context.beginPath();
     context.strokeStyle="#a1cc01";
     context.lineWidth="1";
-    //context.rotate(min*Math.PI/30);
     context.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+50),Math.cos(2*Math.PI / 360*centerText) * (num+50));
     if(overText<=180){
       context.lineTo(Math.sin(2*Math.PI / 360*centerText) * (num+50)+10,Math.cos(2*Math.PI / 360*centerText) * (num+50));
@@ -451,6 +469,17 @@
       context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-20,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10)
     }
     context.closePath();
+  }
+  function getEventPosition(ev){
+    var x, y;
+    if (ev.layerX || ev.layerX == 0) {
+      x = ev.layerX;
+      y = ev.layerY;
+    } else if (ev.offsetX || ev.offsetX == 0) { // Opera
+      x = ev.offsetX;
+      y = ev.offsetY;
+    }
+    return {x: x, y: y};
   }
 </script>
 
