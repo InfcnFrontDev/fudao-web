@@ -101,6 +101,7 @@
     $('.bigimg').hide();
   });
 
+
   //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqunId=high_quality_population&location=1&daytype=2&seasonId=1
 
   var data1 = [
@@ -369,7 +370,11 @@
 
     var startText=blueTime_timeToAngle(startTime);
     var overText=blueTime_timeToAngle(endTime);
-    var centerText=overText+3;
+    var centerText;
+    centerText=overText+3;
+
+
+
 
     //绿色斜线
     context.beginPath();
@@ -436,6 +441,12 @@
     var startText=blueTime_timeToAngle(startTime);
     var overText=blueTime_timeToAngle(endTime);
     var centerText=overText+2;
+    if(startText-overText>10&&startText-overText<100){
+      centerText=overText+5;
+    }
+    if(startText-overText>20&&startText-overText<100){
+      centerText=overText+10;
+    }
     //白色斜线
     context.beginPath();
     context.strokeStyle="#fff";
