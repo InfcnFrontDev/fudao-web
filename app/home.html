@@ -160,6 +160,9 @@
 
   picker1.on('picker.change', function (index, selectedIndex) {
     console.log(selectedIndex);
+    $('.dongzuo').find('img').attr('src','images/shulan_'+selectedIndex+'.png');
+    $('.bigimg').find('img').attr('src','images/shulan_'+selectedIndex+'.png');
+
   });
 
   $('#abc').html(document.getElementsByClassName('picker')[0]);
