@@ -61,9 +61,9 @@
   <div style="width:100%; height:100%; background:url(images/beijing.png) no-repeat; background-size:100% 100% ;">
     <img src="images/yangguang.png" style="position:absolute; top:60px; right:0;">
 
-    <div style="width:320px; height:60%; margin:0 auto; position:relative; ">
+    <div style=" height:60%; margin:0 auto; position:relative; top:12% " class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
-      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; background-size:290px; background-position: 20px 20px; margin-top:20%" width="320" height="320"></canvas>
+      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; /*background-color: rgba(0,0,0,.3);*/ background-size:290px; background-position: center; " ></canvas>
 
       <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
       </div>
@@ -92,11 +92,24 @@
 
 
 <script>
+  var daWidth=screen.width;
+  $('.warn1').width(daWidth);
+  $('#myCanvas').attr('width',daWidth);
+  $('#myCanvas').attr('height',daWidth);
+  var width_2=daWidth/2;
+  $('#abc').css({top:-220-(daWidth-320)/2,left:100+(daWidth-320)/2});//
+  $('.dongzuo').css({top:-210-(daWidth-320)/2,left:125+(daWidth-320)/2});
+
+
   $('.dongzuo').click(function(e){
     e.stopPropagation();
     $('.bigimg').show();
   });
   $(document).click(function(e){
+    e.preventDefault();
+    $('.bigimg').hide();
+  });
+  $('#myCanvas').click(function(e){
     e.preventDefault();
     $('.bigimg').hide();
   });
@@ -171,7 +184,7 @@
   var context = oCanvas.getContext("2d");
   var canvas = document.querySelector('canvas');
 
-  context.translate(160,160);
+  context.translate(width_2,width_2);
   var userid=getQueryString('userid');
   var renqun=getQueryString('renqun');
   var arr=null;
@@ -291,14 +304,14 @@
     context.save();
     context.beginPath();
     context.lineWidth = 5;
-    if(startDuan>15&&startDuan<160&&overDuan>15&&overDuan<160){
+    if(startDuan>15&&startDuan<width_2&&overDuan>15&&overDuan<width_2){
       context.strokeStyle="#022277";
-    }else if(startDuan>15&&startDuan<160&&overDuan>160){
+    }else if(startDuan>15&&startDuan<width_2&&overDuan>width_2){
       var gradient=context.createLinearGradient(0,2,0,12);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
-    }else if(overDuan>15&&overDuan<160&&startDuan<=15){
+    }else if(overDuan>15&&overDuan<width_2&&startDuan<=15){
       var gradient=context.createLinearGradient(0,30,0,40);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
@@ -307,10 +320,10 @@
       context.strokeStyle="#f4b905";
     }
     context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
-    var y1=Math.sin(2*Math.PI/360*startDuan)*105+160
-    var y2=Math.sin(2*Math.PI/360*overDuan)*105+160
-    var x1=Math.cos(2*Math.PI/360*startDuan)*105+160
-    var x2=Math.cos(2*Math.PI/360*overDuan)*105+160
+    var y1=Math.sin(2*Math.PI/360*startDuan)*105+width_2
+    var y2=Math.sin(2*Math.PI/360*overDuan)*105+width_2
+    var x1=Math.cos(2*Math.PI/360*startDuan)*105+width_2
+    var x2=Math.cos(2*Math.PI/360*overDuan)*105+width_2
     oCanvas.addEventListener('click', function(e){
       e.stopPropagation();
       p = getEventPosition(e);
@@ -333,6 +346,10 @@
 
     }, false);
     $(document).click(function(e){
+      e.preventDefault();
+      $('.warn').hide();
+    });
+    $('#myCanvas').click(function(e){
       e.preventDefault();
       $('.warn').hide();
     });
