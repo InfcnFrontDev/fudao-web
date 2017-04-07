@@ -92,7 +92,8 @@
 
 
 <script>
-  var daWidth=document.body.clientWidth;
+  var daWidth=screen.width;
+  console.log(daWidth);
   $('.warn1').width(daWidth);
   $('#myCanvas').attr('width',daWidth);
   $('#myCanvas').attr('height',daWidth);
