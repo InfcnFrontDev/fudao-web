@@ -61,9 +61,9 @@
   <div style="width:100%; height:100%; background:url(images/beijing.png) no-repeat; background-size:100% 100% ;">
     <img src="images/yangguang.png" style="position:absolute; top:60px; right:0;">
 
-    <div style=" height:60%; margin:0 auto; position:relative; top:12% " class="warn1">
+    <div style=" height:60%;width:320px; margin:0 auto; position:relative; top:12% " class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
-      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; /*background-color: rgba(0,0,0,.3);*/ background-size:290px; background-position: center; " ></canvas>
+      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; /*background-color: rgba(0,0,0,.3);*/ background-size:290px; background-position: center; " width="320" height="320"></canvas>
 
       <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
       </div>
@@ -92,14 +92,13 @@
 
 
 <script>
-  var daWidth=screen.width;
-  console.log(daWidth);
+  /*var daWidth=screen.width;
   $('.warn1').width(daWidth);
   $('#myCanvas').attr('width',daWidth);
   $('#myCanvas').attr('height',daWidth);
-  var width_2=daWidth/2;
+
   $('#abc').css({top:-220-(daWidth-320)/2,left:100+(daWidth-320)/2});//
-  $('.dongzuo').css({top:-210-(daWidth-320)/2,left:125+(daWidth-320)/2});
+  $('.dongzuo').css({top:-210-(daWidth-320)/2,left:125+(daWidth-320)/2});*/
 
 
   $('.dongzuo').click(function(e){
@@ -116,7 +115,7 @@
   });
 
 
-  //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqunId=high_quality_population&location=1&daytype=2&seasonId=1
+  //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqun=high_quality_population&location=1&daytype=2&seasonId=1
 
   var data1 = [
     {
@@ -185,10 +184,11 @@
   var context = oCanvas.getContext("2d");
   var canvas = document.querySelector('canvas');
 
-  context.translate(width_2,width_2);
+  context.translate(160,160);
   var userid=getQueryString('userid');
   var renqun=getQueryString('renqun');
   var arr=null;
+
   $.ajax({
     data:{
       userId :userid,
@@ -205,11 +205,16 @@
     dataType: "json",
     url: urls.MYHABIT,
     success: function(data){
+
       arr=JSON.parse(data.obj.data);
+    },
+    error:function(data){
+      console.log(data);
+
     }
   });
 
-  setInterval(drawTime,1000);
+  setInterval(drawTime,500);
   setTimeout(drawTime,500)
 
   function drawTime(){
@@ -249,8 +254,9 @@
     }
     var index;
     // 遍历所有黄色时间段
+
     for(var i=0; i<arr.length; i++){
-      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime,arr[i].name);
+      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime,arr[i].name,160);
       var startDuan=blueDuan_timeToAngle(arr[i].startTime);
       var overDuan=blueDuan_timeToAngle(arr[i].endTime);
       //(parseInt(hr)+2)
@@ -300,20 +306,23 @@
   }
   //黄色时间段
   function yellowTimeDuan(num,startTime,endTime,name){
+
+
     var startDuan=blueDuan_timeToAngle(startTime);
     var overDuan=blueDuan_timeToAngle(endTime);
+    var gradient;
     context.save();
     context.beginPath();
     context.lineWidth = 5;
-    if(startDuan>15&&startDuan<width_2&&overDuan>15&&overDuan<width_2){
+    if(startDuan>15&&startDuan<160&&overDuan>15&&overDuan<160){
       context.strokeStyle="#022277";
-    }else if(startDuan>15&&startDuan<width_2&&overDuan>width_2){
-      var gradient=context.createLinearGradient(0,2,0,12);
+    }else if(startDuan>15&&startDuan<160&&overDuan>160){
+      gradient=context.createLinearGradient(0,2,0,12);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
-    }else if(overDuan>15&&overDuan<width_2&&startDuan<=15){
-      var gradient=context.createLinearGradient(0,30,0,40);
+    }else if(overDuan>15&&overDuan<160&&startDuan<=15){
+      gradient=context.createLinearGradient(0,30,0,40);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
@@ -321,10 +330,10 @@
       context.strokeStyle="#f4b905";
     }
     context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
-    var y1=Math.sin(2*Math.PI/360*startDuan)*105+width_2
-    var y2=Math.sin(2*Math.PI/360*overDuan)*105+width_2
-    var x1=Math.cos(2*Math.PI/360*startDuan)*105+width_2
-    var x2=Math.cos(2*Math.PI/360*overDuan)*105+width_2
+    var y1=Math.sin(2*Math.PI/360*startDuan)*105+160;
+    var y2=Math.sin(2*Math.PI/360*overDuan)*105+160;
+    var x1=Math.cos(2*Math.PI/360*startDuan)*105+160;
+    var x2=Math.cos(2*Math.PI/360*overDuan)*105+160;
     oCanvas.addEventListener('click', function(e){
       e.stopPropagation();
       p = getEventPosition(e);
@@ -360,7 +369,7 @@
   //文本时间转度数
   function blueTime_timeToAngle(time){
     var hr=time.split(':')[0];
-    var angle=(24-parseInt(hr))*15
+    var angle=(24-parseInt(hr))*15;
     var min=time.split(':')[1];
 
       angle=angle-15/60*min;
@@ -436,7 +445,7 @@
         }
 
     }else{
-      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
+      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20);
     }
     context.closePath();
 
