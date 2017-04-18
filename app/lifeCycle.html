@@ -33,7 +33,7 @@
       sex='0'
     }
     var cycle;
-      $.ajax({
+    /*  $.ajax({
           data:{
               "appid":userid,
               "birthDay":birthdate,
@@ -43,13 +43,15 @@
           url: urls.LIFE_CYCLE,
           success: function(data){
              cycle = data.obj;
-              //{"appid":"867200022156895,86720002215690328312757","day":0,"month":2,"renalPeriod":3,"season":2,"sex":0,"weeks":3,"years":1}
               fun_showCycle(cycle, sex, birthdate);
           }
-      });
+      });*/
+    cycle={"appid":"867200022156895,86720002215690328312757","day":0,"month":2,"renalPeriod":3,"season":2,"sex":0,"weeks":3,"years":1}
+    fun_showCycle(cycle, sex, birthdate);
 
 
-        // 显示周期
+
+    // 显示周期
       function fun_showCycle(cycle, sex, birthdate) {
           var date = new Date(birthdate.split("-")[0], birthdate.split("-")[1], birthdate.split("-")[2]);
           var birth_year = date.getFullYear();

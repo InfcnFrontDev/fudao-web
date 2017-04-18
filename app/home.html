@@ -187,15 +187,136 @@
   context.translate(160,160);
   var userid=getQueryString('userid');
   var renqun=getQueryString('renqun');
-  var arr=null;
+  var arr=[
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"起床阶段",
+      "title":"晨练",
+      "startTime":"06:30",
+      "endTime":"07:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"晨练",
+      "title":"晨练",
+      "startTime":"07:30",
+      "endTime":"08:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"08:30",
+      "endTime":"10:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休息阶段",
+      "title":"晨练",
+      "startTime":"10:30",
+      "endTime":"11:00",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"11:00",
+      "endTime":"12:00",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"午休阶段",
+      "title":"晨练",
+      "startTime":"12:0",
+      "endTime":"13:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"13:30",
+      "endTime":"15:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休息阶段",
+      "title":"晨练",
+      "startTime":"15:30",
+      "endTime":"16:00",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"16:00",
+      "endTime":"17:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休闲阶段",
+      "title":"晨练",
+      "startTime":"17:30",
+      "endTime":"18:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"晚餐阶段",
+      "title":"晨练",
+      "startTime":"18:30",
+      "endTime":"19:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休闲阶段",
+      "title":"晨练",
+      "startTime":"19:30",
+      "endTime":"20:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"学习阶段",
+      "title":"晨练",
+      "startTime":"20:30",
+      "endTime":"21:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"睡前阶段",
+      "title":"晨练",
+      "startTime":"21:30",
+      "endTime":"22:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"睡眠阶段",
+      "title":"晨练",
+      "startTime":"22:30",
+      "endTime":"06:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+  ]
 
   $.ajax({
     data:{
-      userId :userid,
+      /*userId :userid,*/
       renqunId :renqun,
-      location :1,
+      /*location :1,
       daytype:1,
-      seasonId:1
+      seasonId:1*/
       /*userId :用户的ID
        renqunId(默认high_quality_population) ：人群
        location(默认1) :地区类型1：除新疆、西藏外的所有地区2：新疆、西藏地区
@@ -203,7 +324,7 @@
        seasonId :季节id(1春季2夏季3秋季 4冬季),不传则系统自动计算*/
     },
     dataType: "json",
-    url: urls.MYHABIT,
+    url: urls.TIMEPERIOD_GETMYTIMEPERIOD,
     success: function(data){
 
       arr=JSON.parse(data.obj.data);
@@ -252,6 +373,22 @@
       context.lineTo(num+10,0);
       context.stroke();
     }
+    //内圈数字
+    context.save();
+    context.beginPath();
+    for(var i=-12;i<12;i++){
+      var x1=Math.sin(i*2*Math.PI/24);
+      var y1=-Math.cos(i*2*Math.PI/24);
+      context.fillStyle="#f4b905";
+      if(i<-6||i>7){
+        context.fillStyle="#000";
+      }
+      context.font="12px Arial";
+      context.textAlign='center';
+      context.textBaseline='middle';
+      context.fillText(i+12,x1*(num-7),y1*(num-7));
+    }
+    context.closePath();
     var index;
     // 遍历所有黄色时间段
 
@@ -287,22 +424,7 @@
     nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
 
 
-    //内圈数字
-    context.save();
-    context.beginPath();
-    for(var i=-12;i<12;i++){
-      var x1=Math.sin(i*2*Math.PI/24);
-      var y1=-Math.cos(i*2*Math.PI/24);
-      context.fillStyle="#f4b905";
-      if(i<-6||i>7){
-        context.fillStyle="#000";
-      }
-      context.font="12px Arial";
-      context.textAlign='center';
-      context.textBaseline='middle';
-      context.fillText(i+12,x1*(num-7),y1*(num-7));
-    }
-    context.closePath();
+
   }
   //黄色时间段
   function yellowTimeDuan(num,startTime,endTime,name){
@@ -348,6 +470,7 @@
       if(p.x<=x1&&p.x>=x2&&p.y>=y1&&p.y<=y2){
         $('.warn').show();
         $('.tishi').html(name);
+
       }
       if(p.x<=x1&&p.x>=x2&&p.y<=y1&&p.y>=y2){
         $('.warn').show();
