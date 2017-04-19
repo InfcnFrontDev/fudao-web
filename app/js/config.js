@@ -9,7 +9,7 @@ var urls={
     //天气
     WEATHER:apiPath +'app/weatherAction!getWeather.action',
     //文章详情
-    ARTICLE_GETARTICLE:apiPath + 'app/ArticleApi/getArticle',
+    ARTICLE_GETARTICLE:apiPath + 'ArticleApi/getArticle',
     //添加收藏
     COLLECTION_ADDMYCOLLECTION:apiPath + 'CollectionApi/addMyCollection',
     //问卷测评
