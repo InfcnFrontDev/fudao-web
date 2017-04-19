@@ -61,9 +61,9 @@
   <div style="width:100%; height:100%; background:url(images/beijing.png) no-repeat; background-size:100% 100% ;">
     <img src="images/yangguang.png" style="position:absolute; top:60px; right:0;">
 
-    <div style="width:320px; height:60%; margin:0 auto; position:relative; ">
+    <div style=" height:60%;width:320px; margin:0 auto; position:relative; top:12% " class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
-      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; background-size:290px; background-position: 20px 20px; margin-top:20%" width="320" height="320"></canvas>
+      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; /*background-color: rgba(0,0,0,.3);*/ background-size:290px; background-position: center; " width="320" height="320"></canvas>
 
       <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
       </div>
@@ -92,6 +92,15 @@
 
 
 <script>
+  /*var daWidth=screen.width;
+  $('.warn1').width(daWidth);
+  $('#myCanvas').attr('width',daWidth);
+  $('#myCanvas').attr('height',daWidth);
+
+  $('#abc').css({top:-220-(daWidth-320)/2,left:100+(daWidth-320)/2});//
+  $('.dongzuo').css({top:-210-(daWidth-320)/2,left:125+(daWidth-320)/2});*/
+
+
   $('.dongzuo').click(function(e){
     e.stopPropagation();
     $('.bigimg').show();
@@ -100,9 +109,13 @@
     e.preventDefault();
     $('.bigimg').hide();
   });
+  $('#myCanvas').click(function(e){
+    e.preventDefault();
+    $('.bigimg').hide();
+  });
 
 
-  //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqunId=high_quality_population&location=1&daytype=2&seasonId=1
+  //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqun=high_quality_population&location=1&daytype=2&seasonId=1
 
   var data1 = [
     {
@@ -160,6 +173,9 @@
 
   picker1.on('picker.change', function (index, selectedIndex) {
     console.log(selectedIndex);
+    $('.dongzuo').find('img').attr('src','images/shulan_'+selectedIndex+'.png');
+    $('.bigimg').find('img').attr('src','images/shulan_'+selectedIndex+'.png');
+
   });
 
   $('#abc').html(document.getElementsByClassName('picker')[0]);
@@ -171,14 +187,136 @@
   context.translate(160,160);
   var userid=getQueryString('userid');
   var renqun=getQueryString('renqun');
-  var arr=null;
+  var arr=[
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"起床阶段",
+      "title":"晨练",
+      "startTime":"06:30",
+      "endTime":"07:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"晨练",
+      "title":"晨练",
+      "startTime":"07:30",
+      "endTime":"08:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"08:30",
+      "endTime":"10:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休息阶段",
+      "title":"晨练",
+      "startTime":"10:30",
+      "endTime":"11:00",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"11:00",
+      "endTime":"12:00",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"午休阶段",
+      "title":"晨练",
+      "startTime":"12:0",
+      "endTime":"13:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"13:30",
+      "endTime":"15:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休息阶段",
+      "title":"晨练",
+      "startTime":"15:30",
+      "endTime":"16:00",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"主任务阶段",
+      "title":"晨练",
+      "startTime":"16:00",
+      "endTime":"17:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休闲阶段",
+      "title":"晨练",
+      "startTime":"17:30",
+      "endTime":"18:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"晚餐阶段",
+      "title":"晨练",
+      "startTime":"18:30",
+      "endTime":"19:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"休闲阶段",
+      "title":"晨练",
+      "startTime":"19:30",
+      "endTime":"20:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"学习阶段",
+      "title":"晨练",
+      "startTime":"20:30",
+      "endTime":"21:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"睡前阶段",
+      "title":"晨练",
+      "startTime":"21:30",
+      "endTime":"22:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+    {
+      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
+      "name":"睡眠阶段",
+      "title":"晨练",
+      "startTime":"22:30",
+      "endTime":"06:30",
+      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+    },
+  ]
+
   $.ajax({
     data:{
-      userId :userid,
+      /*userId :userid,*/
       renqunId :renqun,
-      location :1,
+      /*location :1,
       daytype:1,
-      seasonId:1
+      seasonId:1*/
       /*userId :用户的ID
        renqunId(默认high_quality_population) ：人群
        location(默认1) :地区类型1：除新疆、西藏外的所有地区2：新疆、西藏地区
@@ -186,13 +324,18 @@
        seasonId :季节id(1春季2夏季3秋季 4冬季),不传则系统自动计算*/
     },
     dataType: "json",
-    url: urls.MYHABIT,
+    url: urls.TIMEPERIOD_GETMYTIMEPERIOD,
     success: function(data){
+
       arr=JSON.parse(data.obj.data);
+    },
+    error:function(data){
+      console.log(data);
+
     }
   });
 
-  setInterval(drawTime,1000);
+  setInterval(drawTime,500);
   setTimeout(drawTime,500)
 
   function drawTime(){
@@ -230,10 +373,27 @@
       context.lineTo(num+10,0);
       context.stroke();
     }
+    //内圈数字
+    context.save();
+    context.beginPath();
+    for(var i=-12;i<12;i++){
+      var x1=Math.sin(i*2*Math.PI/24);
+      var y1=-Math.cos(i*2*Math.PI/24);
+      context.fillStyle="#f4b905";
+      if(i<-6||i>7){
+        context.fillStyle="#000";
+      }
+      context.font="12px Arial";
+      context.textAlign='center';
+      context.textBaseline='middle';
+      context.fillText(i+12,x1*(num-7),y1*(num-7));
+    }
+    context.closePath();
     var index;
     // 遍历所有黄色时间段
+
     for(var i=0; i<arr.length; i++){
-      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime,arr[i].name);
+      yellowTimeDuan(num,arr[i].startTime,arr[i].endTime,arr[i].name,160);
       var startDuan=blueDuan_timeToAngle(arr[i].startTime);
       var overDuan=blueDuan_timeToAngle(arr[i].endTime);
       //(parseInt(hr)+2)
@@ -264,39 +424,27 @@
     nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
 
 
-    //内圈数字
-    context.save();
-    context.beginPath();
-    for(var i=-12;i<12;i++){
-      var x1=Math.sin(i*2*Math.PI/24);
-      var y1=-Math.cos(i*2*Math.PI/24);
-      context.fillStyle="#f4b905";
-      if(i<-6||i>7){
-        context.fillStyle="#000";
-      }
-      context.font="12px Arial";
-      context.textAlign='center';
-      context.textBaseline='middle';
-      context.fillText(i+12,x1*(num-7),y1*(num-7));
-    }
-    context.closePath();
+
   }
   //黄色时间段
   function yellowTimeDuan(num,startTime,endTime,name){
+
+
     var startDuan=blueDuan_timeToAngle(startTime);
     var overDuan=blueDuan_timeToAngle(endTime);
+    var gradient;
     context.save();
     context.beginPath();
     context.lineWidth = 5;
     if(startDuan>15&&startDuan<160&&overDuan>15&&overDuan<160){
       context.strokeStyle="#022277";
     }else if(startDuan>15&&startDuan<160&&overDuan>160){
-      var gradient=context.createLinearGradient(0,2,0,12);
+      gradient=context.createLinearGradient(0,2,0,12);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
     }else if(overDuan>15&&overDuan<160&&startDuan<=15){
-      var gradient=context.createLinearGradient(0,30,0,40);
+      gradient=context.createLinearGradient(0,30,0,40);
       gradient.addColorStop("0","#f4b905");
       gradient.addColorStop("1.0","#022277");
       context.strokeStyle=gradient;
@@ -304,10 +452,10 @@
       context.strokeStyle="#f4b905";
     }
     context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
-    var y1=Math.sin(2*Math.PI/360*startDuan)*105+160
-    var y2=Math.sin(2*Math.PI/360*overDuan)*105+160
-    var x1=Math.cos(2*Math.PI/360*startDuan)*105+160
-    var x2=Math.cos(2*Math.PI/360*overDuan)*105+160
+    var y1=Math.sin(2*Math.PI/360*startDuan)*105+160;
+    var y2=Math.sin(2*Math.PI/360*overDuan)*105+160;
+    var x1=Math.cos(2*Math.PI/360*startDuan)*105+160;
+    var x2=Math.cos(2*Math.PI/360*overDuan)*105+160;
     oCanvas.addEventListener('click', function(e){
       e.stopPropagation();
       p = getEventPosition(e);
@@ -322,6 +470,7 @@
       if(p.x<=x1&&p.x>=x2&&p.y>=y1&&p.y<=y2){
         $('.warn').show();
         $('.tishi').html(name);
+
       }
       if(p.x<=x1&&p.x>=x2&&p.y<=y1&&p.y>=y2){
         $('.warn').show();
@@ -333,13 +482,17 @@
       e.preventDefault();
       $('.warn').hide();
     });
+    $('#myCanvas').click(function(e){
+      e.preventDefault();
+      $('.warn').hide();
+    });
     context.stroke();
     context.restore();
   }
   //文本时间转度数
   function blueTime_timeToAngle(time){
     var hr=time.split(':')[0];
-    var angle=(24-parseInt(hr))*15
+    var angle=(24-parseInt(hr))*15;
     var min=time.split(':')[1];
 
       angle=angle-15/60*min;
@@ -415,7 +568,7 @@
         }
 
     }else{
-      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20)
+      context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20);
     }
     context.closePath();
 
