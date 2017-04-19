@@ -59,6 +59,7 @@
 	</div>
 	
 	<script type="text/javascript">
+
 		//http://localhost:3000/articleDetail.html?userId=867200022156895,86720002215690393791782&id=389
 		//867200022156895,86720002215690393791782
 		function getQueryString(name) {
@@ -70,24 +71,43 @@
 		var argumentId=getQueryString('id');
 
 		var argumentUerId=getQueryString('userId');
-		console.log(argumentUerId);
+		var token=getQueryString('token');
 		var title,isCollection;
 
 
+//		fetch(urls.ARTICLE_GETARTICLE, {
+//			method: 'post',
+//			headers: {
+//				'authorization': token
+//
+//			}
+//		})
+//		.then(function(response){
+//			return response.json()
+//		})
+//		.then(function(result){
+//			console.log(result);
+//			alert('success!');
+//		})
+//		.catch(function(error){
+//			console.log(error);
+//		  	alert('服务器异常，请重试!');
+//		}).done();
 
-		var url="http://192.168.3.126:18080/fudao-svc/app/myTerritoryAction!detail.action?";
-		/*$.ajax({
+
+		alert(token);
+		$.ajax({
+			type:"post",
+			url:"http://192.168.10.69:9191/api/ArticleApi/getArticle",
+			headers: {
+				authorization: token
+			},
 			data:{
 				id:argumentId
 			},
-			header:{
-				"authorization":"a4065f4a-b713-43b9-9fd9-ae14aab72adc"
-			},
-			dataType: 'json',
-			type:"post",
-			url:urls.ARTICLE_GETARTICLE,
-			timeout:1000,
+
 			success:function(msg){
+				alert(msg);
 				isCollection=msg.obj.isCollection
 				console.log(msg);
 				if(msg.obj.isCollection){
@@ -95,7 +115,7 @@
 				}else{
 					$('.source_icon').html('<span class="jia">+</span>收藏')
 				}
-				var jsonObj= msg.obj.data;
+				var jsonObj= msg.obj;
 				console.log(jsonObj);
 				console.log(jsonObj.title);
 				$('.content_title_text').html(jsonObj.title);
@@ -116,14 +136,14 @@
 				}
 
 				$('.source_text').html(jsonObj.source);
-				$('.content_text').html(jsonObj.zhengwen);
+				$('.content_text').html(jsonObj.constent);
 				title=jsonObj.title;
-				
+
 			},
 			error:function(){
-				alert('error');  
+				alert(JSON.stringify(error));
 			}
-		});*/
+		});
 		$('.source_icon').click(function(){
 			if(!isCollection){
 				var url="http://192.168.3.126:18080/fudao-svc/app/collectionAction!addMyCollection.action"
