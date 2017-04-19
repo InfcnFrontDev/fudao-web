@@ -57,7 +57,7 @@
 			<br/>作用：有益心脏
 			<br/>原理：红葡萄酒中含有阿司匹林的成分，花生米中含有益的化合物白梨醇，二者同吃能预防血栓形成，保证心血管通畅!</p>
 	</div>
-	
+
 	<script type="text/javascript">
 
 		//http://localhost:3000/articleDetail.html?userId=867200022156895,86720002215690393791782&id=389
@@ -74,28 +74,6 @@
 		var token=getQueryString('token');
 		var title,isCollection;
 
-
-//		fetch(urls.ARTICLE_GETARTICLE, {
-//			method: 'post',
-//			headers: {
-//				'authorization': token
-//
-//			}
-//		})
-//		.then(function(response){
-//			return response.json()
-//		})
-//		.then(function(result){
-//			console.log(result);
-//			alert('success!');
-//		})
-//		.catch(function(error){
-//			console.log(error);
-//		  	alert('服务器异常，请重试!');
-//		}).done();
-
-
-		alert(token);
 		$.ajax({
 			type:"post",
 			url:"http://192.168.10.69:9191/api/ArticleApi/getArticle",
@@ -107,7 +85,6 @@
 			},
 
 			success:function(msg){
-				alert(msg);
 				isCollection=msg.obj.isCollection
 				console.log(msg);
 				if(msg.obj.isCollection){
@@ -170,7 +147,7 @@
 			}
 		})
 
-		
+
 	</script>
 </body>
 </html>
