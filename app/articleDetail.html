@@ -17,6 +17,10 @@
 </head>
 <body>
 	<div style="margin:15px; font-family: Arial">
+		<svg id="abc" height="108" version="1.1" width="108" xmlns="http://www.w3.org/2000/svg"
+			 style="overflow: hidden; position: relative; left: -0.5px;">
+			<path class="ring" rate="${deal.attrs.rate}" fill="none" x="54" y="7" r="47" stroke="#fd30ae" d="M54,7A47,47,0,1,1,11,71" stroke-width="4" />
+		</svg>
 		<h3 class="content_title_text">高血压的症状，高血压的早期症状</h3>
 		<div class="source_view_t">
 			<p class="source_text" style="padding-top: 20px;"></p>
@@ -59,8 +63,11 @@
 	</div>
 
 	<script type="text/javascript">
+		$('#abc').click(function(){
+			alert(1);
+		})
 
-		//http://localhost:3000/articleDetail.html?userId=867200022156895,86720002215690393791782&id=389
+		//http://localhost:3000/articleDetail.html?token=867200022156895,86720002215690393791782&id=389
 		//867200022156895,86720002215690393791782
 		function getQueryString(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -113,7 +120,7 @@
 				}
 
 				$('.source_text').html(jsonObj.source);
-				$('.content_text').html(jsonObj.constent);
+				$('.content_text').html(jsonObj.content);
 				title=jsonObj.title;
 
 			},
