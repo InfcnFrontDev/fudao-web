@@ -20,6 +20,7 @@
   <script type="text/javascript" src="js/source/public.js"></script>
   <script type="text/javascript" src="js/privatejs/question.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
 
 </head>
 <style>
@@ -108,10 +109,7 @@
 
   var userid=getQueryString('userId');
   //alert(userid);
-
-
-
-   $.ajax({
+  /* $.ajax({
      dataType: "json",
      url: urls.ASSESSMENT,
      success: function(data){
@@ -119,13 +117,13 @@
        localStorage.setItem('questions', JSON.stringify(questions));
        fun_getCurQuestion();
      }
-   });
-   var index=1;
-   var questionTypes = [];
-   questionTypes[1] = '生理自评';
-   questionTypes[2] = '心理自评';
-   questionTypes[3] = '社会关系';
-   questionTypes[4] = '生活习惯';
+   });*/
+  var index=1;
+  console.log(questions.obj);
+  localStorage.setItem('questions', JSON.stringify(questions.obj));
+  fun_getCurQuestion();
+
+
 
 
    mui('.mui-bar-footer').on('tap', 'button', function() {
@@ -144,9 +142,14 @@
 
   // 设置当前问题及答案
   function fun_getCurQuestion() {
+    var questionTypes = [];
+    questionTypes[1] = '生理自评';
+    questionTypes[2] = '心理自评';
+    questionTypes[3] = '社会关系';
+    questionTypes[4] = '生活习惯';
     fun_setButton();
     var _json = JSON.parse(localStorage.getItem('questions'));
-    console.log()
+
     $("#sum").html(index + "/" + _json.length);
     var curQuestion = _json[index - 1];
     document.getElementById("title").innerHTML = questionTypes[curQuestion.type];
