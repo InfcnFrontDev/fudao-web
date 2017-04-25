@@ -46,16 +46,20 @@ var pieChart;
 
 function timeOut(rentidata) {
 	var _rentiSvg = document.getElementById("renti_xiuyixiu");
-	var marginLeft = parseInt(_rentiSvg.style.marginLeft);
-	if(marginLeft > -140) {
-		_rentiSvg.style.marginLeft = (marginLeft - 5) + 'px';
-		setTimeout(timeOut(rentidata), 10);
-	} else {
+	var selfBody = document.getElementById("selfBody");
+    _rentiSvg.style.marginTop = '60px';
+    selfBody.style.paddingRight = '100px';
+	var marginLeft = parseInt(_rentiSvg.style.marginTop);
+	console.log(marginLeft);
+	// if(marginLeft > -140) {
+	// 	_rentiSvg.style.marginLeft = (marginLeft - 20) + 'px';
+	// 	setTimeout(timeOut(rentidata), 10);
+	// } else {
 		pieChart = echarts.init(document.getElementById('pieChart'));
 		//数据处理
 		fun_check_process_two(rentidata);
-		document.getElementById("pieChart").style.display = "block";
-	}
+		// document.getElementById("pieChart").style.display = "block";
+	// }
 }
 
 //显示部位

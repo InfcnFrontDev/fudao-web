@@ -1,8 +1,8 @@
-var ADDR = "http://103.254.113.11:8080/jkst2/";
+// var ADDR = "http://103.254.113.11:8080/jkst2/";
 /*var ADDR = "http://192.168.3.110:8061/jkst2/";*/
 /*var ADDR = "http://192.168.3.111:8080/jkst2/";*/
 /*var ADDR = "http://192.168.3.137:8080/jkst-svc/";*/
-/*var ADDR = "http://192.168.10.61:8080/jkst2/";*/
+var ADDR = "http://192.168.10.61:8080/jkst2/";
 //--------------------------------------------------------------//
 //注册前验证手机
 var REGBEFORE = "app/accountInfoAction!registerBefore.action";
