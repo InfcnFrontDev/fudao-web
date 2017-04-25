@@ -3,29 +3,16 @@
  */
 //
 //
-var slideHeight;
-var slideWidth;
 $(document).ready(function(){
-    slideHeight = document.documentElement.clientHeight;
-    slideWidth = document.documentElement.clientWidth;
-    initSize();
     var xAxis = ['地域', '年龄', '性别', '天气', '民族', '学历', '姓氏', '行业', '专业', 
                 '宗教', '高校类型',"双亲情况","家庭情况","动植物","婚姻幸福度","学习意愿"];
     var datas = [12,21,10,4,12,5,6,5,25,23,7,5,6,5,25,23,7];
-    initEchart_bar(xAxis,datas);
+    setTimeout(function () {
+        initEchart_bar(xAxis,datas);
+    },100);
     // initEchart_scatter(xAxis,datas);
     // tance();
 });
- 
-/**
- * 初始化屏幕宽高
- * @return {[type]} [description]
- */
-function initSize(){
-    $(".contentDiv").css("height",slideHeight+"px");
-    $(".contentDiv").css('display','block');
-    $(".tanceImg").css('margin-top',(slideHeight*0.55-255)/2+'px');
-}
 
 /**
  * 打开探测器
@@ -42,9 +29,7 @@ function closeTance(){
  */
 function tance(){
     $('#shadeDiv').css('display','block');
-    $('#HBox').css('top',(slideHeight*0.1)/2);
-    $('#HBox').css('left',(slideWidth*0.1)/2);
-    $('#peoForm').css('height',slideHeight*0.9-95);
+    $('#peoForm').css('height',($('#HBox').css('height').replace("px",""))-95+"px");
     $('#HBox').css('display','block');
     // 初始化
     readNation('nation'); // 民族
@@ -269,14 +254,14 @@ function initEchart_scatter(xAxis,datas){
             {
                 left: 'right',
                 top: '10%',
+                show: false,
                 dimension: 2,
-                min: 0, 
+                min: 0,
                 max: 250,
                 itemWidth: 30,
                 itemHeight: 120,
                 calculable: true,
                 precision: 0.1,
-                text: ['圆形大小：PM2.5'],
                 textGap: 30,
                 textStyle: {
                     color: '#fff'
@@ -300,13 +285,13 @@ function initEchart_scatter(xAxis,datas){
             {
                 left: 'right',
                 bottom: '5%',
+                show: false,
                 dimension: 6,
                 min: 0,
                 max: 50,
                 itemHeight: 120,
-                calculable: true,
+                calculable: false,
                 precision: 0.1,
-                text: ['明暗：二氧化硫'],
                 textGap: 30,
                 textStyle: {
                     color: '#fff'
@@ -334,14 +319,15 @@ function initEchart_scatter(xAxis,datas){
                 data: dataBJ
             }
         ]
-    }; 
-    initEcharts("circleDiv","scatter",option);
+    };
+    var myChart = echarts.init(document.getElementById('circleDiv'));
+    myChart.setOption(option);
 }
 
 function initEchart_bar(xAxis,datas){
     // 根据展示柱状图个数初始化容器宽度 
     $("#lowerDiv").css('width',(datas.length)*30+'px');
-
+    var myChart = echarts.init(document.getElementById('lowerDiv'));
     var option = {
         title: {},
         tooltip: {
@@ -349,11 +335,11 @@ function initEchart_bar(xAxis,datas){
         },
         calculable: true,
         grid: {
-            borderWidth: 0,
+            borderWidth: 1,
             x: 10,
-            x2: 10,
+            x2: 40,
             y: 40,
-            y2: 20
+            y2: 10
         },
         xAxis: [
             {
@@ -398,9 +384,10 @@ function initEchart_bar(xAxis,datas){
             }
         ]
     };
-    initEcharts("lowerDiv","bar",option);
+    myChart.setOption(option);
 }
 
+// 暂时弃用
 function initEcharts(id,type,option){
     require.config({ 
         paths: {
