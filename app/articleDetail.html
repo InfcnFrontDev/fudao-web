@@ -59,9 +59,7 @@
 	</div>
 
 	<script type="text/javascript">
-		$('#abc').click(function(){
-			alert(1);
-		})
+
 
 		//http://localhost:3000/articleDetail.html?token=867200022156895,86720002215690393791782&id=389
 		//867200022156895,86720002215690393791782
@@ -130,13 +128,13 @@
 				$.ajax({
 					data:{
 						sourceId:argumentId,
-						appid:argumentUerId,
-						title:title,
-						source:'search_wodequanzi'
+					},
+					headers: {
+						authorization: token
 					},
 					dataType: 'json',
 					type:"post",
-					url:urls.ADD_COLLECT,
+					url:urls.COLLECTION_ADDMYCOLLECTION,
 					timeout:1000,
 					success:function(){
 						mui.alert('成功',"收藏提示")
