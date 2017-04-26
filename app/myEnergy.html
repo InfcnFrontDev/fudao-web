@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/global.css" type="text/css" />
     <title>我的能量场</title>
     <link rel="stylesheet" href="css/energy.css">
     <script src="js/echarts.min.js"></script>
+    <style>
+        html { height: 100%; }
+    </style>
 </head>
-<body style="height: 100%;">
+<body style="height: 100%; margin: 0; padding: 0;">
 <div id="shadeDiv" class="shadeCss" @click="closePopupDiv">
     <div id="HBox" class="peoInfo zoomIn">
         <div style="border-bottom: 1px solid #E4E3E3; height: 45px; line-height: 45px; font-size: 14px; ">
@@ -19,7 +23,7 @@
         <div id="peoForm" style="border-bottom: 1px solid #ECECEC; overflow-y: auto;">
             <!--&lt;!&ndash; 个人信息 &ndash;&gt;-->
             <table class="peoTab">
-                <tr><td class="t_fr wid_p30">性别：</td><td>
+                <tr><td class="t_fr wid_p30" >性别：</td><td style="padding-top: 6px;">
                     <input type="radio" name="sex" value="100" checked/><label>男</label>
                     <input type="radio" name="sex" value="85"/><label>女</label></td></tr>
                 <tr><td class="t_fr wid_p30">民族：</td>
@@ -93,6 +97,7 @@
     <div style="height: 45%; width: 100%; overflow-x: auto; border-top: 1px solid #666666; ">
         <div id="lowerDiv" style="width: 1000px; height: 100%;"></div>
     </div>
+    <img class="tanceImg_s" src="img/tance_s.png" onclick="tance()"/>
 </div>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/lodash.js"></script>
