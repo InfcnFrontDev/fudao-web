@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<!-- saved from url=(0027)http://bbsreg.byr.cn/mobile -->
-<html lang="zh-cmn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/global.css" type="text/css" />
     <title>我的能量场</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width">
-    <meta name="apple-mobile-web-app-title" content="我的能量场">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
     <link rel="stylesheet" href="css/energy.css">
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <style>
+        html { height: 100%; }
+    </style>
 </head>
-<body>
+<body style="height: 100%; margin: 0; padding: 0;">
 <div id="shadeDiv" class="shadeCss" @click="closePopupDiv">
     <div id="HBox" class="peoInfo zoomIn">
-        <div style="border-bottom: 1px solid #E4E3E3; height: 45px; line-height: 45px; font-size: 14px; "> 
+        <div style="border-bottom: 1px solid #E4E3E3; height: 45px; line-height: 45px; font-size: 14px; ">
             <div style="height: 35px; margin-left: 10px; margin-top: 10px; float: left;">请填写您的信息</div>
             <div style="float: right; height: 45px;" onclick="closeTance()">
                 <img style="margin-top: 10px; margin-right: 10px; width: 25px; height: 25px;" src="img/close.png">
             </div>
         </div>
         <div id="peoForm" style="border-bottom: 1px solid #ECECEC; overflow-y: auto;">
-            <!-- 个人信息 -->
+            <!--&lt;!&ndash; 个人信息 &ndash;&gt;-->
             <table class="peoTab">
-                <tr><td class="t_fr wid_p30">性别：</td><td>
-                    <input type="radio" name="sex" value="100"/><label>男</label>
-                    <input type="radio" name="sex" value="85"/><label>女</label></td></tr> 
+                <tr><td class="t_fr wid_p30" >性别：</td><td style="padding-top: 6px;">
+                    <input type="radio" name="sex" value="100" checked/><label>男</label>
+                    <input type="radio" name="sex" value="85"/><label>女</label></td></tr>
                 <tr><td class="t_fr wid_p30">民族：</td>
-                    <td><select id="nationSel"></td>
+                    <td><select id="nationSel"></select></td>
                 </tr>
                 <tr><td class="t_fr wid_p30">姓氏：</td>
                     <td><select id="surnameSel"></select></td></tr>
@@ -71,17 +72,17 @@
                     <option value="90">富人</option>
                     </select></td></tr>
             </table>
-            <!-- 问卷调查 -->
+            <!--&lt;!&ndash; 问卷调查 &ndash;&gt;-->
             <div style="border-top: 1px solid #ECECEC; width: 90%; margin-left: auto; margin-right: auto; padding-top: 8px;">
                 <table class="quesTab">
-                    <!-- <tr><td class="t_fr wid_p40">1 . </td>
+                    <tr><td class="t_fr wid_p40">1 . </td>
                         <td class="wid_p60">您周围的动植物多吗</td></tr>
                     <tr><td class="t_fr wid_p40"></td>
                         <td class="wid_p60"><input type="radio"/>多</td></tr>
                     <tr><td class="t_fr wid_p40"></td>
                         <td class="wid_p60"><input type="radio"/>一般</td></tr>
                     <tr><td class="t_fr wid_p40"></td>
-                        <td class="wid_p60"><input type="radio"/>少</td></tr> -->
+                        <td class="wid_p60"><input type="radio"/>少</td></tr>
                 </table>
             </div>
             <div class="myBtn" onclick="save()"><span>完成保存</span></div>
@@ -89,21 +90,16 @@
     </div>
 </div>
 <div class="contentDiv">
-    <div class="upperDiv">
-        <div style="position: absolute; top: 15px;"><span style="margin-left: 20px; ">< 返回</span></div>
-        <div class="title_">
-            <label>我的能量场</label>
-        </div>
-        <div id="circleDiv" class="circleDiv" style="height: 190px;">
-            <img class="tanceImg" onclick="tance()" src="img/tance.png">
-            <!-- <figure class="circle box-shadow-4"></figure> -->
-        </div>
-    </div> 
-    <div class="lowerDiv" style="overflow-x: auto;">
-        <div id="lowerDiv" style="width: 1000px; height: 100%;"></div> 
-    </div> 
+    <div id="circleDiv" class="upperDiv">
+        <img class="tanceImg" onclick="tance()" src="img/tance.png">
+        <!-- <figure class="circle box-shadow-4"></figure> -->
+    </div>
+    <div style="height: 45%; width: 100%; overflow-x: auto; border-top: 1px solid #666666; ">
+        <div id="lowerDiv" style="width: 1000px; height: 100%;"></div>
+    </div>
+    <img class="tanceImg_s" src="img/tance_s.png" onclick="tance()"/>
 </div>
-<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/lodash.js"></script>
 <script src="js/energy.js"></script>
 </body>

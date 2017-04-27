@@ -3,28 +3,40 @@
  */
 //
 //
-var slideHeight;
-var slideWidth;
 $(document).ready(function(){
-    slideHeight = document.documentElement.clientHeight;
-    slideWidth = document.documentElement.clientWidth;
-    initSize();
     var xAxis = ['地域', '年龄', '性别', '天气', '民族', '学历', '姓氏', '行业', '专业', 
                 '宗教', '高校类型',"双亲情况","家庭情况","动植物","婚姻幸福度","学习意愿"];
     var datas = [12,21,10,4,12,5,6,5,25,23,7,5,6,5,25,23,7];
-    initEchart_bar(xAxis,datas);
-    // initEchart_scatter(xAxis,datas);
-    // tance();
+    initEchart_scatter();
+    return;
+    // 查询用户能力场探测结果
+    $.ajax({
+        url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
+        headers: {
+            authorization: getQueryString('token')
+        },
+        type: "post",
+        dataType: "JSON",
+        success: function(data){
+            if(undefined != data.ok && data.ok == true){
+                if("" != data.obj){
+                    preInitEchart(JSON.parse(data.obj));
+                } else {
+                    initEchart_bar(xAxis,datas); //　默认初始化
+                }
+            } else {
+                alert(JSON.stringify(data));
+            }
+        },error: function(data){
+            initEchart_bar(xAxis,datas); //　默认初始化
+        }
+    });
 });
- 
-/**
- * 初始化屏幕宽高
- * @return {[type]} [description]
- */
-function initSize(){
-    $(".contentDiv").css("height",slideHeight+"px");
-    $(".contentDiv").css('display','block');
-    $(".tanceImg").css('margin-top',(slideHeight*0.55-255)/2+'px');
+
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
 }
 
 /**
@@ -42,9 +54,7 @@ function closeTance(){
  */
 function tance(){
     $('#shadeDiv').css('display','block');
-    $('#HBox').css('top',(slideHeight*0.1)/2);
-    $('#HBox').css('left',(slideWidth*0.1)/2);
-    $('#peoForm').css('height',slideHeight*0.9-95);
+    $('#peoForm').css('height',($('#HBox').css('height').replace("px",""))-95+"px");
     $('#HBox').css('display','block');
     // 初始化
     readNation('nation'); // 民族
@@ -60,7 +70,6 @@ function tance(){
  * @return {[type]} [description]
  */
 function save(){
-    //  
     var result = {};
     result.性别 = $(":radio:checked[name='sex']").val();
     result.民族 = $("#nationSel").val();
@@ -75,8 +84,7 @@ function save(){
     result.双亲情况 = $("#parentsSel").val();
     result.家庭情况 = $("#familySel").val();
     setResult(result);
-    closeTance(); 
-    // 
+    closeTance();
 }
 
 function setResult(result){
@@ -106,18 +114,38 @@ function setResult(result){
             if(v != 0) 
                 result[key] = v;
         });
-        var xAxis = [];
-        var datas = [];
-        var indx = 0;
-        _.forEach(result, function(n, key) { // 循环对象 
-            xAxis[indx] = key;
-            datas[indx] = n; 
-            indx++;
+        // 保存结果至数据库
+        $.ajax({
+            url: "http://192.168.10.69:9191/api/EnergyApi/submitInformationResult",
+            headers: {
+                authorization: getQueryString('token')
+            },
+            data: {"jsonData":JSON.stringify(result)},
+            type: "POST",
+            dataType: "JSON",
+            success: function(data){
+                if(undefined == data.ok || data.ok == false){
+                    alert(JSON.stringify(data));
+                }
+            }
         });
-        initEchart_bar(xAxis,datas);
-        initEchart_scatter(xAxis,datas);
+        preInitEchart(result);
     });
     return result;
+}
+
+//
+function preInitEchart(result){
+    var xAxis = [];
+    var datas = [];
+    var indx = 0;
+    _.forEach(result, function(n, key) { // 循环对象
+        xAxis[indx] = key;
+        datas[indx] = n;
+        indx++;
+    });
+    initEchart_bar(xAxis,datas);
+    initEchart_scatter(xAxis,datas);
 }
 
 /**
@@ -178,47 +206,31 @@ function readQuestionJson(){
     });
 }
 
-/**
- * 读取问卷调查json 弃用 择机删除
- * @return {[type]} [description]
- */
-function readQuestionJson2(){   
-    var html = '';
-    var data2,data3;
-    var indx = 0;
-    $.getJSON("json/questionnarie.json",function(data){
-        for (var i = 0; i < data.length; i++) {
-            for(var key in data[i]){
-                data2 = data[i][key];
-                for(var j = 0; j < data2.length; j++){
-                    for(var key2 in data2[j]){
-                        indx++; 
-                        html += '<tr><td class="t_fr wid_p40">'+ indx +' . </td>'
-                                +'<td class="wid_p60">'+ key2 +'</td></tr>';
-                        data3 = data2[j][key2];
-                        for(var k = 0; k < data3.length; k++){
-                            for(var key3 in data3[k]){
-                                 html += '<tr><td class="t_fr wid_p40"></td>'
-                                    +'<td class="wid_p60"><input name="'+ key2 +'" value="'+ data3[k][key3] 
-                                    +'" type="radio"/>'+ key3 +'</td></tr>';
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        $('.quesTab').html(html);
-    });
-}
-
 function initEchart_scatter(xAxis,datas){
-
     var dataBJ = [
-        [1,55,9,56,0.46,18,6,"良"],
-        [2,25,11,21,0.65,34,9,"优"],
-        [3,56,7,63,0.3,14,5,"良"],
-        [4,33,7,29,0.33,16,6,"优"],
-        [5,42,24,44,0.76,40,16,"优"],
+        [3,50,"山川"],
+        [4,50,"河流"],
+        [5,100,"固定场所"],
+        [6,90,"风"],
+        [7,60,"雨"],
+        [8,0,"雷电"],
+        [9,40,"空气"],
+        [10,70,"日照"],
+        [11,60,"月相"],
+        [12,10,"星辰"],
+        [13,85,"性别"],
+        [14,50,"民族"],
+        [15,90,"姓氏"],
+        [16,100,"感情状态"],
+        [17,60,"学历"],
+        [18,70,"高校类型"],
+        [19,90,"行业"],
+        [20,60,"职业"],
+        [21,75,"专业"],
+        [22,50,"宗教"],
+        [23,90,"双亲情况"],
+        [24,10,"家庭情况"]
+        /*[5,42,24,44,0.76,40,16,"优"],
         [6,82,58,90,1.77,68,33,"良"],
         [7,74,49,77,1.46,48,27,"良"],
         [8,78,55,80,1.29,59,29,"良"],
@@ -244,22 +256,36 @@ function initEchart_scatter(xAxis,datas){
         [28,160,120,186,2.77,91,50,"中度污染"],
         [29,134,96,165,2.76,83,41,"轻度污染"],
         [30,52,24,60,1.03,50,21,"良"],
-        [31,46,5,49,0.28,10,6,"优"]
+        [31,46,5,49,0.28,10,6,"优"]*/
     ];
 
     var option = {
         backgroundColor: '#404a59',
-        color: [ '#dd4444' ],
+        color: [
+            '#dd4444', '#fec42c', '#80F1BE'
+        ],
         grid: {
-            borderWidth: 0,
-            x: 0,
-            x2: 0,
-            y: 0,
-            y2: 0
+            left: '1%',
+            right:'5%',
+            bottom: 30,
+            containLabel: true
+        },
+        tooltip: {
+            padding: 10,
+            backgroundColor: '#222',
+            borderColor: '#777',
+            borderWidth: 1,
+            formatter: function (obj) {
+                var value = obj.value;
+                return '<div align="center" style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                    + value[2]
+                    + '</div>'
+                    + schema[1].text + '：' + value[1] + '<br>';
+            }
         },
         xAxis: {
             type: 'value',
-            show: false,
+            show: false
         },
         yAxis: {
             type: 'value',
@@ -267,20 +293,10 @@ function initEchart_scatter(xAxis,datas){
         },
         visualMap: [
             {
-                left: 'right',
-                top: '10%',
-                dimension: 2,
-                min: 0, 
-                max: 250,
-                itemWidth: 30,
-                itemHeight: 120,
-                calculable: true,
-                precision: 0.1,
-                text: ['圆形大小：PM2.5'],
-                textGap: 30,
-                textStyle: {
-                    color: '#fff'
-                },
+                dimension: 1,
+                min: 0,
+                max: 100,
+                show:false,
                 inRange: {
                     symbolSize: [10, 70]
                 },
@@ -298,19 +314,10 @@ function initEchart_scatter(xAxis,datas){
                 }
             },
             {
-                left: 'right',
-                bottom: '5%',
-                dimension: 6,
+                dimension: 1,
                 min: 0,
-                max: 50,
-                itemHeight: 120,
-                calculable: true,
-                precision: 0.1,
-                text: ['明暗：二氧化硫'],
-                textGap: 30,
-                textStyle: {
-                    color: '#fff'
-                },
+                max: 100,
+                show:false,
                 inRange: {
                     colorLightness: [1, 0.5]
                 },
@@ -329,19 +336,20 @@ function initEchart_scatter(xAxis,datas){
         ],
         series: [
             {
-                name: '北京',
+                name: '地理',
                 type: 'scatter',
                 data: dataBJ
             }
         ]
-    }; 
-    initEcharts("circleDiv","scatter",option);
+    };
+    var myChart = echarts.init(document.getElementById('circleDiv'));
+    myChart.setOption(option);
 }
 
 function initEchart_bar(xAxis,datas){
     // 根据展示柱状图个数初始化容器宽度 
     $("#lowerDiv").css('width',(datas.length)*30+'px');
-
+    var myChart = echarts.init(document.getElementById('lowerDiv'));
     var option = {
         title: {},
         tooltip: {
@@ -349,11 +357,11 @@ function initEchart_bar(xAxis,datas){
         },
         calculable: true,
         grid: {
-            borderWidth: 0,
+            borderWidth: 1,
             x: 10,
-            x2: 10,
+            x2: 20,
             y: 40,
-            y2: 20
+            y2: 10
         },
         xAxis: [
             {
@@ -398,26 +406,5 @@ function initEchart_bar(xAxis,datas){
             }
         ]
     };
-    initEcharts("lowerDiv","bar",option);
-}
-
-function initEcharts(id,type,option){
-    require.config({ 
-        paths: {
-            echarts: 'http://echarts.baidu.com/build/dist'
-        }
-    });
-    // 使用
-    require(
-        [
-            'echarts',
-            'echarts/chart/'+type // 使用柱状图就加载bar模块，按需加载
-        ],
-        function (ec) {
-            // 基于准备好的dom，初始化echarts图表
-            var myChart = ec.init(document.getElementById(id)); 
-            // 为echarts对象加载数据 
-            myChart.setOption(option); 
-        }
-    );
+    myChart.setOption(option);
 }

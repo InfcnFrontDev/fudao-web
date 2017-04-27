@@ -1,16 +1,9 @@
-*,
-*:before,
-*:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-body,
-html { font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-size: 12px !important; color: #000; margin: 0; padding: 0;}
 
 a{text-decoration: none;}
 
 .t_fr{ text-align: right;}
 .wid_p30{width: 30%;}
 .wid_p70{width: 60%;}
-
 .wid_p40{width: 15%;}
 .wid_p60{width: 85%;}
  
@@ -57,15 +50,16 @@ a{text-decoration: none;}
     box-shadow: 0 0 0 1px red;  
 } 
 
-.contentDiv{height: 100%; width: 100%; display: none;}
-.upperDiv{height: 55%; width: 100%; color: #D6D6D6; text-align: center;
-    background: #404a59; box-shadow:0 0 12px 4px #0CC;}
-.upperDiv .title_{height: 52px; line-height: 52px;}
-.upperDiv .tanceImg{width: 190px; height: 190px;}
-.lowerDiv{height: 45%; width: 100%;}
+.contentDiv{height: 100%; width: 100%; background-color: rgba(0,0,0,.0);}
+.upperDiv{height: 55%; width: 100%; color: #D6D6D6; text-align: center; position: relative;
+    background-color: rgba(255,255,255,0); box-shadow:0 0 12px 4px #0CC;}
+.upperDiv .tanceImg{width: 190px; height: 190px; position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;}
+.tanceImg_s{width: 35px; height: 35px; position: absolute; top: 6px; right: 6px;}
 
-.shadeCss{position:fixed;display:none;z-index:1000;left:0px;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.498039)}
-.peoInfo{display: none; position: fixed; z-index: 2000; background-color: #ffffff; width: 90%; height: 90%;}
+.shadeCss{position:fixed;display:none;z-index:1000;left:0px;width:100%;height:100%;
+    background-color:rgba(0, 0, 0, 0.498039); }
+.peoInfo{display: none; position: fixed; z-index: 2000; background-color: #ffffff; width: 90%; height: 90%;
+    position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;}
 
 .peoTab{width: 100%;}
 .peoTab tr{height: 35px; line-height: 35px; width: 100%;}
@@ -75,7 +69,6 @@ a{text-decoration: none;}
 .quesTab tr{height: 20px; line-height: 20px; width: 100%;}
 
 .myBtn{height: 50px; line-height: 50px; width: 100%; position: absolute; bottom: 0px; text-align: center; }
-
 
 .circle {height: 150px; width: 150px; border-radius: 50%;
     margin-left: auto; margin-right: auto;}
