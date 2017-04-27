@@ -56,10 +56,10 @@
 
 </head>
 <body style="background-color:rgba(0,0,0,.0);width:100%; height:100%;">
-  <div id='ab'style="width:100%; height:100%; background-color:#1e4183; background-size:100% 100% ;">
+  <div id='ab'style="width:100%; height:100%; /*background-color:#1e4183;*/ background-size:100% 100% ;">
 
 
-    <div style=" height:100%;width:320px; margin:0 auto;" class="warn1">
+    <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
       <div style="width:320px; height:320px;" id="abc1">
         <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
@@ -105,11 +105,11 @@ $('#xqbtn').click(function(e){
   $('#myCanvas').click(function(e){
     e.preventDefault();
     $('.warn').hide();
-    });
-  /*$('#ab').click(function(e){
+  });
+  $('.warn1').click(function(e){
     e.preventDefault();
     $('.warn').hide();
-    });*/
+  });
 
 
   
@@ -356,7 +356,44 @@ $('#xqbtn').click(function(e){
     }
   });
 
-  setInterval(drawTime,500);
+  var startTimeArr=[];
+  var angleIndex;
+  for(i=0; i<arr.length; i++){
+    var now = new Date();
+    var sec = now.getSeconds();
+    var min = now.getMinutes();
+    var hr  = now.getHours();
+    var startDuan=blueDuan_timeToAngle(arr[i].startTime);
+    var overDuan=blueDuan_timeToAngle(arr[i].endTime);
+    var newdate=hr+":"+min;
+    var newdian=blueDuan_timeToAngle(newdate);
+    var chaAngle,a=overDuan-startDuan;
+    if(overDuan<startDuan){
+      a=(overDuan+360)-startDuan;
+    }
+    if(startDuan>overDuan){
+      if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
+        chaAngle=overDuan-newdian
+        angleIndex=i;
+        //console.log(i);
+      }
+    }
+    if(startDuan<overDuan){
+      if(newdian<overDuan&&newdian>=startDuan){
+        chaAngle=overDuan-newdian;
+        angleIndex=i;
+        //console.log(i);
+      }
+    }
+    startTimeArr.push(a);
+  }
+  //console.log(chaAngle);
+  //console.log(chaAngle+startTimeArr[angleIndex+1]);
+  setTimeout(drawTime,chaAngle*4*60*1000-sec*1000);
+  setTimeout(drawTime,(chaAngle+startTimeArr[angleIndex+1])*4*60*1000-sec*1000);
+  //console.log(startTimeArr);
+
+
   setTimeout(drawTime,500)
 
   function drawTime(){
@@ -443,10 +480,11 @@ $('#xqbtn').click(function(e){
           index=0
       }
     nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
-
-
-
   }
+
+
+
+
   //黄色时间段
   function yellowTimeDuan(num,startTime,endTime,name){
 
@@ -473,47 +511,57 @@ $('#xqbtn').click(function(e){
       context.strokeStyle="#f4b905";
     }
     context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
-    var y1=Math.sin(2*Math.PI/360*startDuan)*105+160;
-    var y2=Math.sin(2*Math.PI/360*overDuan)*105+160;
-    var x1=Math.cos(2*Math.PI/360*startDuan)*105+160;
-    var x2=Math.cos(2*Math.PI/360*overDuan)*105+160;
+    /*var y1=Math.sin(2*Math.PI/360*startDuan)*105+160;
+     var y2=Math.sin(2*Math.PI/360*overDuan)*105+160;
+     var x1=Math.cos(2*Math.PI/360*startDuan)*105+160;
+     var x2=Math.cos(2*Math.PI/360*overDuan)*105+160;*/
+    var zhongjian=(overDuan-startDuan)/2+startDuan;
+    if(overDuan-startDuan<0){
+      zhongjian=((overDuan+360)-startDuan)/2+startDuan;
+      if(zhongjian>360){
+        zhongjian=zhongjian-360;
+      }
+    }
+    var x=Math.cos(2*Math.PI/360*zhongjian)*105+160;
+    var y=Math.sin(2*Math.PI/360*zhongjian)*105+160;
+    var x1=x-10;
+    var x2=x+10;
+    var y1=y-10;
+    var y2=y+10;
+    if(overDuan-startDuan>90){
+       x1=x-40;
+       x2=x+40;
+       y1=y-40;
+       y2=y+40;
+    }
     oCanvas.addEventListener('click', function(e){
       e.stopPropagation();
       p = getEventPosition(e);
       if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
-        console.log(p.x)
-        console.log(p.y)
-
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
+        console.log(name);
         $('.tishi').html(name);
       }
-      if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
-        console.log(p.x)
-        console.log(p.y)
+      /*if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
       }
       if(p.x<=x1&&p.x>=x2&&p.y>=y1&&p.y<=y2){
-        console.log(p.x)
-        console.log(p.y)
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
-
       }
       if(p.x<=x1&&p.x>=x2&&p.y<=y1&&p.y>=y2){
-        console.log(p.x)
-        console.log(p.y)
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
-      }
+      }*/
 
     }, false);
     
@@ -521,7 +569,8 @@ $('#xqbtn').click(function(e){
       e.preventDefault();
       $('.warn').hide();
     });
-*/    context.stroke();
+*/
+    context.stroke();
     context.restore();
   }
   //文本时间转度数
