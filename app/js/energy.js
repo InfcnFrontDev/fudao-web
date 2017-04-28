@@ -7,9 +7,6 @@ $(document).ready(function(){
     var xAxis = ['地域', '年龄', '性别', '天气', '民族', '学历', '姓氏', '行业', '专业', 
                 '宗教', '高校类型',"双亲情况","家庭情况","动植物","婚姻幸福度","学习意愿"];
     var datas = [12,21,10,4,12,5,6,5,25,23,7,5,6,5,25,23,7];
-    initEchart_scatter();
-    return;
-    // 查询用户能力场探测结果
     $.ajax({
         url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
         headers: {
@@ -28,6 +25,7 @@ $(document).ready(function(){
                 alert(JSON.stringify(data));
             }
         },error: function(data){
+            // prompt('title',JSON.stringify(data));
             initEchart_bar(xAxis,datas); //　默认初始化
         }
     });
@@ -37,6 +35,20 @@ function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
+}
+
+//
+function preInitEchart(result){
+    var xAxis = [];
+    var datas = [];
+    var indx = 0;
+    _.forEach(result, function(n, key) { // 循环对象
+        xAxis[indx] = key;
+        datas[indx] = n;
+        indx++;
+    });
+    initEchart_bar(xAxis,datas);
+    initEchart_scatter(result);
 }
 
 /**
@@ -134,20 +146,6 @@ function setResult(result){
     return result;
 }
 
-//
-function preInitEchart(result){
-    var xAxis = [];
-    var datas = [];
-    var indx = 0;
-    _.forEach(result, function(n, key) { // 循环对象
-        xAxis[indx] = key;
-        datas[indx] = n;
-        indx++;
-    });
-    initEchart_bar(xAxis,datas);
-    initEchart_scatter(xAxis,datas);
-}
-
 /**
  * 读取民族json
  * @return {[type]} [description]
@@ -206,64 +204,30 @@ function readQuestionJson(){
     });
 }
 
-function initEchart_scatter(xAxis,datas){
-    var dataBJ = [
-        [3,50,"山川"],
-        [4,50,"河流"],
-        [5,100,"固定场所"],
-        [6,90,"风"],
-        [7,60,"雨"],
-        [8,0,"雷电"],
-        [9,40,"空气"],
-        [10,70,"日照"],
-        [11,60,"月相"],
-        [12,10,"星辰"],
-        [13,85,"性别"],
-        [14,50,"民族"],
-        [15,90,"姓氏"],
-        [16,100,"感情状态"],
-        [17,60,"学历"],
-        [18,70,"高校类型"],
-        [19,90,"行业"],
-        [20,60,"职业"],
-        [21,75,"专业"],
-        [22,50,"宗教"],
-        [23,90,"双亲情况"],
-        [24,10,"家庭情况"]
-        /*[5,42,24,44,0.76,40,16,"优"],
-        [6,82,58,90,1.77,68,33,"良"],
-        [7,74,49,77,1.46,48,27,"良"],
-        [8,78,55,80,1.29,59,29,"良"],
-        [9,267,216,280,4.8,108,64,"重度污染"],
-        [10,185,127,216,2.52,61,27,"中度污染"],
-        [11,39,19,38,0.57,31,15,"优"],
-        [12,41,11,40,0.43,21,7,"优"],
-        [13,64,38,74,1.04,46,22,"良"],
-        [14,108,79,120,1.7,75,41,"轻度污染"],
-        [15,108,63,116,1.48,44,26,"轻度污染"],
-        [16,33,6,29,0.34,13,5,"优"],
-        [17,94,66,110,1.54,62,31,"良"],
-        [18,186,142,192,3.88,93,79,"中度污染"],
-        [19,57,31,54,0.96,32,14,"良"],
-        [20,22,8,17,0.48,23,10,"优"],
-        [21,39,15,36,0.61,29,13,"优"],
-        [22,94,69,114,2.08,73,39,"良"],
-        [23,99,73,110,2.43,76,48,"良"],
-        [24,31,12,30,0.5,32,16,"优"],
-        [25,42,27,43,1,53,22,"优"],
-        [26,154,117,157,3.05,92,58,"中度污染"],
-        [27,234,185,230,4.09,123,69,"重度污染"],
-        [28,160,120,186,2.77,91,50,"中度污染"],
-        [29,134,96,165,2.76,83,41,"轻度污染"],
-        [30,52,24,60,1.03,50,21,"良"],
-        [31,46,5,49,0.28,10,6,"优"]*/
-    ];
-
+function initEchart_scatter(result){
+    var data = [];
+    var indx = 0;
+    var data_temp = [3];
+    _.forEach(result, function(n, key) { // 循环对象
+        data_temp = [3];
+        data[indx] = data_temp;
+        indx++;
+        data_temp[0] = indx;
+        data_temp[1] = n;
+        data_temp[2] = key;
+    });
+    var itemStyle = {
+        normal: {
+            opacity: 1,
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+    };
     var option = {
-        backgroundColor: '#404a59',
-        color: [
-            '#dd4444', '#fec42c', '#80F1BE'
-        ],
+        backgroundColor: '#153371',
+        color: [ '#dd4444' ],
         grid: {
             left: '1%',
             right:'5%',
@@ -277,10 +241,10 @@ function initEchart_scatter(xAxis,datas){
             borderWidth: 1,
             formatter: function (obj) {
                 var value = obj.value;
-                return '<div align="center" style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
-                    + value[2]
-                    + '</div>'
-                    + schema[1].text + '：' + value[1] + '<br>';
+                return '<div align="center" style="border-bottom: 1px solid rgba(255,255,255,.3); ' +
+                    'font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                    + value[2] + '</div>'
+                    + '得分 ：' + value[1] + '<br>';
             }
         },
         xAxis: {
@@ -293,15 +257,19 @@ function initEchart_scatter(xAxis,datas){
         },
         visualMap: [
             {
+                left: 'right',
+                bottom: 0,
                 dimension: 1,
                 min: 0,
                 max: 100,
                 show:false,
+                text: ['得分'],
+                textGap: 30,
                 inRange: {
-                    symbolSize: [10, 70]
+                    symbolSize: [10, 40]
                 },
                 outOfRange: {
-                    symbolSize: [10, 70],
+                    symbolSize: [10, 40],
                     color: ['rgba(255,255,255,.2)']
                 },
                 controller: {
@@ -338,7 +306,8 @@ function initEchart_scatter(xAxis,datas){
             {
                 name: '地理',
                 type: 'scatter',
-                data: dataBJ
+                itemStyle: itemStyle,
+                data: data
             }
         ]
     };
@@ -359,7 +328,7 @@ function initEchart_bar(xAxis,datas){
         grid: {
             borderWidth: 1,
             x: 10,
-            x2: 20,
+            x2: 10,
             y: 40,
             y2: 10
         },
@@ -391,7 +360,11 @@ function initEchart_bar(xAxis,datas){
                             var colorList = [
                               '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
                                '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-                               '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                               '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0',
+                                '#A0522D','#A020F0','#9FB6CD','#A52A2A','#8B8B00',
+                                '#9370DB','#919191','#F4E001','#96CDCD','#8B8B83',
+                                '#7FFF00','#7EC0EE','#7EC0EE','#76EE00','#6E8B3D',
+                                '#6C7B8B','#698B69','#6B8E23','#68838B','#66CDAA'
                             ];
                             return colorList[params.dataIndex]
                         },
