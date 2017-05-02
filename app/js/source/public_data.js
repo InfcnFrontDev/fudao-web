@@ -553,19 +553,23 @@ var common_color = {
 	"23:30": "#993300"
 }
 var common_arr_color = [];
-common_arr_color.push('#FFCC99');
-common_arr_color.push('#99CC99');
-common_arr_color.push('#FF9966');
-common_arr_color.push('#FFCC33');
-common_arr_color.push('#336699');
-common_arr_color.push('#CCCCCC');
-common_arr_color.push('#FF9900');
-common_arr_color.push('#99CCFF');
-common_arr_color.push('#CC9933');
-common_arr_color.push('#CCCC33');
-common_arr_color.push('#CC6600');
-common_arr_color.push('#CCCC33');
-common_arr_color.push('#336699');
+
+
+common_arr_color.push('#9CD1F1');
+common_arr_color.push('#C2ECFC');
+common_arr_color.push('#87D3EF');
+common_arr_color.push('#D7F0F5');
+common_arr_color.push('#C9EFFE');
+common_arr_color.push('#95D3EF');
+common_arr_color.push('#EAF7FF');
+common_arr_color.push('#9CD1F1');
+common_arr_color.push('#C2ECFC');
+common_arr_color.push('#EAF7FF');
+common_arr_color.push('#97D3EF');
+common_arr_color.push('#C9EFFE');
+common_arr_color.push('#95D3EF');
+common_arr_color.push('#EAF7FF');
+
 var subsection_proportion = {
 	"起床阶段": [1, 2, 3],
 	"午休阶段": [3, 1, 2],
