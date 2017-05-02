@@ -22,8 +22,6 @@
       position:absolute;
       left:0;
       right:0;
-      top:0;
-      bottom:0;
       background-color:rgba(225,225,225,.7);
       margin:auto;
       border-radius: 5px;
@@ -58,18 +56,30 @@
 
 </head>
 <body style="background-color:rgba(0,0,0,.0);width:100%; height:100%;">
-  <div id='ab'style="width:100%; height:100%; background-size:100% 100% ;">
+  <div id='ab'style="width:100%; height:100%; background-color:#1e4183; background-size:100% 100% ;">
 
 
     <div style=" height:100%;width:320px; margin:0 auto;" class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
-      <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
+      <div style="width:320px; height:320px;" id="abc1">
+        <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
 
-      <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
+        <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
+        </div>
+        <div style="width:30px; height:30px;  position:relative;top:-210px; left:125px;" class="dongzuo">
+          <img src="images/exercise/abc0.gif" alt="" style="width:70px; height:50px;">
+        </div>
+        <div class="warn" >
+          <div class="triangle-up"></div>
+          <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
+            轻松的运动过后喝杯红茶，
+            闻闻茶香吧眺望远方深呼吸一下
+          </p>
+          <button id="xqbtn" style="background:rgba(0,0,0,.0); border:none; float:right;">查看详情>></button>
+        </div>
+
       </div>
-      <div style="width:30px; height:30px;  position:relative;top:-210px; left:125px;" class="dongzuo">
-        <img src="images/exercise/abc0.gif" alt="" style="width:70px; height:50px;">
-      </div>
+
     </div>
     
     <div class="warnCover">
@@ -80,33 +90,26 @@
     </div>
 
   </div>
-  <div class="warn" id="warnid">
-    <div class="triangle-up"></div>
-      <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
-        轻松的运动过后喝杯红茶，
-        闻闻茶香吧眺望远方深呼吸一下
-      </p>
-    <button id="xqbtn"style="background:rgba(0,0,0,.0); border:none; float:right;">查看详情>></button>
-  </div>
+
 
 
 
 
 
 <script>
-$('#xqbtn').click(function(){
-  window.postMessage('1');
+$('#xqbtn').click(function(e){
+  e.stopPropagation();
+  window.postMessage('{"imgPath":"zixun/1.2.jpg","title":"点一支薰衣草熏香美美的休息一下吧~","content":"以两手搓热环摸脐周，以一手置于脐上，顺、逆时针，少用力按摩腹部提拿腹肌，以一手提拿中脘穴肌肉组织"}');
 })
       
-  $('#ab').click(function(e){
-    e.preventDefault();
-         $('.warn').hide();
- 
-    });
   $('#myCanvas').click(function(e){
     e.preventDefault();
-         $('.warn').hide();
+    $('.warn').hide();
     });
+  /*$('#ab').click(function(e){
+    e.preventDefault();
+    $('.warn').hide();
+    });*/
 
 
   
@@ -478,21 +481,37 @@ $('#xqbtn').click(function(){
       e.stopPropagation();
       p = getEventPosition(e);
       if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
+        console.log(p.x)
+        console.log(p.y)
 
         $('.warn').show();
+        $('.warn').css({top:p.y+45});
+        $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
       }
       if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
+        console.log(p.x)
+        console.log(p.y)
         $('.warn').show();
+        $('.warn').css({top:p.y+45});
+        $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
       }
       if(p.x<=x1&&p.x>=x2&&p.y>=y1&&p.y<=y2){
+        console.log(p.x)
+        console.log(p.y)
         $('.warn').show();
+        $('.warn').css({top:p.y+45});
+        $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
 
       }
       if(p.x<=x1&&p.x>=x2&&p.y<=y1&&p.y>=y2){
+        console.log(p.x)
+        console.log(p.y)
         $('.warn').show();
+        $('.warn').css({top:p.y+45});
+        $('.triangle-up').css({left:p.x-25})
         $('.tishi').html(name);
       }
 
