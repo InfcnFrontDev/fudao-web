@@ -1,262 +1,290 @@
 <!DOCTYPE html>
-<html>
+<html style="width: 100%;height:100%;">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Hello MUI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <!--标准mui.css-->
-  <link rel="stylesheet" href="venders/css/mui.min.css" type="text/css" charset="utf-8" />
-  <link rel="stylesheet" href="venders/css/common.css" type="text/css" charset="utf-8" />
-  <link rel="stylesheet" href="css/_all.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <script src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/mui.min.js"></script>
-  <script type="text/javascript" src="js/common.js"></script>
-  <script type="text/javascript" src="js/source/config.js"></script>
-  <script type="text/javascript" src="js/source/localstorage.js"></script>
-  <script type="text/javascript" src="js/source/public.js"></script>
-  <script type="text/javascript" src="js/privatejs/question.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
+    <meta charset="UTF-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+    <!--标准mui.css-->
+    <link rel="stylesheet" href="venders/css/mui.min.css" type="text/css" charset="utf-8"/>
+    <link rel="stylesheet" href="css/_all.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/source/config.js"></script>
+    <script type="text/javascript" src="js/source/localstorage.js"></script>
+    <script type="text/javascript" src="js/source/public.js"></script>
+    <script type="text/javascript" src="js/privatejs/question.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
 
 </head>
 <style>
-  .question {
-    background-color: #FFFFFF;
-    text-align: left;
-    vertical-align: middle;
-    min-height: 50px;
-    padding: 20px 15px 10px 10px;
-    font-size: 18px;
-    line-height: 22px;
-  }
+    .question {
+        background-color: #FFFFFF;
+        text-align: left;
+        vertical-align: middle;
+        min-height: 50px;
+        padding: 20px 15px 10px 10px;
+        font-size: 18px;
+        line-height: 22px;
+    }
 
-  .answer {
-    padding-left: 10px;
-    font-size: 18px;
-    white-space: nowrap;
-  }
+    .answer {
+        padding-left: 10px;
+        font-size: 18px;
+        white-space: nowrap;
+    }
 
-  ._index {
-    float: left;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    border: 1px solid #a1cc00;
-    border-radius: 10px;
-    line-height: 20px;
-    font-size: 14px;
-  }
+    ._index {
+        float: left;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border-radius: 10px;
+        line-height: 20px;
+        font-size: 14px;
+    }
 
-  .mui-demo-container {
-    background-color: #fff;
-    padding: 10px 15px 0px 15px;
-  }
+    .mui-demo-container {
+        background-color: #fff;
+        padding: 10px 15px 0px 15px;
+    }
 
-  .mui-progressbar-royal span {
-    background-color: #a1cc00;
-  }
+    .mui-progressbar-royal span {
+        background-color: #a1cc00;
+    }
 
-  .mui-progressbar {
-    height: 5px;
-  }
-  .mui-input-group .mui-input-row:after {
-    left: 0px;
-  }
+    .mui-progressbar {
+        height: 5px;
+    }
+
+    .mui-input-group .mui-input-row:after {
+        left: 0px;
+    }
 </style>
 
 
+<body style="background: rgba(0,0,0,0);width: 100%;height:100%;">
+<div style="width:100%;height: 100%;position: relative;display: flex;flex-direction: column">
 
-<body>
-<div>
-  <!-- 问卷类型 being-->
-  <div id="title" style="background-color: #FFFFFF; text-align: left; vertical-align: middle; height: 20px; font-size: 18px; padding: 20px 10px 50px 10px"></div>
-  <!-- 问卷类型 end-->
-  <!-- 进度条being -->
-  <div style="border:  1px solid #c8c7cc;width: 90%;margin: auto auto;">
-    <div id="demo5" class="mui-demo-container" style="height: 45px;">
-      <span style="float: left; margin-bottom: 5px;">测评进度</span>
-      <div class="mui-btn mui-btn-link mui-pull-right" id="sum" style="color: #a1cc00; float: right;"></div>
-      <p id="answerProgress" class="mui-progressbar mui-progressbar-royal" data-progress="80"><span></span></p>
+    <div style="background: #67799F">
+        <div id="title"
+             style=" text-align: left; vertical-align: middle; height: 20px; font-size: 18px; padding: 20px 10px 30px;color: #fff"></div>
+        <div id="demo5" class="mui-demo-container" style="background: #67799F;height: 45px;position: relative">
+            <p id="answerProgress" class="mui-progressbar mui-progressbar-royal" data-progress="80"
+               style="margin-left:10px;width:80%;background: #fff;height: 14px;border-radius: 14px;"><span></span></p>
+            <div class="mui-btn mui-btn-link " id="sum"
+                 style="color: #C8D1F0; position: absolute;top:2px;right:10px;"></div>
+        </div>
     </div>
-    <div style="margin-top:10px;border-bottom: 1px solid #c8c7cc"></div>
-    <!-- 进度条end -->
-    <div id="question" class="question" style='padding-top:20px;'>对对对</div>
-    <div class="mui-input-group">
-      <div class="mui-input-row mui-right answer" id="answer1" >
-
-      </div>
-      <div class="mui-input-row  mui-right answer" id="answer2">
-      </div>
-      <div class="mui-input-row  mui-right answer" id="answer3">
-      </div>
-      <div class="mui-input-row  mui-right answer" id="answer4">
-      </div>
-      <div class="mui-input-row  mui-right answer" id="answer5">
-      </div>
+    <div style="flex: 1;">
+        <div id="question" class="question" style='padding-top:20px;padding-left: 16px;border:0'></div>
+        <div style="width: 138px;height:80px;margin: 0 auto ">
+            <img id="questionImg" style="width: 100%;height: 100%"/>
+        </div>
+        <div class="mui-input-group">
+            <div class="mui-input-row mui-right  answer" id="answer1">
+            </div>
+            <div class="mui-input-row mui-right answer" id="answer2">
+            </div>
+            <div class="mui-input-row  mui-right answer" id="answer3">
+            </div>
+            <div class="mui-input-row  mui-right answer" id="answer4">
+            </div>
+            <div class="mui-input-row  mui-right answer" id="answer5">
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="mui-bar mui-bar-footer"
+         style="height:72px;position:absolute;bottom:20px;padding:20px ;display: flex;justify-content: space-around">
+        <button type="button"
+                style="width: 100px;border: 1px solid #a1cc00;background-color: #a1cc00;color: white;" id="up">上一题
+        </button>
+        <button type="button"
+                style="width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;" id="next">下一题
+        </button>
+        <button type="button"
+                style="display: none;width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;"
+                id="submit">提交
+        </button>
+    </div>
 </div>
-<footer class="mui-bar mui-bar-footer" style="padding:0px 20px 50px 20px;">
-  <button type="button" class="mui-btn mui-pull-left" style="width: 100px;border: 1px solid #a1cc00;background-color: #a1cc00;color: white;" id="up">上一题</button>
-  <button type="button" class="mui-btn mui-pull-right" style="width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;" id="next">下一题</button>
-  <button type="button" class="mui-btn mui-pull-right" style="display: none;width: 100px;border: 1px solid #bfbfbf;background-color: #bfbfbf;color: white;" id="submit">提交</button>
-</footer>
+
 <script>
+    var index = 1;
+    var answers = {};
+    var imgSrc = 'http://192.168.10.69:9191/api/ImgApi/getImage?filePath=';
+    var questionnaireType = JSON.parse(localStorage.getItem('questionsType'));
 
-  var userid=getQueryString('userId');
-  //alert(userid);
-  /* $.ajax({
-     dataType: "json",
-     url: urls.ASSESSMENT,
-     success: function(data){
-       var questions = data.obj;
-       localStorage.setItem('questions', JSON.stringify(questions));
-       fun_getCurQuestion();
-     }
-   });*/
-  var index=1;
-  console.log(questions.obj);
-  localStorage.setItem('questions', JSON.stringify(questions.obj));
-  fun_getCurQuestion();
+    $('#title').html(questionnaireType[1]);
+    var _json = [];
+    //        var _json = questions.obj;
 
-
-
-
-   mui('.mui-bar-footer').on('tap', 'button', function() {
-     var btnId = this.getAttribute('id');
-     if(btnId == 'up') {
-       index--;
-     } else if(btnId == 'next') {
-       index++;
-     } else {
-       fun_submit();
-       return false;
-     }
-     fun_getCurQuestion();
-   });
-   var answers = {};
-
-  // 设置当前问题及答案
-  function fun_getCurQuestion() {
-    var questionTypes = [];
-    questionTypes[1] = '生理自评';
-    questionTypes[2] = '心理自评';
-    questionTypes[3] = '社会关系';
-    questionTypes[4] = '生活习惯';
-    fun_setButton();
-    var _json = JSON.parse(localStorage.getItem('questions'));
-
-    $("#sum").html(index + "/" + _json.length);
-    var curQuestion = _json[index - 1];
-    document.getElementById("title").innerHTML = questionTypes[curQuestion.type];
-    document.getElementById("question").innerHTML = "<div class='_index'>" + index + "</div>&nbsp; " + curQuestion.question;
-    document.getElementById("answer1").innerHTML = fun_createRadio(curQuestion, 'asnwerAScore') + "<label style ='text-align:left'>" + curQuestion.answerA + "</label>";
-    document.getElementById("answer2").innerHTML = fun_createRadio(curQuestion, 'asnwerBScore') + "<label style ='text-align:left'>" + curQuestion.answerB + "</label>";
-    document.getElementById("answer3").innerHTML = fun_createRadio(curQuestion, 'asnwerCScore') + "<label style ='text-align:left'>" + curQuestion.answerC + "</label>";
-    document.getElementById("answer4").innerHTML = fun_createRadio(curQuestion, 'asnwerDScore') + "<label style ='text-align:left'>" + curQuestion.answerD + "</label>";
-    document.getElementById("answer5").innerHTML = fun_createRadio(curQuestion, 'asnwerEScore') + "<label style ='text-align:left'>" + curQuestion.answerE + "</label>";
-    fun_showProgress(index);
-  }
-
-  function fun_showProgress(index) {
-    answerProgress.setAttribute('data-progress', (index - 1) / 62 * 100);
-    // 显示进度
-    mui("#demo5 .mui-progressbar").each(function() {
-      mui(this).progressbar({
-        progress: this.getAttribute("data-progress")
-      }).show();
-    });
-  }
-
-  // 生成单选按钮
-  function fun_createRadio(question, answer) {
-    var _radio = '<input class="iradio_square-blue" type="radio" style="-webkit-appearance: none" name="' + question.num + '"';
-    _radio += ' value="' + question[answer] + '"';
-    if(answers[question.num] == question[answer]) {
-      _radio += ' checked="checked"';
-    }
-    _radio += ' onclick="fun_recordingAnswer(this);">';
-    return _radio;
-  }
-  // 记录答案
-  function fun_recordingAnswer(obj) {
-    $(obj).addClass('checked');
-    if(index == 62) {
-      fun_showProgress(63);
-      answers[obj.name] = obj.value;
-      console.log(answers);
-      fun_submit();
-      return false;
-    }
-    answers[obj.name] = obj.value;
-    index++;
-    window.setTimeout("fun_getCurQuestion()", 800);
-  }
-
-  // 设置问题上一题/下一题按钮是否可用
-  function fun_setButton() {
-    if(index == 1) {
-      //plus.nativeUI.toast('当前问题已经是第一题');
-      document.getElementById("up").style.display = 'none';
-    } else if(index == 62) {
-      document.getElementById("next").style.display = 'none';
-      document.getElementById("submit").style.display = 'block';
-    } else {
-      document.getElementById("up").style.display = 'block';
-      document.getElementById("next").style.display = 'block';
-      document.getElementById("submit").style.display = 'none';
-    }
-  }
-  // 提交答案
-  function fun_submit() {
-    var btnArray;
-    btnArray = ['取消', '确定'];
-    mui.confirm('是否提交问卷', '温馨提示',btnArray, function(e) {
-
-      var _json = JSON.parse(localStorage.getItem('questions'));
-      for(var indx in _json) {
-        var _key = _json[indx].num;
-        if(answers[_key] == null) {
-          answers[_key] = 5;
-        }
-      }
-
-      if (e.index == 1) {
-        countScore(answers)
-      } else {
-
-      }
-
-    });
-  }
-   /*var abc={44: "4", 45: 5, 46: "3", 47: "4", 48: 5, 49: "3", 50: 5, 51: 5, 52: "4", 53: "5", 54: "3", 55: 5, 56: "5", 57: 5, 58: "5", 59: "4", 60: "4", 61: "3", 62: 5, 63: 5, 64: "4", 65: "5", 66: "4", 67: "4", 68: "5", 69: "4", 70: 5, 71: "5", 72: "5", 73: "4", 74: "4", 75: 5, 76: "4", 77: 5, 78: "3", 79: 5, 80: "3", 81: 5, 82: 5, 83: 5, 84: 5, 85: 5, 86: 5, 87: 5, 88: 5, 89: 5, 90: 5, 91: 5, 92: 5, 93: 5, 94: 5, 95: 5, 96: 5, 97: 5, 98: 5, 99: 5, 100: 5, 101: 5, 102: 5, 103: 5, 104: 5, 105: 5};
-   countScore(abc);*/
-  function countScore(answers){
-    console.log(answers);
+    var token = localStorage.getItem('zizhen_token');
     $.ajax({
-      url:urls.CALCULATE_SCORE,
-      data: {
-        appID:userid,
-        scoreMap:answers
-      },
-      dataType: 'json',
-      type: 'post',
-      timeout: 20000, //超时时间设置为20秒；
-      success: function(data) {
-        window.location.href="healthAppraisal.html?result="+data.obj.countSocre+"&shehuiSocre="+data.obj.shehuiSocre+"&xinliSocre="+data.obj.xinliSocre+"&zhengzhuangSocre="+data.obj.zhengzhuangSocre+"&ziceSocre="+data.obj.ziceSocre+"&userId="+userid;
-
-
-      },
-      error: function(xhr, type, errorThrown) {
-      }
+        type: "post",
+        url: "http://192.168.10.69:9191/api/DiagnosisApi/getQuestionnaireList",
+        headers: {
+            authorization: '044ace61-7c00-48b2-b7e5-840b206cef95'
+        },
+        data: {
+            type: questionnaireType[0]
+        },
+        success: function (res) {
+            _json = res.obj;
+            var nowI = parseInt(localStorage.getItem(questionnaireType[2]));
+            if (nowI) {
+                index = Math.ceil(_json.length * nowI / 100);
+            }
+            fun_getCurQuestion();
+        },
+        error: function () {
+            console.log('err')
+        }
     });
 
 
-  }
+    mui('.mui-bar-footer').on('tap', 'button', function () {
+        var btnId = this.getAttribute('id');
+        if (btnId == 'up') {
+            index--;
+        } else if (btnId == 'next') {
+            index++;
+        } else {
+            fun_submit();
+            return false;
+        }
+        fun_getCurQuestion();
+    });
+
+    // 设置当前问题及答案
+    function fun_getCurQuestion() {
+        if (questionnaireType[0] != 0 && index != 1) {
+            localStorage.setItem(questionnaireType[2], JSON.stringify(Math.ceil((index - 1) / _json.length * 100)) + "%");
+            $("." + questionnaireType[2] + " span").html(Math.ceil((index - 1) / _json.length * 100) + "%");
+            $("." + questionnaireType[2] + " cite").css('width', 1.3 * Math.ceil((index - 1) / _json.length * 100));
+        }
+        fun_setButton();
+        $("#sum").html(index + "/" + _json.length);
+        var curQuestion = _json[index - 1];
+        document.getElementById("question").innerHTML = index + " 、" + curQuestion.title;
+        document.getElementById("questionImg").setAttribute('src', imgSrc + curQuestion.img);
+        document.getElementById("answer1").innerHTML = fun_createRadio(curQuestion, 0) + "<label style ='text-align:left;margin-left:28px;'>A&nbsp;&nbsp;&nbsp;" + curQuestion.answer[0] + "</label>";
+        document.getElementById("answer2").innerHTML = fun_createRadio(curQuestion, 1) + "<label style ='text-align:left;margin-left:28px;'>B&nbsp;&nbsp;&nbsp;" + curQuestion.answer[1] + "</label>";
+        document.getElementById("answer3").innerHTML = fun_createRadio(curQuestion, 2) + "<label style ='text-align:left;margin-left:28px;'>C&nbsp;&nbsp;&nbsp;" + curQuestion.answer[2] + "</label>";
+        document.getElementById("answer4").innerHTML = fun_createRadio(curQuestion, 3) + "<label style ='text-align:left;margin-left:28px;'>D&nbsp;&nbsp;&nbsp;" + curQuestion.answer[3] + "</label>";
+        document.getElementById("answer5").innerHTML = fun_createRadio(curQuestion, 4) + "<label style ='text-align:left;margin-left:28px;'>E&nbsp;&nbsp;&nbsp;" + curQuestion.answer[4] + "</label>";
+        console.log(index);
+        fun_showProgress(index);
+    }
+
+    function fun_showProgress(index) {
+
+        answerProgress.setAttribute('data-progress', (index - 1) / _json.length * 100);
+        // 显示进度
+        mui("#demo5 .mui-progressbar").each(function () {
+            mui(this).progressbar({
+                progress: this.getAttribute("data-progress")
+            }).show();
+        });
+    }
+
+    // 生成单选按钮
+    function fun_createRadio(question, answer) {
+        var _radio = '<input class="iradio_square-blue" type="radio" style="-webkit-appearance: none;left:20px;" name="' + question.id + '"';
+        _radio += ' value="' + question.asnwerScore[answer] + '"';
+        if (answers[question.id] == question.asnwerScore[answer]) {
+            _radio += ' checked="checked"';
+        }
+        _radio += ' onclick="fun_recordingAnswer(this);">';
+        return _radio;
+    }
+
+
+    // 记录答案
+    function fun_recordingAnswer(obj) {
+        console.log(obj)
+        $(obj).addClass('checked');
+        if (index == _json.length) {
+            fun_showProgress(index + 1);
+            answers[obj.name] = obj.value;
+            fun_submit();
+            return false;
+        }
+            answers[obj.name] = obj.value;
+            index++;
+            window.setTimeout("fun_getCurQuestion()", 800);
+            return false;
+
+
+    }
+
+    // 设置问题上一题/下一题按钮是否可用
+    function fun_setButton() {
+        if (index == 1) {
+            //plus.nativeUI.toast('当前问题已经是第一题');
+            document.getElementById("up").style.display = 'none';
+        } else if (index == _json.length) {
+            document.getElementById("next").style.display = 'none';
+            document.getElementById("submit").style.display = 'block';
+        } else {
+            document.getElementById("up").style.display = 'block';
+            document.getElementById("next").style.display = 'block';
+            document.getElementById("submit").style.display = 'none';
+        }
+    }
+    // 提交答案
+    function fun_submit() {
+        var btnArray;
+        btnArray = ['取消', '确定'];
+        console.log(answers)
+        mui.confirm('是否提交问卷', '温馨提示', btnArray, function (e) {
+
+            for (var indx in _json) {
+                var _key = _json[indx].id;
+                if (answers[_key] == null) {
+                    answers[_key] = 5;
+                }
+            }
+
+            if (e.index == 1) {
+                countScore(answers);
+                localStorage.removeItem(questionnaireType[2]);
+//                location.href = "assessmentResult.html";
+            } else {
+
+            }
+
+        });
+    }
+    /*var abc={44: "4", 45: 5, 46: "3", 47: "4", 48: 5, 49: "3", 50: 5, 51: 5, 52: "4", 53: "5", 54: "3", 55: 5, 56: "5", 57: 5, 58: "5", 59: "4", 60: "4", 61: "3", 62: 5, 63: 5, 64: "4", 65: "5", 66: "4", 67: "4", 68: "5", 69: "4", 70: 5, 71: "5", 72: "5", 73: "4", 74: "4", 75: 5, 76: "4", 77: 5, 78: "3", 79: 5, 80: "3", 81: 5, 82: 5, 83: 5, 84: 5, 85: 5, 86: 5, 87: 5, 88: 5, 89: 5, 90: 5, 91: 5, 92: 5, 93: 5, 94: 5, 95: 5, 96: 5, 97: 5, 98: 5, 99: 5, 100: 5, 101: 5, 102: 5, 103: 5, 104: 5, 105: 5};
+     countScore(abc);*/
+    function countScore(answers) {
+
+        $.ajax({
+            url: "http://192.168.10.69:9191/api/DiagnosisApi/submitQuestionnaireResult",
+            headers: {
+                authorization: '044ace61-7c00-48b2-b7e5-840b206cef95'
+            },
+            data: {
+                result: answers
+            },
+            dataType: 'json',
+            type: 'post',
+            timeout: 20000, //超时时间设置为20秒；
+            success: function (data) {
+                window.location.href = "assessmentResult.html";
+            },
+            error: function (xhr, type, errorThrown) {
+            }
+        });
+
+
+    }
 
 
 </script>

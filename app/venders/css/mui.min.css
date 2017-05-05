@@ -224,7 +224,8 @@ body {
 	font-size: 17px;
 	line-height: 21px;
 	color: #000;
-	background-color: #efeff4;
+	/*background-color: #efeff4;*/
+	background-color:rgba(0,0,0,0)
 	-webkit-overflow-scrolling: touch
 }
 
@@ -2355,7 +2356,7 @@ select:focus {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	height: 1px;
+	height: 0px;
 	content: '';
 	-webkit-transform: scaleY(.5);
 	transform: scaleY(.5);
@@ -2367,7 +2368,7 @@ select:focus {
 	top: 0;
 	right: 0;
 	left: 0;
-	height: 1px;
+	height: 0px;
 	content: '';
 	-webkit-transform: scaleY(.5);
 	transform: scaleY(.5);
@@ -2418,12 +2419,13 @@ select:focus {
 	right: 0;
 	bottom: 0;
 	left: 15px;
-	height: 1px;
+	height: 0px;
 	content: '';
 	-webkit-transform: scaleY(.5);
 	transform: scaleY(.5);
 	background-color: #c8c7cc
 }
+
 
 .mui-input-row label {
 	font-family: 'Helvetica Neue', Helvetica, sans-serif;

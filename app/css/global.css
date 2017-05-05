@@ -123,28 +123,101 @@ body {
     float:right;
 }
 .appraisalBox{
-    width:240px;
-    height:220px;
-    background:#FFF;
-    margin:30% auto;
-    font-family: Arial;
-    color:#316dba;
+    width:100%;
+    height:35%;
+    margin:0 auto;
+    color:#fff;
+}
+.jieguo{
+    font-size: 56px;
+    line-height: 65px;
+    text-align: center;
+    margin: 0;
+    font-weight: 700;
+    color:#a1cc00;
 }
 .appraisalMark{
-    padding-top:40px;
-
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    padding-top: 6%;
 }
-.appraisalMark h5,.appraisalMark p{
-    display:flex;
-    justify-content:center;
-    line-height:4px;
+.appraisalMark div{
+    color: #000;
+    text-align: center;
+    line-height:22px;
 }
-.appraisalMark h5{
-    font-size:16px;
+.jinduBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around ;
+    color: #212121;
+    padding-top: 10px;
 }
-.appraisalMark p{
+.jinduBox b{
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 0 0 10px;
+}
+.jinduBox a{
+    display: block;
+    width:150px;
+    background: #EEEEEE;
     color:#333333;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 10px;
+    text-align: left;
 }
+.jinduBox p{
+    width:130px;
+    background: #EEEEEE;
+    color:#333333;
+    padding: 12px;
+    display: flex;
+    align-content: center;
+    margin:0;
+    margin-bottom: 14px;
+}
+.jinduBox a span{
+    position: absolute;
+    right: 10px;
+    bottom:25px;
+}
+.jinduBox p span{
+    display: block;
+    flex: 1;
+    text-align: right;
+}
+
+/*.jinduBox span{*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+    /*bottom:25px;*/
+/*}*/
+.jinduBox i{
+    display: block;
+    width: 130px;
+    height:12px;
+    background: #fff;
+    border: 1px solid #C1C1C1;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+}
+.jinduBox cite{
+    display: block;
+    width: 0;
+    height:12px;
+    background: #a1cc00;
+    /*border-radius: 9px;*/
+}
+
+
+
+
 .physiology{
     color:#00d3eb;
 }
@@ -173,9 +246,12 @@ body {
 
 
 .fdzs{
-    margin-bottom: 0;
+    /*margin-bottom: 0;*/
+    font-size: 14px;
     text-align: center;
-    color:#333333;
+    color:#fff;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 .imgtou{
     margin-top:70px;
@@ -184,7 +260,7 @@ body {
     width:240px;
     height:38px;
     text-align: center;
-    margin:0 auto;
+    margin:6% auto 10%;
     text-decoration: none;
     line-height:38px;
     background:#a1cc00;
@@ -192,8 +268,6 @@ body {
     display:block;
     font-size:17px;
     color:#fff;
-    margin-top:20%;
-
 }
 .circle{
     margin:10px auto;
