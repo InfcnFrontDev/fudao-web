@@ -7,7 +7,7 @@ var urls={
     //生命周期
     LIFE_CYCLE: apiPath + 'app/myCycleAction!calculateCycleAndSave.action',
     //天气
-    WEATHER:apiPath +'app/weatherAction!getWeather.action',
+    WEATHER:apiPath +'WeatherApi/getWeather',
     //文章详情
     ARTICLE_GETARTICLE:apiPath + 'ArticleApi/getArticle',
     //添加收藏
