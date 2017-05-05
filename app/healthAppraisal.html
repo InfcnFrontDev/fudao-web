@@ -66,8 +66,8 @@
 
 
 <script>
-    var userid = getQueryString('userId');
-
+    var token = getQueryString('token');
+    localStorage.setItem('zizhen_token', token);
     /*
     * 比例填充
     * */
@@ -93,24 +93,29 @@
     /*
      * 点击测评
      * */
-    var url = "assessmentTest.html" //被加载的页面url
+    var url = "assessmentTest.html"; //被加载的页面url
     $('.appraisalsl').click(function () {
+        $("#myModal2").html("");
         localStorage.setItem('questionsType', JSON.stringify([1, "生理测评",'appraisalsl']));
         $("#myModal2").load(url, null);
     });
     $('.appraisalxl').click(function () {
+        $("#myModal2").html("");
         localStorage.setItem('questionsType', JSON.stringify([2, "心理测评",'appraisalxl']));
         $("#myModal2").load(url, null);
     });
     $('.appraisalsj').click(function () {
+        $("#myModal2").html("");
         localStorage.setItem('questionsType', JSON.stringify([3, "社交测评",'appraisalsj']));
         $("#myModal2").load(url, null);
     });
     $('.appraisalzc').click(function () {
+        $("#myModal2").html("");
         localStorage.setItem('questionsType', JSON.stringify([4, "自测测评",'appraisalzc']));
         $("#myModal2").load(url, null);
     });
     $('.appraisalBtn').click(function () {
+        $("#myModal2").html("");
         localStorage.setItem('questionsType', JSON.stringify([0, "一键测评",'all']));
         $("#myModal2").load(url, null);
     });
