@@ -15,7 +15,7 @@
     <script type="text/javascript" src="./js/source/public_data.js"></script>
     <script type="text/javascript" src="./js/privatejs/check_process.js"></script>
     <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./app/js/index.js"></script>
+    <script type="text/javascript" src="diagnosisMap/js/index.js"></script>
     <script src="./js/swiper.min.js"></script>
 
     <!-- Demo styles -->
@@ -285,15 +285,15 @@
         var svgPath = '';
         if ('aged' == diseasespeople) {
             if (true) {
-                svgPath = '../app/images/laoren.svg';
+                svgPath = '../diagnosisMap/images/laoren.svg';
             } else {
-                svgPath = '../app/images/laotaitai.svg'
+                svgPath = '../diagnosisMap/images/laotaitai.svg'
             }
         } else if ('high_quality_population' == diseasespeople) {
             if (false) {
-                svgPath = '../app/images/nanren.svg';
+                svgPath = '../diagnosisMap/images/nanren.svg';
             } else {
-                svgPath = '../app/images/nvren.svg'
+                svgPath = '../diagnosisMap/images/nvren.svg'
             }
         }
         loadSvg(svgPath);
