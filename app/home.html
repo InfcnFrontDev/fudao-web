@@ -73,8 +73,7 @@
         <div class="warn" >
           <div class="triangle-up"></div>
           <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
-            轻松的运动过后喝杯红茶，
-            闻闻茶香吧眺望远方深呼吸一下
+            拉耳垂，健肾经，养身体，治头痛。
           </p>
           <button id="xqbtn" style="background:rgba(0,0,0,.0); border:none; float:right;">查看详情>></button>
         </div>
@@ -103,29 +102,7 @@
 
 
   //document.getElementById('ab').style.background=back1;
-$('#xqbtn').click(function(e){
-  e.stopPropagation();
-  //console.log($(this).parent().find('.tishi').text())
-  $.ajax({
-    type:"post",
-    url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
-    headers: {
-      authorization: '02b4fa39-21a1-42a0-bdcd-b33925778a04'
-    },
-    data:{
-      timeStage:'晨练'
-    },
-    success:function(data){
-      //alert(JSON.stringify(data.obj.method[0]));
 
-    },
-    error:function(){
-
-    }
-  });
-
-  window.postMessage(''+data.obj.method[0]+'');
-})
       
   $('#myCanvas').click(function(e){
     e.preventDefault();
@@ -255,13 +232,46 @@ $('#xqbtn').click(function(e){
     success:function(data){
 
       arr=data.obj
-      alert(arr);
+
 
     },
     error:function(){
 
     }
   });
+
+  $('#xqbtn').click(function(e){
+    console.log(arr);
+    e.stopPropagation();
+    var timeName;
+    console.log($(this).parent().find('.tishi').attr('name'));
+    for(var i=0; i<arr.length; i++){
+      if($(this).parent().find('.tishi').attr('name')==arr[i].startTime){
+        timeName=arr[i].timePeriods[0].name;
+      }
+    }
+    $.ajax({
+      type:"post",
+      url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+      headers: {
+        authorization: token
+      },
+      data:{
+        timeStage:timeName
+      },
+      success:function(data){
+        //alert(JSON.stringify(data));
+        console.log(JSON.stringify(data));
+        window.postMessage(JSON.stringify(data.obj.method[0]));
+
+      },
+      error:function(){
+
+      }
+    });
+
+    //window.postMessage('123');
+  })
   /*$.ajax({
     data:{
       /!*userId :userid,*!/
@@ -414,6 +424,7 @@ $('#xqbtn').click(function(e){
     nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
   }
 
+/*
  function grayTimeDuan(startTime1){
    var startTime,endTime;
    for(i=0; i<arr.length; i++){
@@ -427,6 +438,7 @@ $('#xqbtn').click(function(e){
    console.log(startTime+"+"+endTime);
 
  }
+*/
 
 
   //黄色时间段
@@ -485,9 +497,37 @@ $('#xqbtn').click(function(e){
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
-        console.log(name);
-        $('.tishi').html(name);
-        grayTimeDuan(startTime);
+
+        $('.tishi').attr('name',startTime);
+        var timeName;
+        for(var i=0; i<arr.length; i++){
+          if(startTime==arr[i].startTime){
+
+            timeName=arr[i].timePeriods[0].name;
+          }
+        }
+        $.ajax({
+          type:"post",
+          url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+          headers: {
+            authorization: token
+          },
+          data:{
+            timeStage:timeName
+          },
+          success:function(data){
+            //alert(JSON.stringify(data));
+            $('.tishi').html(data.obj.method[0].threeCharacterClassic);
+
+            //window.postMessage(JSON.stringify(data));
+
+          },
+          error:function(){
+
+          }
+        });
+
+        //grayTimeDuan(startTime);
 
       }
       /*if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
