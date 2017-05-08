@@ -6,7 +6,8 @@
   <title>Title</title>
   <script src="js/hidpi-canvas.js"></script>
   <script src="js/picker/picker.js"></script>
-  <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+  <script src="js/data.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/resetd.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/config.js"></script>
   <style>
@@ -98,13 +99,32 @@
 
 <script>
   var status=getQueryString('status');
+  var token=getQueryString('token');
 
 
   //document.getElementById('ab').style.background=back1;
-
 $('#xqbtn').click(function(e){
   e.stopPropagation();
-  window.postMessage('{"imgPath":"zixun/1.2.jpg","title":"点一支薰衣草熏香美美的休息一下吧~","content":"以两手搓热环摸脐周，以一手置于脐上，顺、逆时针，少用力按摩腹部提拿腹肌，以一手提拿中脘穴肌肉组织"}');
+  //console.log($(this).parent().find('.tishi').text())
+  $.ajax({
+    type:"post",
+    url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+    headers: {
+      authorization: '02b4fa39-21a1-42a0-bdcd-b33925778a04'
+    },
+    data:{
+      timeStage:'晨练'
+    },
+    success:function(data){
+      //alert(JSON.stringify(data.obj.method[0]));
+
+    },
+    error:function(){
+
+    }
+  });
+
+  window.postMessage(''+data.obj.method[0]+'');
 })
       
   $('#myCanvas').click(function(e){
@@ -225,141 +245,35 @@ $('#xqbtn').click(function(e){
   context.translate(160,160);
   var userid=getQueryString('userid');
   var renqun=getQueryString('renqun');
-  var arr=[
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"起床阶段",
-      "title":"晨练",
-      "startTime":"06:30",
-      "endTime":"07:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"晨练",
-      "title":"晨练",
-      "startTime":"07:30",
-      "endTime":"08:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"主任务阶段",
-      "title":"晨练",
-      "startTime":"08:30",
-      "endTime":"10:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"休息阶段",
-      "title":"晨练",
-      "startTime":"10:30",
-      "endTime":"11:00",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"主任务阶段",
-      "title":"晨练",
-      "startTime":"11:00",
-      "endTime":"12:00",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"午休阶段",
-      "title":"晨练",
-      "startTime":"12:0",
-      "endTime":"13:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"主任务阶段",
-      "title":"晨练",
-      "startTime":"13:30",
-      "endTime":"15:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"休息阶段",
-      "title":"晨练",
-      "startTime":"15:30",
-      "endTime":"16:00",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"主任务阶段",
-      "title":"晨练",
-      "startTime":"16:00",
-      "endTime":"17:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"休闲阶段",
-      "title":"晨练",
-      "startTime":"17:30",
-      "endTime":"18:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"晚餐阶段",
-      "title":"晨练",
-      "startTime":"18:30",
-      "endTime":"19:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"休闲阶段",
-      "title":"晨练",
-      "startTime":"19:30",
-      "endTime":"20:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"学习阶段",
-      "title":"晨练",
-      "startTime":"20:30",
-      "endTime":"21:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"睡前阶段",
-      "title":"晨练",
-      "startTime":"21:30",
-      "endTime":"22:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-    {
-      "id": "128624c3-0f17-11e7-9b59-000c293e6828",
-      "name":"睡眠阶段",
-      "title":"晨练",
-      "startTime":"22:30",
-      "endTime":"06:30",
-      "timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-    },
-  ]
 
   $.ajax({
+    type:"post",
+    url:"http://192.168.10.69:9191/api/TimePeriodApi/getGeneralTimeStage",
+    headers: {
+      authorization: token
+    },
+    success:function(data){
+
+      arr=data.obj
+      alert(arr);
+
+    },
+    error:function(){
+
+    }
+  });
+  /*$.ajax({
     data:{
-      /*userId :userid,*/
+      /!*userId :userid,*!/
       renqunId :renqun,
-      /*location :1,
+      /!*location :1,
       daytype:1,
-      seasonId:1*/
-      /*userId :用户的ID
+      seasonId:1*!/
+      /!*userId :用户的ID
        renqunId(默认high_quality_population) ：人群
        location(默认1) :地区类型1：除新疆、西藏外的所有地区2：新疆、西藏地区
        daytype(默认1) :天类型1:工作日2:周末
-       seasonId :季节id(1春季2夏季3秋季 4冬季),不传则系统自动计算*/
+       seasonId :季节id(1春季2夏季3秋季 4冬季),不传则系统自动计算*!/
     },
     dataType: "json",
     url: urls.TIMEPERIOD_GETMYTIMEPERIOD,
@@ -371,7 +285,7 @@ $('#xqbtn').click(function(e){
       console.log(data);
 
     }
-  });
+  });*/
 
   var startTimeArr=[];
   var angleIndex;
@@ -574,6 +488,7 @@ $('#xqbtn').click(function(e){
         console.log(name);
         $('.tishi').html(name);
         grayTimeDuan(startTime);
+
       }
       /*if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
         $('.warn').show();

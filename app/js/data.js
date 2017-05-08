@@ -1,3 +1,436 @@
+var arr=[
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"起床阶段",
+		"title":"晨练",
+		"startTime":"06:30",
+		"endTime":"07:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"晨练",
+		"title":"晨练",
+		"startTime":"07:30",
+		"endTime":"08:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"主任务阶段",
+		"title":"晨练",
+		"startTime":"08:30",
+		"endTime":"10:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"休息阶段",
+		"title":"晨练",
+		"startTime":"10:30",
+		"endTime":"11:00",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"主任务阶段",
+		"title":"晨练",
+		"startTime":"11:00",
+		"endTime":"12:00",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"午休阶段",
+		"title":"晨练",
+		"startTime":"12:0",
+		"endTime":"13:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"主任务阶段",
+		"title":"晨练",
+		"startTime":"13:30",
+		"endTime":"15:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"休息阶段",
+		"title":"晨练",
+		"startTime":"15:30",
+		"endTime":"16:00",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"主任务阶段",
+		"title":"晨练",
+		"startTime":"16:00",
+		"endTime":"17:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"休闲阶段",
+		"title":"晨练",
+		"startTime":"17:30",
+		"endTime":"18:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"晚餐阶段",
+		"title":"晨练",
+		"startTime":"18:30",
+		"endTime":"19:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"休闲阶段",
+		"title":"晨练",
+		"startTime":"19:30",
+		"endTime":"20:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"学习阶段",
+		"title":"晨练",
+		"startTime":"20:30",
+		"endTime":"21:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"睡前阶段",
+		"title":"晨练",
+		"startTime":"21:30",
+		"endTime":"22:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+	{
+		"id": "128624c3-0f17-11e7-9b59-000c293e6828",
+		"name":"睡眠阶段",
+		"title":"晨练",
+		"startTime":"22:30",
+		"endTime":"06:30",
+		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
+	},
+];
+var timeArr={
+	"obj": [
+		{
+			"timeLenReaneMax": "60",
+			"level": "辅助阶段",
+			"name": "起床阶段",
+			"endTimeRange": "7：15-8：45",
+			"startTime": "6:30",
+			"id": "91b52ff326894304aa6f270f4a6e4f3b",
+			"endTime": "7:30",
+			"timeLenRangeMin": "40",
+			"timePeriods": [
+				{
+					"name": "醒来-平静-起床",
+					"startTime": "6:30",
+					"id": "9fb21e4e00e545dc85ed9f3180bdc991",
+					"endTime": "6:40",
+					"title": "醒来-平静-起床"
+				},
+				{
+					"name": "如厕",
+					"startTime": "6:40",
+					"id": "bbcd2ca7795046e4a132ac1256069242",
+					"endTime": "7:00",
+					"title": "如厕"
+				},
+				{
+					"name": "洗漱更衣",
+					"startTime": "7:00",
+					"id": "717fea15a8554ddbb5cbcfec94429f97",
+					"endTime": "7:30",
+					"title": "洗漱更衣"
+				}
+			],
+			"title": "起床阶段",
+			"startTimeRange": "6：15-6：45"
+		},
+		{
+			"timeLenReaneMax": "40",
+			"level": "次要阶段",
+			"name": "晨练阶段",
+			"endTimeRange": "7：45-8：15",
+			"startTime": "7:30",
+			"id": "9e7ea15d0d7d4af3a57e635102e83770",
+			"endTime": "8:00",
+			"timeLenRangeMin": "20",
+			"timePeriods": [
+				{
+					"name": "晨练",
+					"startTime": "7:30",
+					"id": "c27521d4f54c4c119f8a8ebe202d753c",
+					"endTime": "8:00",
+					"title": "晨练"
+				}
+			],
+			"title": "晨练阶段",
+			"startTimeRange": "7：15-7：45"
+		},
+		{
+			"timeLenReaneMax": "40",
+			"level": "主要阶段",
+			"name": "早餐阶段",
+			"endTimeRange": "8：15-8：45",
+			"startTime": "8:00",
+			"id": "6e163b7fe89f4002be447d40a06d1261",
+			"endTime": "8:30",
+			"timeLenRangeMin": "20",
+			"timePeriods": [
+				{
+					"name": "早餐",
+					"startTime": "8:00",
+					"id": "3937cd33b5fb4308a8c729379b8a26d7",
+					"endTime": "8:30",
+					"title": "早餐"
+				}
+			],
+			"title": "早餐阶段",
+			"startTimeRange": "7：45-8：15"
+		},
+		{
+			"level": "主要阶段",
+			"name": "工作阶段",
+			"startTime": "8:30",
+			"id": "562bedf6d33949f785ae625d14cf745e",
+			"endTime": "10:30",
+			"timePeriods": [
+				{
+					"name": "工作",
+					"startTime": "8:30",
+					"id": "1b3f5cc035504ea5af538819eb8d2d51",
+					"endTime": "10:30",
+					"title": "工作1"
+				}
+			],
+			"title": "工作阶段1",
+			"startTimeRange": "8：15-8：45"
+		},
+		{
+			"level": "辅助阶段",
+			"name": "休息阶段",
+			"startTime": "10:30",
+			"id": "7496b240b78943f4818b52a5d1390ea1",
+			"endTime": "11:00",
+			"timePeriods": [
+				{
+					"name": "休息",
+					"startTime": "10:30",
+					"id": "7e1acf670adb4684943ef86a7eaaeec0",
+					"endTime": "11:00",
+					"title": "休息1"
+				}
+			],
+			"title": "休息阶段1"
+		},
+		{
+			"level": "主要阶段",
+			"name": "工作阶段",
+			"endTimeRange": "11：45-12：15",
+			"startTime": "11:00",
+			"id": "d8340b1018d14435933da76237e8b51b",
+			"endTime": "12:00",
+			"timePeriods": [
+				{
+					"name": "工作",
+					"startTime": "11:00",
+					"id": "2356bc72a4ba406ba229e48c3761aded",
+					"endTime": "12:00",
+					"title": "工作2"
+				}
+			],
+			"title": "工作阶段2"
+		},
+		{
+			"timeLenReaneMax": "115",
+			"level": "主要阶段",
+			"name": "午休阶段",
+			"endTimeRange": "13：15-13：45",
+			"startTime": "12:00",
+			"id": "d180ac7ad8234c80bd35dc568c2564e7",
+			"endTime": "13:30",
+			"timeLenRangeMin": "75",
+			"timePeriods": [
+				{
+					"name": "午餐",
+					"startTime": "12:00",
+					"id": "7fd2f68165e8471880e1208f1c3bbb25",
+					"endTime": "12:50",
+					"title": "午餐"
+				},
+				{
+					"name": "饭后休息",
+					"startTime": "12:50",
+					"id": "4af63801b8674041974862d175451b9e",
+					"endTime": "13:00",
+					"title": "饭后休息"
+				},
+				{
+					"name": "午睡",
+					"startTime": "13:00",
+					"id": "f190e84721be4bf7857652223efa75ca",
+					"endTime": "13:30",
+					"title": "午睡"
+				}
+			],
+			"title": "午休阶段",
+			"startTimeRange": "11：45-12：15"
+		},
+		{
+			"level": "主要阶段",
+			"name": "工作阶段",
+			"startTime": "13:30",
+			"id": "5fffbb1d33214aac9dd7967c603115fa",
+			"endTime": "15:30",
+			"timePeriods": [
+				{
+					"name": "工作",
+					"startTime": "13:30",
+					"id": "515f318ae35c4c558c3cb32ffb4638e4",
+					"endTime": "15:30",
+					"title": "工作3"
+				}
+			],
+			"title": "工作阶段3",
+			"startTimeRange": "13：15-13：45"
+		},
+		{
+			"level": "辅助阶段",
+			"name": "休息阶段",
+			"startTime": "15:30",
+			"id": "6f1b0d0feec14924ba8a323778c3401a",
+			"endTime": "16:00",
+			"timePeriods": [
+				{
+					"name": "休息",
+					"startTime": "15:30",
+					"id": "3380cf1b05354148be1017aaf4a3e3f7",
+					"endTime": "16:00",
+					"title": "休息2"
+				}
+			],
+			"title": "休息阶段2"
+		},
+		{
+			"level": "主要阶段",
+			"name": "工作阶段",
+			"endTimeRange": "18：15-18：45",
+			"startTime": "16:00",
+			"id": "d238ca74cb4f4f29b9462ded3deba1ac",
+			"endTime": "18:30",
+			"timePeriods": [
+				{
+					"name": "工作",
+					"startTime": "16:00",
+					"id": "c9998784fa4f4e918032b07ab75b023b",
+					"endTime": "18:30",
+					"title": "工作4"
+				}
+			],
+			"title": "工作阶段4"
+		},
+		{
+			"timeLenReaneMax": "105",
+			"level": "主要阶段",
+			"name": "晚餐阶段",
+			"endTimeRange": "19：45-20：15",
+			"startTime": "18:30",
+			"id": "5b24be8709db499280a4a5deab1a76f5",
+			"endTime": "20:00",
+			"timeLenRangeMin": "75",
+			"timePeriods": [
+				{
+					"name": "晚餐",
+					"startTime": "18:30",
+					"id": "1c0e6454a63c49adb617583aee9dbf8a",
+					"endTime": "19:30",
+					"title": "晚餐"
+				},
+				{
+					"name": "休闲",
+					"startTime": "19:30",
+					"id": "fd234266c57a4f5dbdecacc1d465386a",
+					"endTime": "20:00",
+					"title": "休闲1"
+				}
+			],
+			"title": "晚餐阶段",
+			"startTimeRange": "18：15-18：45"
+		},
+		{
+			"level": "次要阶段",
+			"name": "休闲阶段",
+			"startTime": "20:00",
+			"id": "cb8fafeb7f1a4181a057287a2bfc8aab",
+			"endTime": "22:30",
+			"timePeriods": [
+				{
+					"name": "运动",
+					"startTime": "20:00",
+					"id": "c10d207ebdf54cfeb3d27ac15e23ddf0",
+					"endTime": "21:00",
+					"title": "运动"
+				},
+				{
+					"name": "休闲",
+					"startTime": "21:00",
+					"id": "b2b445107f314f9a8817e0eb16c2cc5e",
+					"endTime": "22:30",
+					"title": "休闲2"
+				}
+			],
+			"title": "休闲阶段",
+			"startTimeRange": "19：45-20：15"
+		},
+		{
+			"level": "辅助阶段",
+			"name": "睡前阶段",
+			"startTime": "22:30",
+			"id": "d0d77c331ce44a02a40e9de89ed22746",
+			"endTime": "23:00",
+			"timePeriods": [
+				{
+					"name": "睡前",
+					"startTime": "22:30",
+					"id": "fddaa5e95d404d989886002a83d8d1fd",
+					"endTime": "23:00",
+					"title": "睡前"
+				}
+			],
+			"title": "睡前阶段"
+		},
+		{
+			"level": "主要阶段",
+			"name": "睡眠阶段",
+			"endTimeRange": "6：15-6：45",
+			"startTime": "23:00",
+			"id": "cd1d7d62018540a7939efa965e7c5000",
+			"endTime": "6:30",
+			"timePeriods": [
+				{
+					"name": "睡眠",
+					"startTime": "23:00",
+					"id": "2a82d9dd6c394f03b18407502bd41db7",
+					"endTime": "6:30",
+					"title": "睡眠"
+				}
+			],
+			"title": "睡眠阶段"
+		}
+	],
+	"ok": true
+};
 var questions={
 	"msg": "",
 	"obj": [
@@ -1057,7 +1490,269 @@ var questions={
 		}
 	],
 	"success": true
-}
+};
+var data1 = [
+	{
+		text: '0',
+		value:'a'
+	},{
+		text: '1',
+		value:'b'
+	},{
+		text: '2',
+		value:'c'
+	},{
+		text: '3',
+		value:'d'
+	},{
+		text: '4',
+		value:'e'
+	},{
+		text: '5',
+		value:'f'
+	},{
+		text: '6',
+		value:'j'
+	},{
+		text: '7',
+		value:'h'
+	},{
+		text: '8',
+		value:'i'
+	},{
+		text: '9',
+		value:'g'
+	},{
+		text: '10',
+		value:'k'
+	},{
+		text: '11',
+		value:'l'
+	},{
+		text: '12',
+		value:'m'
+	},{
+		text: '13',
+		value:'n'
+	},{
+		text: '14',
+		value:'o'
+	},{
+		text: '15',
+		value:'p'
+	},{
+		text: '16',
+		value:'q'
+	},{
+		text: '17',
+		value:'r'
+	},{
+		text: '18',
+		value:'s'
+	},{
+		text: '19',
+		value:'t'
+	},{
+		text: '20',
+		value:'u'
+	},{
+		text: '21',
+		value:'v'
+	},{
+		text: '22',
+		value:'w'
+	},{
+		text: '23',
+		value:'x'
+	}
+];
+var data2=[
+	{
+		text: '0',
+		value:'0'
+	},{
+		text: '1',
+		value:'1'
+	}
+	,{
+		text: '2',
+		value:'2'
+	}
+	,{
+		text: '3',
+		value:'3'
+	}
+	,{
+		text: '4',
+		value:'4'
+	}
+	,{
+		text: '5',
+		value:'5'
+	},{
+		text: '6',
+		value:'6'
+	},{
+		text: '7',
+		value:'7'
+	},{
+		text: '8',
+		value:'8'
+	},{
+		text: '9',
+		value:'9'
+	},{
+		text: '10',
+		value:'10'
+	},{
+		text: '11',
+		value:'11'
+	},{
+		text: '12',
+		value:'12'
+	},{
+		text: '13',
+		value:'13'
+	},{
+		text: '14',
+		value:'14'
+	},{
+		text: '15',
+		value:'15'
+	},{
+		text: '16',
+		value:'16'
+	},{
+		text: '17',
+		value:'17'
+	},{
+		text: '18',
+		value:'18'
+	},{
+		text: '19',
+		value:'19'
+	},{
+		text: '20',
+		value:'20'
+	},{
+		text: '21',
+		value:'21'
+	},{
+		text: '22',
+		value:'22'
+	},{
+		text: '23',
+		value:'23'
+	},{
+		text: '24',
+		value:'24'
+	},{
+		text: '25',
+		value:'25'
+	},{
+		text: '26',
+		value:'26'
+	},{
+		text: '27',
+		value:'27'
+	},{
+		text: '28',
+		value:'28'
+	},{
+		text: '29',
+		value:'29'
+	},{
+		text: '30',
+		value:'30'
+	},{
+		text: '31',
+		value:'31'
+	},{
+		text: '32',
+		value:'32'
+	},{
+		text: '33',
+		value:'33'
+	},{
+		text: '34',
+		value:'34'
+	},{
+		text: '35',
+		value:'35'
+	},{
+		text: '36',
+		value:'36'
+	},{
+		text: '37',
+		value:'37'
+	},{
+		text: '38',
+		value:'38'
+	},{
+		text: '39',
+		value:'39'
+	},{
+		text: '40',
+		value:'40'
+	},{
+		text: '41',
+		value:'41'
+	},{
+		text: '42',
+		value:'42'
+	},{
+		text: '43',
+		value:'43'
+	},{
+		text: '44',
+		value:'44'
+	},{
+		text: '45',
+		value:'45'
+	},{
+		text: '46',
+		value:'46'
+	},{
+		text: '47',
+		value:'47'
+	},{
+		text: '48',
+		value:'48'
+	},{
+		text: '49',
+		value:'49'
+	},{
+		text: '50',
+		value:'50'
+	},{
+		text: '51',
+		value:'51'
+	},{
+		text: '52',
+		value:'52'
+	},{
+		text: '53',
+		value:'53'
+	},{
+		text: '54',
+		value:'54'
+	},{
+		text: '55',
+		value:'55'
+	},{
+		text: '56',
+		value:'56'
+	},{
+		text: '57',
+		value:'57'
+	},{
+		text: '58',
+		value:'58'
+	},{
+		text: '59',
+		value:'59'
+	}
+];
 var sheets = {
 	"xuewei": [{
 		"category": "十二经脉",
@@ -7823,7 +8518,7 @@ for(var i in sheets.jingluo) {
 		jingluoKey = jingluoCode.substring(0, xhxIndex)
 	}
 	jingluo[jingluoKey] = sheets.jingluo[i];
-}
+};
 var xuewei = {};
 for(var i in sheets.xuewei) {
 	xuewei[sheets.xuewei[i].code] = sheets.xuewei[i];
