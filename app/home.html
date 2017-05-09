@@ -57,7 +57,7 @@
 
 </head>
 <body style="background-color:rgba(0,0,0,.0);width:100%; height:100%;">
-  <div id='ab'style="width:100%; height:100%; /*background-color:#1e4183;*/ background-size:100% 100% ;">
+  <div id='ab'style="width:100%; height:100%; background-color:#1e4183; background-size:100% 100% ;">
 
 
     <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
@@ -136,21 +136,6 @@
     e.preventDefault();
     $('.bigimg').hide();
   });
- /* var arrobj=[
-    {
-      timePeriod:'晨练',
-      name: "揉心窝",
-      img: "pic/rouxinwo.png"
-    },
-    {
-      timePeriod:'运动',
-      name: "内功养",
-      img: "pic/rouxinwo.png"
-    },
-  ]*/
-
-
-  //http://localhost:3000/home.html?userId=867200022156895,86720002215690393791782&renqun=high_quality_population&location=1&daytype=2&seasonId=1
 
   var data1 = [
     {
@@ -232,8 +217,6 @@
     success:function(data){
 
       arr=data.obj
-
-
     },
     error:function(){
 
@@ -272,30 +255,7 @@
 
     //window.postMessage('123');
   })
-  /*$.ajax({
-    data:{
-      /!*userId :userid,*!/
-      renqunId :renqun,
-      /!*location :1,
-      daytype:1,
-      seasonId:1*!/
-      /!*userId :用户的ID
-       renqunId(默认high_quality_population) ：人群
-       location(默认1) :地区类型1：除新疆、西藏外的所有地区2：新疆、西藏地区
-       daytype(默认1) :天类型1:工作日2:周末
-       seasonId :季节id(1春季2夏季3秋季 4冬季),不传则系统自动计算*!/
-    },
-    dataType: "json",
-    url: urls.TIMEPERIOD_GETMYTIMEPERIOD,
-    success: function(data){
 
-      arr=JSON.parse(data.obj.data);
-    },
-    error:function(data){
-      console.log(data);
-
-    }
-  });*/
 
   var startTimeArr=[];
   var angleIndex;
@@ -336,6 +296,7 @@
 
 
   setTimeout(drawTime,500)
+
 
   function drawTime(){
 
@@ -633,12 +594,14 @@
     if(overText<=180){
         if(overText>120){
             context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)+18,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20);
+
         }else{
             context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)+18,Math.cos(2*Math.PI / 360*centerText) * (num+40)-10);
         }
 
     }else{
       context.fillText(name,Math.sin(2*Math.PI / 360*centerText) * (num+40)-15,Math.cos(2*Math.PI / 360*centerText) * (num+40)-20);
+
     }
     context.closePath();
 
@@ -650,6 +613,20 @@
     context.textAlign='center';
     context.textBaseline='middle';
     context.fillText(startTime,Math.sin(2*Math.PI / 360*startText) * (num+40),Math.cos(2*Math.PI / 360*startText) * (num+40));
+    var div=document.createElement("div");
+    div.id='div1'
+    div.style.width='30px';
+    div.style.height='10px';
+    div.style.background='rgba(0,0,0,.3)';
+    div.style.position='absolute';
+    console.log(Math.sin(2*Math.PI / 360*startText) * (num+40));
+    div.style.left=''+(Math.sin(2*Math.PI / 360*startText) * (num+40)+144)+'px'
+    div.style.top=''+(Math.cos(2*Math.PI / 360*startText) * (num+40)+195)+'px'
+    div.onclick=function(){
+      window.postMessage('修改时间');
+    }
+    var av=document.getElementById('abc1');
+    av.appendChild(div);
     context.closePath();
 
 
@@ -662,6 +639,20 @@
     context.textAlign='center';
     context.textBaseline='middle';
     context.fillText(endTime,Math.sin(2*Math.PI / 360*overText) * (num+40),Math.cos(2*Math.PI / 360*overText) * (num+40));
+    var div=document.createElement("div");
+    div.id='div2'
+    div.style.width='30px';
+    div.style.height='10px';
+    div.style.background='rgba(0,0,0,.3)';
+    div.style.position='absolute';
+    console.log(Math.sin(2*Math.PI / 360*overText) * (num+40));
+    div.style.left=''+(Math.sin(2*Math.PI / 360*overText) * (num+40)+144)+'px';
+    div.style.top=''+(Math.cos(2*Math.PI / 360*overText) * (num+40)+195)+'px';
+    div.onclick=function(){
+      window.postMessage('修改时间');
+    }
+    var av=document.getElementById('abc1');
+    av.appendChild(div);
     context.closePath();
   }
   //下个时间段的指示的显示方法
@@ -720,6 +711,7 @@
     }
     return {x: x, y: y};
   }
+
 </script>
 
 </body>
