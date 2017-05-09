@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/data.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    html,body{
+      height:100%;
+      width:100%;
+      font-size:12px;
+    }
+    .topBox{
+      width:100%;
+      height:40%;
+    }
+    .buttomBox{
+      width:92%;
+      height:55%;
+      padding:4%;
+
+    }
+    .left{
+      width:20%;
+      height:auto;
+      line-height:56px;
+    }
+    .center{
+      width:2%;
+      height:auto;
+
+    }
+    .right{
+      width:78%;
+      height:auto;
+      padding:10px 0px;
+    }
+    .left,.center,.right{
+      float:left;
+    }
+    .smallCircle{
+      background: #000000;
+      border-radius:100%;
+      width:100%;
+      margin-top:26px;
+    }
+
+    .duanBox{
+      width:18%;
+      height:auto;
+      float:left;
+      margin-left:2px;
+    }
+    .colorduan{
+      width:100%;
+      height:5px;
+      background: #1d3e81;
+    }
+    .textduan{
+      width:100%;
+      height:auto;
+      text-align: center;
+    }
+    .time{
+      width:100%;
+      height:auto;
+      float:left;
+    }
+    .time span{
+      width: 18%;
+      height: auto;
+      float: left;
+      margin-left:2px;
+    }
+    .textduan{
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      overflow: hidden;
+
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div class="topBox" style="background: #000000">
+</div>
+<div class="buttomBox">
+  <div class="bigBox"style="background:#9fffff;width:100%; height:100%; overflow:hidden; overflow-y: scroll;">
+    <div style="width:100%; height:60px;">
+      <div class="left">
+        早餐阶段
+      </div>
+      <div class="center">
+        <div class="smallCircle"></div>
+      </div>
+      <div class="right">
+        <div class="time">
+          <span>6:10</span>
+          <span>6:10</span>
+          <span>6:10</span>
+          <span>6:10</span>
+        </div>
+        <div></div>
+        <div class="duan" style="width:100%; height:auto;">
+          <div class="duanBox" style="margin-left:20px;">
+            <div class="colorduan"></div>
+            <div class="textduan">早餐</div>
+
+          </div>
+          <div class="duanBox">
+            <div class="colorduan"></div>
+            <div class="textduan">早餐</div>
+          </div>
+          <div class="duanBox">
+            <div class="colorduan"></div>
+            <div class="textduan">早餐</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="js/picker.min.js"></script>
+
+<script>
+
+
+
+
+  var str='';
+  for(var i=0; i<timeArr.obj.length; i++){
+    str += '<div style="width:100%; height:80px;">'+
+    '<div class="left">'+timeArr.obj[i].name+'</div>'+
+    '<div class="center">'+
+    '<div class="smallCircle"></div>'+
+    '</div>'+
+    '<div class="right">'+
+    '<div class="time">'
+        for(var j=0; j<timeArr.obj[i].timePeriods.length; j++){
+          str+='<span>'+timeArr.obj[i].timePeriods[j].startTime+'</span>'
+        }
+    str +='<span>'+timeArr.obj[i].endTime+'</span>'+
+            '</div>'+
+    '<div></div>'+
+    '<div class="duan" style="width:100%; height:auto;">';
+        for(var a=0; a<timeArr.obj[i].timePeriods.length; a++){
+          if(a==0){
+            str+='<div class="duanBox" style="margin-left:20px;">'+
+                    '<div class="colorduan"></div>'+
+                    '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
+                    '</div>'
+          }else{
+            str+='<div class="duanBox">'+
+                    '<div class="colorduan"></div>'+
+                    '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
+                    '</div>'
+          }
+        }
+    str +='</div>'+
+    '</div>'+
+    '</div>'
+  }
+  $('.bigBox').html(str);
+  $('.smallCircle').height($('.smallCircle').width());
+  $('.time').find('span').click(function(){
+
+    var picker1 = new Picker({
+      data: [data1,data2]
+    });
+    var a=$(this);
+    picker1.on('picker.select', function (selectedVal, selectedIndex) {
+      //console.log(JSON.stringify(selectedVal))
+      console.log(selectedIndex)
+      var hr=selectedIndex[0];
+      var min=selectedIndex[1];
+      if(min<=9){
+        min="0"+min
+      }
+     a.text(hr+":"+min);
+    });
+
+    picker1.on('picker.change', function (index, selectedIndex) {
+      console.log(index);
+    });
+
+    picker1.on('picker.valuechange', function (selectedVal, selectedIndex) {
+      console.log(selectedVal);
+    });
+    picker1.show();
+
+
+  })
+
+
+  
+
+</script>
+
+
+</body>
+
+</html>
