@@ -215,6 +215,7 @@
       authorization: token
     },
     success:function(data){
+        console.log(1);
 
       arr=data.obj
     },
@@ -561,10 +562,6 @@
     var overText=blueTime_timeToAngle(endTime);
     var centerText;
     centerText=overText+3;
-
-
-
-
     //绿色斜线
     context.beginPath();
     context.strokeStyle="#a1cc01";
@@ -619,7 +616,6 @@
     div.style.height='10px';
     div.style.background='rgba(0,0,0,.3)';
     div.style.position='absolute';
-    console.log(Math.sin(2*Math.PI / 360*startText) * (num+40));
     div.style.left=''+(Math.sin(2*Math.PI / 360*startText) * (num+40)+144)+'px'
     div.style.top=''+(Math.cos(2*Math.PI / 360*startText) * (num+40)+195)+'px'
     div.onclick=function(){
@@ -645,7 +641,6 @@
     div.style.height='10px';
     div.style.background='rgba(0,0,0,.3)';
     div.style.position='absolute';
-    console.log(Math.sin(2*Math.PI / 360*overText) * (num+40));
     div.style.left=''+(Math.sin(2*Math.PI / 360*overText) * (num+40)+144)+'px';
     div.style.top=''+(Math.cos(2*Math.PI / 360*overText) * (num+40)+195)+'px';
     div.onclick=function(){
