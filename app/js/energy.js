@@ -2,10 +2,9 @@
  * Created by lim on 2017/4/20.
  */
 //
-//
-var city = "郑州市";
+var city = "北京";
 var weather = "晴";
-var winp = "5级";
+var winp = "2级";
 var air_scope = "50-100";
 $(document).ready(function(){
     var xAxis = ['地域', '年龄', '性别', '天气', '民族', '学历', '姓氏', '行业', '专业', 
@@ -24,9 +23,7 @@ $(document).ready(function(){
     if(isNotBlank(getQueryString('air_scope'))) city = getQueryString('air_scope');
     $.ajax({
         url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
-        headers: {
-            authorization: getQueryString('token')
-        },
+        headers: {authorization: getQueryString('token')},
         type: "post",
         dataType: "JSON",
         success: function(data){
