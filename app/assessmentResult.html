@@ -48,7 +48,7 @@
     </div>
     <div id="before" class="appraisalMark">
         <div>恭喜您完成测评</div>
-        <div>您的健康状况<span class="grade">良好</span></div>
+        <div class="grade">您的健康状况良好</div>
         <div>更加全面的健康状况判断</div>
         <div style="margin-bottom: 24px">尽在<a class="gotoDeep" style="color: #a1cc00;border-bottom:1px solid #a1cc00; ">深度自诊</a>
         </div>
@@ -74,11 +74,12 @@
             authorization: token
         },
         success: function (res) {
+            console.log(res);
             /*
              * 分数填充
              * */
             $(".jieguo").html(res.obj.complex);
-//            $(".grade").html(res.obj.grade.split('\\n')[1]);
+            $(".grade").html(res.obj.grade.split('\\n')[1]);
             $(".appraisalsl span").html(res.obj.physiology);
             $(".appraisalxl span").html(res.obj.psychology);
             $(".appraisalsj span").html(res.obj.social);

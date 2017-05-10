@@ -30,7 +30,15 @@ var urls = {
     //获取测评结果
     DIAGNOSIS_GETEVALUATIONRESULT: apiPath + 'DiagnosisApi/getEvaluationResult',
     //获取图片
-    IMGSRC:apiPath+'ImgApi/getImage?filePath=',
+    IMGSRC: apiPath + 'ImgApi/getImage?filePath=',
+    //用户症状列表
+    DIAGNOSIS_GETUSERSYMPTOMLIST: apiPath + 'DiagnosisApi/getUserSymptomList',
+    //部位器官症状列表
+    DIAGNOSIS_GETPARTORGANSYMPTOMLIST: apiPath + 'DiagnosisApi/getPartOrganSymptomList',
+    //最近做过的事情列表
+    DIAGNOSIS_GETRECENTTHINGLIST: apiPath + 'DiagnosisApi/getRecentThingList',
+
+        DIAGNOSIS_SUBMITSYMPTOM:apiPath+'DiagnosisApi/submitSymptom'
 
 }
 

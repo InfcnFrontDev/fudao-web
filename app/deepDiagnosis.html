@@ -8,7 +8,7 @@
     <script type="text/javascript" src="./js/mui.min.js"></script>
     <script type="text/javascript" src="./js/common.js"></script>
     <script type="text/javascript" src="js/privatejs/self_cultivation_result.js"></script>
-    <script type="text/javascript" src="./js/source/config.js"></script>
+    <script type="text/javascript" src="./js/config.js"></script>
     <script type="text/javascript" src="./js/source/echarts.simple.min.js"></script>
     <script type="text/javascript" src="./js/source/localstorage.js"></script>
     <script type="text/javascript" src="./js/source/public.js"></script>
@@ -61,7 +61,7 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <!--slide1-->
-        <div class="swiper-slide swiper-no-swiping" id="deepPage1">
+        <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="overflow: scroll">
             <div style="position:absolute;top:30px;right:-15px;z-index: 99999999;">
                 <div class="chart" id="pieChart" style="width: 180px;height:140px;"></div>
                 <ul id="div_list"
@@ -70,7 +70,7 @@
             </div>
             <div id='div_content'
                  style="height: 100%;width:100%;display: flex;flex-direction: column;justify-content: center">
-                <img src="./images/click_zhengzhuang.png" style="position: absolute;z-index: -1;top: 20px;" width="40%"
+                <img src="./images/click_zhengzhuang.png" style="margin-bottom:-63px;margin-top: 30px;" width="40%"
                      height="15%" id="click_zhengzhuang"/>
                 <div id="renti_xiuyixiu">
                     <div id="svgGraph"></div>
@@ -83,231 +83,319 @@
             </div>
         </div>
         <!--slide2-->
-        <div class="swiper-slide swiper-no-swiping">
-            <div>
-                <p style="font-size: 13px;text-align: left;padding: 8px;padding-left: 20px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">您已选择的症状有</p>
-                <div id="div_list_selected2"
-                     style="width:100%;padding:0 40px;text-align: center;margin-top:5px;border-bottom: 2px solid #D8D8D8;clear: both">
-                    <div style="height: 30px"></div>
+        <div class="swiper-slide swiper-no-swiping" style="display: flex;flex-direction: column">
+            <div style="flex:1;overflow-y: scroll;overflow-x: hidden">
+                <div>
+                    <p style="font-size: 13px;text-align: left;padding: 8px;padding-left: 20px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">
+                        您已选择的症状有</p>
+                    <div id="div_list_selected2"
+                         style="width:90%;padding:0 40px;text-align: center;margin-top:5px;border-bottom: 2px solid #D8D8D8;clear: both">
+                        <div style="height: 30px"></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 13px;text-align: left;padding: 8px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">
+                        <span>您最近做过以下几项事情吗？</span>
+                        <p style="float:right;font-size: 15px;margin: 0;margin-right: 12%">都没有<input type="checkbox"
+                                                                                                     name="category"
+                                                                                                     value="都没有"
+                                                                                                     onclick="my_func()"/>
+                        </p></div>
+                    <div id="checkBox">
+                    </div>
                 </div>
             </div>
-            <div>
-                <div style="font-size: 13px;text-align: left;padding: 8px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;"><span>您最近做过以下几项事情吗？</span><p style="float:right;font-size: 15px;margin: 0;margin-right: 12%">都没有<input type="checkbox"  name="category" value="今日话题"  onclick="my_func()"/></p></div>
-                <div id="checkBox">
-                </div>
-            </div>
-            <a id="depthSubmit" style="position:absolute;bottom:30px;margin-left:20%;display:block;background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a>
+            <a id="depthSubmit"
+               style="display:block;margin: 20px auto 30px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
+               onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a>
         </div>
     </div>
     <!-- Add Arrows -->
     <div class="swiper-button-next" id="opacityNext"
          style="background-image: url('./images/next.png');background-size: 200%;"></div>
-    <div class="swiper-button-prev" id="opacityPre" style="background-image: url('./images/pre.png');background-size: 200%;"></div>
+    <div class="swiper-button-prev" id="opacityPre"
+         style="background-image: url('./images/pre.png');background-size: 200%;"></div>
 </div>
 
 
 <!-- Initialize Swiper -->
 <script>
-        function groupBy(current,type) {
-            var result = {};
-            for (var i=0;i<current.length;i++){
-                result[current[i][type]] = result[current[i][type]] || [];
-                result[current[i][type]].push(current[i]);
-            }
-            return result;
+    var type = true;
+    function groupBy(current, type) {
+        var result = {};
+        for (var i = 0; i < current.length; i++) {
+            result[current[i][type]] = result[current[i][type]] || [];
+            result[current[i][type]].push(current[i]);
         }
+        return result;
+    }
     var swiper = new Swiper('.swiper-container', {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 30
     });
     var diseasespeople;
-    var token = '';
+//    var token = "3337f805-e44b-47be-a32b-06bd423a6775";
+    var token = localStorage.getItem('zizhen_token');
     var symptomList = [];
+    $.ajax({
+        type: "post",
+        url: urls.DIAGNOSIS_GETUSERSYMPTOMLIST,
+        headers: {
+            authorization: token
+        },
+        success: function (res) {
+            if (res.obj.length == 0) {
+                $.ajax({
+                    type: "post",
+                    url: urls.DIAGNOSIS_GETPARTORGANSYMPTOMLIST,
+                    headers: {
+                        authorization: token
+                    },
+                    success: function (res) {
+                        symptomList = res.obj;
+                        /*       symptomList = {
+                         "头部": {
+                         "鼻": [
+                         "鼻塞",
+                         "流涕"
+                         ],
+                         "精神": [
+                         "焦虑",
+                         "自罪自责"
+                         ],
+                         "耳": [
+                         "耳鸣",
+                         "耳堵"
+                         ]
+                         },
+                         "颈部": {
+                         "咽喉": [
+                         "咽部异物感",
+                         "声带疲劳"
+                         ], "颈部": [
+                         "颈项强直、疼痛",
+                         "不能点头、仰头及转头"
+                         ]
+                         },
+                         "胸部": {
+                         "心脏": [
+                         "心慌气短",
+                         "心悸",
+                         "胸闷",
+                         "心率变化",
+                         "心律失常"
+                         ],
+                         "胸腔": [
+                         "胸部有捆绑感"
+                         ]
+                         },
+                         "腹部": {
+                         "上腹": [
+                         "大便失禁",
+                         "食欲紊乱",
+                         "排便费力",
+                         "干球状便或硬便",
+                         "排便不尽感",
+                         "腹胀",
+                         "腹泻",
+                         "消化不良"
+                         ],
+                         "下腹": [
+                         "尿频",
+                         "膀胱和直肠功能障碍"
+                         ], "生殖": [
+                         "阴茎勃起障碍",
+                         "性功能减退"
+                         ]
+                         },
+                         "背部": {
+                         "脊柱": [
+                         "腰椎侧凸",
+                         "肩背疼痛发僵"
+                         ],
+                         "腰骶部": [
+                         "腰痛",
+                         "坐骨神经痛",
+                         "腰部活动受限",
+                         "椎间隙、椎旁压痛"
+                         ]
 
+                         },
 
+                         "四肢": {
+                         "颈部": [
+                         "鼻塞22",
+                         "流涕"
+                         ],
+                         "食道": [
+                         "咽部异物感",
+                         "流涕"
+                         ]
+                         }
+
+                         }*/
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+                });
+            } else {
+                type = false;
+                /*res={
+                 obj:[
+                 "鼻塞",
+                 "流涕",
+                 "心慌",
+                 "心悸",
+                 "胸闷",
+                 "心率变化",
+                 "心律失常",
+                 "腰痛",
+                 "坐骨神经痛",
+                 "腰部活动受限",
+                 "椎间隙、椎旁压痛"
+                 ]
+                 };*/
+                fun_pathogeny('tou', res.obj, false);
+            }
+        },
+        error: function () {
+            console.log('err')
+        }
+    });
 
     (function ($, doc) {
-//        $.ajax({
-//            type: "get",
-//            url: "http://192.168.10.69:9191/api/DiagnosisApi/getSymptomList",
-//            headers: {
-//                authorization: token
-//            },
-//            success: function (res) {
-//                symptomList = res.obj;
-                symptomList = [
-                    {
-                        "part": "头部",
-                        "organ": "鼻",
-                        "symptom": ["鼻塞", "流涕"]
-                    },
-                    {
-                        "part": "头部",
-                        "organ": "精神",
-                        "symptom": ["焦虑", "自罪自责"]
-                    },
-                    {
-                        "part": "头部",
-                        "organ": "耳",
-                        "symptom": ["耳鸣", "耳堵"]
-                    },
-                    {
-                        "part": "颈部",
-                        "organ": "咽喉",
-                        "symptom": ["咽部异物感", "声带疲劳"]
-                    },
-                    {
-                        "part": "颈部",
-                        "organ": "颈部",
-                        "symptom": ["颈项强直、疼痛", "不能点头、仰头及转头"]
-                    },
-                    {
-                        "part": "胸部",
-                        "organ": "心脏",
-                        "symptom": ["心慌气短", "心悸","胸闷","心率变化","心律失常"]
-                    },
-                    {
-                        "part": "胸部",
-                        "organ": "胸腔",
-                        "symptom": ["胸部有捆绑感"]
-                    },
-                    {
-                        "part": "腹部",
-                        "organ": "上腹",
-                        "symptom": ["大便失禁", "食欲紊乱","排便费力", "干球状便或硬便","排便不尽感", "腹胀","腹泻", "消化不良"]
-                    },
-                    {
-                        "part": "腹部",
-                        "organ": "下腹",
-                        "symptom": ["尿频", "膀胱和直肠功能障碍"]
-                    },
-                    {
-                        "part": "腹部",
-                        "organ": "生殖",
-                        "symptom": ["阴茎勃起障碍", "性功能减退"]
-                    },
-                    {
-                        "part": "背部",
-                        "organ": "脊柱",
-                        "symptom": ["腰椎侧凸", "肩背疼痛发僵"]
-                    },
-                    {
-                        "part": "背部",
-                        "organ": "腰骶部",
-                        "symptom": ["腰痛", "坐骨神经痛","腰部活动受限","椎间隙、椎旁压痛"]
-                    },
-                    {
-                        "part": "四肢",
-                        "organ": "颈部",
-                        "symptom": ["鼻塞22", "流涕"]
-                    },
-                    {
-                        "part": "四肢",
-                        "organ": "食道",
-                        "symptom": ["咽部异物感", "流涕"]
-                    }
-                ];
-                symptomList = groupBy(symptomList, "part");
 
-//            },
-//            error: function () {
-//                console.log('err')
-//            }
-//        });
-        mui.init();
-        mui.plusReady(function () {
-            //仅支持竖屏显示
-            plus.screen.lockOrientation("portrait-primary");
-            //数据处理
-            fun_handle_data();
-            //删除本地保存的各向指数
-            localStorage.removeItem("gexiangzhishu_1");
-            localStorage.removeItem("gexiangzhishu_2");
-            localStorage.removeItem("gexiangzhishu_3");
-            localStorage.removeItem("gexiangzhishu_4");
-            //各向指数赋值
-            //刷新main界面
-            var mainView = plus.webview.getWebviewById("main");
-            mui.fire(mainView, 'check_process_event', {});
+            mui.init();
+            mui.plusReady(function () {
+                //仅支持竖屏显示
+                plus.screen.lockOrientation("portrait-primary");
+                //数据处理
+                fun_handle_data();
+                //删除本地保存的各向指数
+                localStorage.removeItem("gexiangzhishu_1");
+                localStorage.removeItem("gexiangzhishu_2");
+                localStorage.removeItem("gexiangzhishu_3");
+                localStorage.removeItem("gexiangzhishu_4");
+                //各向指数赋值
+                //刷新main界面
+                var mainView = plus.webview.getWebviewById("main");
+                mui.fire(mainView, 'check_process_event', {});
 //            //人体自定义高度
 //            document.getElementById("svgGraph").style.height = (plus.screen.resolutionHeight - 180) + "px";
 //            console.log(document.getElementById("svgGraph").style.height)
-        });
+            });
 
-        mui('body').on('tap', '#toujing', function () {
-            document.getElementById("toujing").style.background = "#f00";
-            fun_pathogeny('tou', symptomList["头部"]);
-        });
-        mui('body').on('tap', '#xiong', function () {
-            fun_pathogeny('xiong', symptomList["胸部"]);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#fu', function () {
-            fun_pathogeny('fu', symptomList["腹部"]);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#dun', function () {
-            fun_pathogeny('bei', symptomList["背部"]);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#zuoshou', function () {
-            fun_pathogeny('sizhi', symptomList["四肢"]);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#youshou', function () {
-            fun_pathogeny('sizhi', symptomList["四肢"]);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#tui', function () {
-            fun_pathogeny('sizhi', symptomList["四肢"]);
-            event.stopPropagation();
-        });
+            mui('body').on('tap', '#toujing', function () {
+                if (type) {
+                    document.getElementById("toujing").style.background = "#f00";
+                    fun_pathogeny('tou', symptomList["头部"], true);
+                }
+            });
 
-        mui('body').on('tap', '#quanshen', function () {
-            fun_pathogeny("check_quanshen", symptomList["全身"]);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#xiongtanhao', function () {
-            fun_pathogeny("check_xiong", symptomList);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#futaihao', function () {
-            fun_pathogeny("check_fu", symptomList);
-            event.stopPropagation();
-        });
-        mui('body').on('tap', '#button', function () {
-            check_process_two_sure();
-        });
-        document.getElementById("table_id").style.marginTop = "10px";
-        diseasespeople = 'high_quality_population';
+            mui('body').on('tap', '#xiong', function () {
+                if (type) {
+                    fun_pathogeny('xiong', symptomList["胸部"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#fu', function () {
+                if (type) {
+                    fun_pathogeny('fu', symptomList["腹部"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#dun', function () {
+                if (type) {
+                    fun_pathogeny('bei', symptomList["背部"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#zuoshou', function () {
+                if (type) {
+                    fun_pathogeny('sizhi', symptomList["四肢"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#youshou', function () {
+                if (type) {
+                    fun_pathogeny('sizhi', symptomList["四肢"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#tui', function () {
+                if (type) {
+                    fun_pathogeny('sizhi', symptomList["四肢"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#quanshen', function () {
+                if (type) {
+                    fun_pathogeny("check_quanshen", symptomList["全身"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#xiongtanhao', function () {
+                if (type) {
+                    fun_pathogeny("check_xiong", symptomList, true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#futaihao', function () {
+                if (type) {
+                    fun_pathogeny("check_fu", symptomList, true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#button', function () {
+                if (type) {
+                    check_process_two_sure();
+
+                }
+            });
+
+
+            document.getElementById("table_id").style.marginTop = "10px";
+            diseasespeople = 'high_quality_population';
 //        diseasespeople = chooseVersion();
-        var svgPath = '';
-        if ('aged' == diseasespeople) {
-            if (true) {
-                svgPath = '../diagnosisMap/images/laoren.svg';
-            } else {
-                svgPath = '../diagnosisMap/images/laotaitai.svg'
+            var svgPath = '';
+            if ('aged' == diseasespeople) {
+                if (true) {
+                    svgPath = '../diagnosisMap/images/laoren.svg';
+                } else {
+                    svgPath = '../diagnosisMap/images/laotaitai.svg'
+                }
+            } else if ('high_quality_population' == diseasespeople) {
+                if (false) {
+                    svgPath = '../diagnosisMap/images/nanren.svg';
+                } else {
+                    svgPath = '../diagnosisMap/images/nvren.svg'
+                }
             }
-        } else if ('high_quality_population' == diseasespeople) {
-            if (false) {
-                svgPath = '../diagnosisMap/images/nanren.svg';
-            } else {
-                svgPath = '../diagnosisMap/images/nvren.svg'
-            }
-        }
-        loadSvg(svgPath);
+            loadSvg(svgPath);
 
-        mui('body').on('tap', '#opacityNext', function () {
-            swiper.slideNext();
-            document.getElementById("opacityNext").style.opacity=0;
-            fun_choosed_render();
-        });
-        mui('body').on('tap', '#opacityPre', function () {
-            swiper.slidePrev();
-            document.getElementById("opacityNext").style.opacity=1;
-        });
-    }(mui, document));
+            mui('body').on('tap', '#opacityNext', function () {
+                swiper.slideNext();
+                document.getElementById("opacityNext").style.opacity = 0;
+                fun_choosed_render(token, type);
+            });
+            mui('body').on('tap', '#opacityPre', function () {
+                swiper.slidePrev();
+                document.getElementById("opacityNext").style.opacity = 1;
+            });
+        }
+        (mui, document)
+    );
 </script>
 </body>
 </html>
