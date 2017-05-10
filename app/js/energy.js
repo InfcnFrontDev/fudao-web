@@ -18,6 +18,10 @@ $(document).ready(function(){
             '#9370DB','#919191','#F4E001','#96CDCD','#8B8B83',
             '#7FFF00','#7EC0EE','#7EC0EE','#76EE00','#6E8B3D',
             '#6C7B8B','#698B69','#6B8E23','#68838B','#66CDAA'];
+    if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
+    if(isNotBlank(getQueryString('weather'))) city = getQueryString('weather');
+    if(isNotBlank(getQueryString('winp'))) city = getQueryString('winp');
+    if(isNotBlank(getQueryString('air_scope'))) city = getQueryString('air_scope');
     $.ajax({
         url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
         headers: {
@@ -41,6 +45,11 @@ $(document).ready(function(){
         }
     });
 });
+
+function isNotBlank(v){
+    if(null == v || undefined == v || '' == v) return false;
+    return true;
+}
 
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -481,7 +490,7 @@ function getRainScore(weather){
     } else if (weather.indexOf("暴雨") != -1){
         return 70;
     } else {
-        return 10;
+        return 0;
     }
 }
 
@@ -500,7 +509,7 @@ function getSnowScore(weather){
     } else if (weather.indexOf("暴雪") != -1){
         return 100;
     } else {
-        return 10;
+        return 0;
     }
 }
 
@@ -516,6 +525,8 @@ function getSandScore(weather){
         return 70;
     } else if (weather.indexOf("强沙尘暴") != -1){
         return 100;
+    } else {
+        return 0;
     }
 }
 
@@ -531,6 +542,8 @@ function getSunScore(weather){
         return 60;
     } else if (weather.indexOf("雾") != -1){
         return 50;
+    } else {
+        return 0;
     }
 }
 
