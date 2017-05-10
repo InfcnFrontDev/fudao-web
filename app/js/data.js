@@ -120,6 +120,43 @@ var arr=[
 		"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
 	},
 ];
+var yundongObj={
+	"obj": [
+		{
+			"timePeriod": "休息1",
+			"name": "轮旋大拇指运动",
+			"img": "yundong/lunxuandamuzhi.png",
+			"principle": "\\t锻炼手指的灵活度和大脑反应、协调能力。",
+			"threeCharacterClassic": "指交叉，绕圆圈，增灵活，助协调。",
+			"detail": "\\t双手微展，十指互叉，双手大拇指互为追随绕圈，先顺时针转60下，再逆时针转60下。"
+		},
+		{
+			"timePeriod": "休息2",
+			"name": "撑墙挺腰",
+			"img": "yundong/chengqiangtingyao.png",
+			"principle": "\\t撑墙挺腰能矫正驼背，使人保持优雅、挺拔的身材。",
+			"threeCharacterClassic": "撑墙壁，挺腰身，矫驼背，塑优雅。",
+			"detail": "\\t面对着墙，距离约30~50厘米远站立，两手撑墙；腹部尽量贴着墙，然后再将腰部往后挺，坚持20秒，重复做10遍。注意不要踮脚，腹部贴着墙时尽量吸气，挺腰时吐气，20秒内呼吸3遍。"
+		},
+		{
+			"timePeriod": "晨练",
+			"name": "直腿抬升运动",
+			"img": "yundong/zhituitaisheng.png",
+			"principle": "\\t直腿抬升训练部位:下腹肌、臀大肌。",
+			"threeCharacterClassic": "绷脚趾，抬双腿，练臀部，强肌群。",
+			"detail": "\\t平躺，双腿伸直，双手放在臂部两侧，掌心向下，双腿伸直，脚趾绷紧，抬起双腿，至差不多与地面垂直的位置。"
+		},
+		{
+			"timePeriod": "运动",
+			"name": "屈体车轮跑",
+			"img": "yundong/qutichelunpao.png",
+			"principle": "\\t屈体车轮跑重点刺激腹外斜肌。",
+			"threeCharacterClassic": "仰卧姿，抬上体，车轮跑，强腹肌。",
+			"detail": "\\t双手抱头仰卧，上体抬起时双腿做交叉车轮跑，扭动上半身，使左右肘与右左膝相碰。"
+		}
+	],
+	"ok": true
+}
 var timeArr={
 	"obj": [
 		{

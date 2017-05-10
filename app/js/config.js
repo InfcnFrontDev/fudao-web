@@ -23,6 +23,12 @@ var urls = {
     TIMEPERIOD_GETGENERALTIMEPERIOD: apiPath + 'TimePeriodApi/getGeneralTimePeriod',
     //通用时间阶段
     TIMEPERIODAPI_GETGENERALTIMESTAGE: apiPath + 'TimePeriodApi/getGeneralTimeStage',
+
+    //获取全天的运动列表
+    TIMEPERIODA_GETALLDAYMOTIONLIST: apiPath + 'TimePeriodApi/getAllDayMotionList',
+
+    //获取时间段的推荐疗法
+    TIMEPERIOD_GETTIMESTAGETHERAPYLIST: apiPath + 'TimePeriodApi/getTimeStageTherapyList',
     //获取问卷列表
     DIAGNOSIS_GETQUESTIONNAIRELIST: apiPath + 'DiagnosisApi/getQuestionnaireList',
     //提交问卷
@@ -37,9 +43,8 @@ var urls = {
     DIAGNOSIS_GETPARTORGANSYMPTOMLIST: apiPath + 'DiagnosisApi/getPartOrganSymptomList',
     //最近做过的事情列表
     DIAGNOSIS_GETRECENTTHINGLIST: apiPath + 'DiagnosisApi/getRecentThingList',
-
-        DIAGNOSIS_SUBMITSYMPTOM:apiPath+'DiagnosisApi/submitSymptom'
-
+    //症状提交
+    DIAGNOSIS_SUBMITSYMPTOM: apiPath + 'DiagnosisApi/submitSymptom',
 }
 
 function getQueryString(name) {
