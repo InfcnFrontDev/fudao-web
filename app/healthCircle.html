@@ -8,6 +8,7 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/config.js"></script>
 	<script src="js/hidpi-canvas.js"></script>
+	<script src="js/data.js"></script>
 </head>
 <body>
     <div class="header-box">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的健康环</div>
@@ -40,150 +41,20 @@
 		var canvas = document.querySelector('canvas');
         context.translate(140,140);
         //context.rotate(-Math.PI/360);
-		var userid=getQueryString('userid');
-		var renqun=getQueryString('renqun')
-		var arr=[
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"起床阶段",
-				"title":"晨练",
-				"startTime":"06:30",
-				"endTime":"07:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"晨练",
-				"title":"晨练",
-				"startTime":"07:30",
-				"endTime":"08:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"主任务阶段",
-				"title":"晨练",
-				"startTime":"08:30",
-				"endTime":"10:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"休息阶段",
-				"title":"晨练",
-				"startTime":"10:30",
-				"endTime":"11:00",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"主任务阶段",
-				"title":"晨练",
-				"startTime":"11:00",
-				"endTime":"12:00",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"午休阶段",
-				"title":"晨练",
-				"startTime":"12:0",
-				"endTime":"13:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"主任务阶段",
-				"title":"晨练",
-				"startTime":"13:30",
-				"endTime":"15:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"休息阶段",
-				"title":"晨练",
-				"startTime":"15:30",
-				"endTime":"16:00",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"主任务阶段",
-				"title":"晨练",
-				"startTime":"16:00",
-				"endTime":"17:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"休闲阶段",
-				"title":"晨练",
-				"startTime":"17:30",
-				"endTime":"18:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"晚餐阶段",
-				"title":"晨练",
-				"startTime":"18:30",
-				"endTime":"19:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"休闲阶段",
-				"title":"晨练",
-				"startTime":"19:30",
-				"endTime":"20:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"学习阶段",
-				"title":"晨练",
-				"startTime":"20:30",
-				"endTime":"21:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"睡前阶段",
-				"title":"晨练",
-				"startTime":"21:30",
-				"endTime":"22:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-			{
-				"id": "128624c3-0f17-11e7-9b59-000c293e6828",
-				"name":"睡眠阶段",
-				"title":"晨练",
-				"startTime":"22:30",
-				"endTime":"06:30",
-				"timeStageId": "eb9b0f40-0f0f-11e7-9b59-000c293e6828"
-			},
-		]
+		var token=getQueryString('token');
 		$.ajax({
-			data:{
-				userId :userid,
-				renqunId :renqun,
-				location :1,
-				daytype:1,
-				seasonId:1
-
+			type:"post",
+			url:"http://192.168.10.69:9191/api/TimePeriodApi/getGeneralTimeStage",
+			headers: {
+				authorization: token
 			},
-			dataType: "json",
-			url: urls.MYHABIT,
-			success: function(data){
-				arr=JSON.parse(data.obj.data);
+			success:function(data){
+				arr=data.obj
+			},
+			error:function(){
 
 			}
 		});
-		setTimeout(function(){
-			console.log(arr)
-		},1000)
-		;
         setInterval(drawTime,1000);
 		setTimeout(drawTime,500)
         function drawTime(){

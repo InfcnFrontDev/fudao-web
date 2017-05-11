@@ -175,7 +175,7 @@
 			district = addComp.district;
 
         city=city.substring(0,city.length-1);
-        alert(token);
+
 
 		//var url='http://192.168.3.126:18080/fudao-svc/app/weatherAction!getWeather.action?city=北京';
 		$.ajax({
@@ -188,8 +188,7 @@
                 weaid: city
 			},
 			success: function (data) {
-				alert(JSON.stringify(data));
-				var dataobj = data.obj.result;
+				var dataobj = data.obj;
 				console.log(dataobj);
 				$('.wendu').html(dataobj.temperature);
 				$('.weather').html(dataobj.weather_curr);
