@@ -6,6 +6,7 @@
   <title>Title</title>
   <script src="js/jquery.min.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/config.js"></script>
 
   <style>
     *{
@@ -17,13 +18,10 @@
       width:100%;
       font-size:12px;
     }
-    .topBox{
-      width:100%;
-      height:35%;
-    }
+
     .buttomBox{
       width:92%;
-      height:60%;
+      height:92%;
       padding:4%;
 
     }
@@ -34,7 +32,8 @@
     }
     .center{
       width:2%;
-      height:auto;
+      height:100%;
+      background:#dcdcdc;
 
     }
     .right{
@@ -91,11 +90,10 @@
 </head>
 <body>
 
-<div class="topBox" style="background: #fff; text-align: center">
-  <img src="images/a.jpg" alt="" style="width:150px; height:150px; ">
-</div>
+
 <div class="buttomBox">
-  <div class="bigBox"style="background:#9fffff;width:100%; height:100%; overflow:hidden; overflow-y: scroll;">
+  <button id="saveBtn" style="width:60px; height:20px; background: #8fd304;  border:none; border-radius: 3px;position: absolute; top:0px; right:20px;">保存</button>
+  <div class="bigBox" style="background:#fff;width:100%; height:100%; overflow:hidden; overflow-y: scroll;">
     <div style="width:100%; height:60px;">
       <div class="left">
         早餐阶段
@@ -135,73 +133,255 @@
 <script src="js/picker.min.js"></script>
 
 <script>
+    //http://localhost:3000/modificationTime.html?token=6c2c8b51-b20a-40ad-98a4-9e5c8375c4a5
+    var token=getQueryString('token')
+    xuanran()
+ function xuanran(){
+     $.ajax({
+         type:"post",
+         url:"http://192.168.10.69:9191/api/TimePeriodApi/getMyTimeStage",
+         headers: {
+             authorization: token
+         },
+         success:function(data){
+             timeArr=data;
+
+         },
+         error:function(error){
+
+         }
+
+     });
+
+     setTimeout(function(){
+         if(timeArr){
+             layout()
+         }
+     },300)
+ }
 
 
+function layout(){
+    var str='';
+    for(var i=0; i<timeArr.obj.length; i++){
 
-
-  var str='';
-  for(var i=0; i<timeArr.obj.length; i++){
-    str += '<div style="width:100%; height:80px;">'+
-    '<div class="left">'+timeArr.obj[i].name+'</div>'+
-    '<div class="center">'+
-    '<div class="smallCircle"></div>'+
-    '</div>'+
-    '<div class="right">'+
-    '<div class="time">'
+        str += '<div style="width:100%; height:80px;">'+
+                '<div class="left">'+timeArr.obj[i].name+'</div>'+
+                '<div class="center">'+
+                '<div class="smallCircle"></div>'+
+                '</div>'+
+                '<div class="right">'+
+                '<div class="time">'
         for(var j=0; j<timeArr.obj[i].timePeriods.length; j++){
-          str+='<span>'+timeArr.obj[i].timePeriods[j].startTime+'</span>'
+            str+='<span>'+timeArr.obj[i].timePeriods[j].startTime+'</span>'
         }
-    str +='<span>'+timeArr.obj[i].endTime+'</span>'+
-            '</div>'+
-    '<div></div>'+
-    '<div class="duan" style="width:100%; height:auto;">';
+        str +='<span>'+timeArr.obj[i].endTime+'</span>'+
+                '</div>'+
+                '<div></div>'+
+                '<div class="duan" style="width:100%; height:auto;">';
         for(var a=0; a<timeArr.obj[i].timePeriods.length; a++){
-          if(a==0){
-            str+='<div class="duanBox" style="margin-left:20px;">'+
-                    '<div class="colorduan"></div>'+
-                    '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
-                    '</div>'
-          }else{
-            str+='<div class="duanBox">'+
-                    '<div class="colorduan"></div>'+
-                    '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
-                    '</div>'
-          }
+            if(a==0){
+                str+='<div class="duanBox" style="margin-left:20px;">'+
+                        '<div class="colorduan"></div>'+
+                        '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
+                        '</div>'
+            }else{
+                str+='<div class="duanBox">'+
+                        '<div class="colorduan"></div>'+
+                        '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
+                        '</div>'
+            }
         }
-    str +='</div>'+
-    '</div>'+
-    '</div>'
-  }
-  $('.bigBox').html(str);
-  $('.smallCircle').height($('.smallCircle').width());
-  $('.time').find('span').click(function(){
-
-    var picker1 = new Picker({
-      data: [data1,data2]
-    });
-    var a=$(this);
-    picker1.on('picker.select', function (selectedVal, selectedIndex) {
-      //console.log(JSON.stringify(selectedVal))
-      console.log(selectedIndex)
-      var hr=selectedIndex[0];
-      var min=selectedIndex[1];
-      if(min<=9){
-        min="0"+min
-      }
-     a.text(hr+":"+min);
-    });
-
-    picker1.on('picker.change', function (index, selectedIndex) {
-      console.log(index);
-    });
-
-    picker1.on('picker.valuechange', function (selectedVal, selectedIndex) {
-      console.log(selectedVal);
-    });
-    picker1.show();
+        str +='</div>'+
+                '</div>'+
+                '</div>'
+    }
+    $('.bigBox').html(str);
+    $('.smallCircle').height($('.smallCircle').width());
+    console.log($('.time').find('span').length)
 
 
-  })
+    function creatList(obj, list){
+        obj.forEach(function(item, index, arr){
+            var temp = new Object();
+            temp.text = item.name;
+            temp.value = item.name;
+            list.push(temp);
+        })
+    }
+    //时间修改点击
+
+    $('.time').find('span').click(function(){
+        var time=$(this).text();
+
+
+
+        var hr=time.split(':')[0];
+        var min=time.split(':')[1];
+        var gongTime=hr*60+parseInt(min);
+        console.log(gongTime);//一共多少分钟
+        console.log(gongTime/60)//几点几小时
+        console.log(gongTime%60)//除小时外还剩多少分钟
+
+        var da=gongTime%60+15;
+        var xia=gongTime%60-15;
+        console.log(da);
+        console.log(xia);
+        var data1=[];
+        var data2=[];
+        var timeData=[];
+        if(da>=60||xia<0){
+            if(da>=60){
+                timeData=[
+                    {
+                        name: hr,
+                        sub:[]
+                    },{
+                        name: parseInt(hr)+1,
+                        sub:[]
+                    }
+                ]
+                for(var i=0; i<da-60; i++){
+                    timeData[1].sub.push({name:i})
+                }
+                for(var i=xia; i<60; i++){
+                    timeData[0].sub.push({name:i})
+                }
+            }
+            if(xia<0){
+                timeData=[
+                    {
+                        name: hr-1,
+                        sub:[]
+                    },{
+                        name: hr,
+                        sub:[]
+                    }
+                ]
+                for(var i=xia+60; i<60; i++){
+                    timeData[0].sub.push({name:i})
+                }
+                for(var i=0; i<da; i++){
+                    timeData[1].sub.push({name:i})
+                }
+            }
+        }else{
+            timeData=[
+                {
+                    name: hr,
+                    sub:[]
+                }
+            ]
+            for(var i=xia; i<da; i++){
+                timeData[0].sub.push({name:i})
+            }
+
+        }
+        console.log(timeData)
+        creatList(timeData,data1);
+        if (timeData[0].hasOwnProperty('sub')) {
+            creatList(timeData[0].sub, data2);
+        } else {
+            data2 = [{text: '', value: 0}];
+        }
+
+        console.log(data2);
+
+        var picker1 = new Picker({
+            data: [data1,data2]
+        });
+        var a=$(this);
+        picker1.on('picker.select', function (selectedVal, selectedIndex) {
+            //console.log(JSON.stringify(selectedVal))
+            console.log(selectedVal)
+            var hr=selectedVal[0];
+            var min=selectedVal[1];
+            if(min<=9){
+                min="0"+min
+            }
+            a.text(hr+":"+min);
+            for(var i=0; i<timeArr.obj.length; i++){
+                if(timeArr.obj[i].startTime==time){
+                    timeArr.obj[i].startTime=hr+":"+min
+                }
+                if(timeArr.obj[i].endTime==time){
+                    timeArr.obj[i].endTime=hr+":"+min
+                }
+
+                for(var j=0; j<timeArr.obj[i].timePeriods.length; j++){
+                    if(timeArr.obj[i].timePeriods[j].startTime==time){
+                        timeArr.obj[i].timePeriods[j].startTime=hr+":"+min
+                    }
+                    if(timeArr.obj[i].timePeriods[j].endTime==time){
+                        timeArr.obj[i].timePeriods[j].endTime=hr+":"+min
+                    }
+                }
+            }
+            for(var i=0; i<$('.time').find('span').length; i++){
+                if($($('.time').find('span')[i]).text()==time){
+                    $($('.time').find('span')[i]).text(hr+":"+min);
+                }
+            }
+
+
+        });
+
+        picker1.on('picker.change', function (index, selectedIndex) {
+            console.log(index);
+            if (index === 0){
+                firstChange();
+            }
+            function firstChange() {
+                data2 = [];
+
+                var firstCity = timeData[selectedIndex];
+                if (firstCity.hasOwnProperty('sub')) {
+                    creatList(firstCity.sub, data2);
+                } else {
+                    data2 = [{text: '', value: 0}];
+                }
+                picker1.refillColumn(1, data2);
+                picker1.scrollColumn(1, 0)
+            }
+        });
+
+
+        picker1.on('picker.valuechange', function (selectedVal, selectedIndex) {
+            console.log(selectedVal);
+        });
+        picker1.show();
+
+
+    })
+
+
+    $('#saveBtn').click(function(){
+        console.log(timeArr)
+        $.ajax({
+            type:"post",
+            url:"http://192.168.10.69:9191/api/TimePeriodApi/saveMyTimePeriod",
+            headers: {
+                authorization: token
+            },
+            data:{
+                jsonData:JSON.stringify(timeArr.obj)
+            },
+            success:function(data){
+                //alert(JSON.stringify(data));
+                console.log(JSON.stringify(data));
+                alert('保存成功')
+
+            },
+            error:function(error){
+                console.log(error);
+            }
+
+        });
+    })
+
+}
+
+
 
 
   
