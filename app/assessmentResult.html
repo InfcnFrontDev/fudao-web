@@ -40,15 +40,15 @@
             </svg>
         </div>
 
-        <div style="position:absolute; top:60px; left:70px;">
+        <div style="position:absolute; top:60px; left:67px;">
             <p class="jieguo">85</p>
-            <a style="width: 100px;border: 1px solid #a1cc00;background-color: #a1cc00;color: white;padding: 5px;border-radius: 5px;"
+            <a style="    display: block;text-align: center;width: 78px;border: 1px solid #a1cc00;background-color: #a1cc00;color: white;padding: 5px;border-radius: 5px;"
                class="gotoDeep">深度自诊</a>
         </div>
     </div>
     <div id="before" class="appraisalMark">
         <div>恭喜您完成测评</div>
-        <div>您的健康状况<span class="grade">良好</span></div>
+        <div class="grade">您的健康状况良好</div>
         <div>更加全面的健康状况判断</div>
         <div style="margin-bottom: 24px">尽在<a class="gotoDeep" style="color: #a1cc00;border-bottom:1px solid #a1cc00; ">深度自诊</a>
         </div>
@@ -66,29 +66,31 @@
 
 <script>
 
-    //    var token = ''
-    //    $.ajax({
-    //        type: "get",
-    //        url: "http://192.168.10.69:9191/api/DiagnosisApi/getEvaluationResult",
-    //        headers: {
-    //            authorization: token
-    //        },
-    //        success: function (res) {
-    //            /*
-    //             * 分数填充
-    //             * */
-    //                $(".jieguo").html()
-    //                $(".grade").html()
-    //                $(".appraisalsl span").html(appraisalsl);
-    //                $(".appraisalxl span").html(appraisalxl);
-    //                $(".appraisalsj span").html(appraisalsj);
-    //                $(".appraisalzc span").html(appraisalzc);
-                    appraisal_init(76, 90, 87, 98);
-    //        },
-    //        error: function () {
-    //            console.log('err')
-    //        }
-    //    });
+    var token = localStorage.getItem('zizhen_token');
+    $.ajax({
+        type: "post",
+        url: urls.DIAGNOSIS_GETEVALUATIONRESULT,
+        headers: {
+            authorization: token
+        },
+        success: function (res) {
+            console.log(res);
+            /*
+             * 分数填充
+             * */
+            $(".jieguo").html(res.obj.complex);
+            $(".grade").html(res.obj.grade.split('\\n')[1]);
+            $(".appraisalsl span").html(res.obj.physiology);
+            $(".appraisalxl span").html(res.obj.psychology);
+            $(".appraisalsj span").html(res.obj.social);
+            $(".appraisalzc span").html(res.obj.self);
+            appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
+
+        },
+        error: function () {
+            console.log('err')
+        }
+    });
 
     $('.gotoDeep').click(function () {
         window.postMessage('1');
