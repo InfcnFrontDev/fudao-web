@@ -187,7 +187,7 @@
   });
 
   $('#xqbtn').click(function(e){
-    console.log(arr);
+
     e.stopPropagation();
     var timeName;
     console.log($(this).parent().find('.tishi').attr('name'));
@@ -203,20 +203,20 @@
         authorization: token
       },
       data:{
-        timeStage:timeName
+         timePeriod:timeName
       },
       success:function(data){
-        //alert(JSON.stringify(data));
-        console.log(JSON.stringify(data));
-        window.postMessage(JSON.stringify(data.obj.method[0]));
+          window.postMessage(JSON.stringify(data.obj.method[0]));
 
       },
-      error:function(){
+      error:function(error){
+          alert(JSON.stringify(error));
+
 
       }
     });
 
-    //window.postMessage('123');
+
   })
 
 
