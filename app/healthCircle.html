@@ -44,7 +44,7 @@
 		var token=getQueryString('token');
 		$.ajax({
 			type:"post",
-			url:"http://192.168.10.69:9191/api/TimePeriodApi/getGeneralTimeStage",
+			url:urls.TIMEPERIODAPI_GETGENERALTIMESTAGE,
 			headers: {
 				authorization: token
 			},

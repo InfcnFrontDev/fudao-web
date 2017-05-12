@@ -139,7 +139,7 @@
  function xuanran(){
      $.ajax({
          type:"post",
-         url:"http://192.168.10.69:9191/api/TimePeriodApi/getMyTimeStage",
+         url:urls.TIMEPERIOD_GETMYTIMESTAGE,
          headers: {
              authorization: token
          },
@@ -359,7 +359,7 @@ function layout(){
         console.log(timeArr)
         $.ajax({
             type:"post",
-            url:"http://192.168.10.69:9191/api/TimePeriodApi/saveMyTimePeriod",
+            url:urls.TIMEPERIOD_SAVEMYTIMEPERIOD,
             headers: {
                 authorization: token
             },

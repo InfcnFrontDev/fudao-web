@@ -23,6 +23,8 @@ var urls = {
     TIMEPERIOD_GETGENERALTIMEPERIOD: apiPath + 'TimePeriodApi/getGeneralTimePeriod',
     //通用时间阶段
     TIMEPERIODAPI_GETGENERALTIMESTAGE: apiPath + 'TimePeriodApi/getGeneralTimeStage',
+    //保存我的时间段
+    TIMEPERIOD_SAVEMYTIMEPERIOD: apiPath + 'TimePeriodApi/saveMyTimePeriod',
 
     //获取全天的运动列表
     TIMEPERIODA_GETALLDAYMOTIONLIST: apiPath + 'TimePeriodApi/getAllDayMotionList',
