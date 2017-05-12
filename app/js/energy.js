@@ -7,20 +7,11 @@ var weather = "晴";
 var winp = "2级";
 var air_scope = "50-100";
 $(document).ready(function(){
-    var xAxis = ['地域', '年龄', '性别', '天气', '民族', '学历', '姓氏', '行业', '专业', 
-                '宗教', '高校类型',"双亲情况","家庭情况","动植物","婚姻幸福度","学习意愿"];
-    var datas = [12,21,10,4,12,5,6,5,25,23,7,5,6,5,25,23,7];
-    var colorList = ['#9BCA63','#9BCA63','#E87C25',
-            '#E87C25','#E87C25','#E87C25','#6C7B8B','#6C7B8B',
-            '#6C7B8B','#6C7B8B','#6C7B8B','#F0805A','#26C0C0',
-            '#A0522D','#9FB6CD','#9FB6CD','#9FB6CD','#8B8B00',
-            '#9370DB','#919191','#F4E001','#96CDCD','#8B8B83',
-            '#7FFF00','#7EC0EE','#7EC0EE','#76EE00','#6E8B3D',
-            '#6C7B8B','#698B69','#6B8E23','#68838B','#66CDAA'];
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
     if(isNotBlank(getQueryString('weather'))) city = getQueryString('weather');
     if(isNotBlank(getQueryString('winp'))) city = getQueryString('winp');
     if(isNotBlank(getQueryString('air_scope'))) city = getQueryString('air_scope');
+
     $.ajax({
         url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
         headers: {authorization: getQueryString('token')},
@@ -29,16 +20,17 @@ $(document).ready(function(){
         success: function(data){
             if(undefined != data.ok && data.ok == true){
                 if("" != data.obj){
+                    $('#bar_loading').css('display','none');
+                    $('#lowerDiv').css('display','block');
                     preInitEchart(JSON.parse(data.obj));
                 } else {
-                    initEchart_bar(xAxis,datas,colorList); //　默认初始化
+                    // initEchart_bar(xAxis,datas,colorList); //　默认初始化
                 }
             } else {
                 alert(JSON.stringify(data));
             }
         },error: function(data){
-            // prompt('title',JSON.stringify(data));
-            initEchart_bar(xAxis,datas,colorList); //　默认初始化
+            // initEchart_bar(xAxis,datas,colorList); //　默认初始化
         }
     });
 });
