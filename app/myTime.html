@@ -14,7 +14,58 @@
   <link rel="stylesheet" href="css/all.css">
   <script src="js/data.js"></script>
   <script src="js/config.js"></script>
- <!-- <script src="venders/renti_map/app/js/tools.js"></script>-->
+  <style>
+    .leftTop{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #b1e1f9;
+      background: #e9f7fd;
+      top:20px;
+      left: 11px;
+
+    }
+    .leftTop div,.rightTop div,.leftBottom div,.rightBottom div{
+      width:100px;
+      height:80px;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+    .leftTop div p,.rightTop div p,.leftBottom div p,.rightBottom div p{
+      margin:5px;
+    }
+    .rightTop{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #b1e1f9;
+      background: #e9f7fd;
+      top:20px;
+      right: 11px;
+    }
+    .leftBottom{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #b1e1f9;
+      background: #e9f7fd;
+      top:330px; 
+      left: 11px;
+    }
+    .rightBottom{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #b1e1f9;
+      background: #e9f7fd;
+      top:330px;
+      right: 11px;
+    }
+  </style>
 
   <script>
     (function () {
@@ -72,15 +123,19 @@
         function showJlInfo(data) {
 
           var title = "<strong>健康提醒：</strong>" + data.tixing;
-          var content = "<p><strong>循行筋络：</strong>" + data.jl_name + "</p>";
-          content += "<p><strong>当令器官：</strong>" + data.qiguan + "</p>";
-          content += "<p><strong>身体状况：</strong>" + data.zhuangkuang + "</p>";
-          content += "<p><strong>常见症状：</strong>" + data.zhengzhuang + "</p>";
-          content += "<p><strong>宜：</strong>" + data.yi + "</p>";
-          content += "<p><strong>忌：</strong>" + data.ji + "</p>";
-          content += "<p><strong>养生方法：</strong>" + data.yangsheng + "</p>";
-          content += "<p><strong>健康小贴士：</strong>" + data.laonianren + "</p>";
-          showPopover( content);
+          var content1 = "<p><strong>循行筋络：</strong>" + data.jl_name + "</p>";
+          content1 += "<p><strong>当令器官：</strong>" + data.qiguan + "</p>";
+          var content2 = "<p><strong>身体状况：</strong>" + data.zhuangkuang + "</p>";
+         /* content2 += "<p><strong>常见症状：</strong>" + data.zhengzhuang + "</p>";*/
+          var content3 = "<p><strong>宜：</strong>" + data.yi + "</p>";
+          content3 += "<p><strong>忌：</strong>" + data.ji + "</p>";
+          var content4 = "<p><strong>养生方法：</strong>" + data.yangsheng + "</p>";
+          /*content += "<p><strong>健康小贴士：</strong>" + data.laonianren + "</p>";*/
+          //showPopover( content);
+          $('.leftTop').find('div').html(content1)
+          $('.leftBottom').find('div').html(content2)
+          $('.rightTop').find('div').html(content3)
+          $('.rightBottom').find('div').html(content4)
         }
 
         function showPopover( content) {
@@ -156,6 +211,26 @@
 
   </div>
   <div class="centerBox">
+    <div class="leftTop">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: 75px; left: 91px; transform: rotate(90deg);">
+    </div>
+    <div class="rightTop">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: 73px; left: -13px; transform: rotate(180deg);">
+    </div>
+    <div class="leftBottom">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: -7px; right: -11px;">
+    </div>
+    <div class="rightBottom">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: -10px; left: -9px;transform: rotate(270deg);">
+    </div>
+
+    <!--<div style="width:120px; height:100px; position:absolute;">1</div>
+    <div style="width:120px; height:100px; position:absolute;">1</div>
+    <div style="width:120px; height:100px; position:absolute;">1</div>-->
     <div id="mapDiv" style="width: 100%; height: 100%">
   </div>
   </div>
