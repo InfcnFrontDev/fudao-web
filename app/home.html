@@ -138,53 +138,15 @@
   });
 
   var data1 = [
-    {
-      text: '休息：扣齿10次',
-      value: 1
-    }, {
-      text: '茶歇：搓手10次',
-      value: 2
-    },
-    {
-      text: '起床：踮脚条10次',
-      value: 3
-    },
-    {
-      text: '工作：踮脚10次',
-      value: 4
-    },
-    {
-      text: '吃饭：踮脚10次',
-      value: 5
-    },
-    {
-      text: '睡觉：踮脚10次',
-      value: 6
-    },
-    {
-      text: '运动：踮脚10次',
-      value: 7
-    }, {
-      text: '起床：踮脚条10次',
-      value: 8
-    },
-    {
-      text: '休息：扣齿10次',
-      value: 9
-    },
-    {
-      text: '学习：踮脚10次',
-      value: 10
-    },
-    {
-      text: '运动：俯卧撑10次',
-      value: 11
-    },
-    {
-      text: '运动：仰卧起坐10次',
-      value: 12
-    }
+
   ];
+  for(var i=0; i<yundongObj.obj.length; i++){
+      console.log(yundongObj.obj[i].name);
+      data1.push({
+          text:yundongObj.obj[i].name,
+          value: i
+      })
+  }
 
   var picker1 = new Picker({
     data: [data1]
@@ -210,7 +172,7 @@
 
   $.ajax({
     type:"post",
-    url:"http://192.168.10.69:9191/api/TimePeriodApi/getGeneralTimeStage",
+    url:urls.TIMEPERIODAPI_GETGENERALTIMESTAGE,
     headers: {
       authorization: token
     },
@@ -225,7 +187,7 @@
   });
 
   $('#xqbtn').click(function(e){
-    console.log(arr);
+
     e.stopPropagation();
     var timeName;
     console.log($(this).parent().find('.tishi').attr('name'));
@@ -236,25 +198,25 @@
     }
     $.ajax({
       type:"post",
-      url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+      url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
       headers: {
         authorization: token
       },
       data:{
-        timeStage:timeName
+         timePeriod:timeName
       },
       success:function(data){
-        //alert(JSON.stringify(data));
-        console.log(JSON.stringify(data));
-        window.postMessage(JSON.stringify(data.obj.method[0]));
+          window.postMessage(JSON.stringify(data.obj.method[0]));
 
       },
-      error:function(){
+      error:function(error){
+          alert(JSON.stringify(error));
+
 
       }
     });
 
-    //window.postMessage('123');
+
   })
 
 
@@ -470,7 +432,7 @@
         }
         $.ajax({
           type:"post",
-          url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+          url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
           headers: {
             authorization: token
           },
@@ -547,6 +509,8 @@
   }
   //绿色时间段的显示
   function blueTime(num,startTime,endTime,name){
+    $('#abc1').find('#div1').remove();
+    $('#abc1').find('#div2').remove();
     var startDuan=blueDuan_timeToAngle(startTime);
     var overDuan=blueDuan_timeToAngle(endTime);
     //绿色时间段
