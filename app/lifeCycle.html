@@ -11,11 +11,37 @@
   <script src="js/mui.min.js"></script>
   <script src="js/config.js"></script>
   <link rel="stylesheet" href="venders/css/mui.min.css">
+  <style>
+    .box{
+      width:200px;
+      height:60px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #b1e1f9;
+      background: #e9f7fd;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      margin:auto;
+      z-index: 1000;
+    }
+    .boxtishi{
+      width:200px;
+      height:60px;
+      line-height:60px;
+      text-align: center;
+    }
+  </style>
 </head>
   <body style="background: #fff;">
   <div style="width:100%; height:9%; line-height:54px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的生命周期</div>
 
   <div class="jieduanlouti" id='div_woniu'>
+    <div class="box">
+      <div class="boxtishi"></div>
+      <img src="images/zhishi.png" style="position:absolute; top: 55px; left: 181px; transform: rotate(90deg);">
+    </div>
   </div>
   <script>
     //http://localhost:3000/lifeCycle.html?userId=867200022156895,86720002215690328312757&birthdate=1991-07-02&sex=0
@@ -108,12 +134,13 @@
                       _img_tongyong.style.top = "-40px";
 
                       _img_tongyong.style.zIndex = 101;
-                      _img_tongyong.setAttribute("onclick", "fun_click()");
+                      /*_img_tongyong.setAttribute("onclick", "fun_click()");*/////////////////////////////////////////////////////////dianji
                       var _div_tongyong = document.createElement("div");
                       _div_tongyong.style.position = "relative";
                       _div_tongyong.style.zIndex = 30;
                       _div_tongyong.style.top = "-40px";
                       _div_tongyong.innerHTML = birth_year;
+
                       if(i % 2 == 0) {
                           _div_tongyong.style.left = "-20px";
                           _img_tongyong.style.left = "-20px";
@@ -230,6 +257,9 @@
 
           mui.alert(hulu,'查看肾期');
       }
+    var hulu = cycle.renalPeriod + '肾期 ' + cycle.years + '年 ' + cycle.season + '季度 ';
+    hulu += +cycle.month + '月 ' + cycle.weeks + '周 ' + cycle.day + '天';
+      $('.boxtishi').text(hulu);
     document.getElementById("div_woniu").style.fontSize="12px";
   </script>
 
