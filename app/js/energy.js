@@ -51,7 +51,7 @@ function preInitEchart(result){
     var xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','月相','星辰','固定场所'];
     var datas = [50,50,getLocationScore(city),getWindScore(winp),getRainScore(weather),getSnowScore(weather)
                 ,getSandScore(weather),getAirScore(air_scope),getSunScore(weather),90,getStarsScore(weather)];
-    var colorList = ['#25C1C3','#25C1C3','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#FFB275'];
+    var colorList = ['#ACC1EA','#ACC1EA','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#153371'];
     var indx = xAxis.length;
     _.forEach(result, function(n, key) { // 循环对象
         xAxis[indx] = key;
