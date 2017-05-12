@@ -56,10 +56,10 @@ function getQueryString(name) {
 
 //
 function preInitEchart(result){
-    var xAxis = ['山川','河流','固定场所','风','雨','雪','沙尘','空气','日','月相','星辰'];
+    var xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','月相','星辰','固定场所'];
     var datas = [50,50,getLocationScore(city),getWindScore(winp),getRainScore(weather),getSnowScore(weather)
                 ,getSandScore(weather),getAirScore(air_scope),getSunScore(weather),90,getStarsScore(weather)];
-    var colorList = ['#25C1C3','#25C1C3','#25C1C3','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1'];
+    var colorList = ['#25C1C3','#25C1C3','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#FFB275'];
     var indx = xAxis.length;
     _.forEach(result, function(n, key) { // 循环对象
         xAxis[indx] = key;
@@ -69,6 +69,7 @@ function preInitEchart(result){
     });
     initEchart_bar(xAxis,datas,colorList);
     initEchart_scatter(result);
+    $('.tanceImg_s').css('display','block');
 }
 
 /**
@@ -106,15 +107,15 @@ function save(){
     result.性别 = $(":radio:checked[name='sex']").val();
     result.民族 = $("#nationSel").val();
     result.姓氏 = $("#surnameSel").val();
-    result.感情状态 = $("#emotionSel").val();
-    result.学历 = $("#educationSel").val();
-    result.高校类型 = $("#collageSel").val();
+    // result.学历 = $("#educationSel").val();
+    // result.高校类型 = $("#collageSel").val();
+    // result.专业 = $("#majorSel").val();
     result.行业 = $("#industrySel").val();
     result.职业 = $("#occupationSel").val();
-    result.专业 = $("#majorSel").val();
-    result.宗教 = $("#religionSel").val();
+    // result.宗教 = $("#religionSel").val();
+    result.感情状态 = $("#emotionSel").val();
     result.双亲情况 = $("#parentsSel").val();
-    result.家庭情况 = $("#familySel").val();
+    result.家庭状况 = $("#familySel").val();
     setResult(result);
     closeTance();
 }
@@ -145,6 +146,11 @@ function setResult(result){
             // if(v == 0) v = 0.1;
             if(v != 0) 
                 result[key] = v;
+            if(key == '收藏'){
+                result.学历 = $("#educationSel").val();
+                result.高校类型 = $("#collageSel").val();
+                result.专业 = $("#majorSel").val();
+            }
         });
         // 保存结果至数据库
         $.ajax({
@@ -421,7 +427,7 @@ function getColor(name_){
         "感情状态":"#28A7E1","婚姻幸福度":"#28A7E1","健康程度":"#28A7E1","健康习惯":"#28A7E1","重视程度":"#28A7E1","双亲情况":"#28A7E1","家庭状况":"#28A7E1",
         "文艺生活":"#FAD860",
         "宠物":"#F3A43B",
-        "旅游":"#60C0DD","运动":"#60C0DD","花茶艺":"#60C0DD","电脑活动":"#60C0DD","棋牌":"#60C0DD","收藏":"#60C0DD",
+        "旅游":"#E67D00","运动":"#E67D00","花茶艺":"#E67D00","电脑活动":"#E67D00","棋牌":"#E67D00","收藏":"#E67D00",
         "行业":"#D7504B","职业":"#D7504B",
         "专业":"#C6E579","学历":"#C6E579","高校类型":"#C6E579","学习意愿":"#C6E579","学习能力":"#C6E579","学习渠道":"#C6E579","学习类型":"#C6E579",
         "个人态度":"#F4E001","个人心境":"#F4E001","语气":"#F4E001","声音":"#F4E001","语调":"#F4E001","语言":"#F4E001","对人应激":"#F4E001","对事应激":"#F4E001","约束力":"#F4E001",
