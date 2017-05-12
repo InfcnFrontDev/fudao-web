@@ -509,6 +509,8 @@
   }
   //绿色时间段的显示
   function blueTime(num,startTime,endTime,name){
+    $('#abc1').find('#div1').remove();
+    $('#abc1').find('#div2').remove();
     var startDuan=blueDuan_timeToAngle(startTime);
     var overDuan=blueDuan_timeToAngle(endTime);
     //绿色时间段
