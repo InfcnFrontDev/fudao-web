@@ -4,7 +4,7 @@
 //
 var city = "北京";
 var weather = "晴";
-var winp = "2级";
+var winp = "5级";
 var air_scope = "50-100";
 $(document).ready(function(){
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
