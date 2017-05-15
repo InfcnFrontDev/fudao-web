@@ -136,8 +136,8 @@
         spaceBetween: 30
     });
     var diseasespeople='quality',sex=1;
-    var token = "05d63d86-bd60-4012-8b9b-5a7776dcb050";
-//    var token = localStorage.getItem('zizhen_token');
+    //var token = "05d63d86-bd60-4012-8b9b-5a7776dcb050";
+    var token = localStorage.getItem('zizhen_token');
     $.ajax({
         type: "post",
         url: urls.USER_GETLOGINUSER,

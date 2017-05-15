@@ -39,6 +39,16 @@
       top: -10px;
       left: 240px;
     }
+    .triangle-down {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid #fff;
+      position:absolute;
+      top: 200px;
+      left: 130px;
+    }
     .warnCover{
       width:300px;
       height:400px;
@@ -52,6 +62,10 @@
       border-radius:5px;
       z-index:100000;
       display:none;
+    }
+    .bigimg img{
+      position: absolute;
+      top: -56px;
     }
   </style>
 
@@ -75,7 +89,7 @@
           <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
             拉耳垂，健肾经，养身体，治头痛。
           </p>
-          <button id="xqbtn" style="background:rgba(0,0,0,.0); border:none; float:right;">查看详情>></button>
+          <button id="xqbtn" style="background:rgba(0,0,0,.0); border:none;  position: absolute; bottom:5px; right:5px;">查看详情>></button>
         </div>
 
       </div>
@@ -85,7 +99,8 @@
     <div class="warnCover">
 
     </div>
-    <div style="margin:0 auto;width:300px; height:300px;position: absolute; top:-40px;  left:0; right:0; display:none;" class="bigimg">
+    <div style="margin:0 auto;width:280px; height:200px; border-radius:5px; position: absolute; top:0px;  left:0; right:0; display:none; background-color: #fff; z-index: 100000;" class="bigimg">
+      <div class="triangle-down"></div>
       <img src="images/exercise/abc0.gif" alt=""  style="width:300px; height:300px;">
     </div>
 
@@ -441,7 +456,7 @@
           },
           success:function(data){
             //alert(JSON.stringify(data));
-            $('.tishi').html(data.obj.method[0].threeCharacterClassic);
+            $('.tishi').html('"'+name+'":'+data.obj.method[0].threeCharacterClassic);
 
             //window.postMessage(JSON.stringify(data));
 
