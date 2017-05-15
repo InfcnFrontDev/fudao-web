@@ -159,6 +159,8 @@ function setResult(result){
                 }
             }
         });
+        $('#bar_loading').css('display','none');
+        $('#lowerDiv').css('display','block');
         preInitEchart(result);
     });
     return result;
