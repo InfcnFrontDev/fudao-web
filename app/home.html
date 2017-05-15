@@ -19,7 +19,7 @@
     }
     .warn{
       width:260px;
-      height:54px;
+      height:70px;
       position:absolute;
       left:0;
       right:0;
@@ -86,6 +86,7 @@
         </div>
         <div class="warn" >
           <div class="triangle-up"></div>
+          <h3 class="titleH"></h3>
           <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
             拉耳垂，健肾经，养身体，治头痛。
           </p>
@@ -99,8 +100,8 @@
     <div class="warnCover">
 
     </div>
-    <div style="margin:0 auto;width:280px; height:200px; border-radius:5px; position: absolute; top:0px;  left:0; right:0; display:none; background-color: #fff; z-index: 100000;" class="bigimg">
-      <div class="triangle-down"></div>
+    <div style="margin:0 auto;width:280px; height:200px; border-radius:5px; position: absolute; top:100px;  left:0; right:0; display:none; background-color: #fff; z-index: 100000;" class="bigimg">
+
       <img src="images/exercise/abc0.gif" alt=""  style="width:300px; height:300px;">
     </div>
 
@@ -221,7 +222,7 @@
          timePeriod:timeName
       },
       success:function(data){
-          window.postMessage(JSON.stringify(data.obj.method[0]));
+          window.postMessage(JSON.stringify(data.obj[0]));
 
       },
       error:function(error){
@@ -456,7 +457,8 @@
           },
           success:function(data){
             //alert(JSON.stringify(data));
-            $('.tishi').html('"'+name+'":'+data.obj.method[0].threeCharacterClassic);
+            $('.titleH').html(name);
+            $('.tishi').html(data.obj[0].threeCharacterClassic);
 
             //window.postMessage(JSON.stringify(data));
 
