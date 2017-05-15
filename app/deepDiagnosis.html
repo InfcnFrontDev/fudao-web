@@ -17,6 +17,7 @@
     <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="diagnosisMap/js/index.js"></script>
     <script src="./js/swiper.min.js"></script>
+  <!--  <script src="js/privatejs/main.js"></script>-->
 
     <!-- Demo styles -->
     <style>
@@ -134,9 +135,43 @@
         prevButton: '.swiper-button-prev',
         spaceBetween: 30
     });
-    var diseasespeople;
-//    var token = "3337f805-e44b-47be-a32b-06bd423a6775";
-    var token = localStorage.getItem('zizhen_token');
+    var diseasespeople='quality',sex=1;
+    var token = "05d63d86-bd60-4012-8b9b-5a7776dcb050";
+//    var token = localStorage.getItem('zizhen_token');
+    $.ajax({
+        type: "post",
+        url: urls.USER_GETLOGINUSER,
+        headers: {
+            authorization: token
+
+        },
+        success: function (res) {
+            //alert(JSON.stringify(res));
+            diseasespeople=res.obj.crowd;
+            sex=res.obj.sex;
+        },
+        error: function () {
+            console.log('err')
+        }
+    });
+    var svgPath = '';
+    if ( diseasespeople== 'aged') {
+        if (sex==1) {
+            svgPath = '../diagnosisMap/images/laoren.svg';
+        } else if(sex==2) {
+            svgPath = '../diagnosisMap/images/laotaitai.svg'
+        }
+    } else if (diseasespeople== 'quality') {
+        if (sex==1) {
+            svgPath = '../diagnosisMap/images/nanren.svg';
+        } else if(sex==2) {
+            svgPath = '../diagnosisMap/images/nvren.svg'
+        }
+    } else if (diseasespeople=='woman_un'||diseasespeople=='woman_pre'||diseasespeople=='woman_ing'||diseasespeople=='woman_ed'||diseasespeople=='woman_next'){
+        svgPath = '../diagnosisMap/images/nvren.svg'
+    }
+
+    loadSvg(svgPath);
     var symptomList = [];
     $.ajax({
         type: "post",
@@ -264,6 +299,92 @@
             console.log('err')
         }
     });
+    $('#opacityNext').click(function () {
+        document.getElementById("opacityNext").style.opacity = 0;
+        fun_choosed_render(token, type);
+        swiper.slideNext();
+    });
+    $('#opacityPre').click(function () {
+        swiper.slidePrev();
+        document.getElementById("opacityNext").style.opacity = 1;
+    });
+    $('#toujing').click(function () {
+        console.log(type);
+        if (type) {
+            document.getElementById("toujing").style.background = "#f00";
+            fun_pathogeny('tou', symptomList["头部"], true);
+        }
+    });
+
+    $('#xiong').click(function () {
+        if (type) {
+            fun_pathogeny('xiong', symptomList["胸部"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#fu').click(function () {
+        if (type) {
+            fun_pathogeny('fu', symptomList["腹部"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#dun').click(function () {
+        if (type) {
+            fun_pathogeny('bei', symptomList["背部"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#zuoshou').click(function () {
+        if (type) {
+            fun_pathogeny('sizhi', symptomList["四肢"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#youshou').click(function () {
+        if (type) {
+            fun_pathogeny('sizhi', symptomList["四肢"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#tui').click(function () {
+        if (type) {
+            fun_pathogeny('sizhi', symptomList["四肢"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#quanshen').click( function () {
+        if (type) {
+            fun_pathogeny("check_quanshen", symptomList["全身"], true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#xiongtanhao').click(function () {
+        if (type) {
+            fun_pathogeny("check_xiong", symptomList, true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#futaihao').click(function () {
+        if (type) {
+            fun_pathogeny("check_fu", symptomList, true);
+            event.stopPropagation();
+        }
+    });
+
+    $('#button').click(function () {
+        if (type) {
+            check_process_two_sure();
+
+        }
+    });
 
     (function ($, doc) {
 
@@ -366,23 +487,8 @@
 
 
             document.getElementById("table_id").style.marginTop = "10px";
-            diseasespeople = 'high_quality_population';
+            //diseasespeople = 'high_quality_population';
 //        diseasespeople = chooseVersion();
-            var svgPath = '';
-            if ('aged' == diseasespeople) {
-                if (true) {
-                    svgPath = '../diagnosisMap/images/laoren.svg';
-                } else {
-                    svgPath = '../diagnosisMap/images/laotaitai.svg'
-                }
-            } else if ('high_quality_population' == diseasespeople) {
-                if (false) {
-                    svgPath = '../diagnosisMap/images/nanren.svg';
-                } else {
-                    svgPath = '../diagnosisMap/images/nvren.svg'
-                }
-            }
-            loadSvg(svgPath);
 
             mui('body').on('tap', '#opacityNext', function () {
                 swiper.slideNext();

@@ -406,6 +406,7 @@ function fun_select(obj, type) {
 }
 
 function fun_choosed_render(token,type) {
+    //alert(JSON.stringify(choosed));
     submitSymptomType=type?2:1;
     //最近做过的项事渲染
     var checkBox = document.getElementById("checkBox");
@@ -432,6 +433,7 @@ function fun_choosed_render(token,type) {
             //
             //     ]
             // };
+
             for (var index in res.obj) {
                 var _p = document.createElement("p");
                 _p.innerHTML = '<p style="text-align: left;margin: 0 40px;border-bottom: 1px solid #D8D8D8;padding-bottom: 10px;font-size: 15px"><span style="display: inline-block;width:90%;">' + res.obj[index] + '</span><input type="checkbox"  name="category" value="' + res.obj[index] + '"  onclick="my_func()"/></p>';
@@ -480,12 +482,15 @@ function my_func() {
 
 function depth_submit() {
     var token = localStorage.getItem('zizhen_token');
+    //token='8185589d-be9f-4d51-bfa9-6b2b1328e178';
+    console.log(choosed.join(","));
+    console.log(things.join(","));
     $.ajax({
         type: "post",
         url: urls.DIAGNOSIS_SUBMITSYMPTOM,
         headers: {
             // authorization: token
-            authorization: "3337f805-e44b-47be-a32b-06bd423a6775"
+            authorization: token
         },
         data: {
             symptoms:choosed.join(","),
@@ -494,7 +499,8 @@ function depth_submit() {
         },
         success: function (res) {
             // console.log(res)
-            window.postMessage('1');
+            alert('提交成功');
+            window.postMessage('2');
         },
         error: function () {
             console.log('err')

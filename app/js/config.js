@@ -47,6 +47,8 @@ var urls = {
     DIAGNOSIS_GETRECENTTHINGLIST: apiPath + 'DiagnosisApi/getRecentThingList',
     //症状提交
     DIAGNOSIS_SUBMITSYMPTOM: apiPath + 'DiagnosisApi/submitSymptom',
+    //获取登陆用户信息
+    USER_GETLOGINUSER: apiPath + 'UserApi/getLoginUser'
 }
 
 function getQueryString(name) {
