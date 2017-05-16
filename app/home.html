@@ -19,7 +19,7 @@
     }
     .warn{
       width:260px;
-      height:70px;
+      height:50px;
       position:absolute;
       left:0;
       right:0;
@@ -77,16 +77,19 @@
     <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
       <div style="width:320px; height:320px;" id="abc1">
-        <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
+        <canvas id="youcanvas" style="position:absolute;  margin-top:40px;  background-size:290px; background-position: center; " width="320" height="320"></canvas>
+        <canvas id="myCanvas" style="position:absolute; background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
 
-        <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
+
+
+        <div style="width:120px; height:60px; overflow: hidden; position:relative;top:144px; left:100px;" id="abc">
         </div>
-        <div style="width:30px; height:30px;  position:relative;top:-210px; left:125px;" class="dongzuo">
+        <div style="width:30px; height:30px;  position:relative;top:150px; left:125px;" class="dongzuo">
           <img src="images/exercise/abc0.gif" alt="" style="width:70px; height:50px;">
         </div>
         <div class="warn" >
           <div class="triangle-up"></div>
-          <h3 class="titleH"></h3>
+
           <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
             拉耳垂，健肾经，养身体，治头痛。
           </p>
@@ -113,6 +116,7 @@
 
 
 <script>
+
   var status=getQueryString('status');
   var token=getQueryString('token');
 
@@ -122,10 +126,12 @@
       
   $('#myCanvas').click(function(e){
     e.preventDefault();
+    ctx.clearRect(-200,-200,375,375);
     $('.warn').hide();
   });
   $('.warn1').click(function(e){
     e.preventDefault();
+    ctx.clearRect(-200,-200,375,375);
     $('.warn').hide();
   });
 
@@ -431,9 +437,12 @@
        y2=y+40;
     }
     oCanvas.addEventListener('click', function(e){
+
       e.stopPropagation();
+
       p = getEventPosition(e);
       if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
+        nextTimezhishi(num,startTime,endTime,name)
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
@@ -689,6 +698,7 @@
   }
 
 </script>
+  <script src="js/home/jieduan.js"></script>
 
 </body>
 </html>

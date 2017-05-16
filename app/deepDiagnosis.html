@@ -5,18 +5,18 @@
     <title>Swiper demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="./css/swiper.min.css">
-    <script type="text/javascript" src="./js/mui.min.js"></script>
-    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/privatejs/self_cultivation_result.js"></script>
-    <script type="text/javascript" src="./js/config.js"></script>
-    <script type="text/javascript" src="./js/source/echarts.simple.min.js"></script>
-    <script type="text/javascript" src="./js/source/localstorage.js"></script>
-    <script type="text/javascript" src="./js/source/public.js"></script>
-    <script type="text/javascript" src="./js/source/public_data.js"></script>
-    <script type="text/javascript" src="./js/privatejs/check_process.js"></script>
-    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/source/echarts.simple.min.js"></script>
+    <script type="text/javascript" src="js/source/localstorage.js"></script>
+    <script type="text/javascript" src="js/source/public.js"></script>
+    <script type="text/javascript" src="js/source/public_data.js"></script>
+    <script type="text/javascript" src="js/privatejs/check_process.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="diagnosisMap/js/index.js"></script>
-    <script src="./js/swiper.min.js"></script>
+    <script src="js/swiper.min.js"></script>
   <!--  <script src="js/privatejs/main.js"></script>-->
 
     <!-- Demo styles -->
@@ -157,18 +157,18 @@
     var svgPath = '';
     if ( diseasespeople== 'aged') {
         if (sex==1) {
-            svgPath = '../diagnosisMap/images/laoren.svg';
+            svgPath = 'diagnosisMap/images/laoren.svg';
         } else if(sex==2) {
-            svgPath = '../diagnosisMap/images/laotaitai.svg'
+            svgPath = 'diagnosisMap/images/laotaitai.svg'
         }
     } else if (diseasespeople== 'quality') {
         if (sex==1) {
-            svgPath = '../diagnosisMap/images/nanren.svg';
+            svgPath = 'diagnosisMap/images/nanren.svg';
         } else if(sex==2) {
-            svgPath = '../diagnosisMap/images/nvren.svg'
+            svgPath = 'diagnosisMap/images/nvren.svg'
         }
     } else if (diseasespeople=='woman_un'||diseasespeople=='woman_pre'||diseasespeople=='woman_ing'||diseasespeople=='woman_ed'||diseasespeople=='woman_next'){
-        svgPath = '../diagnosisMap/images/nvren.svg'
+        svgPath = 'diagnosisMap/images/nvren.svg'
     }
 
     loadSvg(svgPath);
