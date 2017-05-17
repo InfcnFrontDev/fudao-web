@@ -19,7 +19,7 @@
     }
     .warn{
       width:260px;
-      height:54px;
+      height:50px;
       position:absolute;
       left:0;
       right:0;
@@ -39,6 +39,16 @@
       top: -10px;
       left: 240px;
     }
+    .triangle-down {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid #fff;
+      position:absolute;
+      top: 200px;
+      left: 130px;
+    }
     .warnCover{
       width:300px;
       height:400px;
@@ -53,6 +63,10 @@
       z-index:100000;
       display:none;
     }
+    .bigimg img{
+      position: absolute;
+      top: -56px;
+    }
   </style>
 
 </head>
@@ -63,19 +77,23 @@
     <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
       <!--<img src="images/daguang.png" style="position:absolute; top: -34px; width: 387px; left: -35px;" alt="">-->
       <div style="width:320px; height:320px;" id="abc1">
-        <canvas id="myCanvas" style="background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
+        <canvas id="youcanvas" style="position:absolute;  margin-top:40px;  background-size:290px; background-position: center; " width="320" height="320"></canvas>
+        <canvas id="myCanvas" style="position:absolute; background:url(images/guang.png) no-repeat; margin-top:40px; background-size:290px; background-position: center; " width="320" height="320"></canvas>
 
-        <div style="width:120px; height:60px; overflow: hidden; position:relative;top:-220px; left:100px;" id="abc">
+
+
+        <div style="width:120px; height:60px; overflow: hidden; position:relative;top:144px; left:100px;" id="abc">
         </div>
-        <div style="width:30px; height:30px;  position:relative;top:-210px; left:125px;" class="dongzuo">
+        <div style="width:30px; height:30px;  position:relative;top:150px; left:125px;" class="dongzuo">
           <img src="images/exercise/abc0.gif" alt="" style="width:70px; height:50px;">
         </div>
         <div class="warn" >
           <div class="triangle-up"></div>
+
           <p style="color:#333; line-height:28px; font-size:15px;" class="tishi">
             拉耳垂，健肾经，养身体，治头痛。
           </p>
-          <button id="xqbtn" style="background:rgba(0,0,0,.0); border:none; float:right;">查看详情>></button>
+          <button id="xqbtn" style="background:rgba(0,0,0,.0); border:none;  position: absolute; bottom:5px; right:5px;">查看详情>></button>
         </div>
 
       </div>
@@ -85,7 +103,8 @@
     <div class="warnCover">
 
     </div>
-    <div style="margin:0 auto;width:300px; height:300px;position: absolute; top:-40px;  left:0; right:0; display:none;" class="bigimg">
+    <div style="margin:0 auto;width:280px; height:200px; border-radius:5px; position: absolute; top:100px;  left:0; right:0; display:none; background-color: #fff; z-index: 100000;" class="bigimg">
+
       <img src="images/exercise/abc0.gif" alt=""  style="width:300px; height:300px;">
     </div>
 
@@ -97,6 +116,7 @@
 
 
 <script>
+
   var status=getQueryString('status');
   var token=getQueryString('token');
 
@@ -106,10 +126,12 @@
       
   $('#myCanvas').click(function(e){
     e.preventDefault();
+    ctx.clearRect(-200,-200,375,375);
     $('.warn').hide();
   });
   $('.warn1').click(function(e){
     e.preventDefault();
+    ctx.clearRect(-200,-200,375,375);
     $('.warn').hide();
   });
 
@@ -138,53 +160,15 @@
   });
 
   var data1 = [
-    {
-      text: '休息：扣齿10次',
-      value: 1
-    }, {
-      text: '茶歇：搓手10次',
-      value: 2
-    },
-    {
-      text: '起床：踮脚条10次',
-      value: 3
-    },
-    {
-      text: '工作：踮脚10次',
-      value: 4
-    },
-    {
-      text: '吃饭：踮脚10次',
-      value: 5
-    },
-    {
-      text: '睡觉：踮脚10次',
-      value: 6
-    },
-    {
-      text: '运动：踮脚10次',
-      value: 7
-    }, {
-      text: '起床：踮脚条10次',
-      value: 8
-    },
-    {
-      text: '休息：扣齿10次',
-      value: 9
-    },
-    {
-      text: '学习：踮脚10次',
-      value: 10
-    },
-    {
-      text: '运动：俯卧撑10次',
-      value: 11
-    },
-    {
-      text: '运动：仰卧起坐10次',
-      value: 12
-    }
+
   ];
+  for(var i=0; i<yundongObj.obj.length; i++){
+      console.log(yundongObj.obj[i].name);
+      data1.push({
+          text:yundongObj.obj[i].name,
+          value: i
+      })
+  }
 
   var picker1 = new Picker({
     data: [data1]
@@ -210,7 +194,7 @@
 
   $.ajax({
     type:"post",
-    url:"http://192.168.10.69:9191/api/TimePeriodApi/getGeneralTimeStage",
+    url:urls.TIMEPERIODAPI_GETGENERALTIMESTAGE,
     headers: {
       authorization: token
     },
@@ -225,7 +209,7 @@
   });
 
   $('#xqbtn').click(function(e){
-    console.log(arr);
+
     e.stopPropagation();
     var timeName;
     console.log($(this).parent().find('.tishi').attr('name'));
@@ -236,25 +220,25 @@
     }
     $.ajax({
       type:"post",
-      url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+      url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
       headers: {
         authorization: token
       },
       data:{
-        timeStage:timeName
+         timePeriod:timeName
       },
       success:function(data){
-        //alert(JSON.stringify(data));
-        console.log(JSON.stringify(data));
-        window.postMessage(JSON.stringify(data.obj.method[0]));
+          window.postMessage(JSON.stringify(data.obj[0]));
 
       },
-      error:function(){
+      error:function(error){
+          alert(JSON.stringify(error));
+
 
       }
     });
 
-    //window.postMessage('123');
+
   })
 
 
@@ -453,9 +437,12 @@
        y2=y+40;
     }
     oCanvas.addEventListener('click', function(e){
+
       e.stopPropagation();
+
       p = getEventPosition(e);
       if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
+        nextTimezhishi(num,startTime,endTime,name)
         $('.warn').show();
         $('.warn').css({top:p.y+45});
         $('.triangle-up').css({left:p.x-25})
@@ -470,7 +457,7 @@
         }
         $.ajax({
           type:"post",
-          url:"http://192.168.10.69:9191/api/TimePeriodApi/getTimeStageTherapyList",
+          url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
           headers: {
             authorization: token
           },
@@ -479,7 +466,8 @@
           },
           success:function(data){
             //alert(JSON.stringify(data));
-            $('.tishi').html(data.obj.method[0].threeCharacterClassic);
+            $('.titleH').html(name);
+            $('.tishi').html(data.obj[0].threeCharacterClassic);
 
             //window.postMessage(JSON.stringify(data));
 
@@ -547,6 +535,8 @@
   }
   //绿色时间段的显示
   function blueTime(num,startTime,endTime,name){
+    $('#abc1').find('#div1').remove();
+    $('#abc1').find('#div2').remove();
     var startDuan=blueDuan_timeToAngle(startTime);
     var overDuan=blueDuan_timeToAngle(endTime);
     //绿色时间段
@@ -708,6 +698,7 @@
   }
 
 </script>
+  <script src="js/home/jieduan.js"></script>
 
 </body>
 </html>

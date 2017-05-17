@@ -7,6 +7,7 @@
     <title>我的能量场</title>
     <link rel="stylesheet" href="css/energy.css">
     <script src="js/echarts.min.js"></script>
+    <script src="js/config.js"></script>
     <style>
         html,body { height: 100%; margin: 0; padding: 0;}
     </style>
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div id="peoForm" style="border-bottom: 0px solid #ECECEC; overflow-y: auto;">
-            <!--&lt;!&ndash; 个人信息 &ndash;&gt;-->
+            <!-- 个人信息 -->
             <table class="peoTab">
                 <tr><td class="t_fr wid_p30" >性别：</td><td style="padding-top: 6px;">
                     <input type="radio" name="sex" value="100" checked/><label>男</label>
@@ -72,7 +73,7 @@
                     <option value="90">富人</option>
                     </select></td></tr>
             </table>
-            <!--&lt;!&ndash; 问卷调查 &ndash;&gt;-->
+            <!-- 问卷调查 -->
             <div style="border-top: 1px solid #ECECEC; width: 90%; margin-left: auto; margin-right: auto; padding-top: 8px;">
                 <table class="quesTab">
                     <tr><td class="t_fr wid_p40">1 . </td>
@@ -91,11 +92,14 @@
 </div>
 <div class="contentDiv">
     <div id="circleDiv" class="upperDiv">
+        <div class="tanceDiv"></div>
         <img class="tanceImg" onclick="tance()" src="img/tance.png">
-        <!-- <figure class="circle box-shadow-4"></figure> -->
     </div>
     <div style="height: 45%; width: 100%; overflow-x: auto;">
-        <div id="lowerDiv" style="width: 1000px; height: 100%;"></div>
+        <img id="bar_loading" src="img/bar_.gif" style="height: 98%; width: 100%; display: block;">
+        <div id="lowerDiv" style="width: 1000px; height: 100%; display: none;">
+            <img src="img/bar_.gif">
+        </div>
     </div>
     <div class="tanceImg_s box-shadow-2">
         <img src="img/tance_s.png" onclick="tance()"/>

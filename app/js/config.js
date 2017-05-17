@@ -1,7 +1,7 @@
 //var apiPath="http://192.168.3.126:18080/fudao-svc/";
 
-var apiPath = 'http://192.168.10.69:9191/api/';
-//var apiPath = 'http://103.254.113.11:8080/fudao/';
+//var apiPath = 'http://192.168.10.69:9191/api/';
+var apiPath = 'http://103.254.113.11:9191/api/';
 var urls = {
     //生命周期
     LIFE_CYCLE: apiPath + 'app/myCycleAction!calculateCycleAndSave.action',
@@ -23,6 +23,8 @@ var urls = {
     TIMEPERIOD_GETGENERALTIMEPERIOD: apiPath + 'TimePeriodApi/getGeneralTimePeriod',
     //通用时间阶段
     TIMEPERIODAPI_GETGENERALTIMESTAGE: apiPath + 'TimePeriodApi/getGeneralTimeStage',
+    //保存我的时间段
+    TIMEPERIOD_SAVEMYTIMEPERIOD: apiPath + 'TimePeriodApi/saveMyTimePeriod',
 
     //获取全天的运动列表
     TIMEPERIODA_GETALLDAYMOTIONLIST: apiPath + 'TimePeriodApi/getAllDayMotionList',
@@ -45,6 +47,8 @@ var urls = {
     DIAGNOSIS_GETRECENTTHINGLIST: apiPath + 'DiagnosisApi/getRecentThingList',
 
     DIAGNOSIS_SUBMITSYMPTOM: apiPath + 'DiagnosisApi/submitSymptom',
+    //获取登陆用户信息
+    USER_GETLOGINUSER: apiPath + 'UserApi/getLoginUser'
 }
 
 function getQueryString(name) {

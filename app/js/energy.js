@@ -4,23 +4,14 @@
 //
 var city = "北京";
 var weather = "晴";
-var winp = "2级";
+var winp = "5级";
 var air_scope = "50-100";
 $(document).ready(function(){
-    var xAxis = ['地域', '年龄', '性别', '天气', '民族', '学历', '姓氏', '行业', '专业', 
-                '宗教', '高校类型',"双亲情况","家庭情况","动植物","婚姻幸福度","学习意愿"];
-    var datas = [12,21,10,4,12,5,6,5,25,23,7,5,6,5,25,23,7];
-    var colorList = ['#9BCA63','#9BCA63','#E87C25',
-            '#E87C25','#E87C25','#E87C25','#6C7B8B','#6C7B8B',
-            '#6C7B8B','#6C7B8B','#6C7B8B','#F0805A','#26C0C0',
-            '#A0522D','#9FB6CD','#9FB6CD','#9FB6CD','#8B8B00',
-            '#9370DB','#919191','#F4E001','#96CDCD','#8B8B83',
-            '#7FFF00','#7EC0EE','#7EC0EE','#76EE00','#6E8B3D',
-            '#6C7B8B','#698B69','#6B8E23','#68838B','#66CDAA'];
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
     if(isNotBlank(getQueryString('weather'))) city = getQueryString('weather');
     if(isNotBlank(getQueryString('winp'))) city = getQueryString('winp');
     if(isNotBlank(getQueryString('air_scope'))) city = getQueryString('air_scope');
+
     $.ajax({
         url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
         headers: {authorization: getQueryString('token')},
@@ -29,16 +20,17 @@ $(document).ready(function(){
         success: function(data){
             if(undefined != data.ok && data.ok == true){
                 if("" != data.obj){
+                    $('#bar_loading').css('display','none');
+                    $('#lowerDiv').css('display','block');
                     preInitEchart(JSON.parse(data.obj));
                 } else {
-                    initEchart_bar(xAxis,datas,colorList); //　默认初始化
+                    // initEchart_bar(xAxis,datas,colorList); //　默认初始化
                 }
             } else {
                 alert(JSON.stringify(data));
             }
         },error: function(data){
-            // prompt('title',JSON.stringify(data));
-            initEchart_bar(xAxis,datas,colorList); //　默认初始化
+            // initEchart_bar(xAxis,datas,colorList); //　默认初始化
         }
     });
 });
@@ -56,10 +48,10 @@ function getQueryString(name) {
 
 //
 function preInitEchart(result){
-    var xAxis = ['山川','河流','固定场所','风','雨','雪','沙尘','空气','日','月相','星辰'];
+    var xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','月相','星辰','固定场所'];
     var datas = [50,50,getLocationScore(city),getWindScore(winp),getRainScore(weather),getSnowScore(weather)
                 ,getSandScore(weather),getAirScore(air_scope),getSunScore(weather),90,getStarsScore(weather)];
-    var colorList = ['#25C1C3','#25C1C3','#25C1C3','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1','#C0B0E1'];
+    var colorList = ['#ACC1EA','#ACC1EA','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#153371'];
     var indx = xAxis.length;
     _.forEach(result, function(n, key) { // 循环对象
         xAxis[indx] = key;
@@ -69,6 +61,7 @@ function preInitEchart(result){
     });
     initEchart_bar(xAxis,datas,colorList);
     initEchart_scatter(result);
+    $('.tanceImg_s').css('display','block');
 }
 
 /**
@@ -106,15 +99,15 @@ function save(){
     result.性别 = $(":radio:checked[name='sex']").val();
     result.民族 = $("#nationSel").val();
     result.姓氏 = $("#surnameSel").val();
-    result.感情状态 = $("#emotionSel").val();
-    result.学历 = $("#educationSel").val();
-    result.高校类型 = $("#collageSel").val();
+    // result.学历 = $("#educationSel").val();
+    // result.高校类型 = $("#collageSel").val();
+    // result.专业 = $("#majorSel").val();
     result.行业 = $("#industrySel").val();
     result.职业 = $("#occupationSel").val();
-    result.专业 = $("#majorSel").val();
-    result.宗教 = $("#religionSel").val();
+    // result.宗教 = $("#religionSel").val();
+    result.感情状态 = $("#emotionSel").val();
     result.双亲情况 = $("#parentsSel").val();
-    result.家庭情况 = $("#familySel").val();
+    result.家庭状况 = $("#familySel").val();
     setResult(result);
     closeTance();
 }
@@ -145,6 +138,11 @@ function setResult(result){
             // if(v == 0) v = 0.1;
             if(v != 0) 
                 result[key] = v;
+            if(key == '收藏'){
+                result.学历 = $("#educationSel").val();
+                result.高校类型 = $("#collageSel").val();
+                result.专业 = $("#majorSel").val();
+            }
         });
         // 保存结果至数据库
         $.ajax({
@@ -161,6 +159,8 @@ function setResult(result){
                 }
             }
         });
+        $('#bar_loading').css('display','none');
+        $('#lowerDiv').css('display','block');
         preInitEchart(result);
     });
     return result;
@@ -421,7 +421,7 @@ function getColor(name_){
         "感情状态":"#28A7E1","婚姻幸福度":"#28A7E1","健康程度":"#28A7E1","健康习惯":"#28A7E1","重视程度":"#28A7E1","双亲情况":"#28A7E1","家庭状况":"#28A7E1",
         "文艺生活":"#FAD860",
         "宠物":"#F3A43B",
-        "旅游":"#60C0DD","运动":"#60C0DD","花茶艺":"#60C0DD","电脑活动":"#60C0DD","棋牌":"#60C0DD","收藏":"#60C0DD",
+        "旅游":"#E67D00","运动":"#E67D00","花茶艺":"#E67D00","电脑活动":"#E67D00","棋牌":"#E67D00","收藏":"#E67D00",
         "行业":"#D7504B","职业":"#D7504B",
         "专业":"#C6E579","学历":"#C6E579","高校类型":"#C6E579","学习意愿":"#C6E579","学习能力":"#C6E579","学习渠道":"#C6E579","学习类型":"#C6E579",
         "个人态度":"#F4E001","个人心境":"#F4E001","语气":"#F4E001","声音":"#F4E001","语调":"#F4E001","语言":"#F4E001","对人应激":"#F4E001","对事应激":"#F4E001","约束力":"#F4E001",

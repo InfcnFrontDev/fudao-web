@@ -53,8 +53,13 @@
             </svg>
         </div>
 
-        <div style="position:absolute; top:96px; left:62px;">
+        <div style="position:absolute; top:96px; left:62px;" id="chengji1">
             <p class="fdzs">看漫画，来自评</p>
+        </div>
+        <div style="position:absolute; top:60px; left:67px; display:none;" id="chengji2">
+            <p class="jieguo">85</p>
+            <a style="      font-size: 16px;  display: block;text-align: center;width: 78px;border: 1px solid #a1cc00;background-color: #a1cc00;color: white;padding: 5px;border-radius: 5px;"
+               class="gotoDeep">深度自诊</a>
         </div>
     </div>
     <div id="before" class="appraisalMark">
@@ -80,8 +85,11 @@
     var token = getQueryString('token');
     //    token = "1bad9f11-11aa-46dd-94e3-cd05e20021c5";
     var allAnswer = JSON.parse(localStorage.getItem('allAnswer')) || [];
+
+
     localStorage.setItem('zizhen_token', token);
     var index = 1;
+
 
     $.ajax({
         type: "post",
@@ -93,12 +101,18 @@
             if (res.ok) {
                 console.log(res);
                 $(".appraisalBtn").html('重新测评');
+                $('#chengji2').show();
+                $('#chengji1').hide();
+                $('.jieguo').html(res.obj.complex);
                 appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
             }
         },
         error: function () {
             console.log('err')
         }
+    });
+    $('.gotoDeep').click(function () {
+        window.postMessage('1');
     });
     /*
      * 比例填充
@@ -171,6 +185,8 @@
         svg2.setAttribute('stroke-dasharray', perimeter2 * percent2 + " " + perimeter2 * (1 - percent2));
         svg3.setAttribute('stroke-dasharray', perimeter3 * percent3 + " " + perimeter3 * (1 - percent3));
         svg4.setAttribute('stroke-dasharray', perimeter4 * percent4 + " " + perimeter4 * (1 - percent4));
+
+
     }
 
     /*******************************************************************************************************/
@@ -325,7 +341,7 @@
                     }
                 }
             }
-
+            localStorage.removeItem(questionnaireType[2]);
             if (e.index == 1) {
                 countScore(answers);
                 localStorage.removeItem(key);

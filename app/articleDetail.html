@@ -77,7 +77,7 @@
 
 		$.ajax({
 			type:"post",
-			url:"http://192.168.10.69:9191/api/ArticleApi/getArticle",
+			url:urls.ARTICLE_GETARTICLE,
 			headers: {
 				authorization: token
 			},
@@ -124,7 +124,6 @@
 		});
 		$('.source_icon').click(function(){
 			if(!isCollection){
-				var url="http://192.168.3.126:18080/fudao-svc/app/collectionAction!addMyCollection.action"
 				$.ajax({
 					data:{
 						sourceId:argumentId,
