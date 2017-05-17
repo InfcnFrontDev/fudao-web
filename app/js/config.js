@@ -4,7 +4,7 @@
 var apiPath = 'http://103.254.113.11:9191/api/';
 var urls = {
     //生命周期
-    LIFE_CYCLE: apiPath + 'app/myCycleAction!calculateCycleAndSave.action',
+    MYCYCLE_CALCULATECYCLE: apiPath + 'MyCycleApi/calculateCycle',
     //天气
     WEATHER: apiPath + 'WeatherApi/getWeather',
     //文章详情

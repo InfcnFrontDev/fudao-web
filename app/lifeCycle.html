@@ -45,35 +45,35 @@
   </div>
   <script>
     //http://localhost:3000/lifeCycle.html?userId=867200022156895,86720002215690328312757&birthdate=1991-07-02&sex=0
-    function getQueryString(name) {
-      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-      var r = window.location.search.substr(1).match(reg);
-      if (r != null) return unescape(r[2]); return null;
-    }
-    var userid=getQueryString('userId');
-    var birthdate=getQueryString('birthdate');
+    var token=getQueryString('token');
     var sex=getQueryString('sex');
-    if(sex=='0'){
-      sex='1'
-    }else{
-      sex='0'
-    }
+    var birthdate=getQueryString('birthdate');
+
+
     var cycle;
-    /*  $.ajax({
-          data:{
-              "appid":userid,
-              "birthDay":birthdate,
-              "sex": sex
-          },
-          dataType: "json",
-          url: urls.LIFE_CYCLE,
-          success: function(data){
-             cycle = data.obj;
-              fun_showCycle(cycle, sex, birthdate);
-          }
-      });*/
-    cycle={"appid":"867200022156895,86720002215690328312757","day":0,"month":2,"renalPeriod":3,"season":2,"sex":0,"weeks":3,"years":1}
-    fun_showCycle(cycle, sex, birthdate);
+
+    $.ajax({
+      type:"post",
+      url:urls.MYCYCLE_CALCULATECYCLE,
+      headers: {
+        authorization: token
+      },
+      success:function(data){
+        console.log(data);
+        cycle=data.obj;
+      },
+      error:function(){
+
+      }
+    });
+
+    setTimeout(function(){
+      console.log(cycle);
+      fun_showCycle(cycle, sex, birthdate);
+      var hulu = cycle.renalPeriod + '肾期 ' + cycle.years + '年 ' + cycle.season + '季度 ';
+      hulu += +cycle.month + '月 ' + cycle.weeks + '周 ' + cycle.day + '天';
+      $('.boxtishi').text(hulu);
+    },500)
 
 
 
@@ -85,7 +85,7 @@
           var start_move = -10;
           //一层多少个格
           var subsection;
-          if(sex == 0) {
+          if(sex == 2) {
               subsection = 7;
           } else {
               subsection = 8;
@@ -201,7 +201,7 @@
                       _img_tongyong.src = "images/xingxiang/tongyong.png";
                       _img_tongyong.style.position = "relative";
                       _img_tongyong.style.top = "-30px";
-                      _img_tongyong.setAttribute("onclick", "fun_click()");
+                      //_img_tongyong.setAttribute("onclick", "fun_click()");
                       var _div_tongyong = document.createElement("div");
                       _div_tongyong.style.position = "relative";
                       _div_tongyong.style.zIndex = 10;
@@ -250,16 +250,8 @@
           }
 
       }
-      function fun_click() {
-          var hulu = cycle.renalPeriod + '肾期 ' + cycle.years + '年 ' + cycle.season + '季度 ';
-          hulu += +cycle.month + '月 ' + cycle.weeks + '周 ' + cycle.day + '天';
-          // 弹出系统提示对话框
 
-          mui.alert(hulu,'查看肾期');
-      }
-    var hulu = cycle.renalPeriod + '肾期 ' + cycle.years + '年 ' + cycle.season + '季度 ';
-    hulu += +cycle.month + '月 ' + cycle.weeks + '周 ' + cycle.day + '天';
-      $('.boxtishi').text(hulu);
+
     document.getElementById("div_woniu").style.fontSize="12px";
   </script>
 
