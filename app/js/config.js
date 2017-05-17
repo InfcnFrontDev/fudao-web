@@ -48,7 +48,9 @@ var urls = {
 
     DIAGNOSIS_SUBMITSYMPTOM: apiPath + 'DiagnosisApi/submitSymptom',
     //获取登陆用户信息
-    USER_GETLOGINUSER: apiPath + 'UserApi/getLoginUser'
+    USER_GETLOGINUSER: apiPath + 'UserApi/getLoginUser',
+    //获取节气信息
+    HEALTH_GETSOLARTERM: apiPath + 'HealthApi/getSolarTerm'
 }
 
 function getQueryString(name) {
