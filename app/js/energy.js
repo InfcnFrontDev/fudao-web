@@ -7,17 +7,19 @@ var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
 $(document).ready(function(){
+    alert('city:'+getQueryString('city')+' weather:'+getQueryString('weather')+' winp:'+getQueryString('winp')+' air_scope:'+getQueryString('air_scope'));
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
-    if(isNotBlank(getQueryString('weather'))) city = getQueryString('weather');
-    if(isNotBlank(getQueryString('winp'))) city = getQueryString('winp');
-    if(isNotBlank(getQueryString('air_scope'))) city = getQueryString('air_scope');
-
+    if(isNotBlank(getQueryString('weather'))) weather = getQueryString('weather');
+    if(isNotBlank(getQueryString('winp'))) winp = getQueryString('winp');
+    if(isNotBlank(getQueryString('air_scope'))) air_scope = getQueryString('air_scope');
+    alert(getQueryString('token'));
     $.ajax({
-        url: "http://192.168.10.69:9191/api/EnergyApi/getEnergy",
+        url: urls.ENERGY_GET,
         headers: {authorization: getQueryString('token')},
         type: "post",
         dataType: "JSON",
         success: function(data){
+            // alert(JSON.stringify(data));
             if(undefined != data.ok && data.ok == true){
                 if("" != data.obj){
                     $('#bar_loading').css('display','none');
@@ -30,6 +32,7 @@ $(document).ready(function(){
                 alert(JSON.stringify(data));
             }
         },error: function(data){
+            // alert(JSON.stringify(data));
             // initEchart_bar(xAxis,datas,colorList); //　默认初始化
         }
     });
@@ -146,7 +149,7 @@ function setResult(result){
         });
         // 保存结果至数据库
         $.ajax({
-            url: "http://192.168.10.69:9191/api/EnergyApi/submitInformationResult",
+            url: urls.ENERGY_SUBMITSYMPTOM,
             headers: {
                 authorization: getQueryString('token')
             },

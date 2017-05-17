@@ -48,7 +48,11 @@ var urls = {
     //症状提交
     DIAGNOSIS_SUBMITSYMPTOM: apiPath + 'DiagnosisApi/submitSymptom',
     //获取登陆用户信息
-    USER_GETLOGINUSER: apiPath + 'UserApi/getLoginUser'
+    USER_GETLOGINUSER: apiPath + 'UserApi/getLoginUser',
+    // 能量场数据保存
+    ENERGY_GET: apiPath + 'EnergyApi/submitInformationResult',
+    // 获取能量场数据
+    ENERGY_SUBMITSYMPTOM: apiPath + 'EnergyApi/getEnergy'
 }
 
 function getQueryString(name) {
