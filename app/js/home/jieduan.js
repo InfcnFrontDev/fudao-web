@@ -14,7 +14,7 @@ function nextTimezhishi(num,startTime,endTime,name){
     }
     //白色斜线
     ctx.beginPath();
-    ctx.strokeStyle="#fff";
+    ctx.strokeStyle="#9db9e1";
     ctx.lineWidth="1";
     //ctx.rotate(min*Math.PI/30);
     ctx.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+20),Math.cos(2*Math.PI / 360*centerText) * (num+20));
@@ -22,7 +22,7 @@ function nextTimezhishi(num,startTime,endTime,name){
     ctx.stroke();
     //白色横线
     ctx.beginPath();
-    ctx.strokeStyle="#fff";
+    ctx.strokeStyle="#9db9e1";
     ctx.lineWidth="1";
     //ctx.rotate(min*Math.PI/30);
     ctx.moveTo(Math.sin(2*Math.PI / 360*centerText) * (num+40),Math.cos(2*Math.PI / 360*centerText) * (num+40));
@@ -35,7 +35,7 @@ function nextTimezhishi(num,startTime,endTime,name){
     //白色字体
     ctx.save();
     ctx.beginPath();
-    ctx.fillStyle="#fff";
+    ctx.fillStyle="#9db9e1";
     ctx.font="10px Arial";
     ctx.textAlign='center';
     ctx.textBaseline='middle';
