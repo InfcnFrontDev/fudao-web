@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21c1c93c-26df-43a7-a173-04a53ee4bcf1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <list id="71f3f739-424f-496f-9c42-f1e1d11ee7b9" name="New changelist" comment="" />
@@ -61,7 +60,7 @@
       <file leaf-file-name="myTime.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/myTime.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
+            <state relative-caret-position="686">
               <caret line="263" column="32" selection-start-line="263" selection-start-column="32" selection-end-line="263" selection-end-column="32" />
               <folding />
             </state>
@@ -322,7 +321,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1494912881786</updated>
-      <workItem from="1494912882977" duration="17783000" />
+      <workItem from="1494912882977" duration="17846000" />
     </task>
     <task id="LOCAL-00001" summary="home deepdiagnosis">
       <created>1494918699544</created>
@@ -359,11 +358,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495000221738</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'dev' of http://192.168.10.158/InfcnFrontDev/fudao-web into dev&#10;&#10;# Conflicts:&#10;#&#9;app/js/config.js&#10;">
+      <created>1495000287744</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1495000287744</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17783000" />
+    <option name="totallyTimeSpent" value="17846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -505,7 +511,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/myTime.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
+        <state relative-caret-position="686">
           <caret line="263" column="32" selection-start-line="263" selection-start-column="32" selection-end-line="263" selection-end-column="32" />
           <folding />
         </state>
