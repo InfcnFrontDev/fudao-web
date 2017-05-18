@@ -15,22 +15,17 @@ var urls = {
     ASSESSMENT: apiPath + 'app/questionnaireAction!getQuestionByType.action',
     //计算得分
     CALCULATE_SCORE: apiPath + 'app/questionnaireAction!calculateScore.action',
-    //我的时间分段
-    TIMEPERIOD_GETMYTIMEPERIOD: apiPath + 'TimePeriodApi/getMyTimePeriod',
-    //我的时间阶段
+    //获取我的时间段
     TIMEPERIOD_GETMYTIMESTAGE: apiPath + 'TimePeriodApi/getMyTimeStage',
-    //通用时间分段
-    TIMEPERIOD_GETGENERALTIMEPERIOD: apiPath + 'TimePeriodApi/getGeneralTimePeriod',
-    //通用时间阶段
+    //获取通用时间段
     TIMEPERIODAPI_GETGENERALTIMESTAGE: apiPath + 'TimePeriodApi/getGeneralTimeStage',
     //保存我的时间段
     TIMEPERIOD_SAVEMYTIMEPERIOD: apiPath + 'TimePeriodApi/saveMyTimePeriod',
-
     //获取全天的运动列表
     TIMEPERIODA_GETALLDAYMOTIONLIST: apiPath + 'TimePeriodApi/getAllDayMotionList',
-
     //获取时间段的推荐疗法
     TIMEPERIOD_GETTIMESTAGETHERAPYLIST: apiPath + 'TimePeriodApi/getTimeStageTherapyList',
+
     //获取问卷列表
     DIAGNOSIS_GETQUESTIONNAIRELIST: apiPath + 'DiagnosisApi/getQuestionnaireList',
     //提交问卷
