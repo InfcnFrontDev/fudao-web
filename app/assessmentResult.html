@@ -13,11 +13,11 @@
 <body style="width:100%;height:100%;overflow: hidden">
 <div class="appraisalBox">
     <div style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
-        <div id="div_img" style="display:none;">
+        <div id="div_img">
             <img src="images/load_fudaozhishu.gif" width="220" height="220"
                  style="position:absolute;top:0;left:0; z-index: 0;"/>
         </div>
-        <div id="div_svg">
+        <div id="div_svg"  style="display:none;">
             <svg width="220" height="220" class="pt-ab pt1">
                 <circle cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
                 <circle cx="110" cy="110" r="70" stroke-width="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang"
@@ -68,7 +68,7 @@
 
 <script>
 
-//    var token = "4940e86f-51e2-41a1-aa08-a324f4801135";
+//    var token = "ce95ae06-0d86-4488-ad92-f04cf2674945";
     var token = localStorage.getItem('zizhen_token');
 
 
@@ -90,7 +90,12 @@
             $(".appraisalxl span").html(res.obj.psychology);
             $(".appraisalsj span").html(res.obj.social);
             $(".appraisalzc span").html(res.obj.self);
-            appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
+            setTimeout(function(){
+                $("#div_img").css("display",'none');
+                $("#div_svg").css("display",'block');
+                appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
+            },1200)
+
 
         },
         error: function () {
