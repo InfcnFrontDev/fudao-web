@@ -245,7 +245,7 @@
       <div class="mg-left-8">下一节气：<span id="nextJieQi"></span></div>
     </div>
 
-    <div style="width:28%; float:right; text-align:center;  line-height: 80px;">清明节</div>
+    <div style="width:28%; float:right; text-align:center;  line-height: 80px;" id="jie">清明节</div>
   </div>
   <script>
     var token=getQueryString('token');
@@ -254,6 +254,17 @@
       window.setInterval("fun_time()", 1000);
 
       $('#jieqi').html($('#upJieQi').text().split('(')[0])
+
+    $.ajax({
+      type:"post",
+      url: urls.HEALTH_GETSOLARTERM,
+      headers: {
+        authorization: token
+      },
+      success: function (data) {
+        $('#jie').html(data.obj[0].name)
+      }
+    });
 
       $.ajax({
         type:"post",
