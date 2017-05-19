@@ -62,11 +62,11 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <!--slide1-->
-        <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="overflow: scroll">
-            <div style="position:absolute;top:30px;right:-15px;z-index: 99999999;">
+        <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="overflow: scroll;height: 100%">
+            <div style="position:absolute;top:30px;right:-15px;z-index: 99999999;height: 70%;overflow: hidden">
                 <div class="chart" id="pieChart" style="width: 180px;height:140px;"></div>
                 <ul id="div_list"
-                    style="position:relative;left:10px;font-size:12px;padding-top: 10px;text-align: left;padding-right: 10px">
+                    style="position:relative;left:10px;font-size:12px;padding-top: 10px;text-align: left;padding-right: 10px;height: 64%;overflow: scroll">
                 </ul>
             </div>
             <div id='div_content'
@@ -84,8 +84,8 @@
             </div>
         </div>
         <!--slide2-->
-        <div class="swiper-slide swiper-no-swiping" style="display: flex;flex-direction: column">
-            <div style="flex:1;overflow-y: scroll;overflow-x: hidden">
+        <div class="swiper-slide swiper-no-swiping" style="height: 100%">
+            <div style="height: 85%;overflow-y: scroll;overflow-x: hidden">
                 <div>
                     <p style="font-size: 13px;text-align: left;padding: 8px;padding-left: 20px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">
                         您已选择的症状有</p>
@@ -106,9 +106,10 @@
                     </div>
                 </div>
             </div>
-            <a id="depthSubmit"
-               style="display:block;margin: 20px auto 30px; height:38px; line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
-               onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a>
+            <p style="height:15%;width: 100%"><a id="depthSubmit"
+                  style="display:block;margin: 20px auto 30px; height:38px;line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
+                  onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></p>
+
         </div>
     </div>
     <!-- Add Arrows -->
@@ -122,39 +123,22 @@
 <!-- Initialize Swiper -->
 <script>
     var type = true;
-    function groupBy(current, type) {
-        var result = {};
-        for (var i = 0; i < current.length; i++) {
-            result[current[i][type]] = result[current[i][type]] || [];
-            result[current[i][type]].push(current[i]);
-        }
-        return result;
-    }
+
     var swiper = new Swiper('.swiper-container', {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 30
     });
-    var diseasespeople='quality',sex=1;
-    //var token = "05d63d86-bd60-4012-8b9b-5a7776dcb050";
-    var token = localStorage.getItem('zizhen_token');
-    $.ajax({
-        type: "post",
-        url: urls.USER_GETLOGINUSER,
-        headers: {
-            authorization: token
-
-        },
-        success: function (res) {
-            //alert(JSON.stringify(res));
-            diseasespeople=res.obj.crowd;
-            sex=res.obj.sex;
-        },
-        error: function () {
-            console.log('err')
-        }
-    });
+    var diseasespeople=localStorage.getItem('diseasespeople')||'quality';
+    var sex=parseInt(localStorage.getItem('sex'))||1;
     var svgPath = '';
+
+
+
+//    var token = "dd3b94c2-09e4-4800-af45-704e11496b3b";
+    var token = localStorage.getItem('zizhen_token');
+
+
     if ( diseasespeople== 'aged') {
         if (sex==1) {
             svgPath = 'diagnosisMap/images/laoren.svg';
@@ -189,87 +173,7 @@
                     },
                     success: function (res) {
                         symptomList = res.obj;
-                        /*       symptomList = {
-                         "头部": {
-                         "鼻": [
-                         "鼻塞",
-                         "流涕"
-                         ],
-                         "精神": [
-                         "焦虑",
-                         "自罪自责"
-                         ],
-                         "耳": [
-                         "耳鸣",
-                         "耳堵"
-                         ]
-                         },
-                         "颈部": {
-                         "咽喉": [
-                         "咽部异物感",
-                         "声带疲劳"
-                         ], "颈部": [
-                         "颈项强直、疼痛",
-                         "不能点头、仰头及转头"
-                         ]
-                         },
-                         "胸部": {
-                         "心脏": [
-                         "心慌气短",
-                         "心悸",
-                         "胸闷",
-                         "心率变化",
-                         "心律失常"
-                         ],
-                         "胸腔": [
-                         "胸部有捆绑感"
-                         ]
-                         },
-                         "腹部": {
-                         "上腹": [
-                         "大便失禁",
-                         "食欲紊乱",
-                         "排便费力",
-                         "干球状便或硬便",
-                         "排便不尽感",
-                         "腹胀",
-                         "腹泻",
-                         "消化不良"
-                         ],
-                         "下腹": [
-                         "尿频",
-                         "膀胱和直肠功能障碍"
-                         ], "生殖": [
-                         "阴茎勃起障碍",
-                         "性功能减退"
-                         ]
-                         },
-                         "背部": {
-                         "脊柱": [
-                         "腰椎侧凸",
-                         "肩背疼痛发僵"
-                         ],
-                         "腰骶部": [
-                         "腰痛",
-                         "坐骨神经痛",
-                         "腰部活动受限",
-                         "椎间隙、椎旁压痛"
-                         ]
 
-                         },
-
-                         "四肢": {
-                         "颈部": [
-                         "鼻塞22",
-                         "流涕"
-                         ],
-                         "食道": [
-                         "咽部异物感",
-                         "流涕"
-                         ]
-                         }
-
-                         }*/
                     },
                     error: function () {
                         console.log('err')
@@ -277,21 +181,7 @@
                 });
             } else {
                 type = false;
-                /*res={
-                 obj:[
-                 "鼻塞",
-                 "流涕",
-                 "心慌",
-                 "心悸",
-                 "胸闷",
-                 "心率变化",
-                 "心律失常",
-                 "腰痛",
-                 "坐骨神经痛",
-                 "腰部活动受限",
-                 "椎间隙、椎旁压痛"
-                 ]
-                 };*/
+
                 fun_pathogeny('tou', res.obj, false);
             }
         },

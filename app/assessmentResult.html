@@ -55,6 +55,8 @@
         <div class="jinduBox">
             <p class="appraisalsl">生理健康指数<span class="physiology">56</span></p>
             <p class="appraisalxl">心理健康指数<span class="mentality">76</span></p>
+        </div>
+        <div class="jinduBox">
             <p class="appraisalsj">社交健康指数<span class="society">56</span></p>
             <p class="appraisalzc">自测健康指数<span class="oneself">66</span></p>
         </div>
@@ -66,7 +68,11 @@
 
 <script>
 
-    var token = localStorage.getItem('zizhen_token');
+    var token = "4940e86f-51e2-41a1-aa08-a324f4801135";
+//    var token = localStorage.getItem('zizhen_token');
+
+
+
     $.ajax({
         type: "post",
         url: urls.DIAGNOSIS_GETEVALUATIONRESULT,
@@ -92,8 +98,10 @@
         }
     });
 
+
+
     $('.gotoDeep').click(function () {
-        window.postMessage('1');
+        window.postMessage("1");
     });
 
 

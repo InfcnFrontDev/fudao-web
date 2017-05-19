@@ -697,6 +697,23 @@
     return {x: x, y: y};
   }
 
+//获取用户类型和性别
+  $.ajax({
+      type: "post",
+      url: urls.USER_GETLOGINUSER,
+      headers: {
+          authorization: token
+      },
+      success: function (res) {
+          localStorage.setItem("diseasespeople",res.obj.crowd);
+          localStorage.setItem("sex",res.obj.sex);
+      },
+      error: function () {
+          console.log('err')
+      }
+  });
+
+
 </script>
   <script src="js/home/jieduan.js"></script>
 
