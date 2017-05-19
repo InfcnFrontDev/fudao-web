@@ -181,7 +181,7 @@ for(i=0; i<arr.length; i++){
 setTimeout(drawTime,chaAngle*4*60*1000-sec*1000);
 setTimeout(function(){
     drawTime();
-    location.reload();
+   /* location.reload();*/
 },(chaAngle+startTimeArr[angleIndex+1])*4*60*1000-sec*1000);
 //console.log(startTimeArr);
 
@@ -603,3 +603,19 @@ function getEventPosition(ev){
     return {x: x, y: y};
 }
 
+
+//获取用户类型和性别
+$.ajax({
+    type: "post",
+    url: urls.USER_GETLOGINUSER,
+    headers: {
+        authorization: token
+    },
+    success: function (res) {
+        localStorage.setItem("diseasespeople",res.obj.crowd);
+        localStorage.setItem("sex",res.obj.sex);
+    },
+    error: function () {
+        console.log('erar')
+    }
+});
