@@ -187,9 +187,11 @@
         }
     });
     $('#opacityNext').click(function () {
-        document.getElementById("opacityNext").style.opacity = 0;
-        fun_choosed_render(token, type);
-        swiper.slideNext();
+        if(document.getElementById("opacityNext").style.opacity!="0"){
+            document.getElementById("opacityNext").style.opacity = 0;
+            fun_choosed_render(token, type);
+            swiper.slideNext();
+        }
     });
     $('#opacityPre').click(function () {
         swiper.slidePrev();
