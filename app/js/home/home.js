@@ -31,7 +31,11 @@ $('.warn1').click(function(e){
 
 $('.dongzuo').click(function(e){
     e.stopPropagation();
-    $('.bigimg').show();
+    //$('.bigimg').show();
+
+    window.postMessage('获取运动{"img":"zixun/1.3.jpg","title":"拉伸运动","detail":"以两手搓热环摸脐周，谁知盘中餐，少用力按摩腹部提拿腹肌，以一手会当临绝顶，一览众山小"}');
+    //'{"img":"zixun/1.3.jpg","title":"拉伸运动","content":"以两手搓热环摸脐周，谁知盘中餐，少用力按摩腹部提拿腹肌，以一手会当临绝顶，一览众山小"}'
+
 });
 $(document).click(function(e){
     e.preventDefault();
@@ -162,7 +166,7 @@ for(i=0; i<arr.length; i++){
     }
     if(startDuan>overDuan){
         if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
-            chaAngle=overDuan-newdian
+            chaAngle=(overDuan+360)-newdian
             angleIndex=i;
             //console.log(i);
         }
@@ -364,17 +368,15 @@ function yellowTimeDuan(num,startTime,endTime,name){
             }
             $.ajax({
                 type:"post",
-                url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
+                url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
                 headers: {
                     authorization: token
                 },
                 data:{
-                    timeStage:timeName
+                    timePeriod:timeName
                 },
                 success:function(data){
-                    $('.titleH').html(name);
                     $('.tishi').html(data.obj[0].threeCharacterClassic);
-
                     //window.postMessage(JSON.stringify(data));
 
                 },
