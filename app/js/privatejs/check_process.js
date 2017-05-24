@@ -79,9 +79,13 @@ function fun_buwei_zhengzhuang(position) {
 }
 //画圆
 function fun_pie(data, position, type) {
-    var _selectedMode = "multiple";
-    if ('buwei_zhengzhuang' == type) {
-        _selectedMode = "single";
+    var _selectedMode = "single";
+    // if ('buwei_zhengzhuang' == type) {
+    //     _selectedMode = "single";
+    // }
+    var _arr_color = [];
+    for (var _i in data) {
+        _arr_color.push(common_arr_color[_i])
     }
     var option = {
         series: [{
@@ -122,15 +126,14 @@ function fun_pie(data, position, type) {
                     }
                 }
             },
-            data: data
-        }]
+            data: data,
+            // color:_arr_color,
+        }],
+        animationDuration:50
     }
-    var _arr_color = [];
-    for (var _i in data) {
-        _arr_color.push(common_arr_color[_i])
-    }
+    //
     option['color'] = _arr_color;
-    option['animation'] = false;
+    // option['animation'] = false;
     pieChart.setOption(option);
     pieChart.on('pieSelected', function (params) {
         console.log(params)
