@@ -132,7 +132,7 @@
 
 
 
-//    var token = "dd3b94c2-09e4-4800-af45-704e11496b3b";
+//    var token = "0d96b25a-1be6-4e28-9d03-90c56d1457a5";
     var token = localStorage.getItem('zizhen_token');
 
 
@@ -169,6 +169,8 @@
                         authorization: token
                     },
                     success: function (res) {
+//                        window.postMessage(res);
+
                         symptomList = res.obj;
 
                     },
