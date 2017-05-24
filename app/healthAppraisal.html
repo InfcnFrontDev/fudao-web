@@ -292,12 +292,10 @@
             $("#answer4").html(fun_createRadio(curQuestion, 3, 'D') + "<label style ='text-align:left;margin-left:28px;'>D&nbsp;&nbsp;&nbsp;" + curQuestion.answer[3] + "</label>");
             $("#answer5").html(fun_createRadio(curQuestion, 4, 'E') + "<label style ='text-align:left;margin-left:28px;'>E&nbsp;&nbsp;&nbsp;" + curQuestion.answer[4] + "</label>");
             fun_showProgress(index);
-
         }, 300)
     }
 
     function fun_showProgress(index) {
-
         // 显示进度
         mui("#demo5 .mui-progressbar").each(function () {
             mui(this).progressbar({
@@ -391,7 +389,6 @@
                     localStorage.removeItem("appraisalsj");
                     localStorage.removeItem("appraisalzc");
                 }
-
                 if (questionnaireType[0] == 0) {
                     localStorage.removeItem("all");
                 }
