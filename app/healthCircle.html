@@ -19,13 +19,16 @@
 	<div class="boxBottom">
 		<div class="textBox">
 			<h3 class="h3Box">&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; 工作阶段</h3>
-			<p>茶歇：鸭梨，杏仁，核桃仁</p>
-			<p>动：颈部活动操，踮脚跳，虎扑</p>
+			<div class="tishi">
+
+			</div>
+
 		</div>
 	</div>
 	<script>
 
-        var func = function(jieduan) {
+        var func = function(jieduan,fenduan) {
+
 			var date=new Date();
 			var hours=date.getHours();
 			var minutes=date.getMinutes();
@@ -33,7 +36,60 @@
 			    minutes="0"+minutes;
 			}
 			$('.h3Box').html(''+hours+':'+minutes+'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;'+jieduan+'')
+			var str='';
+			 for(var i=0; i<fenduan.length; i++){
+			 	var a=fenduan[i].name
+				 console.log(fenduan);
+
+				 $.ajax({
+					 type:"post",
+					 url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
+					 headers: {
+						 authorization: token
+					 },
+					 data:{
+						 timePeriod:fenduan[i].name
+					 },
+					 success:function(data){
+					 	if(data.obj)
+						 str+='<p>'+a+':'+data.obj[0].name+'</p>'
+
+					 },
+					 error:function(){
+
+					 }
+				 });
+
+
+			 }
+			 setTimeout(function(){
+				 $('.tishi').html(str);
+				 $('.tishi').find('p').click(function(){
+
+					 $.ajax({
+						 type:"post",
+						 url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,
+						 headers: {
+							 authorization: token
+						 },
+						 data:{
+							 timePeriod:$(this).text().split(':')[0]
+						 },
+						 success:function(data){
+						 	if(data.obj)
+							 window.postMessage(JSON.stringify(data.obj[0]));
+						 },
+						 error:function(){
+
+						 }
+					 });
+				 })
+			 },500)
+
+
+
         };
+
 
 
         var oCanvas=document.getElementById('myCanvas');
@@ -55,8 +111,12 @@
 
 			}
 		});
+
         setInterval(drawTime,1000);
-		setTimeout(drawTime,500)
+		setTimeout(function(){
+			drawTime();
+
+		},500)
         function drawTime(){
             context.clearRect(-200,-200,375,375)/*因为绘制的原点变了，所以要清除起始坐标也发生了变化*/
             var now = new Date();
@@ -133,7 +193,7 @@
 				}
 
 			}
-			func(arr[index].name)
+			func(arr[index].name,arr[index].timePeriods)
 
             //内圈数字
             context.save();
