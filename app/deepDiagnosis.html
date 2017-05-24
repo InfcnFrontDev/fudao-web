@@ -130,10 +130,12 @@
     var sex=parseInt(localStorage.getItem('sex'))||1;
     var svgPath = '';
 
+//
+    var token = getQueryString('token');
+    localStorage.setItem('zizhen_token', token);
 
-
-//    var token = "0d96b25a-1be6-4e28-9d03-90c56d1457a5";
-    var token = localStorage.getItem('zizhen_token');
+//    var token = "3c7ac19c-69ea-4dd2-b532-759f92fc4f66";
+//    var token = localStorage.getItem('zizhen_token');
 
 
     if ( diseasespeople== 'aged') {
@@ -180,7 +182,6 @@
                 });
             } else {
                 type = false;
-
                 fun_pathogeny('tou', res.obj, false);
             }
         },
