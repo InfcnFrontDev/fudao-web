@@ -8733,14 +8733,14 @@ var sheets = {
 // 数组转Map
 var jingluo = {};
 for(var i in sheets.jingluo) {
-	//jingluo[sheets.jingluo[i].code] = sheets.jingluo[i];
-	var jingluoCode = sheets.jingluo[i].code;
-	var xhxIndex = jingluoCode.indexOf('-');
-	var jingluoKey = jingluoCode;
-	if(xhxIndex > -1) {
-		jingluoKey = jingluoCode.substring(0, xhxIndex)
-	}
-	jingluo[jingluoKey] = sheets.jingluo[i];
+	jingluo[sheets.jingluo[i].code] = sheets.jingluo[i];
+	// var jingluoCode = sheets.jingluo[i].code;
+	// var xhxIndex = jingluoCode.indexOf('-');
+	// var jingluoKey = jingluoCode;
+	// if(xhxIndex > -1) {
+	// 	jingluoKey = jingluoCode.substring(0, xhxIndex)
+	// }
+	// jingluo[jingluoKey] = sheets.jingluo[i];
 };
 var xuewei = {};
 for(var i in sheets.xuewei) {
