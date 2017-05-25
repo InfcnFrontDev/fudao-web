@@ -13,11 +13,11 @@
 <body style="width:100%;height:100%;overflow: hidden">
 <div class="appraisalBox">
     <div style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
-        <div id="div_img" style="display:none;">
-            <img src="images/load_fudaozhishu.gif" width="220" height="220"
+        <div id="div_img">
+            <img src="images/load_fudaozhishu1.gif" width="220" height="220"
                  style="position:absolute;top:0;left:0; z-index: 0;"/>
         </div>
-        <div id="div_svg">
+        <div id="div_svg"  style="display:none;">
             <svg width="220" height="220" class="pt-ab pt1">
                 <circle cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
                 <circle cx="110" cy="110" r="70" stroke-width="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang"
@@ -55,6 +55,8 @@
         <div class="jinduBox">
             <p class="appraisalsl">生理健康指数<span class="physiology">56</span></p>
             <p class="appraisalxl">心理健康指数<span class="mentality">76</span></p>
+        </div>
+        <div class="jinduBox">
             <p class="appraisalsj">社交健康指数<span class="society">56</span></p>
             <p class="appraisalzc">自测健康指数<span class="oneself">66</span></p>
         </div>
@@ -66,7 +68,11 @@
 
 <script>
 
+//    var token = "ce95ae06-0d86-4488-ad92-f04cf2674945";
     var token = localStorage.getItem('zizhen_token');
+
+
+
     $.ajax({
         type: "post",
         url: urls.DIAGNOSIS_GETEVALUATIONRESULT,
@@ -84,7 +90,12 @@
             $(".appraisalxl span").html(res.obj.psychology);
             $(".appraisalsj span").html(res.obj.social);
             $(".appraisalzc span").html(res.obj.self);
-            appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
+            setTimeout(function(){
+                $("#div_img").css("display",'none');
+                $("#div_svg").css("display",'block');
+                appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
+            },1200)
+
 
         },
         error: function () {
@@ -92,8 +103,10 @@
         }
     });
 
+
+
     $('.gotoDeep').click(function () {
-        window.postMessage('1');
+        window.postMessage("1");
     });
 
 

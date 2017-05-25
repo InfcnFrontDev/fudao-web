@@ -149,9 +149,9 @@ body {
     line-height:22px;
 }
 .jinduBox{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-around ;
+    width: 100%;
+    /*display: flex;*/
+    /*justify-content:space-around ;*/
     color: #212121;
     padding-top: 10px;
 }
@@ -162,8 +162,9 @@ body {
     padding: 10px 0 0 10px;
 }
 .jinduBox a{
-    display: block;
-    width:150px;
+    display: inline-block;
+    width: 40%;
+    margin: 0 10px;
     background: #EEEEEE;
     color:#333333;
     border-radius: 5px;
@@ -172,14 +173,14 @@ body {
     text-align: left;
 }
 .jinduBox p{
-    width:130px;
+    display: inline-block;
+    width: 40%;
+    margin: 0 10px;
     background: #EEEEEE;
     color:#333333;
-    padding: 12px;
-    display: flex;
-    align-content: center;
-    margin:0;
-    margin-bottom: 14px;
+    /*padding: 3px;*/
+    margin-bottom: 10px;
+    padding: 10px 3px;
 }
 .jinduBox a span{
     position: absolute;
@@ -187,9 +188,9 @@ body {
     bottom:25px;
 }
 .jinduBox p span{
-    display: block;
-    flex: 1;
+    display: inline-block;
     text-align: right;
+    padding-left: 6px;
 }
 
 /*.jinduBox span{*/
@@ -215,7 +216,10 @@ body {
     /*border-radius: 9px;*/
 }
 
+/*
 
+
+*/
 
 
 .physiology{

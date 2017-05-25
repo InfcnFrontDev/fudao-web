@@ -66,6 +66,8 @@
         <div class="jinduBox">
             <a class="appraisalsl" data-reveal-id="myModal"><b>生理测评</b><span>00%</span><i><cite></cite></i></a>
             <a class="appraisalxl" data-reveal-id="myModal"><b>心理测评</b><span>00%</span><i><cite></cite></i></a>
+        </div>
+        <div class="jinduBox">
             <a class="appraisalsj" data-reveal-id="myModal"><b>社交测评</b><span>00%</span><i><cite></cite></i></a>
             <a class="appraisalzc" data-reveal-id="myModal"><b>自测测评</b><span>00%</span><i><cite></cite></i></a>
         </div>
@@ -83,9 +85,8 @@
 
 <script>
     var token = getQueryString('token');
-    //    token = "1bad9f11-11aa-46dd-94e3-cd05e20021c5";
+//        token = "4e0ab0d5-5082-4dec-af9c-ae858d609837";
     var allAnswer = JSON.parse(localStorage.getItem('allAnswer')) || [];
-
 
     localStorage.setItem('zizhen_token', token);
     var index = 1;
@@ -112,7 +113,7 @@
         }
     });
     $('.gotoDeep').click(function () {
-        window.postMessage('1');
+        window.postMessage("1");
     });
     /*
      * 比例填充
@@ -185,8 +186,6 @@
         svg2.setAttribute('stroke-dasharray', perimeter2 * percent2 + " " + perimeter2 * (1 - percent2));
         svg3.setAttribute('stroke-dasharray', perimeter3 * percent3 + " " + perimeter3 * (1 - percent3));
         svg4.setAttribute('stroke-dasharray', perimeter4 * percent4 + " " + perimeter4 * (1 - percent4));
-
-
     }
 
     /*******************************************************************************************************/
@@ -234,20 +233,58 @@
         fun_getCurQuestion();
     });
 
+    function groupBy(current, type) {
+        var result = {};
+        for (var i = 0; i < current.length; i++) {
+            result[current[i][type]] = result[current[i][type]] || [];
+            result[current[i][type]].push(current[i]);
+        }
+        return result;
+    }
+
     // 设置当前问题及答案
     function fun_getCurQuestion() {
-
-        if (index != 1) {
-            localStorage.setItem(questionnaireType[2], JSON.stringify(Math.ceil((index - 1) / _json.length * 100)) + "%");
-            $("." + questionnaireType[2] + " span").html(Math.ceil((index - 1) / _json.length * 100) + "%");
-            $("." + questionnaireType[2] + " cite").css('width', 1.3 * Math.ceil((index - 1) / _json.length * 100));
-        }
         fun_setButton();
         $("#sum").html(index + "/" + _json.length);
         var curQuestion = _json[index - 1];
+
+        var before_cur_pre = parseInt(localStorage.getItem(questionnaireType[2]));
+        var new_cur_pre = Math.ceil((index - 1) / _json.length * 100);
+
+        if (index != 1 && (isNaN(before_cur_pre) || before_cur_pre < new_cur_pre)) {
+            console.log(before_cur_pre + "       " + new_cur_pre)
+            localStorage.setItem(questionnaireType[2], new_cur_pre + "%");
+            $("." + questionnaireType[2] + " span").html(new_cur_pre + "%");
+            $("." + questionnaireType[2] + " cite").css('width', 1.3 * new_cur_pre);
+        }
+
+        if (questionnaireType[0] == 0) {
+            var type_all = curQuestion.type == 1 ? "appraisalsl" : curQuestion.type == 2 ? "appraisalxl" : curQuestion.type == 3 ? "appraisalsj" : "appraisalzc";
+            var data_by_type = groupBy(_json, "type");
+            var before_pre = parseInt(localStorage.getItem(type_all));
+            for (var k = 0; k < data_by_type[curQuestion.type].length; k++) {
+                if (curQuestion.id == data_by_type[curQuestion.type][k].id) {
+                    break;
+                }
+            }
+            var new_pre = Math.ceil(k / data_by_type[curQuestion.type].length * 100);
+            if ((new_pre > before_pre || isNaN(before_pre)) && new_pre > 0) {
+
+                localStorage.setItem(type_all, new_pre + "%");
+                $("." + type_all + " span").html(new_pre + "%");
+                $("." + type_all + " cite").css('width', 1.3 * new_pre);
+            }
+
+            if (curQuestion.type > 1) {
+                var type_before = curQuestion.type == 2 ? "appraisalsl" : curQuestion.type == 3 ? "appraisalxl" : "appraisalsj";
+                localStorage.setItem(type_before, 100 + "%");
+                $("." + type_before + " span").html(100 + "%");
+                $("." + type_before + " cite").css('width', 1.3 * 100);
+            }
+        }
+
         setTimeout(function () {
             $("#question").html(index + " 、" + curQuestion.title);
-
             $("#questionImg").attr('src', urls.IMGSRC + curQuestion.img);
             $("#answer1").html(fun_createRadio(curQuestion, 0, 'A') + "<label style ='text-align:left;margin-left:28px;'>A&nbsp;&nbsp;&nbsp;" + curQuestion.answer[0] + "</label>");
             $("#answer2").html(fun_createRadio(curQuestion, 1, 'B') + "<label style ='text-align:left;margin-left:28px;'>B&nbsp;&nbsp;&nbsp;" + curQuestion.answer[1] + "</label>");
@@ -255,12 +292,10 @@
             $("#answer4").html(fun_createRadio(curQuestion, 3, 'D') + "<label style ='text-align:left;margin-left:28px;'>D&nbsp;&nbsp;&nbsp;" + curQuestion.answer[3] + "</label>");
             $("#answer5").html(fun_createRadio(curQuestion, 4, 'E') + "<label style ='text-align:left;margin-left:28px;'>E&nbsp;&nbsp;&nbsp;" + curQuestion.answer[4] + "</label>");
             fun_showProgress(index);
-
         }, 300)
     }
 
     function fun_showProgress(index) {
-
         // 显示进度
         mui("#demo5 .mui-progressbar").each(function () {
             mui(this).progressbar({
@@ -305,24 +340,21 @@
 
         index++;
         fun_getCurQuestion();
-//        window.setTimeout("fun_getCurQuestion()", 300);
     }
 
     // 设置问题上一题/下一题按钮是否可用
     function fun_setButton() {
         if (index == 1) {
-            //plus.nativeUI.toast('当前问题已经是第一题');
-//            document.getElementById("up").style.display = 'none';
             $("#up").css('display', 'none');
 
         } else if (index == _json.length) {
             $("#next").css('display', 'none');
-            $("#up").css('display', 'block');
-            $("#submit").css('display', 'block');
+            $("#up").css('display', 'inline-block');
+            $("#submit").css('display', 'inline-block');
 
         } else {
-            $("#up").css('display', 'block');
-            $("#next").css('display', 'block');
+            $("#up").css('display', 'inline-block');
+            $("#next").css('display', 'inline-block');
             $("#submit").css('display', 'none');
         }
     }
@@ -330,6 +362,10 @@
     function fun_submit() {
         var btnArray;
         btnArray = ['取消', '确定'];
+        localStorage.setItem(questionnaireType[2], "100%");
+        $("." + questionnaireType[2] + " span").html(100 + "%");
+        $("." + questionnaireType[2] + " cite").css('width', 1.3 * 100);
+
         mui.confirm('是否提交问卷', '温馨提示', btnArray, function (e) {
 
             for (var i in _json) {
@@ -341,11 +377,21 @@
                     }
                 }
             }
-            localStorage.removeItem(questionnaireType[2]);
             if (e.index == 1) {
                 countScore(answers);
-                localStorage.removeItem(key);
-                localStorage.removeItem(questionnaireType[2]);
+                var appraisalsl = localStorage.getItem("appraisalsl");
+                var appraisalxl = localStorage.getItem("appraisalxl");
+                var appraisalsj = localStorage.getItem("appraisalsj");
+                var appraisalzc = localStorage.getItem("appraisalzc");
+                if ((appraisalsl == "100%" && appraisalxl == "100%" && appraisalsj == "100%" && appraisalzc == "100%") || questionnaireType[0] == 0) {
+                    localStorage.removeItem("appraisalsl");
+                    localStorage.removeItem("appraisalxl");
+                    localStorage.removeItem("appraisalsj");
+                    localStorage.removeItem("appraisalzc");
+                }
+                if (questionnaireType[0] == 0) {
+                    localStorage.removeItem("all");
+                }
             } else {
 
             }
@@ -373,7 +419,7 @@
             },
             dataType: 'json',
             type: 'post',
-            timeout: 20000, //超时时间设置为20秒；
+            timeout: 20000, //超时时间设置为20秒
             success: function (data) {
                 allAnswer[questionnaireType[0] - 1] = answers;
                 localStorage.setItem('allAnswer', JSON.stringify(allAnswer));

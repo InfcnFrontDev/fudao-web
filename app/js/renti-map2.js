@@ -40,11 +40,11 @@ var $popover;
 				$jingluo.children().hide();
 			}
 			// 是否显示穴位
-			//if(!options.xuewei) {
+			if(!options.xuewei) {
 				$xuewei.children().hide();
 				$xuewei1.children().hide();
 				$xuewei2.children().hide();
-			//}
+			}
 			// 高亮经络
 			/*  var disease = options.disease;
 			 if (disease != null && highlights[disease] != null) {
