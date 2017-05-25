@@ -502,7 +502,7 @@ function depth_submit() {
         },
         success: function (res) {
             // console.log(res)
-            alert('提交成功');
+            //alert('提交成功');
             window.postMessage('2');
         },
         error: function () {
