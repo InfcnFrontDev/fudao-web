@@ -7585,7 +7585,7 @@ var sheets = {
 		"xw_id": "BL23-1、BL23-2、LU7-1、LU7-2、SP8-1、SP8-2",
 		"xw_name": "肾俞穴、列缺穴、地机穴",
 		"xhxt_map": "laoren-nan-rentibuwei-xunhuanxitong",
-		"xhxt_part": null,
+        "xhxt_part": "xinzang",
 		"xhxt_id": "neifenmi-s"
 	}, {
 		"id": 6,
@@ -8742,14 +8742,17 @@ for(var i in sheets.jingluo) {
 	// }
 	// jingluo[jingluoKey] = sheets.jingluo[i];
 };
+
 var xuewei = {};
 for(var i in sheets.xuewei) {
 	xuewei[sheets.xuewei[i].code] = sheets.xuewei[i];
 }
+
 var disease = {};
 for(var i in sheets.disease) {
 	disease[sheets.disease[i].name] = sheets.disease[i];
 }
+
 var heightManDisease = {};
 for(var i in sheets.heightManDisease) {
 	heightManDisease[sheets.heightManDisease[i].name] = sheets.heightManDisease[i];
