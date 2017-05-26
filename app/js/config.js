@@ -47,9 +47,9 @@ var urls = {
     //获取节气信息
     HEALTH_GETSOLARTERM: apiPath + 'HealthApi/getSolarTerm',
     // 能量场数据保存
-    ENERGY_GET: apiPath + 'EnergyApi/submitInformationResult',
+    ENERGY_SUBMITSYMPTOM: apiPath + 'EnergyApi/submitInformationResult',
     // 获取能量场数据
-    ENERGY_SUBMITSYMPTOM: apiPath + 'EnergyApi/getEnergy'
+    ENERGY_GET: apiPath + 'EnergyApi/getEnergy'
 }
 
 function getQueryString(name) {

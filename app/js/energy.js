@@ -7,12 +7,12 @@ var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
 $(document).ready(function(){
-    alert('city:'+getQueryString('city')+' weather:'+getQueryString('weather')+' winp:'+getQueryString('winp')+' air_scope:'+getQueryString('air_scope'));
+    // alert('city:'+getQueryString('city')+' weather:'+getQueryString('weather')+' winp:'+getQueryString('winp')+' air_scope:'+getQueryString('air_scope'));
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
     if(isNotBlank(getQueryString('weather'))) weather = getQueryString('weather');
     if(isNotBlank(getQueryString('winp'))) winp = getQueryString('winp');
     if(isNotBlank(getQueryString('air_scope'))) air_scope = getQueryString('air_scope');
-    alert(getQueryString('token'));
+    // alert(getQueryString('token'));
     $.ajax({
         url: urls.ENERGY_GET,
         headers: {authorization: getQueryString('token')},
@@ -51,9 +51,9 @@ function getQueryString(name) {
 
 //
 function preInitEchart(result){
-    var xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','月相','星辰','固定场所'];
+    var xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','星辰','固定场所'];
     var datas = [50,50,getLocationScore(city),getWindScore(winp),getRainScore(weather),getSnowScore(weather)
-                ,getSandScore(weather),getAirScore(air_scope),getSunScore(weather),90,getStarsScore(weather)];
+                ,getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
     var colorList = ['#ACC1EA','#ACC1EA','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#153371'];
     var indx = xAxis.length;
     _.forEach(result, function(n, key) { // 循环对象
@@ -191,11 +191,11 @@ function readSurname(type){
     $.getJSON("json/"+ type +".json",function(data){
         var html = '';
         _.forEach(data, function(n, key) {
-            html += '<optgroup label="'+ key +'">';
+            // html += '<optgroup label="'+ key +'">';
             _.forEach(n, function(n2, key) {
                 html += '<option value="'+ n2 +'">'+ key +'</option>';
             });
-            html += '</optgroup>';
+            // html += '</optgroup>';
         });
         $('#'+ type +'Sel').html(html);
     });
@@ -209,7 +209,7 @@ function readQuestionJson(){
             _(n).forEach(function(n2) { // 循环数组
                 _.forEach(n2, function(n3, key2) { // 循环对象
                     if(key2 != 'weight') {
-                        indx++; 
+                        indx++;
                         html += '<tr><td class="t_fr wid_p40">'+ indx +' . </td>'
                                 +'<td class="wid_p60">'+ key2 +'</td></tr>';
                         _(n3).forEach(function(n4) { // 循环数组
@@ -357,7 +357,8 @@ function initEchart_scatter(result){
 }
 
 function initEchart_bar(xAxis,datas,colorList){
-    // 根据展示柱状图个数初始化容器宽度 
+    // 根据展示柱状图个数初始化容器宽度
+    //alert($("#lowerDiv").css('height'));
     $("#lowerDiv").css('width',(datas.length)*30+'px');
     var myChart = echarts.init(document.getElementById('lowerDiv'));
     var option = {
@@ -437,6 +438,13 @@ function getColor(name_){
 }
 
 /**
+ * 获取山川河流得分
+ */
+function getMountainsScore(city_){
+
+}
+
+/**
  * 获取当前定位得分
  */
 function getLocationScore(city_){
@@ -458,37 +466,37 @@ function getLocationScore(city_){
  */
 function getRainScore(weather){
     if (weather.indexOf("小雨-中雨") != -1){
-        return 20;
-    } else if (weather.indexOf("中雨-大雨") != -1){
-        return 40;
-    } else if (weather.indexOf("大雨-暴雨") != -1){
-        return 60;
-    } else if (weather.indexOf("暴雨-大暴雨") != -1){
         return 80;
-    } else if (weather.indexOf("大暴雨-特大暴雨") != -1){
-        return 95;
-    } else if (weather.indexOf("雷阵雨有冰雹") != -1){
-        return 45;
-    } else if (weather.indexOf("雷阵雨") != -1){
+    } else if (weather.indexOf("中雨-大雨") != -1){
+        return 60;
+    } else if (weather.indexOf("大雨-暴雨") != -1){
+        return 40;
+    } else if (weather.indexOf("暴雨-大暴雨") != -1){
         return 20;
-    } else if(weather.indexOf("阵雨") != -1){
+    } else if (weather.indexOf("大暴雨-特大暴雨") != -1){
         return 5;
-    }else if (weather.indexOf("雨夹雪") != -1){
-        return 65;
-    } else if (weather.indexOf("冻雨") != -1){
+    } else if (weather.indexOf("雷阵雨有冰雹") != -1){
         return 55;
+    } else if (weather.indexOf("雷阵雨") != -1){
+        return 80;
+    } else if(weather.indexOf("阵雨") != -1){
+        return 95;
+    }else if (weather.indexOf("雨夹雪") != -1){
+        return 35;
+    } else if (weather.indexOf("冻雨") != -1){
+        return 45;
     } else if (weather.indexOf("小雨") != -1){
-        return 10;
+        return 90;
     } else if (weather.indexOf("中雨") != -1){
-        return 30;
+        return 70;
     } else if (weather.indexOf("大雨") != -1){
         return 50;
     } else if (weather.indexOf("特大暴雨") != -1){
-        return 100;
+        return 0;
     } else if (weather.indexOf("大暴雨") != -1){
-        return 90;
+        return 10;
     } else if (weather.indexOf("暴雨") != -1){
-        return 70;
+        return 30;
     } else {
         return 0;
     }
@@ -498,16 +506,22 @@ function getRainScore(weather){
  * 获取雪得分
  */
 function getSnowScore(weather){
-    if(weather.indexOf("阵雪") != -1){
-        return 20;
-    } else if (weather.indexOf("小雪") != -1){
-        return 40;
-    } else if (weather.indexOf("中雪") != -1){
-        return 60;
-    } else if (weather.indexOf("大雪") != -1){
+    if(weather.indexOf("小雪-中雪") != -1){
+        return 50;
+    } else if (weather.indexOf("中雪-大雪") != -1){
+        return 30;
+    } else if (weather.indexOf("大雪-暴雪") != -1){
+        return 10;
+    } else if(weather.indexOf("阵雪") != -1){
         return 80;
+    } else if (weather.indexOf("小雪") != -1){
+        return 60;
+    } else if (weather.indexOf("中雪") != -1){
+        return 40;
+    } else if (weather.indexOf("大雪") != -1){
+        return 20;
     } else if (weather.indexOf("暴雪") != -1){
-        return 100;
+        return 0;
     } else {
         return 0;
     }
@@ -517,16 +531,16 @@ function getSnowScore(weather){
  * 获取沙尘得分
  */
 function getSandScore(weather){
-    if(weather.indexOf("浮沉") != -1){
-        return 10;
+    if(weather.indexOf("浮尘") != -1){
+        return 50;
     } else if (weather.indexOf("扬沙") != -1){
         return 40;
     } else if (weather.indexOf("沙尘暴") != -1){
-        return 70;
+        return 20;
     } else if (weather.indexOf("强沙尘暴") != -1){
-        return 100;
+        return 10;
     } else {
-        return 0;
+        return 60;
     }
 }
 
@@ -548,10 +562,10 @@ function getSunScore(weather){
 }
 
 /**
- * 获取沙尘得分
+ * 获取星辰得分
  */
 function getStarsScore(weather){
-    if(weather.indexOf("晴") != -1 || weather.indexOf("多云") != -1){
+    if(weather.indexOf("晴") != -1){
         return 90;
     } else {
         return 10;
@@ -562,9 +576,31 @@ function getStarsScore(weather){
  * 获取风得分
  */
 function getWindScore(winp){
-    var v = {"无风":90,"1级":100,"2级":90,"3级":90,"4级":80,"5级":60,"6级":40};
-    if(undefined == v[winp]) return "0";
-    return v[winp];
+    if(winp <= "0.2"){
+        return 90;
+    } else if ("0.3" < winp <= "1.5"){
+        return 95;
+    } else if ("1.5" < winp <= "3.3"){
+        return 100;
+    } else if ("3.4" < winp <= "5.4"){
+        return 90;
+    } else if ("5.4" < winp <= "7.9"){
+        return 80;
+    } else if ("7.9" < winp <= "10.7"){
+        return 70;
+    } else if ("10.7" < winp <= "13.8"){
+        return 50;
+    } else if ("13.8" < winp <= "17.1"){
+        return 30;
+    } else if ("17.1" < winp <= "20.7"){
+        return 20;
+    } else if ("20.7" < winp <= "24.4"){
+        return 10;
+    } else if ("24.4" < winp){
+        return 0;
+    } else {
+        return 90;
+    }
 }
 
 /**
