@@ -25,7 +25,7 @@
 </head>
 <body style="width:100%;height:100%;overflow: hidden">
 <div class="appraisalBox">
-    <div style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
+    <div style="margin:40px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
         <div id="div_img" style="display:none;">
             <img src="images/load_fudaozhishu.gif" width="220" height="220"
                  style="position:absolute;top:0;left:0; z-index: 0;"/>
@@ -62,7 +62,7 @@
                class="gotoDeep">深度自诊</a>
         </div>
     </div>
-    <div id="before" class="appraisalMark">
+    <div id="before" class="appraisalMark" style="padding: 6% 0 0 ">
         <div class="jinduBox">
             <a class="appraisalsl" data-reveal-id="myModal"><b>生理测评</b><span>00%</span><i><cite></cite></i></a>
             <a class="appraisalxl" data-reveal-id="myModal"><b>心理测评</b><span>00%</span><i><cite></cite></i></a>
@@ -85,7 +85,7 @@
 
 <script>
     var token = getQueryString('token');
-//        token = "4e0ab0d5-5082-4dec-af9c-ae858d609837";
+//        token = "225849ce-ddc9-4c9b-b723-628bc5a78d17";
     var allAnswer = JSON.parse(localStorage.getItem('allAnswer')) || [];
 
     localStorage.setItem('zizhen_token', token);
@@ -284,7 +284,7 @@
         }
 
         setTimeout(function () {
-            $("#question").html(index + " 、" + curQuestion.title);
+            $("#question").html((curQuestion.id-43) + " 、" + curQuestion.title);
             $("#questionImg").attr('src', urls.IMGSRC + curQuestion.img);
             $("#answer1").html(fun_createRadio(curQuestion, 0, 'A') + "<label style ='text-align:left;margin-left:28px;'>A&nbsp;&nbsp;&nbsp;" + curQuestion.answer[0] + "</label>");
             $("#answer2").html(fun_createRadio(curQuestion, 1, 'B') + "<label style ='text-align:left;margin-left:28px;'>B&nbsp;&nbsp;&nbsp;" + curQuestion.answer[1] + "</label>");

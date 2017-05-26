@@ -12,7 +12,7 @@
 </head>
 <body style="width:100%;height:100%;overflow: hidden">
 <div class="appraisalBox">
-    <div style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
+    <div style="margin:40px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
         <div id="div_img">
             <img src="images/load_fudaozhishu1.gif" width="220" height="220"
                  style="position:absolute;top:0;left:0; z-index: 0;"/>
@@ -47,10 +47,8 @@
         </div>
     </div>
     <div id="before" class="appraisalMark">
-        <div>恭喜您完成测评</div>
         <div class="grade">您的健康状况良好</div>
-        <div>更加全面的健康状况判断</div>
-        <div style="margin-bottom: 24px">尽在<a class="gotoDeep" style="color: #a1cc00;border-bottom:1px solid #a1cc00; ">深度自诊</a>
+        <div style="margin-bottom: 24px">快点击<a class="gotoDeep" style="color: #a1cc00;border-bottom:1px solid #a1cc00; ">深度自诊</a>了解问题详情吧！
         </div>
         <div class="jinduBox">
             <p class="appraisalsl">生理健康指数<span class="physiology">56</span></p>
@@ -85,7 +83,7 @@
              * 分数填充
              * */
             $(".jieguo").html(res.obj.complex);
-            $(".grade").html(res.obj.grade.split('\\n')[1]);
+            $(".grade").html(res.obj.grade.split('\\n')[0]);
             $(".appraisalsl span").html(res.obj.physiology);
             $(".appraisalxl span").html(res.obj.psychology);
             $(".appraisalsj span").html(res.obj.social);
