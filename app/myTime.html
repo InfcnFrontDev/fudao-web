@@ -253,7 +253,20 @@
       fun_getUpAndNextJieQi();
       window.setInterval("fun_time()", 1000);
 
-      $('#jieqi').html($('#upJieQi').text().split('(')[0])
+      $('#jieqi').html($('#upJieQi').text().split('(')[0]);
+    $('.leftTop').click(function(){
+      window.postMessage(''+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
+    })
+    $('.leftBottom').click(function(){
+      window.postMessage(''+$(this).find('p').text()+'');
+    })
+    $('.rightTop').click(function(){
+      window.postMessage(''+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
+    })
+    $('.rightBottom').click(function(){
+      window.postMessage(''+$(this).find('p').text()+'');
+    })
+
 
     $.ajax({
       type:"post",
