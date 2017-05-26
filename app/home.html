@@ -87,7 +87,7 @@
 
 </head>
 <body style="background-color:rgba(0,0,0,.0);width:100%; height:100%;">
-<div id='ab'style="width:100%; height:100%; background-color:#1e4183; background-size:100% 100% ;">
+<div id='ab'style="width:100%; height:100%;  background-size:100% 100% ;">
 
 
     <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
@@ -136,11 +136,6 @@
 
 
 <script>
-
-
-
-
-
     var status=getQueryString('status');
     var token=getQueryString('token');
 
@@ -152,7 +147,6 @@
         },
         success:function(data){
             yundongObj=data
-            console.log(yundongObj);
         },
         error:function(){
 
@@ -174,7 +168,6 @@
             if(startDuan>overDuan){
                 if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
                     newname=arr[i].timePeriods[j].name;
-
                 }
             }
             if(startDuan<overDuan){
@@ -193,7 +186,6 @@
             }
         }
 
-        console.log(yundongObj.obj[weizhi].img);
         var img=yundongObj.obj[weizhi].img
         $(".dongzuo").find('img').attr('src',urls.IMGSRC+yundongObj.obj[weizhi].img);
         $('.swiper-wrapper').html(str);
@@ -206,28 +198,10 @@
             centeredSlides: true,
             watchSlidesProgress : true,
             onTransitionStart: function(swiper){
-
                 var img=yundongObj.obj[swiper.activeIndex].img
                 $(".dongzuo").find('img').attr('src',urls.IMGSRC+img);
                 $(".dongzuo").find('img').click(function(){
-                    $.ajax({
-                        type:"post",
-                        url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
-                        headers: {
-                            authorization: token
-                        },
-                        data:{
-                            timePeriod:yundongObj.obj[swiper.activeIndex].timePeriod
-                        },
-                        success:function(data){
-                            //window.postMessage(JSON.stringify(data.obj[0]));
-                            window.postMessage('获取运动'+JSON.stringify(data.obj[0]));
-                        },
-                        error:function(error){
-                            alert(JSON.stringify(error));
-                        }
-                    });
-
+                    window.postMessage('获取运动'+JSON.stringify(yundongObj.obj[swiper.activeIndex]));
                 })
 
 
@@ -862,4 +836,4 @@
 <script src="js/home/jieduan.js"></script>
 
 </body>
-</html>q
+</html>

@@ -9,6 +9,7 @@
     <script src="js/hammer.js"></script>
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/myQuestionPerson.css">
+
     <script src="js/data.js"></script>
     <script src="js/renti-map2.js"></script>
     <script src="js/config.js"></script>
@@ -18,7 +19,6 @@
 
 <body style="width: 100%; height: 100%;">
 <div style="position:absolute; top:10px; right:20px; ">
-
     <button id="jlbtn1" class='start'>相关<br>经络</button>
     <button id="xwbtn">相关<br>穴位</button>
     <button id="bwbtn">相关<br>部位</button>
@@ -27,41 +27,34 @@
     <input type="button" value="穴位"  id="xwbtn">
     <input type="button" value="部位"  id="bwbtn">
     <input type="button" value="循环系统" id="xhbtn">-->
-
 </div>
 
-<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -25%;">
+<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%;">
 </div>
 
 <script>
-
-
     var searchURL = window.location.search;
     var targetPageId = searchURL.split("=")[1];
     var question_title = decodeURI(targetPageId);
-    var diseaseobj, ids, tu, xunhuan, xunhuanid, tuming, buwei;
+    var diseaseobj, jingluomap, jingluoid, xueweimap,xueweiid,xunhuanmap, xunhuanid,buweiid;
     diseaseobj = disease[question_title]
     if (!diseaseobj) {
         diseaseobj = disease['痴呆'];
     }
-    //         alert(JSON.stringify(diseaseobj))
-    ids = (diseaseobj.jl_id).split('、');
-    tu = diseaseobj.jl_map;
-    tuming = tu.split('、');
-    xunhuan = diseaseobj.xhxt_map;
-    xunhuanid = (diseaseobj.xhxt_id).split('、');
-    xuewei = diseaseobj.xw_map;
-    if(xuewei){
-        xuewei.split('、');
-        xueweiid = (diseaseobj.xw_id).split('、');
-    }
+    jingluomap = diseaseobj.jl_map.split('、')[0]
+    jingluoid = diseaseobj.jl_id.split('、');
 
-    if (diseaseobj.xhxt_part) {
-        buwei = (diseaseobj.xhxt_part).split('、');
-    }
+    xueweimap = diseaseobj.xw_map ? diseaseobj.xw_map.split('、')[0] : null
+    xueweiid = diseaseobj.xw_id ? diseaseobj.xw_id.split('、') : null
+
+    xunhuanmap = diseaseobj.xhxt_map;
+    xunhuanid = diseaseobj.xhxt_id ? diseaseobj.xhxt_id.split('、') : null
+    buweiid = diseaseobj.xhxt_part ? diseaseobj.xhxt_part.split('、') : null
+
+
     var map = new RentiMap("#mapDiv", {
-        map: 'svg/' + tuming[0] + '.svg',
-        ids: ids,
+        map: 'svg/' + jingluomap + '.svg',
+        jingluoid: jingluoid,
         noshow: true
     });
 
@@ -70,8 +63,8 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + tuming[0] + '.svg',
-            ids: ids,
+            map: 'svg/' + jingluomap + '.svg',
+            jingluoid: jingluoid,
             noshow: true
         });
     }
@@ -80,8 +73,8 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xuewei[0] + '.svg',
-            xuewei: xueweiid,
+            map: 'svg/' + xueweimap + '.svg',
+            xueweiid: xueweiid,
             noshow: true
         });
     }
@@ -90,18 +83,16 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuan + '.svg',
-            buwei: buwei,
+            map: 'svg/' + xunhuanmap + '.svg',
+            buweiid: buweiid,
             noshow: true
-
         });
     }
-
     var xhbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuan + '.svg',
+            map: 'svg/' + xunhuanmap + '.svg',
             xunhuanid: xunhuanid,
             noshow: true
 
@@ -112,7 +103,6 @@
     $('#xwbtn').on('click', xwbtnclick);
     $('#bwbtn').on('click', bwbtnclick);
     $('#xhbtn').on('click', xhbtnclick);
-
 
 </script>
 </body>

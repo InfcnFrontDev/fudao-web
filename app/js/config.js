@@ -1,7 +1,7 @@
 //var apiPath="http://192.168.3.126:18080/fudao-svc/";
 
-//var apiPath = 'http://192.168.10.69:9191/api/';
-var apiPath = 'http://103.254.113.11:9191/api/';
+//var apiPath = 'http://192.168.3.110:9191/api/';
+var apiPath = 'http://103.254.113.11:9090/api/';
 var urls = {
     //生命周期
     MYCYCLE_CALCULATECYCLE: apiPath + 'MyCycleApi/calculateCycle',
@@ -47,9 +47,9 @@ var urls = {
     //获取节气信息
     HEALTH_GETSOLARTERM: apiPath + 'HealthApi/getSolarTerm',
     // 能量场数据保存
-    ENERGY_GET: apiPath + 'EnergyApi/submitInformationResult',
+    ENERGY_SUBMITSYMPTOM: apiPath + 'EnergyApi/submitInformationResult',
     // 获取能量场数据
-    ENERGY_SUBMITSYMPTOM: apiPath + 'EnergyApi/getEnergy'
+    ENERGY_GET: apiPath + 'EnergyApi/getEnergy'
 }
 
 function getQueryString(name) {
