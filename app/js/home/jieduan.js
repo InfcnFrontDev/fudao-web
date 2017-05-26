@@ -1,7 +1,7 @@
 var youCanvas = document.getElementById('youcanvas')
 var ctx = youCanvas.getContext("2d");
 ctx.translate(160,160);
-function nextTimezhishi(num,startTime,endTime,name){
+function huiseTimezhishi(num,startTime,endTime,name){
     ctx.clearRect(-200,-200,375,375);
     var startText=blueTime_timeToAngle(startTime);
     var overText=blueTime_timeToAngle(endTime);

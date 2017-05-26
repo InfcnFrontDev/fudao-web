@@ -38,7 +38,7 @@
 			$('.h3Box').html(''+hours+':'+minutes+'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;'+jieduan+'')
 			var str='';
 			 for(var i=0; i<fenduan.length; i++){
-			 	var a=fenduan[i].name
+			 	var a=fenduan[i].title
 				 console.log(fenduan);
 
 				 $.ajax({
@@ -48,7 +48,7 @@
 						 authorization: token
 					 },
 					 data:{
-						 timePeriod:fenduan[i].name
+						 timePeriod:fenduan[i].title
 					 },
 					 success:function(data){
 					 	if(data.obj)
