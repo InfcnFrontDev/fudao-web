@@ -24,6 +24,8 @@
 
 </head>
 <body style="width:100%;height:100%;overflow: hidden">
+<a class="gotoHome" style="display:block;position: absolute;top:10px;left: 10px;color: #fff;line-height: 30px;"><img width="30px" height="30px" src="images/backToHome.png" style="vertical-align: middle;margin-right: 30px"/><b style="display: inline-block;vertical-align: middle; font-size: 20px;font-weight: 500">返回首页</b></a>
+
 <div class="appraisalBox">
     <div style="margin:40px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
         <div id="div_img" style="display:none;">
@@ -76,7 +78,7 @@
         </a>
 
     </div>
-    <div id="myModal" class="reveal-modal">
+    <div id="myModal" class="reveal-modal" >
         <a class="close-reveal-modal">&#215;</a>
         <div id="myModal2"></div>
     </div>
@@ -84,8 +86,8 @@
 
 
 <script>
-    var token = getQueryString('token');
-//        token = "225849ce-ddc9-4c9b-b723-628bc5a78d17";
+//    var token = getQueryString('token');
+        token = "6fb9fec2-6162-416f-b98f-b5a45608aa19";
     var allAnswer = JSON.parse(localStorage.getItem('allAnswer')) || [];
 
     localStorage.setItem('zizhen_token', token);
@@ -114,6 +116,9 @@
     });
     $('.gotoDeep').click(function () {
         window.postMessage("1");
+    });
+    $('.gotoHome').click(function () {
+        window.postMessage("gotoHome");
     });
     /*
      * 比例填充
