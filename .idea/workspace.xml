@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="721ad734-753b-4bba-af92-c27d3f53b85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="721ad734-753b-4bba-af92-c27d3f53b85b" name="Default" comment="" />
     <ignored path="fudao-web.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -395,7 +393,7 @@
       <updated>1495183006559</updated>
       <workItem from="1495183007875" duration="2013000" />
       <workItem from="1495417880524" duration="40731000" />
-      <workItem from="1495674254138" duration="35740000" />
+      <workItem from="1495674254138" duration="35836000" />
     </task>
     <task id="LOCAL-00001" summary="发">
       <created>1495183042513</created>
@@ -467,15 +465,22 @@
       <option name="project" value="LOCAL" />
       <updated>1495798165167</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge branch 'dev' of http://192.168.10.158/InfcnFrontDev/fudao-web into dev&#10;&#10;# Conflicts:&#10;#&#9;app/js/config.js&#10;">
+      <created>1495798184409</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1495798184409</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78484000" />
+    <option name="totallyTimeSpent" value="78580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.50527906" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.49333334" order="0" side_tool="false" content_ui="combo" />
