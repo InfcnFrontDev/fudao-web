@@ -2,17 +2,17 @@
  * Created by lim on 2017/4/20.
  */
 //
-var city = "北京";
+var city = "北京市";
 var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
 $(document).ready(function(){
     // alert('city:'+getQueryString('city')+' weather:'+getQueryString('weather')+' winp:'+getQueryString('winp')+' air_scope:'+getQueryString('air_scope'));
+    // alert('-'+getQueryString('city').replace(' ','')+'-');
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
     if(isNotBlank(getQueryString('weather'))) weather = getQueryString('weather');
     if(isNotBlank(getQueryString('winp'))) winp = getQueryString('winp');
     if(isNotBlank(getQueryString('air_scope'))) air_scope = getQueryString('air_scope');
-    // alert(getQueryString('token'));
     $.ajax({
         url: urls.ENERGY_GET,
         headers: {authorization: getQueryString('token')},
@@ -52,8 +52,8 @@ function getQueryString(name) {
 //
 function preInitEchart(result){
     var xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','星辰','固定场所'];
-    var datas = [50,50,getLocationScore(city),getWindScore(winp),getRainScore(weather),getSnowScore(weather)
-                ,getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
+    var datas = [getMountainsScore(city,0),getMountainsScore(city,1),getWindScore(winp),getRainScore(weather),
+        getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather),getLocationScore(city)];
     var colorList = ['#ACC1EA','#ACC1EA','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#153371'];
     var indx = xAxis.length;
     _.forEach(result, function(n, key) { // 循环对象
@@ -241,10 +241,10 @@ function initEchart_scatter(result){
         data_temp[1] = n;
         data_temp[2] = key;
     });
-    data0 = [[1,50,"山川"],[3,50,"河流"],[5,getLocationScore(city),city]];
+    data0 = [[1,getMountainsScore(city,0),"山川"],[3,getMountainsScore(city,1),"河流"],[5,getLocationScore(city),city]];
     data2 = [[2,getWindScore(winp),"风"],[3,getRainScore(weather),"雨"],[4,getSnowScore(weather),"雪"],
                 [6,getSandScore(weather),"沙尘"],[7,getAirScore(air_scope),"空气"],[8,getSunScore(weather),"日"],
-                [9,60,"月相"],[11,getStarsScore(weather),"星辰"]];
+                [11,getStarsScore(weather),"星辰"]];
     var itemStyle = {
         normal: {
             opacity: 1,
@@ -440,8 +440,22 @@ function getColor(name_){
 /**
  * 获取山川河流得分
  */
-function getMountainsScore(city_){
-
+function getMountainsScore(city_,type){
+    var val;
+    city_ = "北京市";
+    $.ajaxSettings.async = false;
+    $.getJSON("json/mountain.json",function(data) {
+        _.find(data, function (n, key) { // 循环对象
+            if(city_ == key){
+                if(type == 0){
+                    val = n.sc_score;
+                } else {
+                    val = n.hl_score;
+                }
+            }
+        });
+    });
+    return val;
 }
 
 /**
@@ -498,7 +512,7 @@ function getRainScore(weather){
     } else if (weather.indexOf("暴雨") != -1){
         return 30;
     } else {
-        return 0;
+        return 100;
     }
 }
 
@@ -523,7 +537,7 @@ function getSnowScore(weather){
     } else if (weather.indexOf("暴雪") != -1){
         return 0;
     } else {
-        return 0;
+        return 100;
     }
 }
 
@@ -540,7 +554,7 @@ function getSandScore(weather){
     } else if (weather.indexOf("强沙尘暴") != -1){
         return 10;
     } else {
-        return 60;
+        return 100;
     }
 }
 
@@ -621,4 +635,3 @@ function getAirScore(air_scope){
         return 0;
     }
 }
-
