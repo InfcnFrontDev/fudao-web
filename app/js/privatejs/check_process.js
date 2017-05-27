@@ -2,7 +2,7 @@ var check_process_one_countSocre, check_process_one_check_result;
 var symptom = [];
 var choosed = [];
 var things = [];
-var submitSymptomType=1;
+var submitSymptomType = 1;
 /**
  * 部位事件
  * @param {Object} info
@@ -129,14 +129,13 @@ function fun_pie(data, position, type) {
             data: data,
             // color:_arr_color,
         }],
-        animationDuration:50
+        animationDuration: 50
     }
     //
     option['color'] = _arr_color;
     // option['animation'] = false;
     pieChart.setOption(option);
     pieChart.on('pieSelected', function (params) {
-        console.log(params)
         // 控制台打印数据的名称
         if (params.target == "更多") {
             var div_list = document.getElementById("div_list");
@@ -408,9 +407,9 @@ function fun_select(obj, type) {
     }
 }
 
-function fun_choosed_render(token,type) {
+function fun_choosed_render(token, type) {
     //alert(JSON.stringify(choosed));
-    submitSymptomType=type?2:1;
+    submitSymptomType = type ? 2 : 1;
     //最近做过的项事渲染
     var checkBox = document.getElementById("checkBox");
     checkBox.innerHTML = "";
@@ -421,8 +420,8 @@ function fun_choosed_render(token,type) {
         headers: {
             authorization: token
         },
-        data:{
-            symptoms:choosed.join(",")
+        data: {
+            symptoms: choosed.join(",")
         },
         success: function (res) {
             // res = {
@@ -496,9 +495,9 @@ function depth_submit() {
             authorization: token
         },
         data: {
-            symptoms:choosed.join(","),
-            things:things.join(","),
-            type:submitSymptomType
+            symptoms: choosed.join(","),
+            things: things.join(","),
+            type: submitSymptomType
         },
         success: function (res) {
             // console.log(res)

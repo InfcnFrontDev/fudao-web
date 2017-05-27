@@ -17,34 +17,21 @@ var $popover;
 
 			var $jingluo = $("#jingluo");
 			var $xuewei = $("#xuewei");
-			var $xuewei1 = $("#xuewei_1");
-			var $xuewei2 = $("#xuewei_2");
+            $xuewei.css('display','block')
+            var $rentibuwei = $('#rentibuwei');
 
 			function clickXuewei() {
 				var xwid = $(this).attr('id');
 				showXwInfo(xwid);
 			}
-
 			$xuewei.children().on("click", clickXuewei);
 
 			function clickJingluo() {
 				var jlid = $(this).attr('id');
 				showJlInfo(jlid);
-
 			}
-
 			$jingluo.children().addClass('jingluo').on("click", clickJingluo);
 
-			// 是否显示经络
-			if(!options.jingluo) {
-				$jingluo.children().hide();
-			}
-			// 是否显示穴位
-			if(!options.xuewei) {
-				$xuewei.children().hide();
-				$xuewei1.children().hide();
-				$xuewei2.children().hide();
-			}
 			// 高亮经络
 			/*  var disease = options.disease;
 			 if (disease != null && highlights[disease] != null) {
@@ -54,34 +41,43 @@ var $popover;
 			 $jingluo.find('#' + jls[i]).show();
 			 }
 			 }*/
+
 			//显示经络id
-			var ids = options.ids;
-			if(ids) {
+			var jingluoid = options.jingluoid;
+			if(jingluoid) {
 				$jingluo.children().hide();
-				for(var i in ids) {
-					$jingluo.find('#' + ids[i]).show();
+				for(var i in jingluoid) {
+					$jingluo.find('#' + jingluoid[i]).show();
 				}
-				$xuewei.children().hide();
-				for(var i in ids) {
-					$xuewei.find('#' + ids[i]).show();
-					$xuewei1.find('#' + ids[i]).show();
-					$xuewei2.find('#' + ids[i]).show();
-				}
+			}else{
+                $jingluo.children().hide();
 			}
+
+            var xueweiid = options.xueweiid;
+			if(xueweiid) {
+                $xuewei.children().hide();
+                for(var i in xueweiid) {
+                    $xuewei.find('#' + xueweiid[i]).show();
+                }
+			}else{
+                $xuewei.children().hide();
+			}
+
+
 			var xunhuanid = options.xunhuanid;
 			for(var i in xunhuanid) {
 				$svg.find('#' + xunhuanid[i]).show();
 			}
+
 			var noshow = options.noshow;
 			if(!noshow) {
 				$jingluo.children().hide();
 			}
-			var buwei = options.buwei;
-			var $rentibuwei = $('#rentibuwei');
-			if(buwei) {
+			var buweiid = options.buweiid;
+			if(buweiid) {
 				$rentibuwei.children().hide();
-				for(var i in buwei) {
-					$rentibuwei.find('#' + buwei[i]).show();
+				for(var i in buweiid) {
+					$rentibuwei.find('#' + buweiid[i]).show();
 				}
 			}
 
@@ -169,7 +165,7 @@ var $popover;
 
 	var defaults = {
 		map: 'svg/fudaye_front.svg',
-		jingluo: true,
+		jingluoid: true,
 		xuewei: true,
 		disease: '痴呆'
 	};
@@ -220,7 +216,6 @@ function hidePopover() {
 
 function clickPopover() {
 	var ele = event.srcElement || event.target;
-
 	//if($(ele).parents('.popover').length == 0) {
 		hidePopover();
 	//}

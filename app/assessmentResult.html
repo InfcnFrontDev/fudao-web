@@ -11,13 +11,16 @@
 
 </head>
 <body style="width:100%;height:100%;overflow: hidden">
+<a class="gotoHome" style="display:block;position: absolute;top:10px;left: 10px;color: #fff;line-height: 30px;"><img
+        width="30px" height="30px" src="images/backToHome.png" style="vertical-align: middle;margin-right: 30px"/><b
+        style="display: inline-block;vertical-align: middle; font-size: 20px;font-weight: 500">返回首页</b></a>
 <div class="appraisalBox">
-    <div style="margin:10px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
+    <div style="margin:40px auto;width:220px;height:220px;display:flex;justify-content:center;position:relative">
         <div id="div_img">
             <img src="images/load_fudaozhishu1.gif" width="220" height="220"
                  style="position:absolute;top:0;left:0; z-index: 0;"/>
         </div>
-        <div id="div_svg"  style="display:none;">
+        <div id="div_svg" style="display:none;">
             <svg width="220" height="220" class="pt-ab pt1">
                 <circle cx="110" cy="110" r="70" stroke-width="5" stroke="#C9CACA" fill="none"></circle>
                 <circle cx="110" cy="110" r="70" stroke-width="5" stroke="#00cccc" fill="none" id="svg_zhengzhuang"
@@ -47,10 +50,9 @@
         </div>
     </div>
     <div id="before" class="appraisalMark">
-        <div>恭喜您完成测评</div>
         <div class="grade">您的健康状况良好</div>
-        <div>更加全面的健康状况判断</div>
-        <div style="margin-bottom: 24px">尽在<a class="gotoDeep" style="color: #a1cc00;border-bottom:1px solid #a1cc00; ">深度自诊</a>
+        <div style="margin-bottom: 24px">快点击<a class="gotoDeep"
+                                               style="color: #a1cc00;border-bottom:1px solid #a1cc00; ">深度自诊</a>了解问题详情吧！
         </div>
         <div class="jinduBox">
             <p class="appraisalsl">生理健康指数<span class="physiology">56</span></p>
@@ -68,10 +70,12 @@
 
 <script>
 
-//    var token = "ce95ae06-0d86-4488-ad92-f04cf2674945";
+    //    var token = "ce95ae06-0d86-4488-ad92-f04cf2674945";
     var token = localStorage.getItem('zizhen_token');
 
-
+    $('.gotoHome').click(function () {
+        window.postMessage("gotoHome");
+    });
 
     $.ajax({
         type: "post",
@@ -85,16 +89,16 @@
              * 分数填充
              * */
             $(".jieguo").html(res.obj.complex);
-            $(".grade").html(res.obj.grade.split('\\n')[1]);
+            $(".grade").html(res.obj.grade.split('\\n')[0]);
             $(".appraisalsl span").html(res.obj.physiology);
             $(".appraisalxl span").html(res.obj.psychology);
             $(".appraisalsj span").html(res.obj.social);
             $(".appraisalzc span").html(res.obj.self);
-            setTimeout(function(){
-                $("#div_img").css("display",'none');
-                $("#div_svg").css("display",'block');
+            setTimeout(function () {
+                $("#div_img").css("display", 'none');
+                $("#div_svg").css("display", 'block');
                 appraisal_init(res.obj.physiology, res.obj.psychology, res.obj.social, res.obj.self);
-            },1200)
+            }, 1200)
 
 
         },
@@ -104,9 +108,8 @@
     });
 
 
-
     $('.gotoDeep').click(function () {
-        window.postMessage("1");
+        window.postMessage("gotoDeep");
     });
 
 

@@ -100,8 +100,8 @@
 
             <div style="width:120px; height:60px; overflow: hidden; position:relative;top:144px; left:100px;" id="abc">
                 <div class="swiper-container">
-                    <div style="width:120px; border-bottom: 1px solid #fff; position: absolute; top: 20px;"></div>
-                    <div style="width:120px; border-bottom: 1px solid #fff; position: absolute; top: 40px;"></div>
+                    <!--<div style="width:120px; border-bottom: 1px solid #fff; position: absolute; top: 20px;"></div>
+                    <div style="width:120px; border-bottom: 1px solid #fff; position: absolute; top: 40px;"></div>-->
                     <div class="swiper-wrapper">
 
                     </div>
@@ -152,62 +152,71 @@
 
         }
     });
-
-    var now = new Date();
-    var sec = now.getSeconds();
-    var min = now.getMinutes();
-    var hr  = now.getHours();
-    var newname,weizhi=0;
-    for(var i=0; i<arr.length; i++){
-        for(var j=0; j<arr[i].timePeriods.length; j++){
-            var startDuan=blueDuan_timeToAngle(arr[i].timePeriods[j].startTime);
-            var overDuan=blueDuan_timeToAngle(arr[i].timePeriods[j].endTime);
-            //(parseInt(hr)+2)
-            var newdate=hr+":"+min;
-            var newdian=blueDuan_timeToAngle(newdate);
-            if(startDuan>overDuan){
-                if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
-                    newname=arr[i].timePeriods[j].name;
+    function fundongList(){
+        var now = new Date();
+        var sec = now.getSeconds();
+        var min = now.getMinutes();
+        var hr  = now.getHours();
+        var newname,weizhi=0;
+        for(var i=0; i<arr.length; i++){
+            for(var j=0; j<arr[i].timePeriods.length; j++){
+                var startDuan=blueDuan_timeToAngle(arr[i].timePeriods[j].startTime);
+                var overDuan=blueDuan_timeToAngle(arr[i].timePeriods[j].endTime);
+                //(parseInt(hr)+2)
+                var newdate=hr+":"+min;
+                var newdian=blueDuan_timeToAngle(newdate);
+                if(startDuan>overDuan){
+                    if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
+                        newname=arr[i].timePeriods[j].title;
+                    }
                 }
-            }
-            if(startDuan<overDuan){
-                if(newdian<overDuan&&newdian>=startDuan){
-                    newname=arr[i].timePeriods[j].name;
+                if(startDuan<overDuan){
+                    if(newdian<overDuan&&newdian>=startDuan){
+                        newname=arr[i].timePeriods[j].title;
+                    }
                 }
             }
         }
+        setTimeout(function(){
+            var str='';
+            var status=false;
+            for(var i=0; i<yundongObj.obj.length; i++){
+                str += '<div class="swiper-slide">'+yundongObj.obj[i].name+'</div>'
+                console.log(yundongObj.obj[i].name);
+                if(newname==yundongObj.obj[i].timePeriod){
+                    weizhi=i
+                    status=true;
+
+                }
+            }
+
+            var img=yundongObj.obj[weizhi].img
+            $(".dongzuo").find('img').attr('src',urls.IMGSRC+yundongObj.obj[weizhi].img);
+            $('.swiper-wrapper').html(str);
+            if(status)
+                $(".swiper-wrapper div:eq("+weizhi+")").css({'color':'#fff'})
+
+            var mySwiper = new Swiper('.swiper-container', {
+                direction: 'vertical',
+                initialSlide :weizhi,
+                slidesPerView: 3,
+                paginationClickable: true,
+                centeredSlides: true,
+                watchSlidesProgress : true,
+                onTransitionStart: function(swiper){
+                    var img=yundongObj.obj[swiper.activeIndex].img
+                    $(".dongzuo").find('img').attr('src',urls.IMGSRC+img);
+                    $(".dongzuo").find('img').click(function(){
+                        window.postMessage('获取运动'+JSON.stringify(yundongObj.obj[swiper.activeIndex]));
+                    })
+
+
+                }
+            })
+        },500)
+
     }
-    setTimeout(function(){
-        var str='';
-        for(var i=0; i<yundongObj.obj.length; i++){
-            str += '<div class="swiper-slide">'+yundongObj.obj[i].name+'</div>'
-            if(newname==yundongObj.obj[i].name){
-                weizhi=i
-            }
-        }
 
-        var img=yundongObj.obj[weizhi].img
-        $(".dongzuo").find('img').attr('src',urls.IMGSRC+yundongObj.obj[weizhi].img);
-        $('.swiper-wrapper').html(str);
-
-        var mySwiper = new Swiper('.swiper-container', {
-            direction: 'vertical',
-            initialSlide :weizhi,
-            slidesPerView: 3,
-            paginationClickable: true,
-            centeredSlides: true,
-            watchSlidesProgress : true,
-            onTransitionStart: function(swiper){
-                var img=yundongObj.obj[swiper.activeIndex].img
-                $(".dongzuo").find('img').attr('src',urls.IMGSRC+img);
-                $(".dongzuo").find('img').click(function(){
-                    window.postMessage('获取运动'+JSON.stringify(yundongObj.obj[swiper.activeIndex]));
-                })
-
-
-            }
-        })
-    },500)
 
 
 
@@ -327,29 +336,32 @@
 
         e.stopPropagation();
         var timeName;
-        console.log($(this).parent().find('.tishi').attr('name'));
+
         for(var i=0; i<arr.length; i++){
             if($(this).parent().find('.tishi').attr('name')==arr[i].startTime){
-                timeName=arr[i].timePeriods[0].name;
+                for(var j=0; j<arr[i].timePeriods.length; j++){
+                    $.ajax({
+                        type:"post",
+                        url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
+                        headers: {
+                            authorization: token
+                        },
+                        data:{
+                            timePeriod:arr[i].timePeriods[j].title
+                        },
+                        success:function(data){
+                            console.log(data);
+                            if(data.obj)
+                                window.postMessage(JSON.stringify(data.obj[0]));
+                        },
+                        error:function(error){
+                            alert(JSON.stringify(error));
+                        }
+                    });
+                }
             }
         }
-        $.ajax({
-            type:"post",
-            url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
-            headers: {
-                authorization: token
-            },
-            data:{
-                timePeriod:timeName
-            },
-            success:function(data){
-                console.log(data);
-                window.postMessage(JSON.stringify(data.obj[0]));
-            },
-            error:function(error){
-                alert(JSON.stringify(error));
-            }
-        });
+
 
 
     })
@@ -386,17 +398,20 @@
         }
         startTimeArr.push(a);
     }
-    //console.log(chaAngle);
-    //console.log(chaAngle+startTimeArr[angleIndex+1]);
-    setTimeout(drawTime,chaAngle*4*60*1000-sec*1000);
+
+    setTimeout(function(){
+        drawTime()
+        fundongList();
+    },chaAngle*4*60*1000-sec*1000);//下个阶段的刷新时间
     setTimeout(function(){
         drawTime();
+        fundongList();
         location.reload();
-    },(chaAngle+startTimeArr[angleIndex+1])*4*60*1000-sec*1000);
-    //console.log(startTimeArr);
-
-
-    setTimeout(drawTime,500)
+    },(chaAngle+startTimeArr[angleIndex+1])*4*60*1000-sec*1000);//执行完下下阶段后进行刷新
+    setTimeout(function(){
+        drawTime();
+        fundongList();
+    },500)
 
 
     function drawTime(){
@@ -407,12 +422,28 @@
         var min = now.getMinutes();
         var hr  = now.getHours();
         var num=84;//环的半径
+        context.beginPath();
+        context.moveTo(-60,-35)
+        context.lineTo(60,-35)
+        context.strokeStyle="#fff";
+        context.lineWidth= 0.3;
+        context.stroke()
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(-60,-15)
+        context.lineTo(60,-15)
+        context.strokeStyle="#fff";
+        context.lineWidth= 0.3;
+        context.stroke()
+        context.closePath();
+
 
 
         //时针的刻度
         for(var i = 0 ;i<24;i++){
             context.beginPath();
-            context.lineWidth= 2;
+            context.lineWidth= 1;
             context.strokeStyle="#f4b905";
             if(i>11&&i<22){
                 context.strokeStyle="#000";
@@ -499,22 +530,19 @@
      }
      drawTime
      console.log(startTime+"+"+endTime);
-
      }
      */
 
 
     //黄色时间段
     function yellowTimeDuan(num,startTime,endTime,name){
-
-
         var startDuan=blueDuan_timeToAngle(startTime);
         var overDuan=blueDuan_timeToAngle(endTime);
         var gradient;
         context.save();
         context.beginPath();
         context.lineWidth = 5;
-        if(startDuan>15&&startDuan<160&&overDuan>15&&overDuan<160){
+        if(startDuan>15&&startDuan<160&&overDuan>15&&overDuan<160){//时间段颜色的渐变
             context.strokeStyle="#022277";
         }else if(startDuan>15&&startDuan<160&&overDuan>160){
             gradient=context.createLinearGradient(0,2,0,12);
@@ -530,10 +558,6 @@
             context.strokeStyle="#f4b905";
         }
         context.arc(0,0,num+18,2*Math.PI/360*(startDuan+1),2*Math.PI/360*overDuan);
-        /*var y1=Math.sin(2*Math.PI/360*startDuan)*105+160;
-         var y2=Math.sin(2*Math.PI/360*overDuan)*105+160;
-         var x1=Math.cos(2*Math.PI/360*startDuan)*105+160;
-         var x2=Math.cos(2*Math.PI/360*overDuan)*105+160;*/
         var zhongjian=(overDuan-startDuan)/2+startDuan;
         if(overDuan-startDuan<0){
             zhongjian=((overDuan+360)-startDuan)/2+startDuan;
@@ -541,8 +565,8 @@
                 zhongjian=zhongjian-360;
             }
         }
-        var x=Math.cos(2*Math.PI/360*zhongjian)*105+160;
-        var y=Math.sin(2*Math.PI/360*zhongjian)*105+160;
+        var x=Math.cos(2*Math.PI/360*zhongjian)*105+160;//计算x轴中间点的坐标
+        var y=Math.sin(2*Math.PI/360*zhongjian)*105+160;//计算y轴中间点的坐标
         var x1=x-10;
         var x2=x+10;
         var y1=y-10;
@@ -553,78 +577,43 @@
             y1=y-40;
             y2=y+40;
         }
-        oCanvas.addEventListener('click', function(e){
-
+        oCanvas.addEventListener('click', function(e){//时间段的点击事件
             e.stopPropagation();
-
             p = getEventPosition(e);
             if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
-                nextTimezhishi(num,startTime,endTime,name)
-
-
+                huiseTimezhishi(num,startTime,endTime,name)//灰色指示标
                 $('.tishi').attr('name',startTime);
                 var timeName;
                 for(var i=0; i<arr.length; i++){
                     if(startTime==arr[i].startTime){
+                        for(j=0; j<arr[i].timePeriods.length; j++){
+                            $.ajax({
+                                type:"post",
+                                url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
+                                headers: {
+                                    authorization: token
+                                },
+                                data:{
+                                    timePeriod:arr[i].timePeriods[j].title
+                                },
+                                success:function(data){
+                                    console.log(data);
+                                    if(data.obj){
+                                        $('.warn').show();
+                                        $('.warn').css({top:p.y+45});
+                                        $('.triangle-up').css({left:p.x-25})
+                                        $('.tishi').html(data.obj[0].threeCharacterClassic);
+                                    }
+                                },
+                                error:function(){
 
-                        timeName=arr[i].timePeriods[0].name;
+                                }
+                            });
+                        }
                     }
                 }
-                $.ajax({
-                    type:"post",
-                    url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
-                    headers: {
-                        authorization: token
-                    },
-                    data:{
-                        timePeriod:timeName
-                    },
-                    success:function(data){
-                        console.log(data);
-                        if(data.obj){
-                            $('.warn').show();
-                            $('.warn').css({top:p.y+45});
-                            $('.triangle-up').css({left:p.x-25})
-                            $('.tishi').html(data.obj[0].threeCharacterClassic);
-                        }
-
-                        //window.postMessage(JSON.stringify(data));
-
-                    },
-                    error:function(){
-
-                    }
-                });
-
-                //grayTimeDuan(startTime);
-
             }
-            /*if(p.x>=x1&&p.x<=x2&&p.y<=y1&&p.y>=y2){
-             $('.warn').show();
-             $('.warn').css({top:p.y+45});
-             $('.triangle-up').css({left:p.x-25})
-             $('.tishi').html(name);
-             }
-             if(p.x<=x1&&p.x>=x2&&p.y>=y1&&p.y<=y2){
-             $('.warn').show();
-             $('.warn').css({top:p.y+45});
-             $('.triangle-up').css({left:p.x-25})
-             $('.tishi').html(name);
-             }
-             if(p.x<=x1&&p.x>=x2&&p.y<=y1&&p.y>=y2){
-             $('.warn').show();
-             $('.warn').css({top:p.y+45});
-             $('.triangle-up').css({left:p.x-25})
-             $('.tishi').html(name);
-             }*/
-
         }, false);
-
-        /*$('#myCanvas').click(function(e){
-         e.preventDefault();
-         $('.warn').hide();
-         });
-         */
         context.stroke();
         context.restore();
     }
@@ -666,6 +655,7 @@
         context.arc(0,0,num+21,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
         context.stroke();
         context.restore();
+
 
         var startText=blueTime_timeToAngle(startTime);
         var overText=blueTime_timeToAngle(endTime);
