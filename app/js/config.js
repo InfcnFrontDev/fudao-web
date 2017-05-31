@@ -1,6 +1,6 @@
 //var apiPath="http://192.168.3.126:18080/fudao-svc/";
 
-var apiPath = 'http://103.254.113.11:9090/api/';
+var apiPath = 'http://103.254.113.11:9191/api/';
 // var apiPath = 'http://103.254.113.11:9090/api/';
 var urls = {
     //生命周期
