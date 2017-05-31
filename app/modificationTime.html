@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script src="js/jquery.min.js"></script>
+  <script src="js/hidpi-canvas.js"></script>
   <script src="js/data.js"></script>
   <script src="js/config.js"></script>
 
@@ -20,11 +21,12 @@
     }
     .topBox{
       width:100%;
-      height:40%;
+      height:45%;
+      border-bottom:1px solid #d9d9d9;
     }
     .buttomBox{
       width:92%;
-      height:52%;
+      height:47%;
       padding:4%;
 
     }
@@ -87,17 +89,42 @@
       overflow: hidden;
 
     }
+    .qiehuanBtn{
+      width:50px;
+      height:80px;
+      margin-top:16%;
+      font-size:25px;
+      font-weight:900;
+      border:none;
+      background-color: #fff;
+      line-height:80px;
+      text-align: center;
+    }
+    .leftBtn{
+      color:#929292;
+      float:left;
+    }
+    .rightBtn{
+      color:#adc857;
+      float:right;
+    }
 
 
   </style>
 </head>
 <body>
 <div class="topBox">
-
+  <div style="width:100%; height:40px; border-bottom:1px solid #d9d9d9; line-height:40px; text-align:center;" class="title">工作日</div>
+  <canvas id="myCanvas" style=" position:absolute; left:0; right:0; top:0; bottom:0; margin:7% auto; background-size:290px; background-position: center; " width="240" height="240"></canvas>
+  <div style="position:absolute; width:80px; height:80px; left:0; right:0; top:0; bottom:0; margin:30% auto;">
+    <img id="touxiang" src="" style="width:80px; height:80px;  border-radius: 80px;" alt="">
+  </div>
+  <div class="qiehuanBtn leftBtn"><</div>
+  <div style="" class="qiehuanBtn rightBtn">></div>
 </div>
 
 <div class="buttomBox">
-  <button id="saveBtn" style="width:60px; height:20px; background: #8fd304;  border:none; border-radius: 3px;position: absolute; top:0px; right:20px; color: #ffffff;">保存</button>
+  <button id="saveBtn" style="width:60px; height:20px; background: #8fd304;  border:none; border-radius: 3px;position: absolute; top:10px; right:20px; color: #ffffff;">保存</button>
   <div class="bigBox" style="background:#fff;width:100%; height:100%; overflow:hidden; overflow-y: scroll;">
 
   </div>
@@ -106,15 +133,30 @@
 
 <script src="js/picker.min.js"></script>
 
+
+
 <script>
     //http://localhost:3000/modificationTime.html?token=6c2c8b51-b20a-40ad-98a4-9e5c8375c4a5
+    $('.leftBtn').click(function(){
+      $(this).css({color:'#929292'});
+      $('.rightBtn').css({color:'#adc857'});
+      $('.title').html('工作日')
+    })
+    $('.rightBtn').click(function(){
+      $(this).css({color:'#929292'});
+      $('.leftBtn').css({color:'#adc857'});
+      $('.title').html('休息日')
+    })
 
     var token=getQueryString('token')
+
+
+
     xuanran()
  function xuanran(){
      $.ajax({
          type:"post",
-         url:urls.TIMEPERIOD_GETMYTIMESTAGE,
+         url:urls.TIMEPERIOD_GETMYTIMESTAGE,//获取我的时间段
          headers: {
              authorization: token
          },
@@ -127,19 +169,128 @@
          }
 
      });
+      var touImg;
+     $.ajax({
+       type:"post",
+       url:urls.USER_GETLOGINUSER,//获取我的时间段
+       headers: {
+         authorization: token
+       },
+       success:function(data){
+         touImg=data.obj.photo
+
+       },
+       error:function(error){
+
+       }
+
+     });
 
      setTimeout(function(){
+         $('#touxiang').attr('src',urls.IMGSRC+touImg)
          if(timeArr){
-             layout()
+             layout();
+             canvasLayout();
          }
      },300)
  }
-var yanse=[
-            ['#33FFDD','#00FFCC','#00DDAA','#77FFEE'],
-            ['#FFBB66','#FFAA33','#FF8800','#EE7700'],
-            ['#FF88C2','#FF44AA','#FF0088','#C10066'],
-            ['#9F88FF','#7744FF','#5500FF','#4400CC']
-        ]
+    var oCanvas=document.getElementById('myCanvas');
+    var context = oCanvas.getContext("2d");
+    var canvas = document.querySelector('canvas');
+    var yanse=[
+      ['#33FFDD','#00FFCC','#00DDAA','#77FFEE'],
+      ['#FFBB66','#FFAA33','#FF8800','#EE7700'],
+      ['#FF88C2','#FF44AA','#FF0088','#C10066'],
+      ['#9F88FF','#7744FF','#5500FF','#4400CC']
+    ]
+    function canvasLayout(){
+
+      context.translate(120,120);
+      var num=60;//环的半径
+      //彩色时间段
+      var h=0;
+      for(var j=0; j<timeArr.obj.length; j++){
+        // 遍历所有黄色时间段
+        console.log(1);
+        yellowTimeDuan(num,timeArr.obj[j].startTime,timeArr.obj[j].endTime,yanse[h][0]);
+        h++
+        if(h==4){
+          h=0;
+        }
+      }
+      //内圈数字
+      context.save();
+      context.beginPath();
+      for(var i=-11;i<13;i++){
+        var x1=Math.sin(i*2*Math.PI/24);
+        var y1=-Math.cos(i*2*Math.PI/24);
+        context.fillStyle="#33FFDD";
+        context.font="14px Arial";
+        context.textAlign='center';
+        context.textBaseline='middle';
+        if((i+12)%3==0)
+        context.fillText(i+12,x1*(num+26),y1*(num+26));
+
+      }
+      context.closePath();
+
+      for(var i = 0 ;i<24;i++){
+        context.beginPath();
+        context.lineWidth= 1;
+        context.strokeStyle="#000";
+        context.rotate(-Math.PI/12);
+        context.moveTo(num,0);
+        context.lineTo(num+14,0);
+        context.stroke();
+      }
+      context.save();
+      context.beginPath();
+      context.arc(0,0,num+14,0,360);
+      context.stroke();
+      context.restore();
+      context.save();
+      context.beginPath();
+      context.arc(0,0,num,0,360);
+      context.stroke();
+      context.restore();
+
+    }
+
+
+    function yellowTimeDuan(num,startTime,endTime,yanse){
+      var startDuan=blueDuan_timeToAngle(startTime);
+      var overDuan=blueDuan_timeToAngle(endTime);
+      var gradient;
+      context.save();
+      context.beginPath();
+      context.lineWidth = 14;
+      context.strokeStyle=""+yanse+"";
+      context.arc(0,0,num+7,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
+      context.stroke();
+      context.restore();
+    }
+
+
+
+
+
+
+
+    //弧度时间转度数
+    function blueDuan_timeToAngle(time){
+      var hr=time.split(':')[0];
+      var min=time.split(':')[1];
+      var angle;
+      if(hr<18){
+        angle=parseInt(hr)*15+90;
+        angle=angle+15/60*min;
+      }else{
+        angle=(parseInt(hr)-18)*15;
+        angle=angle+15/60*min;
+      }
+      return angle;
+    }
+
 
 function layout(){
     var str='';
