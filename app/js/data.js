@@ -1,4 +1,4 @@
-var arr= [
+var arr;/*=[
     {
         "timeLenReaneMax": "60",
         "level": "辅助阶段",
@@ -305,7 +305,7 @@ var arr= [
         ],
         "title": "睡眠阶段"
     }
-    ];
+    ];*/
 var yundongObj={
 	"obj": [
 		{

@@ -135,9 +135,6 @@
     var token = getQueryString('token');
     localStorage.setItem('zizhen_token', token);
 
-//    var token = "3c7ac19c-69ea-4dd2-b532-759f92fc4f66";
-//    var token = localStorage.getItem('zizhen_token');
-
 
     if ( diseasespeople== 'aged') {
         if (sex==1) {
@@ -172,10 +169,7 @@
                         authorization: token
                     },
                     success: function (res) {
-//                        window.postMessage(res);
-
                         symptomList = res.obj;
-
                     },
                     error: function () {
                         console.log('err')
@@ -374,14 +368,11 @@
             mui('body').on('tap', '#button', function () {
                 if (type) {
                     check_process_two_sure();
-
                 }
             });
 
 
             document.getElementById("table_id").style.marginTop = "10px";
-            //diseasespeople = 'high_quality_population';
-//        diseasespeople = chooseVersion();
 
             mui('body').on('tap', '#opacityNext', function () {
                 swiper.slideNext();
