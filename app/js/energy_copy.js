@@ -53,7 +53,7 @@ function preInitEchart(result){
     var xAxis = ["自然环境","人文环境","个人生活","情感关系"];
     var datas = [96,86,72,90];
     var colorList = [ '#03B3D4' , '#D49306' , '#99CB06' , '#7A91D6' ];
-    var colorList_ = [ '#AED1D8' , '#D9C597' , '#C0CF99' , '#D3D8E4' ];
+    var colorList_ = [ '#AED1D8' , '#D9C499' , '#C0CF99' , '#D3D8E4' ];
     initEchart_bar(xAxis,datas,colorList,colorList_,result); // 初始化柱状图
     initEchart_scatter(result); // 初始化散列图
     $('.tanceImg_s').css('display','block');
@@ -223,7 +223,7 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
             x: 10,
             x2: 15,
             y: 40,
-            y2: 10
+            y2: 30
         },
         xAxis: [
             {
@@ -252,10 +252,10 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
                         barBorderRadius: 10,
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                             offset: 0,
-                            color: '#899CD9'
+                            color: '#99d9ea'
                         }, {
                             offset: 1,
-                            color: '#03B3D4'
+                            color: '#3fa7dc'
                         }]),
                         label: {
                             show: true,
@@ -277,15 +277,13 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
         var xAxis = new Array();
         var datas = new Array();
         var colorList = [];
-        var colorList_ = [];
         if(param.name.indexOf("自然环境") != -1){
             xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','星辰'];
             datas = [getMountainsScore(city,0),getMountainsScore(city,1),getWindScore(winp),getRainScore(weather),
                 getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
             $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
-            colorList = [ '#03B3D4'];
-            colorList_ = [ '#AED1D8'];
-            initEchart_bar_detail(xAxis,datas,colorList,colorList_);
+            colorList = ['#178ACC'];
+            initEchart_bar_detail(xAxis,datas,colorList);
         } else if (param.name.indexOf("人文环境") != -1){
             xAxis.push('地区魅力')
             datas.push(getLocationScore(city));
@@ -299,33 +297,31 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
                     }
                 });
                 $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
-                colorList = [ '#D49306' ];
-                colorList_ = [ '#D9C597' ];
-                initEchart_bar_detail(xAxis,datas,colorList,colorList_);
-            }); 
+                colorList = ['#FED362'];
+                initEchart_bar_detail(xAxis,datas,colorList);
+            });
         } else if (param.name.indexOf("个人生活") != -1){
             _.forEach(JSON.parse(result.result_personal), function(n, key) { // 循环对象
                 xAxis.push(key)
                 datas.push(n);
             });
             $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
-            colorList = [ '#99CB06' ];
-            colorList_ = [ '#C0CF99' ];
-            initEchart_bar_detail(xAxis,datas,colorList,colorList_);
+            colorList = ['#19E689'];
+            initEchart_bar_detail(xAxis,datas,colorList);
         } else { // 情感关系
             _.forEach(JSON.parse(result.result_emotion), function(n, key) { // 循环对象
                 xAxis.push(key)
                 datas.push(n);
             });
             $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
-            colorList = [ '#7A91D6' ];
-            colorList_ = [ '#D3D8E4' ];
-            initEchart_bar_detail(xAxis,datas,colorList,colorList_);
+            colorList = ['#4168B9'];
+            initEchart_bar_detail(xAxis,datas,colorList);
         }
     });
 }
+// ['#178acc','#FED362','#19E689','#4168B9'];
 
-function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
+function initEchart_bar_detail(xAxis,datas,colorList){
     // 根据展示柱状图个数初始化容器宽度
     var myChart = echarts.init(document.getElementById('lowerDiv_detail'));
     var option = {
@@ -339,7 +335,7 @@ function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
             x: 10,
             x2: 15,
             y: 40,
-            y2: 10
+            y2: 30
         },
         xAxis: [
             {
@@ -356,7 +352,7 @@ function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
         ],
         series: [
             {
-                name: '得分',
+                name: '平均值',
                 type: 'bar',
                 barWidth: 15,
                 itemStyle: {
@@ -364,10 +360,10 @@ function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
                         barBorderRadius: 10,
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                             offset: 0,
-                            color: colorList
+                            color: '#99d9ea'
                         }, {
                             offset: 1,
-                            color: colorList_
+                            color: '#3fa7dc'
                         }]),
                         label: {
                             show: true,
@@ -441,7 +437,7 @@ function setResult(result_peo,result_emo){
     var v = 0;
     var vt = 0;
     var weight = 0;
-    $.getJSON("json/questionnarie_peo.json",function(data){
+    $.getJSON("json/questionnarie_emo.json",function(data){
         _.forEach(data, function(n, key) { // 循环对象
             v = 0;
             _(n).forEach(function(n2) { // 循环数组
@@ -464,7 +460,7 @@ function setResult(result_peo,result_emo){
             if(v != 0)
                 result_peo[key] = v;
         });
-        $.getJSON("json/questionnarie_emo.json",function(data){
+        $.getJSON("json/questionnarie_peo.json",function(data){
             _.forEach(data, function(n, key) { // 循环对象
                 v = 0;
                 _(n).forEach(function(n2) { // 循环数组
@@ -547,7 +543,7 @@ function readSurname(type){
 function readQuestionJson(){
     var html = '';
     var indx = 0;
-    $.getJSON("json/questionnarie_peo.json",function(data){
+    $.getJSON("json/questionnarie_emo.json",function(data){
         _.forEach(data, function(n, key1) { // 循环对象
             _(n).forEach(function(n2) { // 循环数组
                 _.forEach(n2, function(n3, key2) { // 循环对象
@@ -568,7 +564,7 @@ function readQuestionJson(){
         });
         $('#peoTab_').html(html);
     });
-    $.getJSON("json/questionnarie_emo.json",function(data){
+    $.getJSON("json/questionnarie_peo.json",function(data){
         _.forEach(data, function(n, key1) { // 循环对象
             _(n).forEach(function(n2) { // 循环数组
                 _.forEach(n2, function(n3, key2) { // 循环对象
