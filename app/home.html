@@ -251,7 +251,7 @@
     $('.tishi').click(function(e){
 
         e.stopPropagation();
-
+        console.log($(this).attr('name'))
         $.ajax({
             type:"post",
             url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
@@ -307,14 +307,14 @@
             startTimeArr.push(a);
         }
         drawTime();
-        fundongList();
+        yundongList();
         setTimeout(function(){
             drawTime()
-            fundongList();
+            yundongList();
         },chaAngle*4*60*1000-sec*1000);//下个阶段的刷新时间
         setTimeout(function(){
             drawTime();
-            fundongList();
+            yundongList();
             location.reload();
         },(chaAngle+startTimeArr[angleIndex+1])*4*60*1000-sec*1000);//执行完下下阶段后进行刷新
     },500)
@@ -473,8 +473,8 @@
                 zhongjian=zhongjian-360;
             }
         }
-        var x=Math.cos(2*Math.PI/360*zhongjian)*105+160;//计算x轴中间点的坐标
-        var y=Math.sin(2*Math.PI/360*zhongjian)*105+160;//计算y轴中间点的坐标
+        var x=Math.cos(2*Math.PI/360*zhongjian)*(num+21)+160;//计算x轴中间点的坐标
+        var y=Math.sin(2*Math.PI/360*zhongjian)*(num+21)+160;//计算y轴中间点的坐标
         var x1=x-10;
         var x2=x+10;
         var y1=y-10;
@@ -490,19 +490,21 @@
             p = getEventPosition(e);
             if(p.x>=x1&&p.x<=x2&&p.y>=y1&&p.y<=y2){
                 huiseTimezhishi(num,startTime,endTime,name)//灰色指示标
-                tishiQipao(startTime)//阶段信息提示气泡
+                tishiQipao(startTime,p.x,p.y)//阶段信息提示气泡
             }
         }, false);
         context.stroke();
         context.restore();
     }
     //提示气泡
-    function tishiQipao(startTime){
+    function tishiQipao(startTime,x,y){
         for(var i=0; i<arr.length; i++){
             if(startTime==arr[i].startTime){
                 for(j=0; j<arr[i].timePeriods.length; j++){
                     var title=arr[i].timePeriods[j].title;
-                    console.log(title)
+                    console.log(title);
+
+
                     $.ajax({
                         type:"post",
                         url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
@@ -513,13 +515,15 @@
                             timePeriod:title
                         },
                         success:function(data){
-                            console.log(data);
+
+
                             if(data.obj){
-                                $('.tishi').attr('name',title);
+                                $('.tishi').attr('name',data.obj[0].timePeriod);
                                 $('.warn').show();
-                                $('.warn').css({top:p.y+45});
-                                $('.triangle-up').css({left:p.x-25})
+                                $('.warn').css({top:y+45});
+                                $('.triangle-up').css({left:x-25})
                                 $('.tishi').html(data.obj[0].threeCharacterClassic);
+                                return false;
                             }
                         },
                         error:function(){
@@ -556,11 +560,23 @@
     }
     //绿色时间段的显示
     function blueTime(num,startTime,endTime,name){
-        tishiQipao(startTime)//阶段信息提示气泡
+
         $('#abc1').find('#div1').remove();
         $('#abc1').find('#div2').remove();
         var startDuan=blueDuan_timeToAngle(startTime);
         var overDuan=blueDuan_timeToAngle(endTime);
+        var zhongjian=(overDuan-startDuan)/2+startDuan;
+        if(overDuan-startDuan<0){
+            zhongjian=((overDuan+360)-startDuan)/2+startDuan;
+            if(zhongjian>360){
+                zhongjian=zhongjian-360;
+            }
+        }
+
+        var x=Math.cos(2*Math.PI/360*zhongjian)*(num+21)+160;//计算x轴中间点的坐标
+        var y=Math.sin(2*Math.PI/360*zhongjian)*(num+21)+160;
+        tishiQipao(startTime,x,y)//阶段信息提示气泡
+
         //绿色时间段
         context.save();
         context.beginPath();
@@ -719,16 +735,22 @@
         }
         return {x: x, y: y};
     }
-    function fundongList(){
+    var weizhi=0,index=0;
+    function yundongList(){
         var now = new Date();
         var sec = now.getSeconds();
         var min = now.getMinutes();
         var hr  = now.getHours();
-        var newname,weizhi=0;
+        var newname;
 
         setTimeout(function(){
             for(var i=0; i<arr.length; i++){
                 for(var j=0; j<arr[i].timePeriods.length; j++){
+                    for(var h=0; h<yundongObj.obj.length; h++){
+                        if(arr[i].timePeriods[j].title==yundongObj.obj[h].timePeriod){
+                            yundongObj.obj[h].weizhi=i
+                        }
+                    }
                     var startDuan=blueDuan_timeToAngle(arr[i].timePeriods[j].startTime);
                     var overDuan=blueDuan_timeToAngle(arr[i].timePeriods[j].endTime);
                     //(parseInt(hr)+2)
@@ -737,26 +759,35 @@
                     if(startDuan>overDuan){
                         if(newdian<(overDuan+360)&&newdian>=startDuan||newdian<overDuan){
                             newname=arr[i].timePeriods[j].title;
+                            index=i;
+
                         }
                     }
                     if(startDuan<overDuan){
                         if(newdian<overDuan&&newdian>=startDuan){
                             newname=arr[i].timePeriods[j].title;
+                            index=i;
                         }
                     }
                 }
             }
             var str='';
             var status=false;
+            console.log(yundongObj);
             for(var i=0; i<yundongObj.obj.length; i++){
                 str += '<div class="swiper-slide">'+yundongObj.obj[i].name+'</div>'
-                console.log(yundongObj.obj[i].name);
+                console.log(yundongObj.obj[i].timePeriod);
                 if(newname==yundongObj.obj[i].timePeriod){
                     weizhi=i
                     status=true;
-
                 }
+                console.log(index)
+               /* if(index>yundongObj.obj[i].weizhi){
+                    weizhi=i
+                    console.log(weizhi)
+                }*/
             }
+
 
             var img=yundongObj.obj[weizhi].img
             $(".dongzuo").find('img').attr('src',urls.IMGSRC+yundongObj.obj[weizhi].img);
