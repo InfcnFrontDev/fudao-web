@@ -264,7 +264,9 @@
 
             mui('body').on('tap', '#dun', function () {
                 if (type) {
-                    fun_pathogeny('bei', symptomList["背部"], true);
+//                    fun_pathogeny('bei', symptomList["背部"], true);
+                    fill_color("dun")
+                    fun_pathogeny('fu', symptomList["腹部"], true);
                     event.stopPropagation();
                 }
             });

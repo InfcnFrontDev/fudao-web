@@ -308,7 +308,7 @@ function depth_submit() {
 }
 //
 function fill_color(buwei) {
-    var arr_buwei = ["toujing", "xiong", "fu", "zuoshou", "youshou", "tui"]
+    var arr_buwei = ["toujing", "xiong", "dun","fu", "zuoshou", "youshou", "tui"]
     for (var i = 0; i < arr_buwei.length; i++) {
         if (arr_buwei[i] == buwei) {
             document.getElementById(buwei).setAttribute("fill", "#000")
