@@ -18,7 +18,12 @@ var $popover;
 			var $jingluo = $("#jingluo");
 			var $xuewei = $("#xuewei");
             $xuewei.css('display','block')
+            $jingluo.css('display','block')
             var $rentibuwei = $('#rentibuwei');
+
+
+            $("image").css('display','none')
+
 
 			function clickXuewei() {
 				var xwid = $(this).attr('id');
