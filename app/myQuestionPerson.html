@@ -63,7 +63,7 @@
                 d = diseaseobj.circulatorysystems
                 jingluomap = a[0].list[0] ?  a[0].list[0].map : 'qian.svg'
                 xueweimap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
-                xunhuanmap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
+                xunhuanmap =d[0].list[0] ?  d[0].list[0].map : 'qian.svg'
                 Object.keys(a).forEach(function (item) {
                     a[item].list.forEach(function (items) {
                         jingluoid.push(items.code)
@@ -84,10 +84,7 @@
                         xunhuanid.push(items.code)
                     })
                 })
-                console.log(jingluoid)
-                console.log(xueweiid)
-                console.log(buweiid)
-                console.log(xunhuanid)
+
 
                 var map = new RentiMap("#mapDiv", {
                     map: jingluomap,
