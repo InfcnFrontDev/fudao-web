@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div>
-                    <div style="font-size: 13px;text-align: left;padding: 8px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">
+                    <div style="font-size: 13px;text-align: left;padding: 8px;background: #F0F0F0;margin: 0 0 12px 0;border-bottom: 1px solid #D7D7D7;">
                         <span>您最近做过以下几项事情吗？</span>
                         <p style="float:right;font-size: 15px;margin: 0;margin-right: 12%">都没有<input type="checkbox"
                                                                                                      name="category"
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <p style="height:15%;width: 100%"><a id="depthSubmit"
-                                                 style="display:block;margin: 20px auto 30px; height:38px;line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
+                                                 style="position: relative;z-index:9999999;display:block;margin: 20px auto 30px; height:38px;line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
                                                  onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></p>
 
         </div>
@@ -264,7 +264,9 @@
 
             mui('body').on('tap', '#dun', function () {
                 if (type) {
-                    fun_pathogeny('bei', symptomList["背部"], true);
+//                    fun_pathogeny('bei', symptomList["背部"], true);
+                    fill_color("dun")
+                    fun_pathogeny('fu', symptomList["腹部"], true);
                     event.stopPropagation();
                 }
             });
