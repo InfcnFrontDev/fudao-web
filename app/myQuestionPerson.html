@@ -33,57 +33,137 @@
 </div>
 
 <script>
-    var searchURL = window.location.search;
-    var targetPageId = searchURL.split("=")[1];
-    var question_title = decodeURI(targetPageId);
-    var diseaseobj, jingluomap, jingluoid, xueweimap,xueweiid,xunhuanmap, xunhuanid,buweiid;
-    diseaseobj = disease[question_title]
-    if (!diseaseobj) {
-        diseaseobj = disease['痴呆'];
+    function getQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var result = window.location.search.substr(1).match(reg);
+        return result ? decodeURIComponent(result[2]) : null;
     }
-    jingluomap = diseaseobj.jl_map.split('、')[0]
-    jingluoid = diseaseobj.jl_id.split('、');
+    var diseaseType = getQueryString('diseaseType');
+    var disease = getQueryString('disease');
+    var token = getQueryString('token');
+    var diseaseobj, jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
 
-    xueweimap = diseaseobj.xw_map ? diseaseobj.xw_map.split('、')[0] : null
-    xueweiid = diseaseobj.xw_id ? diseaseobj.xw_id.split('、') : null
+    $.ajax({
+        type: "get",
+        url: urls.DISEASE_RELEVANT,
+        headers: {
+            authorization: token
+        },
+        data: {
+            diseaseType: diseaseType,
+            disease: disease,
+        },
+        success: function (msg) {
+            if (msg.ok) {
+                diseaseobj = msg.obj
+                console.dir(diseaseobj)
+                a = diseaseobj.meridians
+                b = diseaseobj.acupoints
+                c = diseaseobj.organs
+                d = diseaseobj.circulatorysystems
+                jingluomap = a[0].list[0] ?  a[0].list[0].map : 'qian.svg'
+                xueweimap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
+                xunhuanmap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
+                Object.keys(a).forEach(function (item) {
+                    a[item].list.forEach(function (items) {
+                        jingluoid.push(items.code)
+                    })
+                })
+                Object.keys(b).forEach(function (item) {
+                    b[item].list.forEach(function (items) {
+                        xueweiid.push(items.code)
+                    })
+                })
+                Object.keys(c).forEach(function (item) {
+                    c[item].list.forEach(function (items) {
+                        buweiid.push(items.code)
+                    })
+                })
+                Object.keys(d).forEach(function (item) {
+                    d[item].list.forEach(function (items) {
+                        xunhuanid.push(items.code)
+                    })
+                })
+                console.log(xueweiid)
+                console.log(buweiid)
+                console.log(xunhuanid)
 
-    xunhuanmap = diseaseobj.xhxt_map;
-    xunhuanid = diseaseobj.xhxt_id ? diseaseobj.xhxt_id.split('、') : null
-    buweiid = diseaseobj.xhxt_part ? diseaseobj.xhxt_part.split('、') : null
-
-
-    var map = new RentiMap("#mapDiv", {
-        map: 'svg/' + jingluomap + '.svg',
-        jingluoid: jingluoid,
-        noshow: true
+                var map = new RentiMap("#mapDiv", {
+                    map: 'svg/' + jingluomap,
+                    jingluoid: jingluoid,
+                    noshow: true
+                });
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
     });
+    //    var obj = {
+    //        "meridians": {
+    //            "id": "Liver-1、Liver-2、Spleen-1、Spleen-2、Kidney-1、Kidney-2",
+    //            "name": "足厥阴肝经,足少阴肾经",
+    //            "relation": "中毒的病因主要是肝肾阴亏。",
+    //            "map": "laoren-nan-qian",
+    //        },
+    //        "acupoints": {
+    //            "id": "GV16、CV23、GB31-1、GB31-2",
+    //            "name": "风池,太溪,复溜,涌泉",
+    //            "relation": "滋养肝肾。",
+    //            "map": "laoren-nan-qian",
+    //        },
+    //        "organs": {
+    //            "id": "danao",
+    //            "name": "咽,食管",
+    //            "relation": "老年人患食管病者较多，加上进餐时情绪激动，容易引起食管痉挛。老年人的脑血管病变发生率高，咽反射迟钝，容易造成吞咽动作不协调而噎食。",
+    //            "map": "laoren-nan-rentibuwei-xunhuanxitong",
+    //        },
+    //        "circulatorySystems": {
+    //            "id": "shenjing-s",
+    //            "name": "心血管系统",
+    //            "relation": "机体接触各种毒物，引发组织结构和功能损害、代谢障碍而发生疾病或死亡者，称为中毒。",
+    //            "map": "laoren-nan-rentibuwei-xunhuanxitong",
+    //        }
+    //    }
+    //    meridians = obj.meridians
+    //    acupoints = obj.acupoints
+    //    organs = obj.organs
+    //    circulatorySystems = obj.circulatorySystems
+    //
+    //    jingluomap = meridians.map ? meridians.map.split('、')[0] : null
+    //    jingluoid = meridians.id ? meridians.id.split('、') : null
+    //
+    //    xueweimap = acupoints.map ? acupoints.map.split('、')[0] : null
+    //    xueweiid = acupoints.id ? acupoints.id.split('、') : null
+    //
+    //    xunhuanmap = circulatorySystems.map;
+    //    xunhuanid = circulatorySystems.id ? circulatorySystems.id.split('、') : null
+    //    buweiid = organs.id ? organs.id.split('、') : null
 
 
-    var jlbtn1click = function () {
+    var jlbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + jingluomap + '.svg',
+            map: 'svg/' + jingluomap,
             jingluoid: jingluoid,
             noshow: true
         });
     }
-
     var xwbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xueweimap + '.svg',
+            map: 'svg/' + xueweimap,
             xueweiid: xueweiid,
             noshow: true
         });
     }
-
     var bwbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap + '.svg',
+            map: 'svg/' + xunhuanmap,
             buweiid: buweiid,
             noshow: true
         });
@@ -92,14 +172,14 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap + '.svg',
+            map: 'svg/' + xunhuanmap,
             xunhuanid: xunhuanid,
             noshow: true
 
         });
     }
 
-    $('#jlbtn1').on('click', jlbtn1click);
+    $('#jlbtn1').on('click', jlbtnclick);
     $('#xwbtn').on('click', xwbtnclick);
     $('#bwbtn').on('click', bwbtnclick);
     $('#xhbtn').on('click', xhbtnclick);
