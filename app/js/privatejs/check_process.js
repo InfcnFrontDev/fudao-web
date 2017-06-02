@@ -9,8 +9,8 @@ var submitSymptomType = 1;
  */
 function fun_pathogeny(info, list, flag) {
     symptom = list;
-    var div_list = document.getElementById("div_list");
-    div_list.innerHTML = "";
+    // var div_list = document.getElementById("div_list");
+    // div_list.innerHTML = "";
     document.getElementById("click_zhengzhuang").style.display = "none";
     var _json = {};
     _json['json'] = check_process_one_check_result;
@@ -26,15 +26,38 @@ function timeOut(rentidata, flag) {
     var opacityNext = document.getElementById("opacityNext");
     var svgGraph = document.getElementById("svgGraph");
     opacityNext.style.opacity = '1'
-    _rentiSvg.style.marginTop = '60px';
+    _rentiSvg.style.marginTop = '0';
     _rentiSvg.style.marginRight = '20%';
     svgGraph.style.marginRight = '30%';
     svgGraph.style.width = '86%';
     svgGraph.style.height = '86%';
-    pieChart = echarts.init(document.getElementById('pieChart'));
+    document.getElementById("listContain").style.display = "block";
+    document.getElementById("div_list_selected").style.display = "block";
+    document.getElementById("mengban").style.display = "block";
+    document.getElementById("deepPage1").style.height = "70%";
+
+    // pieChart = echarts.init(document.getElementById('pieChart'));
     //数据处理
-    fun_check_process_two(rentidata, flag);
+    // fun_organ_zhengzhuang(rentidata, flag);
+
+    fun_organ_zhengzhuang()
 }
+
+//版本2-手风琴效果-部位-症状
+function fun_organ_zhengzhuang(){
+    var accordion = document.getElementById("accordion");
+    accordion.innerHTML=''
+    var key = 1;
+    for(var i in symptom){
+        accordion.innerHTML+='<div class="panel"><div class="panel-heading" role="tab" id="heading'+key+'">' +
+            '<p class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+key+'" aria-expanded="false" aria-controls="collapse'+key+'" class="collapsed">' +i+
+            '</a></p></div><div id="collapse'+key+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+key+'"><div class="panel-body">' +
+            '<ul id="div_list'+key+'" style="background:#FAFAFA "></ul>' +   '</div></div></div>';
+        fun_li(symptom[i],key)
+        key++;
+    }
+}
+
 
 /**
  * 自查第二个页面  处理数据
@@ -156,228 +179,19 @@ function fun_pie(data, position, type) {
     });
 }
 
-function fun_li(_zhengzhuang) {
+function fun_li(_zhengzhuang,key) {
+    var div_list = document.getElementById("div_list"+key);
     for (var i in _zhengzhuang) {
         var li = document.createElement("li");
         li.className = "mui-table-view-cell";
-        li.innerHTML = '<a class="clickClass" style="background:#FFFFFF;" onclick ="fun_select(this,\'right\')">' + _zhengzhuang[i] + '</a>';
+        li.style.textAlign='left';
+        li.style.color=' #8E8E8E';
+        li.style.paddingTop='5px';
+        li.innerHTML = '<a class="clickClass" style="background:#FFFFFF;color: #8E8E8E;font-size: 14px" onclick ="fun_select(this,\'right\')">' + _zhengzhuang[i] + '</a>';
         div_list.appendChild(li);
     }
 
 }
-
-
-/*
- /!**
- *    展示数据
- * @param {Object} obj
- * @param {Object} zhengzhuang
- *!/
- function fun_hypertension(obj) {
- var _position = obj.position.replace("check_", "");
- var divBehavioralBacktracking = document.getElementById("divBehavioralBacktracking");
- divBehavioralBacktracking.innerHTML = "";
- //用于饼图数据JSON
- var data = [];
- var _i_color = 0;
- // 回溯
- var behavioralBacktracking = [];
- //用于饼图数据HTML元素
- for (var key in obj.json) {
- if (key == "list" || key == 'countSocre' || key == 'checkDate' ||
- key == 'xinliSocre' || key == 'shehuiSocre' || key == 'ziceSocre' ||
- key == 'zhengzhuangSocre') {
- continue;
- }
- var zhengzhuang = obj.json[key];
- if (zhengzhuang.position == _position || true) {
- var hitName = zhengzhuang.data;
- //	症状
- var symptom = zhengzhuang.symptom;
- //	回溯
- var huishi = zhengzhuang.behavioralBacktracking;
- //	命中数
- hit[hitName] = zhengzhuang.hit;
- //////////////////////////////////////////////////////////////////////////////
- for (var i in symptom) {
- var json = {};
- json.value = 20;
- json.name = symptom[i].length > 2 ? symptom[i].substring(0, 2) : symptom[i];
- json.code = symptom[i];
- json.title = symptom[i];
- json.selectType = hitName;
- data.push(json);
- }
- if (huishi != null) {
- for (var i = 0; i < huishi.length; i++) {
- behavioralBacktracking.push(huishi[i]);
- }
- }
- }
- }
- if (behavioralBacktracking != null) {
- var _array = [];
- for (var _i in behavioralBacktracking) {
- var _json = {};
- _json['key'] = convertPinyin(behavioralBacktracking[_i]);
- _json['val'] = behavioralBacktracking[_i];
- _array.push(_json);
- }
- _array.sort(function (a, b) {
- return a.key.localeCompare(b.key);
- });
- for (var i = 0; i < _array.length; i++) {
- var div = document.createElement("div");
- div.className = "mui-input-row mui-checkbox";
- var _html = "<label>" + _array[i].val + "</label>";
- _html += '<input name="' + hitName + '" class = "huisu" value=' + _array[i].val + ' type="checkbox">';
- div.innerHTML = _html;
- divBehavioralBacktracking.appendChild(div);
- }
- }
- //饼图	症状选择结束//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- //超出正常范围的指标开始//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- var table_data = document.getElementById("table_data");
- //删除
- for (var i = table_data.children.length - 1; i > 0; i--) {
- table_data.children[i].remove();
- }
- var list = obj.json['list'];
- if (list != null) {
- for (var i = 0; i < list.length; i++) {
-
- var tr = document.createElement("tr");
- if (_i_color % 2 == 0) {
- tr.style.background = '#D0D8E8';
- } else {
- tr.style.background = '#E9EDF4';
- }
- if (list[i].checkName != undefined) {
- _i_color++;
- var td = "<td width='50%' height='40px' class='tdBorder tdLeftBorder' align='center'>" + list[i].checkName + "</td>";
- td += "<td width='15%' class='tdBorder' align='center'>" + (list[i].checkResult == undefined ? "" : list[i].checkResult) + "</td>";
- //td += "<td align='center'>" + (list[i].unit == undefined ? "" : list[i].unit) + "</td>";
- td += "<td width='15%' class='tdBorder' align='center'>" + (list[i].referenceValue == undefined ? "" : list[i].referenceValue) + "</td>";
- td += "<td width='10%' class='tdBorder' align='center'>" + (list[i].resultPrompt == undefined ? "" : (list[i].resultPrompt == '偏高' ? '↑' : '↓')) + "</td>";
- tr.innerHTML = td;
- table_data.appendChild(tr);
- }
- }
- }
- //超出正常范围的指标结束//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- //饼图	症状选择开始//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- if (data.length > 5) {
- var fragment = document.createDocumentFragment();
- while (data.length > 5) {
- var json = data.pop();
- var li = document.createElement("li");
- li.className = "mui-table-view-cell";
- li.innerHTML = '<a onclick ="fun_add_remove(this,1,\'' + json.selectType + '\')">' + json.title + '</a>';
- fragment.appendChild(li);
- }
- var json = {};
- json.value = 20;
- json.name = "更多";
- json.code = "more";
- var b = data.splice(2, 1, json);
- data.push(b[0]);
- document.getElementById("ulPopover").appendChild(fragment);
- }
- window.setTimeout(function () {
- fun_pie(data);
- }, 200)
- }
-
- function fun_add_remove(obj, type, selectType) {
- var _text;
- var _selectType;
- if (type == 1) {
- _text = obj.innerText;
- _selectType = selectType;
- } else {
- _text = obj.code;
- _selectType = obj.selectType;
- }
- var _selected = document.getElementById("div_selected");
- var boo = null;
- for (var i = 0; i < _selected.children.length; i++) {
- if (_selected.children[i].innerText == _text) {
- boo = _selected.children[i];
- }
- }
- //添加
- if (!boo) {
- var _div = document.createElement("div");
- _div.className = "div_selected";
- _div.innerText = _text;
- document.getElementById("div_selected").insertBefore(_div, _selected.firstChild);
- hit[_selectType] = hit[_selectType] + 1;
- } else if (boo) { //删除
- boo.remove();
- hit[_selectType] = hit[_selectType] - 1;
- }
- }
-
- /!**
- * 自查过程结果    -    按钮
- *!/
- function check_process_two_sure() {
- var zhengzhuang = "";
- var huisu = "";
- //	//100分的时候
- var _children = document.getElementById("div_list_selected").children;
- for (var i = 0; i < _children.length; i++) {
- zhengzhuang += _children[i].children[0].getAttribute("text") + ",";
- }
- if (zhengzhuang == "") {
- plus.nativeUI.toast('请选择人体部位或选择症状');
- return false;
- }
- var user = getUser();
- var userInformation = getUserInformation(user.appid)
- var diseasespeople = chooseVersion(userInformation.sex, userInformation.birthdate);
- //等于空时去服务器查询是否有数据
- if (plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
- plus.nativeUI.toast('网络异常，请检查网络设置！');
- } else {
- var w = plus.ui.createWaiting("请耐心等待！正在计算检查信息...");
- var task = plus.uploader.createUpload(ADDR + AHEALTHCHECK, {
- method: "post",
- timeout: 5
- }, function (t, status) {
- w.close();
- if (status != 200) {
- //异常处理；
- plus.nativeUI.toast('服务器出现异常，请重试');
- } else if (status == 200) {
- var respText = t.responseText;
- if (respText != "") {
- var data = JSON.parse(respText);
- if (data.success) {
- var _json = {};
- _json['status'] = "checkResult";
- _json['json'] = data.obj;
- _json['_action'] = FINDDAILYTHERAPY;
- //养一养重新查询
- saveTimingYangYiYang(null);
- //清空健康环的数据
- saveHealthRing(user.appid, {});
- jumpPage("../self_result.html", "none", _json, false);
- } else {
- plus.nativeUI.toast('服务器出现异常，请重试');
- }
- }
- }
- });
- task.addData("appid", getUser().appid);
- task.addData("zhengzhuang", zhengzhuang);
- task.addData("huisu", huisu);
- task.addData("countSocre", "0");
- task.addData("renqun", diseasespeople);
- task.addData("checkDate", userInformation.checkDate);
- task.start();
- }
- }*/
 
 function fun_select(obj, type) {
     if (type == 'right') {
@@ -424,18 +238,6 @@ function fun_choosed_render(token, type) {
             symptoms: choosed.join(",")
         },
         success: function (res) {
-            // res = {
-            //     "ok": true,
-            //     "obj": [
-            //         "进食过量",
-            //         "缺乏运动",
-            //         "夜间加餐",
-            //         "睡前进食",
-            //         "睡前运动",
-            //
-            //     ]
-            // };
-
             for (var index in res.obj) {
                 var _p = document.createElement("p");
                 _p.innerHTML = '<p style="text-align: left;margin: 0 40px;border-bottom: 1px solid #D8D8D8;padding-bottom: 10px;font-size: 15px"><span style="display: inline-block;width:90%;">' + res.obj[index] + '</span><input type="checkbox"  name="category" value="' + res.obj[index] + '"  onclick="my_func()"/></p>';
@@ -485,13 +287,10 @@ function my_func() {
 function depth_submit() {
     var token = localStorage.getItem('zizhen_token');
     //token='8185589d-be9f-4d51-bfa9-6b2b1328e178';
-    console.log(choosed.join(","));
-    console.log(things.join(","));
     $.ajax({
         type: "post",
         url: urls.DIAGNOSIS_SUBMITSYMPTOM,
         headers: {
-            // authorization: token
             authorization: token
         },
         data: {
@@ -500,8 +299,6 @@ function depth_submit() {
             type: submitSymptomType
         },
         success: function (res) {
-            // console.log(res)
-            //alert('提交成功');
             window.postMessage('2');
         },
         error: function () {

@@ -4,20 +4,26 @@
     <meta charset="utf-8">
     <title>Swiper demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
     <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/sfq.css">
     <script type="text/javascript" src="js/mui.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/privatejs/self_cultivation_result.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/source/echarts.simple.min.js"></script>
+    <!--<script type="text/javascript" src="js/source/echarts.simple.min.js"></script>-->
     <script type="text/javascript" src="js/source/localstorage.js"></script>
     <script type="text/javascript" src="js/source/public.js"></script>
     <script type="text/javascript" src="js/source/public_data.js"></script>
     <script type="text/javascript" src="js/privatejs/check_process.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="diagnosisMap/js/index.js"></script>
     <script src="js/swiper.min.js"></script>
-  <!--  <script src="js/privatejs/main.js"></script>-->
+    <script src="js/bootstrap.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--  <script src="js/privatejs/main.js"></script>-->
 
     <!-- Demo styles -->
     <style>
@@ -62,27 +68,35 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <!--slide1-->
-        <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="overflow: scroll;height: 100%">
-            <div style="position:absolute;top:30px;right:-15px;z-index: 99999999;height: 70%;overflow: hidden">
-                <div class="chart" id="pieChart" style="width: 180px;height:140px;"></div>
-                <ul id="div_list"
-                    style="position:relative;left:10px;font-size:12px;padding-top: 10px;text-align: left;padding-right: 10px;height: 64%;overflow: scroll">
-                </ul>
+        <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="height: 100%;">
+            <div style="position:absolute;top:10px;right:5px;;height: 100%;width: 38%;overflow-y: scroll"
+                 class="container" id="listContain">
+                <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                </div>
             </div>
             <div id='div_content'
-                 style="height: 100%;width:100%;display: flex;flex-direction: column;justify-content: center">
-                <img src="./images/click_zhengzhuang.png" style="margin-bottom:-63px;margin-top: 30px;" width="40%"
+                 style="height: 70%;width:100%;flex-direction: column;justify-content: center">
+                <img src="./images/click_zhengzhuang.png" style="margin-bottom:-63px;margin-top: 30px;margin-left:-50%" width="40%"
                      height="15%" id="click_zhengzhuang"/>
                 <div id="renti_xiuyixiu">
                     <div id="svgGraph"></div>
-                </div>
-                <div id="div_list_selected"
-                     style="width:100%;text-align: center;margin-top:5px;height: 120px;">
                 </div>
                 <div width="100%" align="center" id="table_id">
                 </div>
             </div>
         </div>
+        <div id="div_list_selected"
+             style="display:none;width:101%;text-align: center;margin-top:5px;height: 20%;position:fixed;bottom:12%;left:0;background: #FAFAFA;overflow-y: scroll;border-top: 1px solid #BFBFBF">
+        </div>
+        <div id="mengban"
+             style="display:none;width:100%;height: 12%;position:fixed;bottom:0;left:0;background: #FAFAFA">
+        </div>
+
+        <div class="swiper-button-next" id="opacityNext"
+             style="width:26%;background:#A0CC00;position:fixed;top:95%;left:37%;height: 36px;color: #fff;text-align: center;line-height: 36px;border-radius: 5px">
+            下一页
+        </div>
+
         <!--slide2-->
         <div class="swiper-slide swiper-no-swiping" style="height: 100%">
             <div style="height: 85%;overflow-y: scroll;overflow-x: hidden">
@@ -97,27 +111,29 @@
                 <div>
                     <div style="font-size: 13px;text-align: left;padding: 8px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">
                         <span>您最近做过以下几项事情吗？</span>
-                        <p style="float:right;font-size: 15px;margin: 0;margin-right: 12%">都没有<input type="checkbox" name="category" value="都没有" onclick="my_func()"/>
+                        <p style="float:right;font-size: 15px;margin: 0;margin-right: 12%">都没有<input type="checkbox"
+                                                                                                     name="category"
+                                                                                                     value="都没有"
+                                                                                                     onclick="my_func()"/>
                         </p></div>
                     <div id="checkBox">
                     </div>
                 </div>
             </div>
             <p style="height:15%;width: 100%"><a id="depthSubmit"
-                  style="display:block;margin: 20px auto 30px; height:38px;line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
-                  onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></p>
+                                                 style="display:block;margin: 20px auto 30px; height:38px;line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
+                                                 onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></p>
 
         </div>
     </div>
     <!-- Add Arrows -->
-    <div class="swiper-button-next" id="opacityNext"
-         style="background-image: url('./images/next.png');background-size: 200%;"></div>
+
     <div class="swiper-button-prev" id="opacityPre"
          style="background-image: url('./images/pre.png');background-size: 200%;"></div>
 </div>
 
 
-<!-- Initialize Swiper -->.......................................................
+<!-- Initialize Swiper -->
 
 <script>
     var type = true;
@@ -127,71 +143,66 @@
         prevButton: '.swiper-button-prev',
         spaceBetween: 30
     });
-    var diseasespeople=localStorage.getItem('diseasespeople')||'quality';
-    var sex=parseInt(localStorage.getItem('sex'))||1;
+    var diseasespeople = localStorage.getItem('diseasespeople') || 'quality';
+    var sex = parseInt(localStorage.getItem('sex')) || 1;
     var svgPath = '';
 
-//
-    var token = getQueryString('token');
+    //
+//        var token = getQueryString('token');
+    var token = "b60d15f9-add8-44fa-b3fb-0cece296a3db";
     localStorage.setItem('zizhen_token', token);
 
-//    var token = "3c7ac19c-69ea-4dd2-b532-759f92fc4f66";
-//    var token = localStorage.getItem('zizhen_token');
 
-
-    if ( diseasespeople== 'aged') {
-        if (sex==1) {
+    if (diseasespeople == 'aged') {
+        if (sex == 1) {
             svgPath = 'diagnosisMap/images/laoren.svg';
-        } else if(sex==2) {
+        } else if (sex == 2) {
             svgPath = 'diagnosisMap/images/laotaitai.svg'
         }
-    } else if (diseasespeople== 'quality') {
-        if (sex==1) {
+    } else if (diseasespeople == 'quality') {
+        if (sex == 1) {
             svgPath = 'diagnosisMap/images/nanren.svg';
-        } else if(sex==2) {
+        } else if (sex == 2) {
             svgPath = 'diagnosisMap/images/nvren.svg'
         }
-    } else if (diseasespeople=='woman_un'||diseasespeople=='woman_pre'||diseasespeople=='woman_ing'||diseasespeople=='woman_ed'||diseasespeople=='woman_next'){
+    } else if (diseasespeople == 'woman_un' || diseasespeople == 'woman_pre' || diseasespeople == 'woman_ing' || diseasespeople == 'woman_ed' || diseasespeople == 'woman_next') {
         svgPath = 'diagnosisMap/images/nvren.svg'
     }
 
     loadSvg(svgPath);
     var symptomList = [];
+    //    $.ajax({
+    //        type: "post",
+    //        url: urls.DIAGNOSIS_GETUSERSYMPTOMLIST,
+    //        headers: {
+    //            authorization: token
+    //        },
+    //        success: function (res) {
+    //            if (res.obj.length == 0) {
     $.ajax({
         type: "post",
-        url: urls.DIAGNOSIS_GETUSERSYMPTOMLIST,
+        url: urls.DIAGNOSIS_GETPARTORGANSYMPTOMLIST,
         headers: {
             authorization: token
         },
         success: function (res) {
-            if (res.obj.length == 0) {
-                $.ajax({
-                    type: "post",
-                    url: urls.DIAGNOSIS_GETPARTORGANSYMPTOMLIST,
-                    headers: {
-                        authorization: token
-                    },
-                    success: function (res) {
-//                        window.postMessage(res);
-
-                        symptomList = res.obj;
-
-                    },
-                    error: function () {
-                        console.log('err')
-                    }
-                });
-            } else {
-                type = false;
-                fun_pathogeny('tou', res.obj, false);
-            }
+            symptomList = res.obj;
         },
         error: function () {
             console.log('err')
         }
     });
+    //            } else {
+    //                type = false;
+    //                fun_pathogeny('tou', res.obj, false);
+    //            }
+    //        },
+    //        error: function () {
+    //            console.log('err')
+    //        }
+    //    });
     $('#opacityNext').click(function () {
-        if(document.getElementById("opacityNext").style.opacity!="0"){
+        if (document.getElementById("opacityNext").style.opacity != "0") {
             document.getElementById("opacityNext").style.opacity = 0;
             fun_choosed_render(token, type);
             swiper.slideNext();
@@ -205,55 +216,55 @@
         console.log(type);
         if (type) {
             document.getElementById("toujing").style.background = "#f00";
-            fun_pathogeny('tou', symptomList["头部"], true);
+            fun_pathogeny('tou', symptomList, true);
         }
     });
 
     $('#xiong').click(function () {
         if (type) {
-            fun_pathogeny('xiong', symptomList["胸部"], true);
+            fun_pathogeny('xiong', symptomList, true);
             event.stopPropagation();
         }
     });
 
     $('#fu').click(function () {
         if (type) {
-            fun_pathogeny('fu', symptomList["腹部"], true);
+            fun_pathogeny('fu', symptomList, true);
             event.stopPropagation();
         }
     });
 
     $('#dun').click(function () {
         if (type) {
-            fun_pathogeny('bei', symptomList["背部"], true);
+            fun_pathogeny('bei', symptomList, true);
             event.stopPropagation();
         }
     });
 
     $('#zuoshou').click(function () {
         if (type) {
-            fun_pathogeny('sizhi', symptomList["四肢"], true);
+            fun_pathogeny('sizhi', symptomList, true);
             event.stopPropagation();
         }
     });
 
     $('#youshou').click(function () {
         if (type) {
-            fun_pathogeny('sizhi', symptomList["四肢"], true);
+            fun_pathogeny('sizhi', symptomList, true);
             event.stopPropagation();
         }
     });
 
     $('#tui').click(function () {
         if (type) {
-            fun_pathogeny('sizhi', symptomList["四肢"], true);
+            fun_pathogeny('sizhi', symptomList, true);
             event.stopPropagation();
         }
     });
 
-    $('#quanshen').click( function () {
+    $('#quanshen').click(function () {
         if (type) {
-            fun_pathogeny("check_quanshen", symptomList["全身"], true);
+            fun_pathogeny("check_quanshen", symptomList, true);
             event.stopPropagation();
         }
     });
@@ -374,14 +385,11 @@
             mui('body').on('tap', '#button', function () {
                 if (type) {
                     check_process_two_sure();
-
                 }
             });
 
 
             document.getElementById("table_id").style.marginTop = "10px";
-            //diseasespeople = 'high_quality_population';
-//        diseasespeople = chooseVersion();
 
             mui('body').on('tap', '#opacityNext', function () {
                 swiper.slideNext();
