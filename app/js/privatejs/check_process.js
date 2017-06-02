@@ -287,6 +287,7 @@ function my_func() {
 function depth_submit() {
     var token = localStorage.getItem('zizhen_token');
     //token='8185589d-be9f-4d51-bfa9-6b2b1328e178';
+    console.log(token)
     $.ajax({
         type: "post",
         url: urls.DIAGNOSIS_SUBMITSYMPTOM,
@@ -302,16 +303,17 @@ function depth_submit() {
             window.postMessage('2');
         },
         error: function () {
-            console.log('err')
+            window.postMessage('err');
+
         }
     });
 }
 //
 function fill_color(buwei) {
-    var arr_buwei = ["toujing", "xiong", "fu", "zuoshou", "youshou", "tui"]
+    var arr_buwei = ["toujing", "xiong", "dun","fu", "zuoshou", "youshou", "tui"]
     for (var i = 0; i < arr_buwei.length; i++) {
         if (arr_buwei[i] == buwei) {
-            document.getElementById(buwei).setAttribute("fill", "#000")
+            document.getElementById(buwei).setAttribute("fill", "#fff")
             document.getElementById(buwei).style.opacity = "0.4";
         }else{
             if(document.getElementById(arr_buwei[i]).style.opacity=='0.4')
