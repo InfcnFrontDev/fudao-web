@@ -51,7 +51,14 @@ function preInitEchart(result){
     //     indx++;
     // });
     var xAxis = ["自然环境","人文环境","个人生活","情感关系"];
-    var datas = [96,86,72,90];
+    var i = 0;
+    var sum = 0;
+    getPeoDatas().forEach(function(data){
+        i++;
+        sum = sum + Number(data);
+    });
+    var datas = [parseInt(sum/i),86,72,90];
+
     var colorList = [ '#03B3D4' , '#D49306' , '#99CB06' , '#7A91D6' ];
     var colorList_ = [ '#AED1D8' , '#D9C597' , '#C0CF99' , '#D3D8E4' ];
     initEchart_bar(xAxis,datas,colorList,colorList_,result); // 初始化柱状图
@@ -260,7 +267,7 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
                         label: {
                             show: true,
                             position: 'top',
-                            formatter: '{b}'
+                            formatter: '{b}\n{c}'
                         },
                         shadowColor: 'rgba(0, 0, 0, 0.4)',
                         shadowBlur: 20
@@ -280,8 +287,7 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
         var colorList_ = [];
         if(param.name.indexOf("自然环境") != -1){
             xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','星辰'];
-            datas = [getMountainsScore(city,0),getMountainsScore(city,1),getWindScore(winp),getRainScore(weather),
-                getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
+            datas = getPeoDatas();
             $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
             colorList = [ '#03B3D4'];
             colorList_ = [ '#AED1D8'];
@@ -323,6 +329,11 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
             initEchart_bar_detail(xAxis,datas,colorList,colorList_);
         }
     });
+}
+
+function getPeoDatas(){
+    return [getMountainsScore(city,0),getMountainsScore(city,1),getWindScore(winp),getRainScore(weather),
+        getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
 }
 
 function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
@@ -433,37 +444,58 @@ function save(){
     result_emo.姓氏 = $("#surnameSel").val();
     result_emo.宗教 = $("#religionSel").val();
     result_emo.感情状态 = $("#emotionSel").val();
-    setResult(result_peo,result_emo);
+    if($('#peoForm').css('display') == 'block'){
+        setResult(result_peo,result_emo,0);
+    } else {
+        setResult(result_peo,result_emo,1);
+    }
     closeTance();
 }
 
-function setResult(result_peo,result_emo){
+function setResult(result_peo,result_emo,type){
     var v = 0;
     var vt = 0;
     var weight = 0;
-    $.getJSON("json/questionnarie_peo.json",function(data){
-        _.forEach(data, function(n, key) { // 循环对象
-            v = 0;
-            _(n).forEach(function(n2) { // 循环数组
-                _.forEach(n2, function(n3, key2) {
-                    if(key2 != 'weight') {
-                        vt = $(":radio:checked[name='"+ key2 +"']").val();
-                        if(vt == undefined) vt = 0;
+    if(type == 0){
+        $.getJSON("json/questionnarie_peo.json",function(data){
+            _.forEach(data, function(n, key) { // 循环对象
+                v = 0;
+                _(n).forEach(function(n2) { // 循环数组
+                    _.forEach(n2, function(n3, key2) {
+                        if(key2 != 'weight') {
+                            vt = $(":radio:checked[name='"+ key2 +"']").val();
+                            if(vt == undefined) vt = 0;
+                        } else {
+                            weight = parseFloat(n3);
+                        }
+                        vt = parseFloat(vt);
+                    });
+                    if(n.length == 1){
+                        v += vt;
                     } else {
-                        weight = parseFloat(n3);
+                        v += vt*weight;
                     }
-                    vt = parseFloat(vt);
                 });
-                if(n.length == 1){
-                    v += vt;
-                } else {
-                    v += vt*weight;
+                // if(v == 0) v = 0.1;
+                if(v != 0)
+                    result_peo[key] = v;
+            });
+            $.ajax({
+                url: urls.ENERGY_SUBMITSYMPTOM,
+                headers: {
+                    authorization: getQueryString('token')
+                },
+                data: {"result_peo":JSON.stringify(result_peo)},
+                type: "POST",
+                dataType: "JSON",
+                success: function(data){
+                    if(undefined == data.ok || data.ok == false){
+                        alert(JSON.stringify(data));
+                    }
                 }
             });
-            // if(v == 0) v = 0.1;
-            if(v != 0)
-                result_peo[key] = v;
         });
+    } else if(type == 1){
         $.getJSON("json/questionnarie_emo.json",function(data){
             _.forEach(data, function(n, key) { // 循环对象
                 v = 0;
@@ -471,7 +503,7 @@ function setResult(result_peo,result_emo){
                     _.forEach(n2, function(n3, key2) {
                         if(key2 != 'weight') {
                             vt = $(":radio:checked[name='"+ key2 +"']").val();
-                            console.log(vt);
+                            // console.log(vt);
                             if(vt == undefined) vt = 0;
                         } else {
                             weight = parseFloat(n3);
@@ -488,13 +520,12 @@ function setResult(result_peo,result_emo){
                 if(v != 0)
                     result_emo[key] = v;
             });
-            // 保存结果至数据库
             $.ajax({
                 url: urls.ENERGY_SUBMITSYMPTOM,
                 headers: {
                     authorization: getQueryString('token')
                 },
-                data: {"result_peo":JSON.stringify(result_peo),"result_emo":JSON.stringify(result_emo)},
+                data: {"result_emo":JSON.stringify(result_emo)},
                 type: "POST",
                 dataType: "JSON",
                 success: function(data){
@@ -503,14 +534,33 @@ function setResult(result_peo,result_emo){
                     }
                 }
             });
-            $('#bar_loading').css('display','none');
-            $('#lowerDiv').css('display','block');
-            var result = new Object();
-            result['result_personal'] = result_peo;
-            result['result_emotion'] = result_emo;
-            preInitEchart(JSON.parse(result));
         });
-    });
+    }
+    //提示层
+    // layer.msg('玩命提示中');
+    setTimeout(function(){
+        // 保存结果至数据库
+        // $.ajax({
+        //     url: urls.ENERGY_SUBMITSYMPTOM,
+        //     headers: {
+        //         authorization: getQueryString('token')
+        //     },
+        //     data: {"result_peo":JSON.stringify(result_peo),"result_emo":JSON.stringify(result_emo)},
+        //     type: "POST",
+        //     dataType: "JSON",
+        //     success: function(data){
+        //         if(undefined == data.ok || data.ok == false){
+        //             alert(JSON.stringify(data));
+        //         }
+        //     }
+        // });
+        $('#bar_loading').css('display','none');
+        $('#lowerDiv').css('display','block');
+        var result = new Object();
+        result['result_personal'] = JSON.stringify(result_peo);
+        result['result_emotion'] = JSON.stringify(result_emo);
+        preInitEchart(result);
+    },2000);
 }
 /**
  * 读取民族json
@@ -568,6 +618,8 @@ function readQuestionJson(){
         });
         $('#peoTab_').html(html);
     });
+    indx = 0;
+    html = '';
     $.getJSON("json/questionnarie_emo.json",function(data){
         _.forEach(data, function(n, key1) { // 循环对象
             _(n).forEach(function(n2) { // 循环数组
