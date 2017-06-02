@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="721ad734-753b-4bba-af92-c27d3f53b85b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/home.html" afterPath="$PROJECT_DIR$/app/home.html" />
     </list>
     <ignored path="fudao-web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -359,7 +358,7 @@
       <workItem from="1495674254138" duration="36552000" />
       <workItem from="1495851188916" duration="15625000" />
       <workItem from="1496195823715" duration="28319000" />
-      <workItem from="1496295785729" duration="26547000" />
+      <workItem from="1496295785729" duration="26583000" />
     </task>
     <task id="LOCAL-00001" summary="发">
       <created>1495183042513</created>
@@ -473,11 +472,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496368663923</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="home">
+      <created>1496392425363</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1496392425363</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149787000" />
+    <option name="totallyTimeSpent" value="149823000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
