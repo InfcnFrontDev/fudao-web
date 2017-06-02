@@ -69,9 +69,11 @@
     <div class="swiper-wrapper">
         <!--slide1-->
         <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="height: 100%;">
-            <div style="position:absolute;top:10px;right:5px;;height: 100%;width: 38%;overflow-y: scroll"
+            <div style="position:absolute;top:10px;right:5px;;height: 100%;width: 38%;overflow: hidden;"
                  class="container" id="listContain">
-                <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                <div style="width: 106%;height: 100%;overflow-y: scroll;">
+                    <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                    </div>
                 </div>
             </div>
             <div id='div_content'
@@ -148,8 +150,8 @@
     var svgPath = '';
 
     //
-//        var token = getQueryString('token');
-    var token = "b60d15f9-add8-44fa-b3fb-0cece296a3db";
+        var token = getQueryString('token');
+//    var token = "b60d15f9-add8-44fa-b3fb-0cece296a3db";
     localStorage.setItem('zizhen_token', token);
 
 
@@ -212,83 +214,6 @@
         swiper.slidePrev();
         document.getElementById("opacityNext").style.opacity = 1;
     });
-    $('#toujing').click(function () {
-        console.log(type);
-        if (type) {
-            document.getElementById("toujing").style.background = "#f00";
-            fun_pathogeny('tou', symptomList, true);
-        }
-    });
-
-    $('#xiong').click(function () {
-        if (type) {
-            fun_pathogeny('xiong', symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#fu').click(function () {
-        if (type) {
-            fun_pathogeny('fu', symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#dun').click(function () {
-        if (type) {
-            fun_pathogeny('bei', symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#zuoshou').click(function () {
-        if (type) {
-            fun_pathogeny('sizhi', symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#youshou').click(function () {
-        if (type) {
-            fun_pathogeny('sizhi', symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#tui').click(function () {
-        if (type) {
-            fun_pathogeny('sizhi', symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#quanshen').click(function () {
-        if (type) {
-            fun_pathogeny("check_quanshen", symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#xiongtanhao').click(function () {
-        if (type) {
-            fun_pathogeny("check_xiong", symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#futaihao').click(function () {
-        if (type) {
-            fun_pathogeny("check_fu", symptomList, true);
-            event.stopPropagation();
-        }
-    });
-
-    $('#button').click(function () {
-        if (type) {
-            check_process_two_sure();
-
-        }
-    });
 
     (function ($, doc) {
 
@@ -314,13 +239,16 @@
 
             mui('body').on('tap', '#toujing', function () {
                 if (type) {
-                    document.getElementById("toujing").style.background = "#f00";
+//                    document.getElementById("toujing").setAttribute("fill","#000")
+//                    document.getElementById("toujing").style.opacity = "0.4";
                     fun_pathogeny('tou', symptomList["头部"], true);
                 }
             });
 
             mui('body').on('tap', '#xiong', function () {
                 if (type) {
+//                    document.getElementById("xiong").setAttribute("fill","#000")
+//                    document.getElementById("xiong").style.opacity = "0.4";
                     fun_pathogeny('xiong', symptomList["胸部"], true);
                     event.stopPropagation();
                 }

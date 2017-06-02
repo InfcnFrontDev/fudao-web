@@ -306,3 +306,8 @@ function depth_submit() {
         }
     });
 }
+//
+// function fill_color(buwei){
+//     var arr_buwei =
+//
+// }
