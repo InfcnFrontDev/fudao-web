@@ -79,7 +79,7 @@
             <div id='div_content'
                  style="height: 70%;width:100%;flex-direction: column;justify-content: center">
                 <img src="./images/click_zhengzhuang.png" style="margin-bottom:-63px;margin-top: 30px;margin-left:-50%" width="40%"
-                     height="15%" id="click_zhengzhuang"/>
+                     height="20%" id="click_zhengzhuang"/>
                 <div id="renti_xiuyixiu">
                     <div id="svgGraph"></div>
                 </div>
@@ -239,14 +239,14 @@
 
             mui('body').on('tap', '#toujing', function () {
                 if (type) {
-//                    document.getElementById("toujing").setAttribute("fill","#000")
-//                    document.getElementById("toujing").style.opacity = "0.4";
+                    fill_color("toujing");
                     fun_pathogeny('tou', symptomList["头部"], true);
                 }
             });
 
             mui('body').on('tap', '#xiong', function () {
                 if (type) {
+                    fill_color("xiong")
 //                    document.getElementById("xiong").setAttribute("fill","#000")
 //                    document.getElementById("xiong").style.opacity = "0.4";
                     fun_pathogeny('xiong', symptomList["胸部"], true);
@@ -256,6 +256,7 @@
 
             mui('body').on('tap', '#fu', function () {
                 if (type) {
+                    fill_color("fu")
                     fun_pathogeny('fu', symptomList["腹部"], true);
                     event.stopPropagation();
                 }
@@ -270,6 +271,7 @@
 
             mui('body').on('tap', '#zuoshou', function () {
                 if (type) {
+                    fill_color("zuoshou")
                     fun_pathogeny('sizhi', symptomList["四肢"], true);
                     event.stopPropagation();
                 }
@@ -277,6 +279,7 @@
 
             mui('body').on('tap', '#youshou', function () {
                 if (type) {
+                    fill_color("youshou")
                     fun_pathogeny('sizhi', symptomList["四肢"], true);
                     event.stopPropagation();
                 }
@@ -284,6 +287,7 @@
 
             mui('body').on('tap', '#tui', function () {
                 if (type) {
+                    fill_color("tui")
                     fun_pathogeny('sizhi', symptomList["四肢"], true);
                     event.stopPropagation();
                 }

@@ -44,16 +44,16 @@ function timeOut(rentidata, flag) {
 }
 
 //版本2-手风琴效果-部位-症状
-function fun_organ_zhengzhuang(){
+function fun_organ_zhengzhuang() {
     var accordion = document.getElementById("accordion");
-    accordion.innerHTML=''
+    accordion.innerHTML = ''
     var key = 1;
-    for(var i in symptom){
-        accordion.innerHTML+='<div class="panel"><div class="panel-heading" role="tab" id="heading'+key+'">' +
-            '<p class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+key+'" aria-expanded="false" aria-controls="collapse'+key+'" class="collapsed">' +i+
-            '</a></p></div><div id="collapse'+key+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+key+'"><div class="panel-body">' +
-            '<ul id="div_list'+key+'" style="background:#FAFAFA "></ul>' +   '</div></div></div>';
-        fun_li(symptom[i],key)
+    for (var i in symptom) {
+        accordion.innerHTML += '<div class="panel"><div class="panel-heading" role="tab" id="heading' + key + '">' +
+            '<p class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + key + '" aria-expanded="false" aria-controls="collapse' + key + '" class="collapsed">' + i +
+            '</a></p></div><div id="collapse' + key + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + key + '"><div class="panel-body">' +
+            '<ul id="div_list' + key + '" style="background:#FAFAFA "></ul>' + '</div></div></div>';
+        fun_li(symptom[i], key)
         key++;
     }
 }
@@ -179,14 +179,14 @@ function fun_pie(data, position, type) {
     });
 }
 
-function fun_li(_zhengzhuang,key) {
-    var div_list = document.getElementById("div_list"+key);
+function fun_li(_zhengzhuang, key) {
+    var div_list = document.getElementById("div_list" + key);
     for (var i in _zhengzhuang) {
         var li = document.createElement("li");
         li.className = "mui-table-view-cell";
-        li.style.textAlign='left';
-        li.style.color=' #8E8E8E';
-        li.style.paddingTop='5px';
+        li.style.textAlign = 'left';
+        li.style.color = ' #8E8E8E';
+        li.style.paddingTop = '5px';
         li.innerHTML = '<a class="clickClass" style="background:#FFFFFF;color: #8E8E8E;font-size: 14px" onclick ="fun_select(this,\'right\')">' + _zhengzhuang[i] + '</a>';
         div_list.appendChild(li);
     }
@@ -307,7 +307,16 @@ function depth_submit() {
     });
 }
 //
-// function fill_color(buwei){
-//     var arr_buwei =
-//
-// }
+function fill_color(buwei) {
+    var arr_buwei = ["toujing", "xiong", "fu", "zuoshou", "youshou", "tui"]
+    for (var i = 0; i < arr_buwei.length; i++) {
+        if (arr_buwei[i] == buwei) {
+            document.getElementById(buwei).setAttribute("fill", "#000")
+            document.getElementById(buwei).style.opacity = "0.4";
+        }else{
+            if(document.getElementById(arr_buwei[i]).style.opacity=='0.4')
+            document.getElementById(arr_buwei[i]).style.opacity = "0";
+        }
+    }
+
+}

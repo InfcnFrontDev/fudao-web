@@ -33,28 +33,17 @@
 <body>
 <div id="shadeDiv" class="shadeCss" @click="closePopupDiv">
     <div id="HBox" class="peoInfo zoomIn">
-        <div style="border-bottom: 1px solid #E4E3E3; height: 45px; line-height: 45px; font-size: 14px; ">
-            <div style="height: 35px; margin-left: 10px; margin-top: 8px; float: left; font-weight: bold;">请填写您的信息</div>
-            <div style="float: right; height: 45px;" onclick="closeTance()">
+        <div style="height: 45px; line-height: 45px; font-size: 14px;">
+            <div id="quesTab_Nav_peo" class="quesTab_Nav fl quesTab_Nav_Sel" onclick="quesTab_Nav_click('peo','emotion');" style="border-right: 1px solid #E4E3E3; margin-left: -1px;">个人生活</div>
+            <div id="quesTab_Nav_emotion" class="quesTab_Nav fr" onclick="quesTab_Nav_click('emotion','peo');">情感关系</div>
+            <!--<div style="float: right; height: 45px;" onclick="closeTance()">
                 <img style="margin-top: 10px; margin-right: 10px; width: 25px; height: 25px;" src="img/close.png">
-            </div>
+            </div>-->
         </div>
-        <div id="peoForm" style="border-bottom: 0px solid #ECECEC; overflow-y: auto;">
-            <!-- 个人信息 -->
+        <!-- 个人生活 -->
+        <div id="peoForm" style="border-bottom: 0px solid #ECECEC; overflow-y: auto; width: 100%; display: block;">
+            <!-- 个人生活⑴ -->
             <table class="peoTab">
-                <tr><td class="t_fr wid_p30" >性别：</td><td style="padding-top: 6px;">
-                    <input type="radio" name="sex" value="100" checked/><label>男</label>
-                    <input type="radio" name="sex" value="85"/><label>女</label></td></tr>
-                <tr><td class="t_fr wid_p30">民族：</td>
-                    <td><select id="nationSel"></select></td>
-                </tr>
-                <tr><td class="t_fr wid_p30">姓氏：</td>
-                    <td><select class="mySelect" id="surnameSel"></select></td></tr>
-                <tr><td class="t_fr wid_p30">感情状态：</td><td><select id="emotionSel">
-                    <option value="0" selected="select">单身</option>
-                    <option value="50" style="height: 20px;">恋爱</option>
-                    <option value="100" style="height: 20px;">已婚</option>
-                    </select></td></tr>
                 <tr><td class="t_fr wid_p30">学历：</td><td><select id="educationSel">
                     <option value="20">高中</option>
                     <option value="60">本科</option>
@@ -74,37 +63,41 @@
                     <td><select id="occupationSel"></select></td></tr>
                 <tr><td class="t_fr wid_p30">专业：</td>
                     <td><select id="majorSel"></select></td></tr>
+            </table>
+            <!-- 个人生活⑵ -->
+            <div style="border-top: 1px solid #ECECEC; width: 90%; margin-left: auto; margin-right: auto; padding-top: 8px;">
+                <table id="peoTab_" class="peoTab"></table>
+            </div>
+        </div>
+        <!-- 情感关系 -->
+        <div id="emotionForm" style="border-bottom: 0px solid #ECECEC; overflow-y: auto; width: 100%; display: none;">
+            <!-- 个人信息 -->
+            <table class="peoTab">
+                <tr><td class="t_fr wid_p30">民族：</td>
+                    <td><select id="nationSel"></select></td></tr>
+                <tr><td class="t_fr wid_p30">姓氏：</td>
+                    <td><select class="mySelect" id="surnameSel"></select></td></tr>
+                <tr><td class="t_fr wid_p30">感情状态：</td><td><select id="emotionSel">
+                    <option value="0" selected="select">单身</option>
+                    <option value="50" style="height: 20px;">恋爱</option>
+                    <option value="100" style="height: 20px;">已婚</option>
+                </select></td></tr>
                 <tr><td class="t_fr wid_p30">宗教：</td><td><select id="religionSel">
                     <option value="50">佛教</option>
                     <option value="50">基督教</option>
                     <option value="50">伊斯兰教</option>
                     <option value="50">印度教</option>
                     <option value="50">道教</option>
-                    </select></td></tr>
-                <tr><td class="t_fr wid_p30">双亲情况：</td><td><select id="parentsSel">
-                    <option value="90">双亲</option>
-                    <option value="10">单亲</option>
-                    </select></td></tr>
-                <tr><td class="t_fr wid_p30">家庭情况：</td><td><select id="familySel">
-                    <option value="10">低收入</option>
-                    <option value="60">中产</option>
-                    <option value="90">富人</option>
-                    </select></td></tr>
+                </select></td></tr>
             </table>
             <!-- 问卷调查 -->
             <div style="border-top: 1px solid #ECECEC; width: 90%; margin-left: auto; margin-right: auto; padding-top: 8px;">
-                <table class="quesTab">
-                    <tr><td class="t_fr wid_p40">1 . </td>
-                        <td class="wid_p60">您周围的动植物多吗</td></tr>
-                    <tr><td class="t_fr wid_p40"></td>
-                        <td class="wid_p60"><input type="radio"/>多</td></tr>
-                    <tr><td class="t_fr wid_p40"></td>
-                        <td class="wid_p60"><input type="radio"/>一般</td></tr>
-                    <tr><td class="t_fr wid_p40"></td>
-                        <td class="wid_p60"><input type="radio"/>少</td></tr>
-                </table>
+                <table id="emotionTab" class="peoTab"></table>
             </div>
-            <div class="myBtn" onclick="save()"><span>完成保存</span></div>
+        </div>
+        <div style="height: 50px;">
+            <div class="myBtn" style="width: 60%; float: left;" onclick="save()"><span>完成保存</span></div>
+            <div class="myBtn" style="width: 40%; float: right;" onclick="closeTance()"><span style="background-color: #cccccc;">取消</span></div>
         </div>
     </div>
 </div>
@@ -113,9 +106,14 @@
         <div class="tanceDiv"></div>
         <img class="tanceImg" onclick="tance()" src="img/tance.png">
     </div>
+    <div id="backBar" style="float: right; z-index: 99; display: none; position: fixed; right: 12px; height: 30px;
+        line-height: 30px; color: #03B3D4;" onclick="backBar()">返回</div>
     <div style="height: 45%; width: 100%; overflow-x: auto;">
         <img id="bar_loading" src="img/bar_.gif" style="height: 98%; width: 100%; display: block;">
-        <div id="lowerDiv" style="width: 1000px; height: 100%; display: none;">
+        <div id="lowerDiv" style="width: 100%; height: 95%; display: none;">
+            <!--<img src="img/bar_.gif">-->
+        </div>
+        <div id="lowerDiv_detail" style="width: 100%; height: 95%; display: none;">
             <!--<img src="img/bar_.gif">-->
         </div>
     </div>
