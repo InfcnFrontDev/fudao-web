@@ -236,7 +236,7 @@
   </div>
   </div>
   <div class="bottomBox">
-    <div style="width:70%; float:left;border-right:1px solid #d8d8d8;">
+    <div style="width:100%; float:left;border-right:1px solid #d8d8d8;">
       <div class="mg-left-8">
         <span id="festival"></span>
         <span id="days"></span>
@@ -245,7 +245,7 @@
       <div class="mg-left-8">下一节气：<span id="nextJieQi"></span></div>
     </div>
 
-    <div style="width:28%; float:right; text-align:center;  line-height: 80px;" id="jie">清明节</div>
+    <!--<div style="width:28%; float:right; text-align:center;  line-height: 80px;" id="jie">清明节</div>-->
   </div>
   <script>
     var token=getQueryString('token');
@@ -268,7 +268,7 @@
     })
 
 
-    $.ajax({
+   /* $.ajax({
       type:"post",
       url: urls.HEALTH_GETSOLARTERM,//获取节气信息
       headers: {
@@ -278,7 +278,7 @@
         console.log(data);
         $('#jie').html(data.obj[0].name)
       }
-    });
+    });*/
 
       $.ajax({
         type:"post",

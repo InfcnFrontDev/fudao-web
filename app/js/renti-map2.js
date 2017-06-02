@@ -79,6 +79,8 @@ var $popover;
 				for(var i in buweiid) {
 					$rentibuwei.find('#' + buweiid[i]).show();
 				}
+			}else{
+                $rentibuwei.children().hide();
 			}
 
 			var eventsHandler = {
@@ -166,7 +168,7 @@ var $popover;
 	var defaults = {
 		map: 'svg/fudaye_front.svg',
 		jingluoid: true,
-		xuewei: true,
+		xueweiid: true,
 		disease: '痴呆'
 	};
 

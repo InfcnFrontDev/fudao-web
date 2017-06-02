@@ -7,6 +7,8 @@ a{text-decoration: none;}
 .wid_p70{width: 60%;}
 .wid_p40{width: 15%;}
 .wid_p60{width: 85%;}
+.fl{float: left;}
+.fr{float: right;}
 .box-shadow-2{  
   -webkit-box-shadow:0 0 150px #0CC;
   -moz-box-shadow:0 0 150px #0CC;
@@ -60,12 +62,12 @@ a{text-decoration: none;}
     70% {opacity: 1; -webkit-transform: scale(1.03); }
     100%{opacity: 0.7; -webkit-transform: scale(1); } }
 
-.tanceImg_s{display: block; width: 40px; height: 40px; z-index: 999; position: absolute; top: 25px; right: 5px; border-radius: 50%;}
+.tanceImg_s{display: none; width: 40px; height: 40px; z-index: 999; position: absolute; top: 25px; right: 5px; border-radius: 50%;}
 .tanceImg_s img{width: 36px; height: 36px; margin-top: 2px; margin-left: 2px;}
 
 .shadeCss{position:fixed;display:none;z-index:1000;left:0px;width:100%;height:100%;
     background-color:rgba(0, 0, 0, 0.498039); }
-.peoInfo{display: none; position: fixed; z-index: 2000; background-color: #ffffff; width: 90%; height: 90%;
+.peoInfo{display: none; position: fixed; z-index: 9999; background-color: #ffffff; width: 90%; height: 90%;
     position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;}
 
 .peoTab{width: 100%;}
@@ -74,9 +76,12 @@ a{text-decoration: none;}
 .quesTab{width: 100%;}
 .quesTab tr{height: 20px; line-height: 20px; width: 100%;}
 
-.myBtn{ height: 50px; line-height: 50px; width: 100%; position: absolute; bottom: 0px; text-align: center;}
-.myBtn span{ color: #ffffff; padding: 8px 96px; background-color: #A0CC03; }
+.myBtn{ height: 50px; line-height: 50px; width: 100%; bottom: 0px; text-align: center;}
+.myBtn span{ color: #ffffff; padding: 8px 25px; background-color: #A0CC03; }
 
 .circle {height: 150px; width: 150px; border-radius: 50%;
     margin-left: auto; margin-right: auto;}
+
+.quesTab_Nav{width: 50%; height: 45px; line-height: 45px; font-weight: bold; text-align: center; border-bottom: 1px solid #E4E3E3;}
+.quesTab_Nav_Sel{border-bottom: 0px solid #E4E3E3;}
 
