@@ -255,16 +255,16 @@
 
       $('#jieqi').html($('#upJieQi').text().split('(')[0]);
     $('.leftTop').click(function(){
-      window.postMessage(''+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
+      window.postMessage('1'+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
     })
     $('.leftBottom').click(function(){
-      window.postMessage(''+$(this).find('p').text()+'');
+      window.postMessage('1'+$(this).find('p').text()+'');
     })
     $('.rightTop').click(function(){
-      window.postMessage(''+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
+      window.postMessage('2'+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
     })
     $('.rightBottom').click(function(){
-      window.postMessage(''+$(this).find('p').text()+'');
+      window.postMessage('1'+$(this).find('p').text()+'');
     })
 
 
@@ -275,6 +275,7 @@
         authorization: token
       },
       success: function (data) {
+        console.log(data);
         $('#jie').html(data.obj[0].name)
       }
     });

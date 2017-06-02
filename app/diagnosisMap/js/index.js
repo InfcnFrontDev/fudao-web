@@ -4,7 +4,7 @@ function loadSvg(svgPath) {
         var $buweis = $('#buweis path');
         $buweis.attr('fill', 'transparent').css('cursor', 'pointer');
         // $buweis.mouseover(function () {
-        //     $(this).attr('fill', 'blue').css('opacity', '0.3');
+        //     $(this).attr('fill', '#fff').css('opacity', '0.3');
         // });
         // $buweis.mouseout(function () {
         //     $(this).attr('fill', 'transparent')
@@ -19,6 +19,9 @@ function loadSvg(svgPath) {
         //     fun_renti(id);
         // })
         $buweis.click(function (e) {
+            console.log("aaaaaa")
+            // $(this).attr('fill', '#fff').css('opacity', '0.7');
+
             var id = $(this).attr('id');
             if ("zuoshou" === id || 'youshou' === id|| 'tui' === id) {
             	id = 'sizhi';

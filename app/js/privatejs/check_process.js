@@ -9,8 +9,8 @@ var submitSymptomType = 1;
  */
 function fun_pathogeny(info, list, flag) {
     symptom = list;
-    var div_list = document.getElementById("div_list");
-    div_list.innerHTML = "";
+    // var div_list = document.getElementById("div_list");
+    // div_list.innerHTML = "";
     document.getElementById("click_zhengzhuang").style.display = "none";
     var _json = {};
     _json['json'] = check_process_one_check_result;
@@ -26,15 +26,38 @@ function timeOut(rentidata, flag) {
     var opacityNext = document.getElementById("opacityNext");
     var svgGraph = document.getElementById("svgGraph");
     opacityNext.style.opacity = '1'
-    _rentiSvg.style.marginTop = '60px';
+    _rentiSvg.style.marginTop = '0';
     _rentiSvg.style.marginRight = '20%';
     svgGraph.style.marginRight = '30%';
     svgGraph.style.width = '86%';
     svgGraph.style.height = '86%';
-    pieChart = echarts.init(document.getElementById('pieChart'));
+    document.getElementById("listContain").style.display = "block";
+    document.getElementById("div_list_selected").style.display = "block";
+    document.getElementById("mengban").style.display = "block";
+    document.getElementById("deepPage1").style.height = "70%";
+
+    // pieChart = echarts.init(document.getElementById('pieChart'));
     //数据处理
-    fun_check_process_two(rentidata, flag);
+    // fun_organ_zhengzhuang(rentidata, flag);
+
+    fun_organ_zhengzhuang()
 }
+
+//版本2-手风琴效果-部位-症状
+function fun_organ_zhengzhuang() {
+    var accordion = document.getElementById("accordion");
+    accordion.innerHTML = ''
+    var key = 1;
+    for (var i in symptom) {
+        accordion.innerHTML += '<div class="panel"><div class="panel-heading" role="tab" id="heading' + key + '">' +
+            '<p class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + key + '" aria-expanded="false" aria-controls="collapse' + key + '" class="collapsed">' + i +
+            '</a></p></div><div id="collapse' + key + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + key + '"><div class="panel-body">' +
+            '<ul id="div_list' + key + '" style="background:#FAFAFA "></ul>' + '</div></div></div>';
+        fun_li(symptom[i], key)
+        key++;
+    }
+}
+
 
 /**
  * 自查第二个页面  处理数据
@@ -156,11 +179,15 @@ function fun_pie(data, position, type) {
     });
 }
 
-function fun_li(_zhengzhuang) {
+function fun_li(_zhengzhuang, key) {
+    var div_list = document.getElementById("div_list" + key);
     for (var i in _zhengzhuang) {
         var li = document.createElement("li");
         li.className = "mui-table-view-cell";
-        li.innerHTML = '<a class="clickClass" style="background:#FFFFFF;" onclick ="fun_select(this,\'right\')">' + _zhengzhuang[i] + '</a>';
+        li.style.textAlign = 'left';
+        li.style.color = ' #8E8E8E';
+        li.style.paddingTop = '5px';
+        li.innerHTML = '<a class="clickClass" style="background:#FFFFFF;color: #8E8E8E;font-size: 14px" onclick ="fun_select(this,\'right\')">' + _zhengzhuang[i] + '</a>';
         div_list.appendChild(li);
     }
 
@@ -278,4 +305,18 @@ function depth_submit() {
             console.log('err')
         }
     });
+}
+//
+function fill_color(buwei) {
+    var arr_buwei = ["toujing", "xiong", "fu", "zuoshou", "youshou", "tui"]
+    for (var i = 0; i < arr_buwei.length; i++) {
+        if (arr_buwei[i] == buwei) {
+            document.getElementById(buwei).setAttribute("fill", "#000")
+            document.getElementById(buwei).style.opacity = "0.4";
+        }else{
+            if(document.getElementById(arr_buwei[i]).style.opacity=='0.4')
+            document.getElementById(arr_buwei[i]).style.opacity = "0";
+        }
+    }
+
 }
