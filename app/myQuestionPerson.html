@@ -33,57 +33,91 @@
 </div>
 
 <script>
-    var searchURL = window.location.search;
-    var targetPageId = searchURL.split("=")[1];
-    var question_title = decodeURI(targetPageId);
-    var diseaseobj, jingluomap, jingluoid, xueweimap,xueweiid,xunhuanmap, xunhuanid,buweiid;
-    diseaseobj = disease[question_title]
-    if (!diseaseobj) {
-        diseaseobj = disease['痴呆'];
+    function getQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var result = window.location.search.substr(1).match(reg);
+        return result ? decodeURIComponent(result[2]) : null;
     }
-    jingluomap = diseaseobj.jl_map.split('、')[0]
-    jingluoid = diseaseobj.jl_id.split('、');
+    var diseaseType = getQueryString('diseaseType');
+    var disease = getQueryString('disease');
+    var token = getQueryString('token');
+    var diseaseobj, jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
 
-    xueweimap = diseaseobj.xw_map ? diseaseobj.xw_map.split('、')[0] : null
-    xueweiid = diseaseobj.xw_id ? diseaseobj.xw_id.split('、') : null
-
-    xunhuanmap = diseaseobj.xhxt_map;
-    xunhuanid = diseaseobj.xhxt_id ? diseaseobj.xhxt_id.split('、') : null
-    buweiid = diseaseobj.xhxt_part ? diseaseobj.xhxt_part.split('、') : null
-
-
-    var map = new RentiMap("#mapDiv", {
-        map: 'svg/' + jingluomap + '.svg',
-        jingluoid: jingluoid,
-        noshow: true
+    $.ajax({
+        type: "get",
+        url: urls.DISEASE_RELEVANT,
+        headers: {
+            authorization: token
+        },
+        data: {
+            diseaseType: diseaseType,
+            disease: disease,
+        },
+        success: function (msg) {
+            if (msg.ok) {
+                diseaseobj = msg.obj
+                console.dir(diseaseobj)
+                a = diseaseobj.meridians
+                b = diseaseobj.acupoints
+                c = diseaseobj.organs
+                d = diseaseobj.circulatorysystems
+                jingluomap = a[0].list[0] ?  a[0].list[0].map : 'qian.svg'
+                xueweimap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
+                xunhuanmap =d[0].list[0] ?  d[0].list[0].map : 'qian.svg'
+                Object.keys(a).forEach(function (item) {
+                    a[item].list.forEach(function (items) {
+                        jingluoid.push(items.code)
+                    })
+                })
+                Object.keys(b).forEach(function (item) {
+                    b[item].list.forEach(function (items) {
+                        xueweiid.push(items.code)
+                    })
+                })
+                Object.keys(c).forEach(function (item) {
+                    c[item].list.forEach(function (items) {
+                        buweiid.push(items.code)
+                    })
+                })
+                Object.keys(d).forEach(function (item) {
+                    d[item].list.forEach(function (items) {
+                        xunhuanid.push(items.code)
+                    })
+                })
+                var map = new RentiMap("#mapDiv", {
+                    map: jingluomap,
+                    jingluoid: jingluoid,
+                    noshow: true
+                });
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
     });
-
-
-    var jlbtn1click = function () {
+    var jlbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + jingluomap + '.svg',
+            map: jingluomap,
             jingluoid: jingluoid,
             noshow: true
         });
     }
-
     var xwbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xueweimap + '.svg',
+            map: xueweimap,
             xueweiid: xueweiid,
             noshow: true
         });
     }
-
     var bwbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap + '.svg',
+            map: xunhuanmap,
             buweiid: buweiid,
             noshow: true
         });
@@ -92,14 +126,14 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap + '.svg',
+            map: xunhuanmap,
             xunhuanid: xunhuanid,
             noshow: true
 
         });
     }
 
-    $('#jlbtn1').on('click', jlbtn1click);
+    $('#jlbtn1').on('click', jlbtnclick);
     $('#xwbtn').on('click', xwbtnclick);
     $('#bwbtn').on('click', bwbtnclick);
     $('#xhbtn').on('click', xhbtnclick);

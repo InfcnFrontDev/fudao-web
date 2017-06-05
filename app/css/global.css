@@ -251,6 +251,7 @@ body {
 
 .fdzs{
     /*margin-bottom: 0;*/
+    display: block;
     font-size: 14px;
     text-align: center;
     color:#fff;

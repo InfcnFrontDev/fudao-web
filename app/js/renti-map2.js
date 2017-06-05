@@ -18,7 +18,12 @@ var $popover;
 			var $jingluo = $("#jingluo");
 			var $xuewei = $("#xuewei");
             $xuewei.css('display','block')
+            $jingluo.css('display','block')
             var $rentibuwei = $('#rentibuwei');
+
+
+            $("image").css('display','none')
+
 
 			function clickXuewei() {
 				var xwid = $(this).attr('id');
@@ -79,6 +84,8 @@ var $popover;
 				for(var i in buweiid) {
 					$rentibuwei.find('#' + buweiid[i]).show();
 				}
+			}else{
+                $rentibuwei.children().hide();
 			}
 
 			var eventsHandler = {
@@ -166,7 +173,7 @@ var $popover;
 	var defaults = {
 		map: 'svg/fudaye_front.svg',
 		jingluoid: true,
-		xuewei: true,
+		xueweiid: true,
 		disease: '痴呆'
 	};
 
