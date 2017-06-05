@@ -63,7 +63,7 @@
                 d = diseaseobj.circulatorysystems
                 jingluomap = a[0].list[0] ?  a[0].list[0].map : 'qian.svg'
                 xueweimap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
-                xunhuanmap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
+                xunhuanmap =d[0].list[0] ?  d[0].list[0].map : 'qian.svg'
                 Object.keys(a).forEach(function (item) {
                     a[item].list.forEach(function (items) {
                         jingluoid.push(items.code)
@@ -84,13 +84,8 @@
                         xunhuanid.push(items.code)
                     })
                 })
-                console.log(jingluoid)
-                console.log(xueweiid)
-                console.log(buweiid)
-                console.log(xunhuanid)
-
                 var map = new RentiMap("#mapDiv", {
-                    map: 'svg/' + jingluomap,
+                    map: jingluomap,
                     jingluoid: jingluoid,
                     noshow: true
                 });
@@ -100,63 +95,20 @@
             console.log(err)
         }
     });
-    //    var obj = {
-    //        "meridians": {
-    //            "id": "Liver-1、Liver-2、Spleen-1、Spleen-2、Kidney-1、Kidney-2",
-    //            "name": "足厥阴肝经,足少阴肾经",
-    //            "relation": "中毒的病因主要是肝肾阴亏。",
-    //            "map": "laoren-nan-qian",
-    //        },
-    //        "acupoints": {
-    //            "id": "GV16、CV23、GB31-1、GB31-2",
-    //            "name": "风池,太溪,复溜,涌泉",
-    //            "relation": "滋养肝肾。",
-    //            "map": "laoren-nan-qian",
-    //        },
-    //        "organs": {
-    //            "id": "danao",
-    //            "name": "咽,食管",
-    //            "relation": "老年人患食管病者较多，加上进餐时情绪激动，容易引起食管痉挛。老年人的脑血管病变发生率高，咽反射迟钝，容易造成吞咽动作不协调而噎食。",
-    //            "map": "laoren-nan-rentibuwei-xunhuanxitong",
-    //        },
-    //        "circulatorySystems": {
-    //            "id": "shenjing-s",
-    //            "name": "心血管系统",
-    //            "relation": "机体接触各种毒物，引发组织结构和功能损害、代谢障碍而发生疾病或死亡者，称为中毒。",
-    //            "map": "laoren-nan-rentibuwei-xunhuanxitong",
-    //        }
-    //    }
-    //    meridians = obj.meridians
-    //    acupoints = obj.acupoints
-    //    organs = obj.organs
-    //    circulatorySystems = obj.circulatorySystems
-    //
-    //    jingluomap = meridians.map ? meridians.map.split('、')[0] : null
-    //    jingluoid = meridians.id ? meridians.id.split('、') : null
-    //
-    //    xueweimap = acupoints.map ? acupoints.map.split('、')[0] : null
-    //    xueweiid = acupoints.id ? acupoints.id.split('、') : null
-    //
-    //    xunhuanmap = circulatorySystems.map;
-    //    xunhuanid = circulatorySystems.id ? circulatorySystems.id.split('、') : null
-    //    buweiid = organs.id ? organs.id.split('、') : null
-
-
     var jlbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + jingluomap,
+            map: jingluomap,
             jingluoid: jingluoid,
             noshow: true
         });
-
     }
     var xwbtnclick = function () {
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xueweimap,
+            map: xueweimap,
             xueweiid: xueweiid,
             noshow: true
         });
@@ -165,7 +117,7 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap,
+            map: xunhuanmap,
             buweiid: buweiid,
             noshow: true
         });
@@ -174,7 +126,7 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap,
+            map: xunhuanmap,
             xunhuanid: xunhuanid,
             noshow: true
 
