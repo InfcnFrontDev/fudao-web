@@ -48,22 +48,7 @@
     var diseaseobj,key = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
     var url = pageKey == 'disease'?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
     $("#btn").on('click',function () {
-        switch (key) {
-            case '1':
-                window.postMessage("1");
-                break
-            case '2':
-                window.postMessage("2");
-                break
-            case '3':
-                window.postMessage("3");
-                break
-            case '4':
-                window.postMessage("4");
-                break
-            default:
-                return
-        }
+        window.postMessage(key);
     })
     $.ajax({
         type: "get",
