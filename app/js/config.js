@@ -52,7 +52,9 @@ var urls = {
     // 获取能量场数据
     ENERGY_GET: apiPath + 'EnergyApi/getEnergy',
     //获取疾病相关
-    DISEASE_RELEVANT: apiPath + 'DiseaseApi/getDiseaseRelevant'
+    DISEASE_RELEVANT: apiPath + 'DiseaseApi/getDiseaseRelevant',
+    //获取自修相关
+    EXCEPT_RELEVANT: apiPath + 'ExceptApi/getExpectRelevant'
 
 
 }

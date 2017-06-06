@@ -23,13 +23,10 @@
     <button id="xwbtn">相关<br>穴位</button>
     <button id="bwbtn">相关<br>部位</button>
     <button id="xhbtn">循环<br>系统</button>
-    <!--<input type="button" value="经络2" id="jlbtn2">
-    <input type="button" value="穴位"  id="xwbtn">
-    <input type="button" value="部位"  id="bwbtn">
-    <input type="button" value="循环系统" id="xhbtn">-->
 </div>
 
-<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%;">
+<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%; position: relative">
+    <div id="detail" style="width: 30px; height: 30px; background-color: pink; position: absolute; top: 0; left: 0;";></div>
 </div>
 
 <script>
@@ -41,11 +38,12 @@
     var diseaseType = getQueryString('diseaseType');
     var disease = getQueryString('disease');
     var token = getQueryString('token');
+    var pageKey = getQueryString('pageKey');
     var diseaseobj, jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
-
+    var url = pageKey == 'disease'?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
     $.ajax({
         type: "get",
-        url: urls.DISEASE_RELEVANT,
+        url: url,
         headers: {
             authorization: token
         },
@@ -61,9 +59,9 @@
                 b = diseaseobj.acupoints
                 c = diseaseobj.organs
                 d = diseaseobj.circulatorysystems
-                jingluomap = a[0].list[0] ?  a[0].list[0].map : 'qian.svg'
-                xueweimap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
-                xunhuanmap =d[0].list[0] ?  d[0].list[0].map : 'qian.svg'
+                jingluomap = a[0] && a[0].list[0] ?  a[0].list[0].map : 'svg/aged/nan/qian.svg'
+                xueweimap = b[0] && b[0].list[0] ?  b[0].list[0].map : 'svg/aged/nan/qian.svg'
+                xunhuanmap =d[0] && d[0].list[0] ?  d[0].list[0].map : 'svg/aged/nan/qian.svg'
                 Object.keys(a).forEach(function (item) {
                     a[item].list.forEach(function (items) {
                         jingluoid.push(items.code)
@@ -84,6 +82,11 @@
                         xunhuanid.push(items.code)
                     })
                 })
+                console.log(jingluoid)
+                console.log(xueweiid)
+                console.log(buweiid)
+                console.log(xunhuanid)
+
                 var map = new RentiMap("#mapDiv", {
                     map: jingluomap,
                     jingluoid: jingluoid,
@@ -95,7 +98,9 @@
             console.log(err)
         }
     });
+
     var jlbtnclick = function () {
+        $("#detail").textContent = diseaseobj.meridians.circulatorysystems;
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
