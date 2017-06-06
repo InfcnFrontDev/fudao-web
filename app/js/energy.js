@@ -7,6 +7,7 @@ var city = "北京市";
 var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
+var avg_zr = 0,avg_rw = 0,avg_gr = 0,avg_qg = 0;
 $(document).ready(function(){
     // alert('city:'+getQueryString('city')+' weather:'+getQueryString('weather')+' winp:'+getQueryString('winp')+' air_scope:'+getQueryString('air_scope'));
     // alert('-'+getQueryString('city').replace(' ','')+'-');
@@ -42,19 +43,31 @@ $(document).ready(function(){
 });
 //
 function preInitEchart(result){
-    // var colorList = ['#ACC1EA','#ACC1EA','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9','#4168B9'];
-    // var indx = xAxis.length;
-    // _.forEach(result, function(n, key) { // 循环对象
-    //     xAxis[indx] = key;
-    //     datas[indx] = n;
-    //     colorList[indx] = getColor(key);
-    //     indx++;
-    // });
-    var xAxis = ["自然环境","人文环境","个人生活","情感关系"];
-    var datas = [96,86,72,90];
+    var xAxis = ["自然","人文","日常","情感"];
+    avg_gr = result.avg_personal;
+    avg_qg = result.avg_emotion;
+    var i = 0;
+    var sum = 0;
+    // 自然环境平均值
+    getPeoDatas().forEach(function(data){
+        i++;
+        sum = sum + Number(data);
+    });
+    avg_zr = parseInt(sum/i);
+    // 人文环境平均值
+    sum = Number(getLocationScore(city));
+    $.getJSON("json/indexScore.json",function(data){
+        _.forEach(data, function(n, key) { // 循环对象
+            if(key == province){
+                sum = sum + Number(n.total_score);
+                return;
+            }
+        });
+    });
+    avg_rw = parseInt(sum/27);
+    var datas = [avg_zr,avg_rw,avg_gr,avg_qg];
     var colorList = [ '#03B3D4' , '#D49306' , '#99CB06' , '#7A91D6' ];
-    var colorList_ = [ '#AED1D8' , '#D9C597' , '#C0CF99' , '#D3D8E4' ];
-    initEchart_bar(xAxis,datas,colorList,colorList_,result); // 初始化柱状图
+    initEchart_bar(xAxis,datas,colorList,result); // 初始化柱状图
     initEchart_scatter(result); // 初始化散列图
     $('.tanceImg_s').css('display','block');
 }
@@ -208,7 +221,7 @@ function initEchart_scatter(result){
     myChart.setOption(option);
 }
 
-function initEchart_bar(xAxis,datas,colorList,colorList_,result){
+function initEchart_bar(xAxis,datas,colorList,result){
     $("#lowerDiv").css('width','100%');
     $("#lowerDiv").css('height','100%');
     var myChart = echarts.init(document.getElementById('lowerDiv'));
@@ -216,6 +229,9 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
         title: {},
         tooltip: {
             trigger: 'axis'
+        },
+        axisPointer :{
+            show: false
         },
         calculable: true,
         grid: {
@@ -238,6 +254,7 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
         yAxis: [
             {
                 type: 'value',
+                min: 1,
                 show: false
             }
         ],
@@ -250,17 +267,21 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
                 itemStyle: {
                     normal: {
                         barBorderRadius: 10,
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                      /*  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                             offset: 0,
                             color: '#899CD9'
                         }, {
                             offset: 1,
                             color: '#03B3D4'
-                        }]),
+                        }]),*/
+                        color: function(params) {
+                            // build a color map as your need.
+                            return colorList[params.dataIndex]
+                        },
                         label: {
                             show: true,
                             position: 'top',
-                            formatter: '{b}'
+                            formatter: '{b}\n{c}'
                         },
                         shadowColor: 'rgba(0, 0, 0, 0.4)',
                         shadowBlur: 20
@@ -278,22 +299,22 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
         var datas = new Array();
         var colorList = [];
         var colorList_ = [];
-        if(param.name.indexOf("自然环境") != -1){
+        if(param.name.indexOf("自然") != -1){
             xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','星辰'];
-            datas = [getMountainsScore(city,0),getMountainsScore(city,1),getWindScore(winp),getRainScore(weather),
-                getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
-            $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
+            datas = getPeoDatas();
+            $("#lowerDiv_detail").css('width','100%');
             colorList = [ '#03B3D4'];
             colorList_ = [ '#AED1D8'];
-            initEchart_bar_detail(xAxis,datas,colorList,colorList_);
-        } else if (param.name.indexOf("人文环境") != -1){
-            xAxis.push('地区魅力')
+            initEchart_bar_detail(xAxis,datas,colorList);
+        } else if (param.name.indexOf("人文") != -1){
+            xAxis.push('地区魅力');
             datas.push(getLocationScore(city));
             $.getJSON("json/indexScore.json",function(data){
                 _.forEach(data, function(n, key) { // 循环对象
                     if(key == province){
                         _.forEach(n.context, function(n, key) { // 循环对象
                             xAxis.push(key)
+                            if(n.score == 0) n.score = 1;
                             datas.push(n.score);
                         });
                     }
@@ -301,31 +322,42 @@ function initEchart_bar(xAxis,datas,colorList,colorList_,result){
                 $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
                 colorList = [ '#D49306' ];
                 colorList_ = [ '#D9C597' ];
-                initEchart_bar_detail(xAxis,datas,colorList,colorList_);
+                initEchart_bar_detail(xAxis,datas,colorList);
             }); 
-        } else if (param.name.indexOf("个人生活") != -1){
+        } else if (param.name.indexOf("日常") != -1){
             _.forEach(JSON.parse(result.result_personal), function(n, key) { // 循环对象
-                xAxis.push(key)
+                xAxis.push(key);
+                if(n == 0) n = 1;
                 datas.push(n);
             });
-            $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
+            $("#lowerDiv_detail").css('width','100%');
             colorList = [ '#99CB06' ];
             colorList_ = [ '#C0CF99' ];
-            initEchart_bar_detail(xAxis,datas,colorList,colorList_);
+            initEchart_bar_detail(xAxis,datas,colorList);
         } else { // 情感关系
             _.forEach(JSON.parse(result.result_emotion), function(n, key) { // 循环对象
-                xAxis.push(key)
+                xAxis.push(key);
+                if(n == 0) n = 1;
                 datas.push(n);
             });
-            $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
+            if($("#lowerDiv_detail").css('width') > (datas.length)*30+'px'){
+                $("#lowerDiv_detail").css('width','100%');
+            } else {
+                $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
+            }
             colorList = [ '#7A91D6' ];
             colorList_ = [ '#D3D8E4' ];
-            initEchart_bar_detail(xAxis,datas,colorList,colorList_);
+            initEchart_bar_detail(xAxis,datas,colorList);
         }
     });
 }
 
-function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
+function getPeoDatas(){
+    return [getMountainsScore(city,0),getMountainsScore(city,1),getWindScore(winp),getRainScore(weather),
+        getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
+}
+
+function initEchart_bar_detail(xAxis,datas,colorList){
     // 根据展示柱状图个数初始化容器宽度
     var myChart = echarts.init(document.getElementById('lowerDiv_detail'));
     var option = {
@@ -333,25 +365,41 @@ function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
         tooltip: {
             trigger: 'axis'
         },
-        calculable: true,
+        axisPointer :{
+            show: false
+        },
         grid: {
             borderWidth: 1,
-            x: 10,
-            x2: 15,
+            borderColor: '#ccc',
+            x: 30,
+            x2: 25,
             y: 40,
-            y2: 10
+            y2: 60
         },
         xAxis: [
             {
                 type : 'category',
-                show : false,
+                show : true,
+                axisLabel : {
+                    rotate: 30
+                },
+                axisLine : {
+                    lineStyle: {
+                        color: colorList
+                    }
+                },
                 data : xAxis
             }
         ],
         yAxis: [
             {
                 type: 'value',
-                show: false
+                axisLine : {
+                    lineStyle: {
+                        color: colorList
+                    }
+                },
+                show: true
             }
         ],
         series: [
@@ -359,21 +407,11 @@ function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
                 name: '得分',
                 type: 'bar',
                 barWidth: 15,
+                splitNumber: 2,
                 itemStyle: {
                     normal: {
-                        barBorderRadius: 10,
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            offset: 0,
-                            color: colorList
-                        }, {
-                            offset: 1,
-                            color: colorList_
-                        }]),
-                        label: {
-                            show: true,
-                            position: 'top',
-                            formatter: '{b}'
-                        }
+                        barBorderRadius: 6,
+                        color: colorList
                     }
                 },
                 data: datas
@@ -393,8 +431,8 @@ function closeTance(){
 }
 
 function quesTab_Nav_click(v1,v2){
-    $('#quesTab_Nav_'+v1).addClass('quesTab_Nav_Sel');
-    $('#quesTab_Nav_'+v2).removeClass('quesTab_Nav_Sel');
+    $('#quesTab_Nav_'+v2).addClass('quesTab_Nav_Sel');
+    $('#quesTab_Nav_'+v1).removeClass('quesTab_Nav_Sel');
     $('#'+v1+'Form').css('display','block');
     $('#'+v2+'Form').css('display','none');
 }
@@ -433,45 +471,28 @@ function save(){
     result_emo.姓氏 = $("#surnameSel").val();
     result_emo.宗教 = $("#religionSel").val();
     result_emo.感情状态 = $("#emotionSel").val();
-    setResult(result_peo,result_emo);
+    if($('#peoForm').css('display') == 'block'){
+        setResult(result_peo,result_emo,0);
+    } else {
+        setResult(result_peo,result_emo,1);
+    }
     closeTance();
 }
 
-function setResult(result_peo,result_emo){
+function setResult(result_peo,result_emo,type){
     var v = 0;
     var vt = 0;
     var weight = 0;
-    $.getJSON("json/questionnarie_peo.json",function(data){
-        _.forEach(data, function(n, key) { // 循环对象
-            v = 0;
-            _(n).forEach(function(n2) { // 循环数组
-                _.forEach(n2, function(n3, key2) {
-                    if(key2 != 'weight') {
-                        vt = $(":radio:checked[name='"+ key2 +"']").val();
-                        if(vt == undefined) vt = 0;
-                    } else {
-                        weight = parseFloat(n3);
-                    }
-                    vt = parseFloat(vt);
-                });
-                if(n.length == 1){
-                    v += vt;
-                } else {
-                    v += vt*weight;
-                }
-            });
-            // if(v == 0) v = 0.1;
-            if(v != 0)
-                result_peo[key] = v;
-        });
-        $.getJSON("json/questionnarie_emo.json",function(data){
+    var sum = 0;
+    var i = 0;
+    if(type == 0){
+        $.getJSON("json/questionnarie_peo.json",function(data){
             _.forEach(data, function(n, key) { // 循环对象
                 v = 0;
                 _(n).forEach(function(n2) { // 循环数组
                     _.forEach(n2, function(n3, key2) {
                         if(key2 != 'weight') {
                             vt = $(":radio:checked[name='"+ key2 +"']").val();
-                            console.log(vt);
                             if(vt == undefined) vt = 0;
                         } else {
                             weight = parseFloat(n3);
@@ -485,16 +506,22 @@ function setResult(result_peo,result_emo){
                     }
                 });
                 // if(v == 0) v = 0.1;
-                if(v != 0)
-                    result_emo[key] = v;
+                if(v != 0) {
+                    result_peo[key] = v;
+                    sum = sum + v;
+                    i++;
+                }
             });
-            // 保存结果至数据库
+            sum += parseInt($("#educationSel").val())+parseInt($("#collageSel").val())+parseInt($("#majorSel").val())
+                +parseInt($("#industrySel").val())+parseInt($("#occupationSel").val());
+            i+=5;
+            avg_gr = JSON.stringify(parseInt(sum/i));
             $.ajax({
                 url: urls.ENERGY_SUBMITSYMPTOM,
                 headers: {
                     authorization: getQueryString('token')
                 },
-                data: {"result_peo":JSON.stringify(result_peo),"result_emo":JSON.stringify(result_emo)},
+                data: {"result_peo":JSON.stringify(result_peo),"avg_peo":avg_gr},
                 type: "POST",
                 dataType: "JSON",
                 success: function(data){
@@ -503,14 +530,68 @@ function setResult(result_peo,result_emo){
                     }
                 }
             });
-            $('#bar_loading').css('display','none');
-            $('#lowerDiv').css('display','block');
-            var result = new Object();
-            result['result_personal'] = result_peo;
-            result['result_emotion'] = result_emo;
-            preInitEchart(JSON.parse(result));
         });
-    });
+    } else if(type == 1){
+        $.getJSON("json/questionnarie_emo.json",function(data){
+            _.forEach(data, function(n, key) { // 循环对象
+                v = 0;
+                _(n).forEach(function(n2) { // 循环数组
+                    _.forEach(n2, function(n3, key2) {
+                        if(key2 != 'weight') {
+                            vt = $(":radio:checked[name='"+ key2 +"']").val();
+                            // console.log(vt);
+                            if(vt == undefined) vt = 0;
+                        } else {
+                            weight = parseFloat(n3);
+                        }
+                        vt = parseFloat(vt);
+                    });
+                    if(n.length == 1){
+                        v += vt;
+                    } else {
+                        v += vt*weight;
+                    }
+                });
+                // if(v == 0) v = 0.1;
+                if(v != 0){
+                    result_emo[key] = v;
+                    sum = sum + v;
+                    i++;
+                }
+            });
+            sum += parseInt($("#nationSel").val())+parseInt($("#surnameSel").val())
+                +parseInt($("#religionSel").val())+parseInt($("#emotionSel").val());
+            i+=4;
+            avg_qg = JSON.stringify(parseInt(sum/i));
+            $.ajax({
+                url: urls.ENERGY_SUBMITSYMPTOM,
+                headers: {
+                    authorization: getQueryString('token')
+                },
+                data: {"result_emo":JSON.stringify(result_emo),"avg_emo":avg_qg},
+                type: "POST",
+                dataType: "JSON",
+                success: function(data){
+                    if(undefined == data.ok || data.ok == false){
+                        alert(JSON.stringify(data));
+                    }
+                }
+            });
+        });
+    }
+    //提示层
+    // layer.msg('玩命提示中');
+    setTimeout(function(){
+        $('#bar_loading').css('display','none');
+        $('#lowerDiv').css('display','block');
+        var result = new Object();
+        // avg_zr = 0,avg_rw = 0,avg_gr = 0,avg_qg = 0;
+        result['result_personal'] = JSON.stringify(result_peo);
+        result['result_emotion'] = JSON.stringify(result_emo);
+        result['avg_personal'] = avg_gr;
+        result['avg_emotion'] = avg_qg;
+        preInitEchart(result);
+    },2000);
 }
 /**
  * 读取民族json
@@ -568,6 +649,8 @@ function readQuestionJson(){
         });
         $('#peoTab_').html(html);
     });
+    indx = 0;
+    html = '';
     $.getJSON("json/questionnarie_emo.json",function(data){
         _.forEach(data, function(n, key1) { // 循环对象
             _(n).forEach(function(n2) { // 循环数组
@@ -641,180 +724,13 @@ function getMountainsScore(city_,type){
 }
 
 /**
- * 获取当前定位得分
- */
-function getLocationScore(city_){
-    var v = {
-        "北京":100,"上海":100,"广州":100,"深圳":100,
-        "成都市":80,"杭州市":80,"武汉市":80,"天津市":80,"南京市":80,"重庆市":80,"西安市":80, "长沙市":80,
-            "青岛市":80,"沈阳市":80,"大连市":80,"厦门市":80,"苏州市":80,"宁波市":80,"无锡市":80,
-        "福州市":60,"合肥市":60,"郑州市":60,"哈尔滨":60,"佛山市":60,"济南市":60,"东莞市":60,"昆明市":60,
-            "太原市":60,"南昌市":60,"南宁市":60,"温州市":60,"石家庄市":60,"长春市":60,"泉州市":60,"贵阳市":60,
-            "常州市":60,"珠海市":60,"金华市":60,"烟台市":60,"海口市":60,"惠州市":60,"乌鲁木齐市":60,"徐州市":60,
-            "嘉兴市":60,"潍坊市":60,"洛阳市":60,"南通市":60,"扬州市":60,"汕头市":60,
-        "其它":40};
-    if(undefined == v[city_]) return "40";
-    return v[city_];
-}
-
-/**
- * 获取雨得分
- */
-function getRainScore(weather){
-    if (weather.indexOf("小雨-中雨") != -1){
-        return 80;
-    } else if (weather.indexOf("中雨-大雨") != -1){
-        return 60;
-    } else if (weather.indexOf("大雨-暴雨") != -1){
-        return 40;
-    } else if (weather.indexOf("暴雨-大暴雨") != -1){
-        return 20;
-    } else if (weather.indexOf("大暴雨-特大暴雨") != -1){
-        return 5;
-    } else if (weather.indexOf("雷阵雨有冰雹") != -1){
-        return 55;
-    } else if (weather.indexOf("雷阵雨") != -1){
-        return 80;
-    } else if(weather.indexOf("阵雨") != -1){
-        return 95;
-    }else if (weather.indexOf("雨夹雪") != -1){
-        return 35;
-    } else if (weather.indexOf("冻雨") != -1){
-        return 45;
-    } else if (weather.indexOf("小雨") != -1){
-        return 90;
-    } else if (weather.indexOf("中雨") != -1){
-        return 70;
-    } else if (weather.indexOf("大雨") != -1){
-        return 50;
-    } else if (weather.indexOf("特大暴雨") != -1){
-        return 0;
-    } else if (weather.indexOf("大暴雨") != -1){
-        return 10;
-    } else if (weather.indexOf("暴雨") != -1){
-        return 30;
-    } else {
-        return 100;
-    }
-}
-
-/**
- * 获取雪得分
- */
-function getSnowScore(weather){
-    if(weather.indexOf("小雪-中雪") != -1){
-        return 50;
-    } else if (weather.indexOf("中雪-大雪") != -1){
-        return 30;
-    } else if (weather.indexOf("大雪-暴雪") != -1){
-        return 10;
-    } else if(weather.indexOf("阵雪") != -1){
-        return 80;
-    } else if (weather.indexOf("小雪") != -1){
-        return 60;
-    } else if (weather.indexOf("中雪") != -1){
-        return 40;
-    } else if (weather.indexOf("大雪") != -1){
-        return 20;
-    } else if (weather.indexOf("暴雪") != -1){
-        return 0;
-    } else {
-        return 100;
-    }
-}
-
-/**
- * 获取沙尘得分
- */
-function getSandScore(weather){
-    if(weather.indexOf("浮尘") != -1){
-        return 50;
-    } else if (weather.indexOf("扬沙") != -1){
-        return 40;
-    } else if (weather.indexOf("沙尘暴") != -1){
-        return 20;
-    } else if (weather.indexOf("强沙尘暴") != -1){
-        return 10;
-    } else {
-        return 100;
-    }
-}
-
-/**
- * 获取日得分
- */
-function getSunScore(weather){
-    if(weather.indexOf("晴") != -1){
-        return 100;
-    } else if (weather.indexOf("多云") != -1){
-        return 80;
-    } else if (weather.indexOf("阴") != -1){
-        return 60;
-    } else if (weather.indexOf("雾") != -1){
-        return 50;
-    } else {
-        return 0;
-    }
-}
-
-/**
  * 获取星辰得分
  */
 function getStarsScore(weather){
     if(weather.indexOf("晴") != -1){
-        return 90;
+        return 86;
     } else {
-        return 10;
-    }
-}
-
-/**
- * 获取风得分
- */
-function getWindScore(winp){
-    if(winp <= "0.2"){
-        return 90;
-    } else if ("0.3" < winp <= "1.5"){
-        return 95;
-    } else if ("1.5" < winp <= "3.3"){
-        return 100;
-    } else if ("3.4" < winp <= "5.4"){
-        return 90;
-    } else if ("5.4" < winp <= "7.9"){
-        return 80;
-    } else if ("7.9" < winp <= "10.7"){
-        return 70;
-    } else if ("10.7" < winp <= "13.8"){
-        return 50;
-    } else if ("13.8" < winp <= "17.1"){
-        return 30;
-    } else if ("17.1" < winp <= "20.7"){
-        return 20;
-    } else if ("20.7" < winp <= "24.4"){
-        return 10;
-    } else if ("24.4" < winp){
-        return 0;
-    } else {
-        return 90;
-    }
-}
-
-/**
- * 获取空气得分
- */
-function getAirScore(air_scope){
-    if(air_scope == "0-50"){
-        return 100;
-    } else if (air_scope == "50-100"){
-        return 90;
-    } else if (air_scope == "100-150"){
-        return 50;
-    } else if (air_scope == "150-200"){
-        return 40;
-    } else if (air_scope == "200-300"){
-        return 20;
-    } else if (air_scope == ">300"){
-        return 0;
+        return 37;
     }
 }
 
