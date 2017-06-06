@@ -171,7 +171,7 @@ var $popover;
 	};
 
 	var defaults = {
-		map: 'svg/fudaye_front.svg',
+		map: 'svg/aged/nan/qian.svg',
 		jingluoid: true,
 		xueweiid: true,
 		disease: '痴呆'

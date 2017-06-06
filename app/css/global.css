@@ -161,7 +161,7 @@ body {
     font-size: 16px;
     padding: 10px 0 0 10px;
 }
-.jinduBox a{
+.jinduBox .jindutiaokuai{
     display: inline-block;
     width: 40%;
     margin: 0 10px;
@@ -172,7 +172,7 @@ body {
     margin-bottom: 10px;
     text-align: left;
 }
-.jinduBox p{
+.jinduBox .mokuaidefen{
     display: inline-block;
     width: 40%;
     margin: 0 10px;
@@ -182,12 +182,12 @@ body {
     margin-bottom: 10px;
     padding: 10px 3px;
 }
-.jinduBox a span{
+.jinduBox .jindutiaokuai span{
     position: absolute;
     right: 10px;
     bottom:25px;
 }
-.jinduBox p span{
+.jinduBox .mokuaidefen span{
     display: inline-block;
     text-align: right;
     padding-left: 6px;
