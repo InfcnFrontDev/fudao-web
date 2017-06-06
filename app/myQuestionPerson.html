@@ -27,9 +27,12 @@
 
 <div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%;">
 </div>
-<!--<div  style="width: 100%; height: 150px; background-color: pink; position: absolute; bottom: 0; left: 0;";>-->
-    <!--<p id="detail" ></p>-->
-<!--</div>-->
+<div  style="width: 100%; height: 150px;  position: absolute; bottom: 0; left: 0; font-size: 14px";>
+    <p id="detail" style="padding: 20px"></p>
+    <div id="btn" style="width: 80px; height: 30px; background-color: #A1CC00; border-radius: 5px; margin: 0 auto; text-align: center">
+        <span style="color: #FFFFFF; line-height: 30px">教我自疗</span>
+    </div>
+</div>
 
 
 <script>
@@ -42,8 +45,26 @@
     var disease = getQueryString('disease');
     var token = getQueryString('token');
     var pageKey = getQueryString('pageKey');
-    var diseaseobj, jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
+    var diseaseobj,key = 1, jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
     var url = pageKey == 'disease'?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
+    $("#btn").on('click',function () {
+        switch (key) {
+            case '1':
+                window.postMessage("1");
+                break
+            case '1':
+                window.postMessage("2");
+                break
+            case '1':
+                window.postMessage("3");
+                break
+            case '1':
+                window.postMessage("4");
+                break
+            default:
+                return
+        }
+    })
     $.ajax({
         type: "get",
         url: url,
@@ -95,6 +116,8 @@
                     jingluoid: jingluoid,
                     noshow: true
                 });
+                $('#detail').html(a[0] ? a[0].correlativity : '&nbsp;&nbsp;&nbsp;&nbsp;通过对自由基显影技术的改进与应用，在生物体内发现与经络吻合的清晰的线性路线，是目前全世界获得最清晰的经络显影照片')
+
             }
         },
         error: function (err) {
@@ -103,6 +126,8 @@
     });
 
     var jlbtnclick = function () {
+        key = 1
+        $('#detail').html(diseaseobj.meridians[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
@@ -112,6 +137,8 @@
         });
     }
     var xwbtnclick = function () {
+        key = 2
+        $('#detail').html(diseaseobj.acupoints[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
@@ -121,6 +148,8 @@
         });
     }
     var bwbtnclick = function () {
+        key = 3
+        $('#detail').html(diseaseobj.organs[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
@@ -130,6 +159,8 @@
         });
     }
     var xhbtnclick = function () {
+        key = 4
+        $('#detail').html(diseaseobj.circulatorysystems[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
