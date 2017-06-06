@@ -70,7 +70,7 @@ a{text-decoration: none;}
 .peoInfo{display: none; position: fixed; z-index: 9999; background-color: #ffffff; width: 90%; height: 90%;
     position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;}
 
-.peoTab{width: 100%;}
+.peoTab{width: 100%;padding-top: 15px;}
 .peoTab tr{height: 35px; line-height: 35px; width: 100%;}
 .peoTab select{width: 80%;}
 .quesTab{width: 100%;}
@@ -82,6 +82,6 @@ a{text-decoration: none;}
 .circle {height: 150px; width: 150px; border-radius: 50%;
     margin-left: auto; margin-right: auto;}
 
-.quesTab_Nav{width: 50%; height: 45px; line-height: 45px; font-weight: bold; text-align: center; border-bottom: 1px solid #E4E3E3;}
-.quesTab_Nav_Sel{border-bottom: 0px solid #E4E3E3;}
+.quesTab_Nav{width: 50%; height: 45px; line-height: 45px; font-weight: bold; text-align: center;}
+.quesTab_Nav_Sel{background-color: #cccccc}
 
