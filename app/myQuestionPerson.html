@@ -25,9 +25,12 @@
     <button id="xhbtn">循环<br>系统</button>
 </div>
 
-<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%; position: relative">
-    <div id="detail" style="width: 30px; height: 30px; background-color: pink; position: absolute; top: 0; left: 0;";></div>
+<div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%;">
 </div>
+<!--<div  style="width: 100%; height: 150px; background-color: pink; position: absolute; bottom: 0; left: 0;";>-->
+    <!--<p id="detail" ></p>-->
+<!--</div>-->
+
 
 <script>
     function getQueryString(key) {
@@ -100,7 +103,6 @@
     });
 
     var jlbtnclick = function () {
-        $("#detail").textContent = diseaseobj.meridians.circulatorysystems;
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
