@@ -44,7 +44,7 @@
     var diseaseType = getQueryString('diseaseType');
     var disease = getQueryString('disease');
     var token = getQueryString('token');
-    var pageKey = getQueryString('pageKey');
+    var pageKey = getQueryString('type');
     var diseaseobj,key = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
     var url = pageKey == 'disease'?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
     $("#btn").on('click',function () {
@@ -111,7 +111,7 @@
     });
 
     var jlbtnclick = function () {
-        key = 1
+        key = '1'
         $('#detail').html(diseaseobj.meridians[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
@@ -122,7 +122,7 @@
         });
     }
     var xwbtnclick = function () {
-        key = 2
+        key = '2'
         $('#detail').html(diseaseobj.acupoints[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
@@ -133,7 +133,7 @@
         });
     }
     var bwbtnclick = function () {
-        key = 3
+        key = '3'
         $('#detail').html(diseaseobj.organs[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
@@ -144,7 +144,7 @@
         });
     }
     var xhbtnclick = function () {
-        key = 4
+        key = '4'
         $('#detail').html(diseaseobj.circulatorysystems[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
