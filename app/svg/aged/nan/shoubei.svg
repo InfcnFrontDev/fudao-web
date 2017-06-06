@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="469.079px" height="1307.545px" viewBox="0 0 469.079 1307.545" enable-background="new 0 0 469.079 1307.545"
 	 xml:space="preserve">
 <g id="svg-zuoshoubei">
@@ -76,10 +76,10 @@
 			<path id="Lung-1" fill="none" stroke="#89BA28" stroke-miterlimit="10" stroke-dasharray="5,5" d="M193.697,345.203
 				c0,0,53.303-24.703,76.636-24.703c12.5-0.038,92.557,15.145,109.334,1.333c-0.833-1.058-6.667-15.334-6.667-15.334"/>
 			<g id="TripleEnergizer-1">
-				<path id="TripleEnergizer" fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M89.292,76.335
+				<path fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M89.292,76.335
 					c0,0,16.708,56.166,8.708,60.833c9,19,32,71.333,32,71.333l0.667,38.666l-8.5,1.5c0,0,7,6,10.5,12.5
 					c8.5,27-10.667,162.001-6.667,164.667s26-4.5,34-2s101.334-4,101.334-4"/>
-				<path id="TripleEnergizer_2_" fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M297.334,409.834
+				<path fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M297.334,409.834
 					c7.333-0.667,31.666-24.5,38.666-24"/>
 			</g>
 			<path id="SmallIntestine-1" fill="none" stroke="#D31176" stroke-miterlimit="10" stroke-dasharray="5,5" d="M54.167,101.166
@@ -222,10 +222,10 @@
 			<path id="Lung-2_1_" fill="none" stroke="#89BA28" stroke-miterlimit="10" stroke-dasharray="5,5" d="M239.519,735.793
 				c0,0-53.303-24.703-76.636-24.703c-12.5-0.038-92.557,15.145-109.334,1.333c0.833-1.058,6.667-15.334,6.667-15.334"/>
 			<g id="TripleEnergizer-2_2_">
-				<path id="TripleEnergizer_3_" fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M343.924,466.925
+				<path fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M343.924,466.925
 					c0,0-16.708,56.166-8.708,60.833c-9,19-32,71.333-32,71.333l-0.667,38.666l8.5,1.5c0,0-7,6-10.5,12.5
 					c-8.5,27,10.667,162.001,6.667,164.667s-26-4.5-34-2s-101.334-4-101.334-4"/>
-				<path id="TripleEnergizer_1_" fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M135.882,800.424
+				<path fill="none" stroke="#EBAB22" stroke-miterlimit="10" stroke-dasharray="5,5" d="M135.882,800.424
 					c-7.333-0.667-31.666-24.5-38.666-24"/>
 			</g>
 			<path id="SmallIntestine-2_1_" fill="none" stroke="#D31176" stroke-miterlimit="10" stroke-dasharray="5,5" d="M379.049,491.756

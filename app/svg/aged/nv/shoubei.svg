@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="402px"
-	 height="846px" viewBox="0 0 402 846" enable-background="new 0 0 402 846" xml:space="preserve">
+<svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="402px" height="846px" viewBox="0 0 402 846" enable-background="new 0 0 402 846" xml:space="preserve">
 <g id="svg-zuoshoubei">
 	<g id="all_6_">
 		<g id="shenti_6_">
@@ -305,11 +305,11 @@
 			<path id="Lung-1_3_" fill="none" stroke="#85B22F" stroke-miterlimit="10" stroke-dasharray="5,5" d="M174,336.333
 				c0,0,55.5,8,67.5,11.5s82.25,29,102.25,20.5c-0.5-1.25-6.75-15.75-6.75-15.75"/>
 			<g id="TripleEnergizer-1_1_">
-				<path id="TripleEnergizer_6_" fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M80.625,88.5
+				<path fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M80.625,88.5
 					c0,0,5.375,53.333,2.875,57.833c9,19,27,48.5,27,48.5l3,37l-8.5,1.5c0,0,7,6,10.5,12.5c8.5,27,17,129,17,129s16.5-2.5,24.5,0
 					s81.5,22.5,81.5,22.5"/>
-				<path id="TripleEnergizer_5_" fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M278.5,398.833
-					c11,2,35.5-7.5,42.5-7s13.5,4,15,9.5"/>
+				<path fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M278.5,398.833c11,2,35.5-7.5,42.5-7
+					s13.5,4,15,9.5"/>
 			</g>
 		</g>
 		<g id="xuewei_6_">
@@ -471,11 +471,11 @@
 			<path id="Lung-2_1_" fill="none" stroke="#85B22F" stroke-miterlimit="10" stroke-dasharray="5,5" d="M237.114,731.802
 				c0,0-55.5,8-67.5,11.5s-82.25,29-102.25,20.5c0.5-1.25,6.75-15.75,6.75-15.75"/>
 			<g id="TripleEnergizer-2_2_">
-				<path id="TripleEnergizer_2_" fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M330.489,483.969
+				<path fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M330.489,483.969
 					c0,0-5.375,53.333-2.875,57.833c-9,19-27,48.5-27,48.5l-3,37l8.5,1.5c0,0-7,6-10.5,12.5c-8.5,27-17,129-17,129s-16.5-2.5-24.5,0
 					s-81.5,22.5-81.5,22.5"/>
-				<path id="TripleEnergizer_1_" fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M132.614,794.302
-					c-11,2-35.5-7.5-42.5-7s-13.5,4-15,9.5"/>
+				<path fill="none" stroke="#E3A72A" stroke-miterlimit="10" stroke-dasharray="5,5" d="M132.614,794.302c-11,2-35.5-7.5-42.5-7
+					s-13.5,4-15,9.5"/>
 			</g>
 		</g>
 		<g id="xuewei_1_">
