@@ -19,25 +19,26 @@
             margin:0;
             padding:0;
         }
-        .warn{
-            width:240px;
-            height:43px;
+        .warn_0,.warn_1,.warn_2{
+            width:245px;
+            height:24px;
             position:absolute;
             left:0;
             right:0;
-            background-color:rgba(225,225,225,.9);
+            background-color:rgba(225,225,225,.7);
             margin:auto;
             border-radius: 5px;
             padding: 5px 10px;
             display:none;
             z-index: 10000;
         }
+
         .triangle-up {
             width: 0;
             height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-bottom: 10px solid rgba(225,225,225,.9);
+            border-bottom: 10px solid rgba(225,225,225,.7);
             position:absolute;
             top: -10px;
             left: 240px;
@@ -79,8 +80,13 @@
             width: 120px;
             text-align: center;
             color:#7e8c8d;
-            font-size:10px;
+            font-size:12px;
             line-height:20px;
+        }
+        .swiper-slide-prev,.swiper-slide-next{
+            font-family:PingFang SC,STHeitiSC-Light,Helvetica-Light,arial,sans-serif;
+            font-size:10px;
+
         }
 
     </style>
@@ -139,7 +145,7 @@
 
 </head>
 <body style="background-color:rgba(0,0,0,.0);width:100%; height:100%;">
-<div id='ab'style="width:100%; height:100%;  background-size:100% 100% ;">
+<div id='ab'style="width:100%; height:100%; background-size:100% 100% ;">
 
 
     <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
@@ -154,6 +160,8 @@
                 <div class="swiper-container">
                     <!--<div style="width:120px; border-bottom: 1px solid #fff; position: absolute; top: 20px;"></div>
                     <div style="width:120px; border-bottom: 1px solid #fff; position: absolute; top: 40px;"></div>-->
+                    <div style="width:90px;height:20px;     background: -webkit-gradient(linear,left bottom,left top,from(hsla(223,61%,31%,.2)),to(hsla(223,61%,31%,.8)));position: absolute; top: 0; left:15px; z-index: 100"></div>
+                    <div style="width:90px;height:20px;     background: -webkit-gradient(linear,left bottom,left top,from(hsla(223,61%,31%,.8)),to(hsla(223,61%,31%,.2)));position: absolute; top: 40px; left:15px; z-index: 100"></div>
                     <div class="swiper-wrapper">
 
                     </div>
@@ -163,13 +171,20 @@
             <div style="width:30px; height:30px;  position:relative;top:150px; left:125px;" class="dongzuo">
                 <img src="images/exercise/abc0.gif" alt="" style="width:70px; height:50px;">
             </div>
-            <div class="warn" >
+            <div class="warn_0" >
                 <div class="triangle-up"></div>
 
-                <p style="color:#333; line-height:40px; font-size:15px;" class="tishi">
-                    拉耳垂，健肾经，养身体，治头痛。
+                <p style="color:#333; line-height:23px; font-size:15px;" class="tishi_0">
                 </p>
                 <!--<button id="xqbtn" style="background:rgba(0,0,0,.0); border:none;  position: absolute; bottom:5px; right:5px;">查看详情>></button>-->
+            </div>
+            <div class="warn_1" >
+                <p style="color:#333; line-height:23px; font-size:15px;" class="tishi_1">
+                </p>
+            </div>
+            <div class="warn_2" >
+                <p style="color:#333; line-height:23px; font-size:15px;" class="tishi_2">
+                </p>
             </div>
 
         </div>
@@ -201,12 +216,18 @@
     $('#myCanvas').click(function(e){
         e.preventDefault();
         ctx.clearRect(-200,-200,375,375);
-        $('.warn').hide();
+        $('.warn_0').hide();
+        $('.warn_1').hide();
+        $('.warn_2').hide();
+
     });
     $('.warn1').click(function(e){
         e.preventDefault();
         ctx.clearRect(-200,-200,375,375);
-        $('.warn').hide();
+        $('.warn_0').hide();
+        $('.warn_1').hide();
+        $('.warn_2').hide();
+
     });
 
 
@@ -248,7 +269,53 @@
     var renqun=getQueryString('renqun');
 
     //点击查看详情
-    $('.tishi').click(function(e){
+    $('.tishi_0').click(function(e){
+
+        e.stopPropagation();
+        console.log($(this).attr('name'))
+        $.ajax({
+            type:"post",
+            url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
+            headers: {
+                authorization: token
+            },
+            data:{
+                timePeriod:$(this).attr('name')
+            },
+            success:function(data){
+                console.log(data);
+                if(data.obj)
+                    window.postMessage(JSON.stringify(data.obj[0]));
+            },
+            error:function(error){
+                alert(JSON.stringify(error));
+            }
+        });
+    })
+    $('.tishi_1').click(function(e){
+
+        e.stopPropagation();
+        console.log($(this).attr('name'))
+        $.ajax({
+            type:"post",
+            url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
+            headers: {
+                authorization: token
+            },
+            data:{
+                timePeriod:$(this).attr('name')
+            },
+            success:function(data){
+                console.log(data);
+                if(data.obj)
+                    window.postMessage(JSON.stringify(data.obj[0]));
+            },
+            error:function(error){
+                alert(JSON.stringify(error));
+            }
+        });
+    })
+    $('.tishi_2').click(function(e){
 
         e.stopPropagation();
         console.log($(this).attr('name'))
@@ -331,18 +398,18 @@
         var hr  = now.getHours();
         var num=84;//环的半径
         context.beginPath();
-        context.moveTo(-60,-35)
-        context.lineTo(60,-35)
+        context.moveTo(-45,-36)
+        context.lineTo(45,-36)
         context.strokeStyle="#fff";
-        context.lineWidth= 0.3;
+        context.lineWidth= 0.1;
         context.stroke()
         context.closePath();//时间列表上的上横线
 
         context.beginPath();
-        context.moveTo(-60,-15)
-        context.lineTo(60,-15)
+        context.moveTo(-45,-16)
+        context.lineTo(45,-16)
         context.strokeStyle="#fff";
-        context.lineWidth= 0.3;
+        context.lineWidth= 0.1;
         context.stroke()
         context.closePath();//时间列表上的下横线
 
@@ -498,13 +565,12 @@
     }
     //提示气泡
     function tishiQipao(startTime,x,y){
+        var zongduantishiArr=[];
         for(var i=0; i<arr.length; i++){
             if(startTime==arr[i].startTime){
                 for(j=0; j<arr[i].timePeriods.length; j++){
-                    var title=arr[i].timePeriods[j].title;
-                    console.log(title);
 
-
+                    warnShow(arr[i].timePeriods[j].title,j,x,y)
                     $.ajax({
                         type:"post",
                         url:urls.TIMEPERIOD_GETTIMESTAGETHERAPYLIST,//获取时间段的推荐疗法
@@ -512,27 +578,37 @@
                             authorization: token
                         },
                         data:{
-                            timePeriod:title
+                            timePeriod:arr[i].timePeriods[j].title
                         },
                         success:function(data){
 
-
                             if(data.obj){
-                                $('.tishi').attr('name',data.obj[0].timePeriod);
-                                $('.warn').show();
-                                $('.warn').css({top:y+45});
-                                $('.triangle-up').css({left:x-25})
-                                $('.tishi').html(data.obj[0].threeCharacterClassic);
-                                return false;
+                                zongduantishiArr.push(data.obj);
                             }
                         },
                         error:function(){
 
                         }
                     });
+
                 }
             }
         }
+        setTimeout(function(){
+            console.log(zongduantishiArr)
+            for(var i=0; i<zongduantishiArr.length; i++){
+                 $('.tishi_'+i+'').attr('name',zongduantishiArr[i][0].timePeriod);
+                 $('.warn_'+i+'').show();
+                 $('.warn_'+i+'').css({top:y+45+(i*35)});
+                 $('.triangle-up').css({left:x-25})
+                 $('.tishi_'+i+'').html(zongduantishiArr[i][0].threeCharacterClassic);
+            }
+        },100)
+
+    }
+
+    function warnShow(title,index,x,y){
+
     }
     //文本时间转度数
     function blueTime_timeToAngle(time){
@@ -781,14 +857,18 @@
                     weizhi=i
                     status=true;
                 }
-                console.log(index)
-               /* if(index>yundongObj.obj[i].weizhi){
-                    weizhi=i
-                    console.log(weizhi)
-                }*/
+
+                if(index>yundongObj.obj[i].weizhi){
+                    weizhi=i+1
+                    if(weizhi>=yundongObj.obj.length){
+                        weizhi=yundongObj.obj.length-1;
+                    }
+
+                }
+
             }
 
-
+            console.log(weizhi)
             var img=yundongObj.obj[weizhi].img
             $(".dongzuo").find('img').attr('src',urls.IMGSRC+yundongObj.obj[weizhi].img);
             $('.swiper-wrapper').html(str);

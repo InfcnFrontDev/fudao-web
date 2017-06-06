@@ -52,7 +52,7 @@
 					 },
 					 success:function(data){
 					 	if(data.obj)
-						 str+='<p>'+a+':'+data.obj[0].name+'</p>'
+						 str+='<p>'+a+'：<span style="color:#a1b553;">'+data.obj[0].name+'</span></p>'
 
 					 },
 					 error:function(){
@@ -73,7 +73,7 @@
 							 authorization: token
 						 },
 						 data:{
-							 timePeriod:$(this).text().split(':')[0]
+							 timePeriod:$(this).text().split('：')[0]
 						 },
 						 success:function(data){
 						 	if(data.obj)
