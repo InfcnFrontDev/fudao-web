@@ -2,11 +2,12 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" enable-background="new 0 0 595.28 841.89" xml:space="preserve">
+	 width="595.281px" height="841.89px" viewBox="0 0 595.281 841.89" enable-background="new 0 0 595.281 841.89"
+	 xml:space="preserve">
 <g id="all">
 	<g id="renwu">
 		
-			<image overflow="visible" width="436" height="624" id="tu" xlink:href="data:image/jpeg;base64,/9j/4QsHRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
+			<image overflow="visible" enable-background="new    " width="436" height="624" id="tu" xlink:href="data:image/jpeg;base64,/9j/4QsHRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
 agEoAAMAAAABAAIAAAExAAIAAAAdAAAAcgEyAAIAAAAUAAAAj4dpAAQAAAABAAAApAAAANAACvyA
 AAAnEAAK/IAAACcQQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKQAyMDE2OjExOjExIDE0OjUz
 OjE1AAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABtKADAAQAAAABAAACcAAAAAAAAAAGAQMAAwAA
@@ -1109,10 +1110,10 @@ j0nwwW0neHaFya37JuWyHUBdw6m0FTUNb7FwRI3f2dqhoaqj3ZTEwSIpqKYGw4YAbduwkwAZzKnu
 CwjMIjLQ4EJj/wDUuwI5/fO4hI4kLZ0XCTdy9k6YcaeXvSoc3KIFRbmBfbj/AJvupsK2h2Ztu1K6
 vLYr5RXvkA+3AN79Qtye1ydUmybAs1qLQkWsqhdpzznmZYwHbl7md3tyEp1007dNLQW1/H/lKW1u
 nNX+jOEMCczt7SXaqXqfU7hud6vrpzv50ymuNxnW8k6pJAOuPgbY2xt7bknp6PhWKy260yy2HlLa
-CmpwRDX/AMsL/9k=" transform="matrix(1 0 0 1 80.0674 94.1172)">
+CmpwRDX/AMsL/9k=" transform="matrix(1 0 0 1 80.0674 94.1167)">
 		</image>
 		
-			<image overflow="visible" width="436" height="624" id="toufa" xlink:href="data:image/jpeg;base64,/9j/4QrDRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
+			<image overflow="visible" enable-background="new    " width="436" height="624" id="toufa" xlink:href="data:image/jpeg;base64,/9j/4QrDRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
 agEoAAMAAAABAAIAAAExAAIAAAAdAAAAcgEyAAIAAAAUAAAAj4dpAAQAAAABAAAApAAAANAACvyA
 AAAnEAAK/IAAACcQQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKQAyMDE2OjExOjExIDE0OjUy
 OjMwAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABtKADAAQAAAABAAACcAAAAAAAAAAGAQMAAwAA
@@ -2636,21 +2637,21 @@ pgJCWXAqKiBA4syroskS9PpFtU6n1J+arFtSwaflquuacZSzMVpuZcIl1RBQhQ6RxyDTZsW9TJm6
 Ks9MU342uSfhIl11pM94swulCqKRulwYAJUqORAOLHmqxfNsMS1qS80JhuRXWZ5yZfmJ9qc+iD1L
 piC3tQUxUpJEdDri8kVzkOoTv5Z1GenJv6st2XkVSbE7PNThlmVztWqrTq0BoI3lpIOuzpi3ph+T
 uKtrtll9qmoqVaEqyDMvomXXXW6DJ0UrX4qMswIZEHE0zSOOLUQmdnDUJpc/S2a0+9OGYVNCYXNV
-r6wmfERMKK09+CFaQwltpCG20JShCEJCEIQkQSlKUgJSlI0AyH/0wf8A/9k=" transform="matrix(1 0 0 1 74.0674 94.1172)">
+r6wmfERMKK09+CFaQwltpCG20JShCEJCEIQkQSlKUgJSlI0AyH/0wf8A/9k=" transform="matrix(1 0 0 1 74.0674 94.1167)">
 		</image>
 	</g>
 	<g id="shenti">
 	</g>
 	<g id="jingluo">
-		<line id="Governor_2_" fill="none" stroke="#925F33" stroke-miterlimit="10" x1="298" y1="196" x2="298" y2="585"/>
-		<polyline id="Bladder-1_2_" fill="none" stroke="#D31177" stroke-miterlimit="10" points="278,238 278,253 263,258 263,583 		"/>
-		<path id="Gallbladder-1_2_" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M210,569l18-332c0,0-16,18-21,32
+		<line id="Governor" fill="none" stroke="#925F33" stroke-miterlimit="10" x1="298" y1="196" x2="298" y2="585"/>
+		<polyline id="Bladder-1" fill="none" stroke="#D31177" stroke-miterlimit="10" points="278,238 278,253 263,258 263,583 		"/>
+		<path id="Gallbladder-1" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M210,569l18-332c0,0-16,18-21,32
 			s-12,155-42,266"/>
-		<path id="Stomach-1_2_" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M150,296c0,0,13,16,13,37"/>
-		<polyline id="Bladder-2_2_" fill="none" stroke="#D31177" stroke-miterlimit="10" points="318,238 318,253 333,258 333,583 		"/>
-		<path id="Gallbladder-2_2_" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M386,569l-18-332c0,0,16,18,21,32
+		<path id="Stomach-1" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M150,296c0,0,13,16,13,37"/>
+		<polyline id="Bladder-2" fill="none" stroke="#D31177" stroke-miterlimit="10" points="318,238 318,253 333,258 333,583 		"/>
+		<path id="Gallbladder-2" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M386,569l-18-332c0,0,16,18,21,32
 			s12,155,42,266"/>
-		<path id="Stomach-2_2_" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M449,296c0,0-13,16-13,37"/>
+		<path id="Stomach-2" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M449,296c0,0-13,16-13,37"/>
 	</g>
 	<g id="xuewei">
 		
@@ -2690,17 +2691,17 @@ r6wmfERMKK09+CFaQwltpCG20JShCEJCEIQkQSlKUgJSlI0AyH/0wf8A/9k=" transform="matrix(
 		
 			<circle id="ST8-1" fill="#040000" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="162.5" cy="332.329" r="3.329"/>
 		
-			<circle id="BL3-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="318.209" cy="252.999" r="3.329"/>
+			<circle id="BL3-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="318.208" cy="252.999" r="3.329"/>
 		
-			<circle id="BL4-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.459" cy="257.999" r="3.329"/>
+			<circle id="BL4-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.458" cy="257.999" r="3.329"/>
 		
-			<circle id="BL5-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.459" cy="289.749" r="3.329"/>
+			<circle id="BL5-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.458" cy="289.749" r="3.329"/>
 		
-			<circle id="BL6-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.459" cy="341.999" r="3.329"/>
+			<circle id="BL6-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.458" cy="341.999" r="3.329"/>
 		
-			<circle id="BL7-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.459" cy="420.999" r="3.329"/>
+			<circle id="BL7-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.458" cy="420.999" r="3.329"/>
 		
-			<circle id="BL8-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.959" cy="503.498" r="3.329"/>
+			<circle id="BL8-2" fill="#040000" stroke="#D31577" stroke-width="0.75" stroke-miterlimit="10" cx="332.958" cy="503.499" r="3.329"/>
 		
 			<circle id="GB15-2" fill="#040000" stroke="#F8B62D" stroke-width="0.75" stroke-miterlimit="10" cx="369.75" cy="267.827" r="3.328"/>
 		
@@ -2708,18 +2709,17 @@ r6wmfERMKK09+CFaQwltpCG20JShCEJCEIQkQSlKUgJSlI0AyH/0wf8A/9k=" transform="matrix(
 		
 			<circle id="GB17-2" fill="#040000" stroke="#F8B62D" stroke-width="0.75" stroke-miterlimit="10" cx="376.25" cy="401.327" r="3.328"/>
 		
-			<circle id="GB18-2" fill="#040000" stroke="#F8B62D" stroke-width="0.75" stroke-miterlimit="10" cx="380.25" cy="464.327" r="3.328"/>
+			<circle id="GB18-2" fill="#040000" stroke="#F8B62D" stroke-width="0.75" stroke-miterlimit="10" cx="380.25" cy="464.328" r="3.328"/>
 		
 			<circle id="GB13-2" fill="#040000" stroke="#F8B62D" stroke-width="0.75" stroke-miterlimit="10" cx="389.75" cy="273.827" r="3.329"/>
 		
 			<circle id="ST8-2" fill="#040000" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="435.25" cy="332.327" r="3.329"/>
 		<circle id="EX-HN1-1" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298" cy="496" r="1.891"/>
+		<circle id="EX-HN1-2" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298" cy="433" r="1.891"/>
 		
-			<circle id="EX-HN1-2_1_" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298" cy="433" r="1.891"/>
+			<circle id="EX-HN1-3" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="332.916" cy="461.167" r="1.891"/>
 		
-			<circle id="EX-HN1-2_2_" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="332.916" cy="461.167" r="1.891"/>
-		
-			<circle id="EX-HN1-2_3_" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="263" cy="461.167" r="1.891"/>
+			<circle id="EX-HN1-4" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="263" cy="461.167" r="1.891"/>
 	</g>
 </g>
 </svg>

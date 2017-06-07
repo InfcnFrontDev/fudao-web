@@ -45,7 +45,7 @@
     var disease = getQueryString('disease');
     var token = getQueryString('token');
     var pageKey = getQueryString('type');
-    var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
+    var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweimap, buweiid = [], meridians, acupoints, organs, circulatorySystems
     var url = pageKey == 'disease' ?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
     var data = pageKey == 'disease' ?  {diseaseType: diseaseType,disease: disease} : {exceptType: diseaseType,expect: disease}
     $("#btn").on('click',function () {
@@ -69,7 +69,8 @@
                 d = diseaseobj.circulatorysystems
                 jingluomap = a[0] && a[0].list[0] ?  a[0].list[0].map : 'svg/aged/nan/qian.svg'
                 xueweimap = b[0] && b[0].list[0] ?  b[0].list[0].map : 'svg/aged/nan/qian.svg'
-                xunhuanmap =d[0] && d[0].list[0] ?  d[0].list[0].map : 'svg/aged/nan/qian.svg'
+				buweimap =c[0] && c[0].list[0] ?  c[0].list[0].map : 'svg/aged/nan/qian.svg'
+				xunhuanmap =d[0] && d[0].list[0] ?  d[0].list[0].map : 'svg/aged/nan/qian.svg'
                 Object.keys(a).forEach(function (item) {
                     a[item].list.forEach(function (items) {
                         jingluoid.push(items.code)
@@ -137,7 +138,7 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: xunhuanmap,
+            map: buweimap,
             buweiid: buweiid,
             noshow: true
         });

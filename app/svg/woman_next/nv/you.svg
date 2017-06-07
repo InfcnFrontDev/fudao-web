@@ -194,33 +194,33 @@ iDqItWPPTJH7jKrmnzXWDzK+ccX/AIzd2vyJhHTWyxRIscaCiooCqBsAH/SP/9k=" transform="mat
 			l4.667-3.334c0,0-10.334-22.333-8.667-36.666l28,21.333c0,0,6.668,9.334,13.334,4s-2-15.333-2-15.333s1-3.334-1.334-5.334
 			c-6.334-8.333-26-35.333-26-35.333s1.667-6.665-1.333-11.333c-3-4.668-26.667-44.667-17.333-62.667c-3.334,0-6-1.333-6-1.333
 			s-2-5.333,11.333-8.667C303,364,316.334,375.334,351,366C385.667,356.667,392.333,292.001,392.333,292.001z"/>
-		<path id="jing_1_" display="none" fill="#FFFFFF" d="M292,366.667c0,0-37.333-9.667-67-37.667c2.333,1,9,18.667,9,28.667
+		<path id="jing" display="none" fill="#FFFFFF" d="M292,366.667c0,0-37.333-9.667-67-37.667c2.333,1,9,18.667,9,28.667
 			s-3.334,22-3.334,22S258,397.667,283,397c-4.667-11.333,1.667-20,1.667-20s-4.194-0.588-6.097-1.127
 			C279.667,365,292,366.667,292,366.667z"/>
-		<path id="tou_1_" display="none" fill="#FFFFFF" d="M290.333,367.333c14.667-4,31.333,10,62.667-0.667
+		<path id="tou" display="none" fill="#FFFFFF" d="M290.333,367.333c14.667-4,31.333,10,62.667-0.667
 			c31.333-10.667,39.333-73.333,39.333-73.333s-14.667-5.333-15.333-18c-0.667-12.667,10.666-27.333,12-44
 			c0-6,26.666-86.667-102-109.333c-138.667-20-122.666,126.667-117.333,126C143,294,171,352,171,352s10.001,50.666,8.667,64.667
 			c23.333,26,76.666,12.667,76.666,12.667l-4.666-38.667c0,0-16-4.667-20.667-10c8-23.333-6-50.667-6-50.667
 			S264.334,360,290.333,367.333z"/>
-		<path id="xiong_1_" display="none" fill="#FFFFFF" d="M282.333,398c0,0,15.333,40.667,21.333,46c6,5.333-6,20.667-10.666,22.667
+		<path id="xiong" display="none" fill="#FFFFFF" d="M282.333,398c0,0,15.333,40.667,21.333,46c6,5.333-6,20.667-10.666,22.667
 			c-18.667,9.333-50.667,0-50.667,0L241,460c0,0,9.999-14.001,19.333-22.667c10-16-6-30.667-6-30.667l-2-15.333L282.333,398z"/>
-		<path id="zuobi_3_" display="none" fill="#FFFFFF" d="M253.667,408c0,0,17.333,9.999,5.333,29.333
+		<path id="zuobi" display="none" fill="#FFFFFF" d="M253.667,408c0,0,17.333,9.999,5.333,29.333
 			c-16.667,18.667-24,33.334-24,33.334s-12,26-14.667,44.666C212.333,520,201,512,201,512s-2-44.667,23.333-78c6.667,2,32-4,32-4
 			L253.667,408z"/>
-		<path id="zuoshou_1_" display="none" fill="#FFFFFF" d="M216.333,518.667c0,0-4.667,11.999-14,8.666s0-12.666,0-12.666
+		<path id="zuoshou" display="none" fill="#FFFFFF" d="M216.333,518.667c0,0-4.667,11.999-14,8.666s0-12.666,0-12.666
 			L216.333,518.667z"/>
-		<path id="zuobi_2_" display="none" fill="#FFFFFF" d="M305,452.667l26,34c0,0-4.667,16.666-14,14.666
+		<path id="zuobi" display="none" fill="#FFFFFF" d="M305,452.667l26,34c0,0-4.667,16.666-14,14.666
 			c-9.334-2-26.667-19.333-26.667-19.333s-0.667-8.667,2-14C299,465.333,305,452.667,305,452.667z"/>
-		<path id="youshou_1_" display="none" fill="#FFFFFF" d="M330.333,492c0,0,8,10.667,2,16S319,504,319,504L330.333,492z"/>
-		<path id="fu_2_" display="none" fill="#FFFFFF" d="M292.333,468c0,0-4.667,21.333,2.667,39.333
+		<path id="youshou" display="none" fill="#FFFFFF" d="M330.333,492c0,0,8,10.667,2,16S319,504,319,504L330.333,492z"/>
+		<path id="fu" display="none" fill="#FFFFFF" d="M292.333,468c0,0-4.667,21.333,2.667,39.333
 			C268.333,514,238.333,504,238.333,504s3.334-16.667,1.334-38C272.333,478.667,292.333,468,292.333,468z"/>
-		<path id="tun_1_" display="none" fill="#FFFFFF" d="M295,507.333c3.333,5.334,6,11.334,6,11.334l-6,4.666l-2,31.334
+		<path id="tun" display="none" fill="#FFFFFF" d="M295,507.333c3.333,5.334,6,11.334,6,11.334l-6,4.666l-2,31.334
 			c0,0-33.333,15.333-59.333-4c-6-18,3.333-32,3.333-32L234.333,514l4.667-8C239,506,273.667,514,295,507.333z"/>
-		<path id="datui_1_" display="none" fill="#FFFFFF" d="M293,554.667c0,0,0.667,55.333,0,63.333c-36.667,22-50,0.667-50,0.667
+		<path id="datui" display="none" fill="#FFFFFF" d="M293,554.667c0,0,0.667,55.333,0,63.333c-36.667,22-50,0.667-50,0.667
 			s-4.667-34.667-10-68C262.333,571.333,293,554.667,293,554.667z"/>
-		<path id="xiaotui_1_" display="none" fill="#FFFFFF" d="M281,626.667c0,0-20.667,3.333-28,0c-4,26,6,64.667,6,64.667l16,2
+		<path id="xiaotui" display="none" fill="#FFFFFF" d="M281,626.667c0,0-20.667,3.333-28,0c-4,26,6,64.667,6,64.667l16,2
 			L281,626.667z"/>
-		<path id="jiao_1_" display="none" fill="#FFFFFF" d="M275,693.334c0,0,22,8.666,22.667,12.666S293,710.667,293,710.667
+		<path id="jiao" display="none" fill="#FFFFFF" d="M275,693.334c0,0,22,8.666,22.667,12.666S293,710.667,293,710.667
 			s4,5.999-6,9.333s-26.001-6.666-31.334-13.333S259,691.334,259,691.334L275,693.334z"/>
 	</g>
 	<g id="jingluo" display="none">
@@ -295,38 +295,38 @@ iDqItWPPTJH7jKrmnzXWDzK+ccX/AIzd2vyJhHTWyxRIscaCiooCqBsAH/SP/9k=" transform="mat
 			<path fill="none" stroke="#D31177" stroke-miterlimit="10" stroke-dasharray="5,5" d="M279.333,284.003
 				C309.999,296.67,355,299.337,355,299.337s-38.167,21.667-71.667,22.667c-10,19-25,33-34.667,33"/>
 		</g>
-		<g id="Dai_1_" display="inline">
+		<g id="Dai" display="inline">
 			<path fill="none" stroke="#898989" stroke-miterlimit="10" d="M240.25,478.75C254.75,467,266,484,266,484s14.5,23.5,15.25,36
 				c0,0,11-1.5,12.75-11.25"/>
 		</g>
 	</g>
 	<g id="xuewei" display="none">
 		
-			<circle id="GV27_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="387.891" cy="316.333" r="1.891"/>
+			<circle id="GV27" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="387.891" cy="316.333" r="1.891"/>
 		
-			<circle id="GV26_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="390.224" cy="307" r="1.891"/>
+			<circle id="GV26" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="390.224" cy="307" r="1.891"/>
 		
-			<circle id="GV25_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="392.108" cy="293.614" r="1.891"/>
+			<circle id="GV25" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="392.108" cy="293.614" r="1.891"/>
 		
-			<circle id="GV24_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="365.108" cy="175.219" r="1.891"/>
+			<circle id="GV24" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="365.108" cy="175.219" r="1.891"/>
 		
-			<circle id="GV23_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="349.5" cy="160.391" r="1.891"/>
+			<circle id="GV23" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="349.5" cy="160.391" r="1.891"/>
 		
-			<circle id="GV22_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="320.333" cy="144.558" r="1.891"/>
+			<circle id="GV22" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="320.333" cy="144.558" r="1.891"/>
 		
-			<circle id="GV21_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="274.333" cy="136.225" r="1.891"/>
+			<circle id="GV21" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="274.333" cy="136.225" r="1.891"/>
 		
-			<circle id="GV20_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="220.058" cy="153.5" r="1.891"/>
+			<circle id="GV20" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="220.058" cy="153.5" r="1.891"/>
 		
-			<circle id="GV19_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="184.666" cy="194.558" r="1.891"/>
+			<circle id="GV19" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="184.666" cy="194.558" r="1.891"/>
 		
-			<circle id="GV18_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="178.5" cy="248.724" r="1.891"/>
+			<circle id="GV18" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="178.5" cy="248.724" r="1.891"/>
 		
-			<circle id="GV17_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="192.5" cy="286.276" r="1.891"/>
+			<circle id="GV17" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="192.5" cy="286.276" r="1.891"/>
 		
-			<circle id="GV16_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="215" cy="313.442" r="1.891"/>
+			<circle id="GV16" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="215" cy="313.442" r="1.891"/>
 		
-			<circle id="GV15_1_" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="229.834" cy="322.557" r="1.891"/>
+			<circle id="GV15" display="inline" fill="#040000" stroke="#926034" stroke-width="0.75" stroke-miterlimit="10" cx="229.834" cy="322.557" r="1.891"/>
 		
 			<circle id="GB14-2" display="inline" fill="#040000" stroke="#ECA123" stroke-width="0.75" stroke-miterlimit="10" cx="366.333" cy="222.791" r="1.875"/>
 		

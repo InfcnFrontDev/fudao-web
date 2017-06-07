@@ -1768,16 +1768,16 @@ xVp2+68vv6TbqhYMfdPIs7JlnZAkH2VAI/8Aepf/2Q==" transform="matrix(1 0 0 1 75.5 71.
 		</image>
 	</g>
 	<g id="jingluo">
-		<line id="Governor_2_" fill="none" stroke="#925F33" stroke-miterlimit="10" x1="298" y1="208" x2="298" y2="544"/>
-		<polyline id="Bladder-1_2_" fill="none" stroke="#D31177" stroke-miterlimit="10" points="278,228.5 278,253 263,258 263,542.5 		
+		<line id="Governor" fill="none" stroke="#925F33" stroke-miterlimit="10" x1="298" y1="208" x2="298" y2="544"/>
+		<polyline id="Bladder-1" fill="none" stroke="#D31177" stroke-miterlimit="10" points="278,228.5 278,253 263,258 263,542.5 		
 			"/>
-		<path id="Gallbladder-1_2_" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M210.5,527L228,237c0,0-16,18-21,32
+		<path id="Gallbladder-1" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M210.5,527L228,237c0,0-16,18-21,32
 			s-4.5,121.5-34.5,232.5"/>
-		<path id="Stomach-1_2_" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M153,309c0,0,6,3,6,24"/>
-		<polyline id="Bladder-2_2_" fill="none" stroke="#D31177" stroke-miterlimit="10" points="318,229 318,253 333,258 333,542 		"/>
-		<path id="Gallbladder-2_2_" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M384.5,522L368,237c0,0,16,18,21,32
+		<path id="Stomach-1" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M153,309c0,0,6,3,6,24"/>
+		<polyline id="Bladder-2" fill="none" stroke="#D31177" stroke-miterlimit="10" points="318,229 318,253 333,258 333,542 		"/>
+		<path id="Gallbladder-2" fill="none" stroke="#EBAC22" stroke-miterlimit="10" d="M384.5,522L368,237c0,0,16,18,21,32
 			s2.5,108.5,32.5,219.5"/>
-		<path id="Stomach-2_2_" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M440,313c0,0-4-1-4,20"/>
+		<path id="Stomach-2" fill="none" stroke="#B81C25" stroke-miterlimit="10" d="M440,313c0,0-4-1-4,20"/>
 	</g>
 	<g id="xuewei">
 		
@@ -1842,7 +1842,7 @@ xVp2+68vv6TbqhYMfdPIs7JlnZAkH2VAI/8Aepf/2Q==" transform="matrix(1 0 0 1 75.5 71.
 			<circle id="ST8-2" fill="#040000" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="435.25" cy="332.327" r="3.329"/>
 		<circle id="EX-HN1-2" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298" cy="496" r="1.891"/>
 		
-			<circle id="EX-HN1-1_1_" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298" cy="433" r="1.891"/>
+			<circle id="EX-HN1-1" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298" cy="433" r="1.891"/>
 		
 			<circle id="EX-HN1-4" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="332.916" cy="461.167" r="1.891"/>
 		
