@@ -335,7 +335,7 @@
                 id: order[0],
                 score: obj.value,
                 answer: order[1],
-                type:questionnaireType[0],
+                type:questionnaireType[0]==0?_json[index-1].type:questionnaireType[0],
                 title:order[2]
             };
             localStorage.setItem(key, JSON.stringify(answers));
@@ -346,7 +346,7 @@
             id: order[0],
             score: obj.value,
             answer: order[1],
-            type:questionnaireType[0],
+            type:questionnaireType[0]==0?_json[index-1].type:questionnaireType[0],
             title:order[2]
         };
         localStorage.setItem(key, JSON.stringify(answers));
@@ -387,7 +387,7 @@
                         id: _json[i].id,
                         score: _json[i].asnwerScore[0],
                         answer: 'A',
-                        type:questionnaireType[0],
+                        type:questionnaireType[0]==0?_json[i].type:questionnaireType[0],
                         title:_json[i].title,
                     }
                 }
