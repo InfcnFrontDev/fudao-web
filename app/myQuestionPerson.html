@@ -45,6 +45,9 @@
     var disease = getQueryString('disease');
     var token = getQueryString('token');
     var pageKey = getQueryString('type');
+    var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
+    var url = pageKey === 'disease' ?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
+    var data = pageKey === 'disease' ?  {diseaseType: diseaseType,disease: disease} : {expect: disease}
     var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweimap, buweiid = [], meridians, acupoints, organs, circulatorySystems
     var url = pageKey == 'disease' ?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
     var data = pageKey == 'disease' ?  {diseaseType: diseaseType,disease: disease} : {exceptType: diseaseType,expect: disease}
