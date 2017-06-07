@@ -23,14 +23,17 @@
     <button id="xwbtn">相关<br>穴位</button>
     <button id="bwbtn">相关<br>部位</button>
     <button id="xhbtn">循环<br>系统</button>
-    <!--<input type="button" value="经络2" id="jlbtn2">
-    <input type="button" value="穴位"  id="xwbtn">
-    <input type="button" value="部位"  id="bwbtn">
-    <input type="button" value="循环系统" id="xhbtn">-->
 </div>
 
 <div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%;">
 </div>
+<div  style="width: 100%; height: 150px;  position: absolute; bottom: 0; left: 0; font-size: 14px";>
+    <p id="detail" style="padding: 20px"></p>
+    <div id="btn" style="width: 80px; height: 30px; background-color: #A1CC00; border-radius: 5px; margin: 0 auto; text-align: center">
+        <span style="color: #FFFFFF; line-height: 30px">教我自疗</span>
+    </div>
+</div>
+
 
 <script>
     function getQueryString(key) {
@@ -41,18 +44,21 @@
     var diseaseType = getQueryString('diseaseType');
     var disease = getQueryString('disease');
     var token = getQueryString('token');
-    var diseaseobj, jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
+    var pageKey = getQueryString('type');
+    var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
+    var url = pageKey == 'disease' ?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
+    var data = pageKey == 'disease' ?  {diseaseType: diseaseType,disease: disease} : {exceptType: diseaseType,expect: disease}
+    $("#btn").on('click',function () {
+        window.postMessage(type);
+    })
 
     $.ajax({
         type: "get",
-        url: urls.DISEASE_RELEVANT,
+        url: url,
         headers: {
             authorization: token
         },
-        data: {
-            diseaseType: diseaseType,
-            disease: disease,
-        },
+        data: data,
         success: function (msg) {
             if (msg.ok) {
                 diseaseobj = msg.obj
@@ -61,9 +67,9 @@
                 b = diseaseobj.acupoints
                 c = diseaseobj.organs
                 d = diseaseobj.circulatorysystems
-                jingluomap = a[0].list[0] ?  a[0].list[0].map : 'qian.svg'
-                xueweimap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
-                xunhuanmap = b[0].list[0] ?  b[0].list[0].map : 'qian.svg'
+                jingluomap = a[0] && a[0].list[0] ?  a[0].list[0].map : 'svg/aged/nan/qian.svg'
+                xueweimap = b[0] && b[0].list[0] ?  b[0].list[0].map : 'svg/aged/nan/qian.svg'
+                xunhuanmap =d[0] && d[0].list[0] ?  d[0].list[0].map : 'svg/aged/nan/qian.svg'
                 Object.keys(a).forEach(function (item) {
                     a[item].list.forEach(function (items) {
                         jingluoid.push(items.code)
@@ -90,91 +96,59 @@
                 console.log(xunhuanid)
 
                 var map = new RentiMap("#mapDiv", {
-                    map: 'svg/' + jingluomap,
+                    map: jingluomap,
                     jingluoid: jingluoid,
                     noshow: true
                 });
+                $('#detail').html(a[0] ? a[0].correlativity : '&nbsp;&nbsp;&nbsp;&nbsp;通过对自由基显影技术的改进与应用，在生物体内发现与经络吻合的清晰的线性路线，是目前全世界获得最清晰的经络显影照片')
+
             }
         },
         error: function (err) {
             console.log(err)
         }
     });
-    //    var obj = {
-    //        "meridians": {
-    //            "id": "Liver-1、Liver-2、Spleen-1、Spleen-2、Kidney-1、Kidney-2",
-    //            "name": "足厥阴肝经,足少阴肾经",
-    //            "relation": "中毒的病因主要是肝肾阴亏。",
-    //            "map": "laoren-nan-qian",
-    //        },
-    //        "acupoints": {
-    //            "id": "GV16、CV23、GB31-1、GB31-2",
-    //            "name": "风池,太溪,复溜,涌泉",
-    //            "relation": "滋养肝肾。",
-    //            "map": "laoren-nan-qian",
-    //        },
-    //        "organs": {
-    //            "id": "danao",
-    //            "name": "咽,食管",
-    //            "relation": "老年人患食管病者较多，加上进餐时情绪激动，容易引起食管痉挛。老年人的脑血管病变发生率高，咽反射迟钝，容易造成吞咽动作不协调而噎食。",
-    //            "map": "laoren-nan-rentibuwei-xunhuanxitong",
-    //        },
-    //        "circulatorySystems": {
-    //            "id": "shenjing-s",
-    //            "name": "心血管系统",
-    //            "relation": "机体接触各种毒物，引发组织结构和功能损害、代谢障碍而发生疾病或死亡者，称为中毒。",
-    //            "map": "laoren-nan-rentibuwei-xunhuanxitong",
-    //        }
-    //    }
-    //    meridians = obj.meridians
-    //    acupoints = obj.acupoints
-    //    organs = obj.organs
-    //    circulatorySystems = obj.circulatorySystems
-    //
-    //    jingluomap = meridians.map ? meridians.map.split('、')[0] : null
-    //    jingluoid = meridians.id ? meridians.id.split('、') : null
-    //
-    //    xueweimap = acupoints.map ? acupoints.map.split('、')[0] : null
-    //    xueweiid = acupoints.id ? acupoints.id.split('、') : null
-    //
-    //    xunhuanmap = circulatorySystems.map;
-    //    xunhuanid = circulatorySystems.id ? circulatorySystems.id.split('、') : null
-    //    buweiid = organs.id ? organs.id.split('、') : null
-
 
     var jlbtnclick = function () {
+        type = '1'
+        $('#detail').html(diseaseobj.meridians[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + jingluomap,
+            map: jingluomap,
             jingluoid: jingluoid,
             noshow: true
         });
-
     }
     var xwbtnclick = function () {
+        type = '2'
+        $('#detail').html(diseaseobj.acupoints[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xueweimap,
+            map: xueweimap,
             xueweiid: xueweiid,
             noshow: true
         });
     }
     var bwbtnclick = function () {
+        type = '3'
+        $('#detail').html(diseaseobj.organs[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap,
+            map: xunhuanmap,
             buweiid: buweiid,
             noshow: true
         });
     }
     var xhbtnclick = function () {
+        type = '4'
+        $('#detail').html(diseaseobj.circulatorysystems[0].correlativity)
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: 'svg/' + xunhuanmap,
+            map: xunhuanmap,
             xunhuanid: xunhuanid,
             noshow: true
 

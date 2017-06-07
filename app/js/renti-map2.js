@@ -18,7 +18,12 @@ var $popover;
 			var $jingluo = $("#jingluo");
 			var $xuewei = $("#xuewei");
             $xuewei.css('display','block')
+            $jingluo.css('display','block')
             var $rentibuwei = $('#rentibuwei');
+
+
+            $("image").css('display','none')
+
 
 			function clickXuewei() {
 				var xwid = $(this).attr('id');
@@ -166,7 +171,7 @@ var $popover;
 	};
 
 	var defaults = {
-		map: 'svg/fudaye_front.svg',
+		map: 'svg/aged/nan/qian.svg',
 		jingluoid: true,
 		xueweiid: true,
 		disease: '痴呆'

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>我的健康环</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link rel="stylesheet" href="css/global.css">
 	<script src="js/jquery.min.js"></script>
@@ -52,7 +52,7 @@
 					 },
 					 success:function(data){
 					 	if(data.obj)
-						 str+='<p>'+a+':'+data.obj[0].name+'</p>'
+						 str+='<p>'+a+'：<span style="color:#a1b553;">'+data.obj[0].name+'</span></p>'
 
 					 },
 					 error:function(){
@@ -73,7 +73,7 @@
 							 authorization: token
 						 },
 						 data:{
-							 timePeriod:$(this).text().split(':')[0]
+							 timePeriod:$(this).text().split('：')[0]
 						 },
 						 success:function(data){
 						 	if(data.obj)
