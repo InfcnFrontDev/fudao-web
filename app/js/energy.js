@@ -7,7 +7,7 @@ var city = "北京市";
 var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
-var avg_zr = 1,avg_rw = 1,avg_gr = 1,avg_qg = 1;
+var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2;
 var ii;
 $(document).ready(function(){
     if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
@@ -419,9 +419,32 @@ function initEchart_bar_detail(xAxis,datas,colorList){
 
 function emotionSel(){
     if($('#emotionSel').val() == '28'){
-
+        $('[name=emo_22]').each(function(){
+            $(this).css('display','none');
+        });
+        $('[name=emo_23]').each(function(){
+            $(this).css('display','none');
+        });
+        $('[name=emo_24]').each(function(){
+            $(this).css('display','none');
+        });
+        $('[name=emo_25]').each(function(){
+            $(this).css('display','none');
+        });
+    } else {
+        $('[name=emo_22]').each(function(){
+            $(this).css('display','block');
+        });
+        $('[name=emo_23]').each(function(){
+            $(this).css('display','block');
+        });
+        $('[name=emo_24]').each(function(){
+            $(this).css('display','block');
+        });
+        $('[name=emo_25]').each(function(){
+            $(this).css('display','block');
+        });
     }
-
 }
 
 /**
@@ -445,6 +468,11 @@ function quesTab_Nav_click(v1,v2){
  * @return {[type]} [description]
  */
 function tance(){
+    if(avg_gr > 2 && avg_qg == 2){
+        quesTab_Nav_click('emotion','peo');
+    } else {
+        quesTab_Nav_click('peo','emotion');
+    }
     $('#shadeDiv').css('display','block');
     $('#peoForm').css('height',($('#HBox').css('height').replace("px",""))-95+"px");
     $('#emotionForm').css('height',($('#HBox').css('height').replace("px",""))-95+"px");
@@ -631,9 +659,9 @@ function readSurname(type){
 }
 
 function readQuestionJson(){
-    var html = '';
-    var indx = 0;
     $.getJSON("json/questionnarie_peo.json",function(data){
+        var html = '';
+        var indx = 0;
         _.forEach(data, function(n, key1) { // 循环对象
             _(n).forEach(function(n2) { // 循环数组
                 _.forEach(n2, function(n3, key2) { // 循环对象
@@ -654,28 +682,28 @@ function readQuestionJson(){
         });
         $('#peoTab_').html(html);
     });
-    indx = 0;
-    html = '';
     $.getJSON("json/questionnarie_emo.json",function(data){
+        var html2 = '';
+        var indx2 = 0;
         _.forEach(data, function(n, key1) { // 循环对象
             _(n).forEach(function(n2) { // 循环数组
                 _.forEach(n2, function(n3, key2) { // 循环对象
                     if(key2 != 'weight') {
-                        indx++;
-                        html += '<tr><td class="t_fr wid_p40">'+ indx +' . </td>'
+                        indx2++;
+                        html2 += '<tr name="emo_'+ indx2 +'"><td class="t_fr wid_p40">'+ indx2 +' . </td>'
                             +'<td class="wid_p60">'+ key2 +'</td></tr>';
                         _(n3).forEach(function(n4) { // 循环数组
                             _.forEach(n4, function(n5, key3) { // 循环对象
-                                html += '<tr><td class="t_fr wid_p40"></td>'
+                                html2 += '<tr name="emo_'+ indx2 +'"><td class="t_fr wid_p40"></td>'
                                     +'<td class="wid_p60"><input name="'+ key2 +'" value="'+ n5
                                     +'" type="radio"/>'+ key3 +'</td></tr>';
-                            })
+                            });
                         });
-                    }
+                    };
                 });
             });
         });
-        $('#emotionTab').html(html);
+        $('#emotionTab').html(html2);
     });
 }
 
