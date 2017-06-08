@@ -34,8 +34,8 @@
 <div id="shadeDiv" class="shadeCss" @click="closePopupDiv">
     <div id="HBox" class="peoInfo zoomIn">
         <div style="height: 45px; line-height: 45px; font-size: 14px;">
-            <div id="quesTab_Nav_peo" class="quesTab_Nav fl " onclick="quesTab_Nav_click('peo','emotion');" style=" margin-left: -1px;">个人生活</div>
-            <div id="quesTab_Nav_emotion" class="quesTab_Nav fr quesTab_Nav_Sel" onclick="quesTab_Nav_click('emotion','peo');">情感关系</div>
+            <div id="quesTab_Nav_peo" class="quesTab_Nav fl " onclick="quesTab_Nav_click('peo','emotion');">日常</div>
+            <div id="quesTab_Nav_emotion" class="quesTab_Nav fr quesTab_Nav_Sel" onclick="quesTab_Nav_click('emotion','peo');">情感</div>
             <!--<div style="float: right; height: 45px;" onclick="closeTance()">
                 <img style="margin-top: 10px; margin-right: 10px; width: 25px; height: 25px;" src="img/close.png">
             </div>-->
@@ -78,10 +78,10 @@
                     <td><select id="nationSel"></select></td></tr>
                 <tr><td class="t_fr wid_p30">姓氏：</td>
                     <td><select class="mySelect" id="surnameSel"></select></td></tr>
-                <tr><td class="t_fr wid_p30">感情状态：</td><td><select id="emotionSel">
-                    <option value="28" selected="select">单身</option>
-                    <option value="58" style="height: 20px;">恋爱</option>
-                    <option value="78" style="height: 20px;">已婚</option>
+                <tr><td class="t_fr wid_p30">感情状态：</td><td><select id="emotionSel" onchange="emotionSel()" >
+                    <option value="28">单身</option>
+                    <option value="58">恋爱</option>
+                    <option value="78" selected="select">已婚</option>
                 </select></td></tr>
                 <tr><td class="t_fr wid_p30">宗教：</td><td><select id="religionSel">
                     <option value="50">佛教</option>

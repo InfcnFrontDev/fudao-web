@@ -2,10 +2,11 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" enable-background="new 0 0 595.28 841.89" xml:space="preserve">
+	 width="595.281px" height="841.89px" viewBox="0 0 595.281 841.89" enable-background="new 0 0 595.281 841.89"
+	 xml:space="preserve">
 <g id="all">
 	
-		<image display="none" overflow="visible" width="436" height="624" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA
+		<image display="none" overflow="visible" enable-background="new    " width="437" height="625" id="renwu" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA
 EAMCAwYAAAueAAAXTgAALeL/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX
 Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa
 JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAnEBtQMBIgACEQEDEQH/
@@ -211,60 +212,59 @@ EVlGcLtuuNtKdzN/CbMzGgGJtGqkEBReMDW+vKbSuaIgLMeYW1Otk94hYl+FK3C2ilqArTBGruYW
 Km9WHrtL4XM2Yw1MDHaoNCvVynMFNDKVjrzMaH0WzOC0TijgY3YEWhSNTHBE4Kg4km6pt3DZXoMq
 uR2gLaXUVv7wKx3q5yt6+U5SoJMTLJQblN/o4JJJarp0VlRvikIup8tn0865ZYzRhv5xzG2lgQVL
 SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
-/wDYj//Z" transform="matrix(1 0 0 1 71.667 109.2803)">
+/wDYj//Z" transform="matrix(0.9977 0 0 0.9984 71.667 109.2813)">
 	</image>
-	<g id="shenti_1_">
+	<g id="shenti">
 		<path fill="none" stroke="#727171" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 			M193,285.333c0,0-18.167-9.667-15.333-24S189,246,189,246s-24-49,20.5-93.5c48.667-47,130.666-28,140.833,3.5
-			c47.167,28.5,28,91.333,28,91.333S401.832,263,373.666,284c7.334,48-6,132-6,132L359,419.333c0,0,12,22.167,10,42.667
-			s-36,38-36,38s13.166,18.666,13.333,45.333S325,620.667,325,620.667l-7.334,4.666c0,0-8.166,53.167-14,66.668
-			c14.334,24.666,0.667,27.333,0.667,27.333s-7.666-1.334-10-8.667C291,722.333,281,720.001,281,720.001s-7.833-10.834,2-28.667
-			c-13.666-27.501-17.333-65.333-17.333-65.333L258.5,621.5c0,0-20.359-52.634-21.5-74.833c-1.5-29.167,14-51.333,14-51.333
+			c47.166,28.5,28,91.333,28,91.333S401.832,263,373.666,284c7.334,48-6,132-6,132L359,419.333c0,0,12,22.167,10,42.667
+			s-36,38-36,38s13.166,18.666,13.334,45.334C346.5,572,325,620.667,325,620.667l-7.334,4.666c0,0-8.166,53.166-14,66.668
+			c14.334,24.666,0.668,27.332,0.668,27.332s-7.667-1.334-10-8.666C291,722.333,281,720.001,281,720.001s-7.833-10.834,2-28.668
+			c-13.666-27.5-17.333-65.332-17.333-65.332L258.5,621.5c0,0-20.359-52.633-21.5-74.832c-1.5-29.168,14-51.334,14-51.334
 			s-34.167-15.502-37.333-30.668s10.667-42,10.667-42s-14-1-21.333-3.333C191,375.667,193,285.333,193,285.333z"/>
-		<path id="jing" display="none" fill="#FFFFFF" d="M271.5,357c0,0,2.25,13.75-7,21.25c-3.5,3.5,7.25,9.5,26,9s30.25-8,25.5-10
-			s-5.25-5.5-10.25-20.5C287.5,366,271.5,357,271.5,357z"/>
+		<path id="jing" display="none" fill="#FFFFFF" d="M271.5,357c0,0,2.25,13.75-7,21.25c-3.5,3.5,7.25,9.5,26,9
+			c18.75-0.5,30.25-8,25.5-10s-5.25-5.5-10.25-20.5C287.5,366,271.5,357,271.5,357z"/>
 		<path id="xiong" display="none" fill="#FFFFFF" d="M263.5,379.25c-2,0.25-18.75,7.75-21.25,11c9.5,16.75,10,47.5,6.75,54
 			s1.25,18.75,9,22c5.25,3.25,34.75,3,34.75,3s29.25,2.5,37-4.75s4.5-22.5,4.5-22.5s-0.75-43.25,11.5-49.5
 			c-3.75-4.5-31.5-18.25-28-14C315,384.25,281,395.75,263.5,379.25z"/>
-		<g id="fu_2_" display="none">
-			<path id="fu_1_" display="inline" fill="#FFFFFF" d="M261.5,468c0,0,25.75,16.25,25.75,20c1.25,1.75,11.75-1,14-0.25
+		<g id="fu" display="none">
+			<path id="fu" display="inline" fill="#FFFFFF" d="M261.5,468c0,0,25.75,16.25,25.75,20c1.25,1.75,11.75-1,14-0.25
 				c1.25-1,9.25-3.25,9.25-3.25l-1.75-2c0,0,13.25-12.25,18.75-16C323.75,468.75,307.25,473.5,261.5,468z"/>
-			<path display="inline" fill="#FFFFFF" d="M252.25,495.25c0,0-6,8.25-7.75,14.5s27.25,18,49.25,16.75s46-7.5,45.5-13.25
-				s-7-13.25-7-13.25l-7.25,2.75l-3.75-2.5l-2.5,1.25c0,0-3.5,13.75-16.25,13.25s-18.5-8.5-18.5-8.5s0,2.75-4.25,3.25
+			<path display="inline" fill="#FFFFFF" d="M252.25,495.25c0,0-6,8.25-7.75,14.5s27.25,18,49.25,16.75c22-1.25,46-7.5,45.5-13.25
+				s-7-13.25-7-13.25l-7.25,2.75l-3.75-2.5l-2.5,1.25c0,0-3.5,13.75-16.25,13.25c-12.75-0.5-18.5-8.5-18.5-8.5s0,2.75-4.25,3.25
 				C265.25,506,252.25,495.25,252.25,495.25z"/>
 		</g>
-		<path id="tun_1_" display="none" fill="#FFFFFF" d="M244.25,511c0,0,14,15.75,48,15.75s45.5-12.5,47.25-12.5
-			c8.5,17.25,5.5,46.25,5.5,46.25s-17.75,7.25-53.5,7.25s-51.5-10-53.25-11C233.25,529,244.25,511,244.25,511z"/>
-		<path id="datui_1_" display="none" fill="#FFFFFF" d="M238.25,556.75L258.5,622c0,0,11.5,9.75,35,9.75S325.25,621,325.25,621
-			L345,560.5c0,0-10.5,7.25-52.5,7.25S238.25,556.75,238.25,556.75z"/>
-		<path id="xiaotui_1_" display="none" fill="#FFFFFF" d="M265.5,626.5c0,0,4,41.5,16.75,64.75c3.25,3,10.75,0,10.75,0
+		<path id="tun" display="none" fill="#FFFFFF" d="M244.25,511c0,0,14,15.75,48,15.75c34,0,45.5-12.5,47.25-12.5
+			c8.5,17.25,5.5,46.25,5.5,46.25s-17.75,7.25-53.5,7.25c-35.75,0-51.5-10-53.25-11C233.25,529,244.25,511,244.25,511z"/>
+		<path id="datui" display="none" fill="#FFFFFF" d="M238.25,556.75L258.5,622c0,0,11.5,9.75,35,9.75
+			c23.5,0,31.75-10.75,31.75-10.75L345,560.5c0,0-10.5,7.25-52.5,7.25C250.5,567.75,238.25,556.75,238.25,556.75z"/>
+		<path id="xiaotui" display="none" fill="#FFFFFF" d="M265.5,626.5c0,0,4,41.5,16.75,64.75c3.25,3,10.75,0,10.75,0
 			s7.25,3.5,11.25,0C312,679,318.5,627,318.5,627L265.5,626.5z"/>
-		<path id="jiao_1_" display="none" fill="#FFFFFF" d="M282.25,691.25c0,0-10,26.25,1.75,29.5c9.25,2,10.5-10.25,10.5-10.25
-			s3.5,10.75,10.75,8.5s-1-26.75-1-26.75s-8,2-11.25-1C289,694.75,282.25,691.25,282.25,691.25z"/>
-		<path id="youshoubi_1_" display="none" fill="#FFFFFF" d="M242,391.25c-32,42.5-29.75,68-29,72.25c9.75,24.75,66.75,46,66.75,46
+		<path id="jiao" display="none" fill="#FFFFFF" d="M282.25,691.25c0,0-10,26.25,1.75,29.5c9.25,2,10.5-10.25,10.5-10.25
+			s3.5,10.75,10.75,8.5c7.25-2.25-1-26.75-1-26.75s-8,2-11.25-1C289,694.75,282.25,691.25,282.25,691.25z"/>
+		<path id="youshoubi" display="none" fill="#FFFFFF" d="M242,391.25c-32,42.5-29.75,68-29,72.25c9.75,24.75,66.75,46,66.75,46
 			s-1.75-14.25,7.5-21.5c-11.25-11.5-40.5-29.5-40.5-29.5s1.25-7.25-2.75-8.25c0.75-1.25,5.75-8.5,5.75-8.5S252.75,400.5,242,391.25
 			z"/>
 		<path id="zoushoubi" display="none" fill="#FFFFFF" d="M345.75,392.5c0,0-11.75,9.5-11.5,48.25c3.25,4.25,6.5,9.25,6.5,9.25
 			s-2.25,3.75-0.5,6s-31,24.25-30.25,26.75c3.75-1.75,18.5,3,15,20c2.75-1.25,38-12.5,43.75-39S345.75,392.5,345.75,392.5z"/>
-		<path id="zuoshou" display="none" fill="#FFFFFF" d="M316,483.5c-4.5-1.25-13.25,5.5-13.25,5.5s-12.25,9.5,3.5,13s19-6.5,19-6.5
-			S320.5,484.75,316,483.5z"/>
-		<path id="youshou_1_" display="none" fill="#FFFFFF" d="M287.25,488c1.5,2.75,8.75,0.5,17-0.25c-10.75,7.25-5,11.5-5,11.5
-			s6.5,5.75,19.5,2.25c-0.25,4-7.5,14.5-20,12.75s-18.5-12.5-18.5-12.5S281.75,491.75,287.25,488z"/>
-		<path id="tou" display="none" fill="#FFFFFF" d="M202.667,419.333c0,0,13,5,19.667,3.667c-1,0.333,13.167-25.833,19.917-32.75
-			s21.25-11,21.25-11s10.167-6.583,7.5-22.583c17.667,8.333,35,0,35,0s2.333,13,8.333,18.667s25.167,8.333,31.417,17.167
-			s14.583,26.5,14.583,26.5s5.666-0.667,8-3.667c14.667-97.667,5.667-131,5.667-131s28.666-21.667,4-37
-			c18.667-69-27.333-92.333-27.333-92.333s-36-60.333-129-13c-61.667,53-33,102.333-33,102.333S162.333,264,192.333,286
+		<path id="zuoshou" display="none" fill="#FFFFFF" d="M316,483.5c-4.5-1.25-13.25,5.5-13.25,5.5s-12.25,9.5,3.5,13
+			c15.75,3.5,19-6.5,19-6.5S320.5,484.75,316,483.5z"/>
+		<path id="youshou" display="none" fill="#FFFFFF" d="M287.25,488c1.5,2.75,8.75,0.5,17-0.25c-10.75,7.25-5,11.5-5,11.5
+			s6.5,5.75,19.5,2.25c-0.25,4-7.5,14.5-20,12.75c-12.5-1.75-18.5-12.5-18.5-12.5S281.75,491.75,287.25,488z"/>
+		<path id="tou" display="none" fill="#FFFFFF" d="M202.667,419.333c0,0,13,5,19.667,3.667c-1,0.334,13.167-25.833,19.917-32.75
+			s21.25-11,21.25-11s10.167-6.583,7.5-22.583c17.667,8.333,35,0,35,0s2.332,13,8.332,18.667s25.168,8.333,31.418,17.167
+			s14.582,26.5,14.582,26.5s5.666-0.667,8-3.667c14.668-97.667,5.668-131,5.668-131s28.666-21.667,4-37
+			c18.666-69-27.334-92.333-27.334-92.333s-36-60.333-129-13c-61.667,53-33,102.333-33,102.333S162.333,264,192.333,286
 			C190.333,355.333,202.667,419.333,202.667,419.333z"/>
 	</g>
 	<g id="jingluo" display="none">
 		<g id="Gallbladder-1" display="inline">
 			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" d="M350.333,148c-22.666,22-15.916,56.001-15.916,56.001
-				s6-30,34.667-38.667"/>
-			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" d="M347.25,247.5C371,255,371,278,371,278l-2.25-84l8.999,22
-				l2.001,16.5"/>
+				s6-30,34.666-38.667"/>
+			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" d="M347.25,247.5C371,255,371,278,371,278l-2.25-84l9,22l2,16.5"/>
 			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" d="M331.75,458.5c0,0-2.25,15-10.5,21c6.75,2,8.5,5.5,9.5,10.25
 				s-2.75,10.5-2.75,10.5l-2.5,14c0,0,12.5,2.5,15.75,9.25"/>
-			<path fill="none" stroke="#F9D793" stroke-miterlimit="10" d="M331.044,461.888c-1.179,4.785-4.013,13.408-9.794,17.612
+			<path fill="none" stroke="#F9D793" stroke-miterlimit="10" d="M331.044,461.888c-1.18,4.785-4.014,13.408-9.795,17.611
 				c6.75,2,8.5,5.5,9.5,10.25s-2.75,10.5-2.75,10.5"/>
 		</g>
 		<polyline id="Bladder-1" display="inline" fill="none" stroke="#E4007F" stroke-miterlimit="10" points="301.5,267.667 
@@ -277,61 +277,61 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 			<polyline fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" points="326.5,283.5 326.5,318 343.5,329 
 				355,317 367.5,279.5 364,183.333 			"/>
 			<path fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" d="M335,324.333c0,0-19.666,24.668-32,30.334
-				c-8.667,6-5.333,16.667-5.333,16.667L300,385h12c0,0,6.667,71.834,6.667,82.334S309,478.001,309,478.001s1,23.3,1,31.501
-				c0,5.006,0,7.261,0,13.083c0,0,0,7.096,0,11.665c0,10.5,10,21.75,10,21.75l-8.25,64L307,655l3-4.333c0,0-8.25,33.333-9.75,40.833
+				c-8.667,6-5.333,16.667-5.333,16.667L300,385h12c0,0,6.668,71.833,6.668,82.333S309,478.001,309,478.001s1,23.299,1,31.5
+				c0,5.006,0,7.262,0,13.084c0,0,0,7.096,0,11.664c0,10.5,10,21.75,10,21.75l-8.25,64L307,655l3-4.332c0,0-8.25,33.332-9.75,40.832
 				s4.25,18.25,5.25,25.25"/>
-			<path fill="none" stroke="#F197A5" stroke-width="0.75" stroke-miterlimit="10" d="M309.334,484.252
-				c0,5.006,0.666,21.593,0.666,27.415"/>
+			<path fill="none" stroke="#F197A5" stroke-width="0.75" stroke-miterlimit="10" d="M309.333,484.251
+				c0,5.006,0.666,21.594,0.666,27.416"/>
 		</g>
 		
-			<path id="LargeIntestine-1_1_" display="inline" fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
-			M267.667,297c0,0,18,10,25.333,12c7.334,2,23.943,1.525,33.5,5c5.5,2,20.5,8.5,21.5,16c-20,16.5-40.5,24-45.5,25
-			c0,12,1,22.5,10.5,29s23.5,3.5,23.5,3.5s0.5,10.5,13.25,11.75c0,0,9.25,48.42,13.917,53.754
-			c-14.667,7.333-31.668,26.332-38.334,29.666S302,488.337,302,488.337"/>
-		<g id="Liver-1_5_" display="inline">
+			<path id="LargeIntestine-1" display="inline" fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
+			M267.667,297c0,0,18,10,25.333,12c7.333,2,23.943,1.525,33.5,5c5.5,2,20.5,8.5,21.5,16c-20,16.5-40.5,24-45.5,25
+			c0,12,1,22.5,10.5,29s23.5,3.5,23.5,3.5s0.5,10.5,13.25,11.75c0,0,9.25,48.419,13.918,53.753
+			C349,460.337,332,479.335,325.333,482.669S302,488.337,302,488.337"/>
+		<g id="Liver-1" display="inline">
 			<g>
-				<path fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" d="M292.5,645.75c0,0,3.25,6.581,5.5,6.581
-					c0.75,3.5,0.667,11,0.667,11s-1.59,14.406-1.167,26.919c0.407,12.042,2.788,22.145,4.75,25.25"/>
+				<path fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" d="M292.5,645.75c0,0,3.25,6.582,5.5,6.582
+					c0.75,3.5,0.667,11,0.667,11s-1.59,14.406-1.167,26.918c0.407,12.043,2.789,22.146,4.75,25.25"/>
 				<path fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" d="M319.5,470.5c0,0,7.25,5.25,6.25,21.25
-					c-1.515,28.962-10.5,34.25-13.5,42.75c-3.25,6.25-9,69-17,65.75"/>
+					c-1.514,28.963-10.5,34.25-13.5,42.75c-3.25,6.25-9,69-17,65.75"/>
 			</g>
 			<g>
 				<path fill="none" stroke="#D193BF" stroke-width="0.75" stroke-miterlimit="10" d="M319.5,470.75
-					c2.75,1.333,6.25,9.5,6.333,16.083c0.084,5.667-0.666,13.417-0.666,13.417"/>
+					c2.75,1.334,6.25,9.5,6.334,16.084c0.084,5.666-0.666,13.416-0.666,13.416"/>
 			</g>
 		</g>
-		<g id="Spleen-1_2_" display="inline">
+		<g id="Spleen-1" display="inline">
 			<path fill="none" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" d="M332.5,432.25c-0.75-7.5-9-13.75-9-13.75
-				l4.75,27.75c0,0-0.683,30.393-5.75,44.75c-1.5,4.25-1.417,33.583-1.417,33.583l-3.75,4.75L302.25,596.75
-				c0,0-5.25,24.915-4.583,31.248C291.75,677.25,297.333,685,296,690s-1.167,6.417-1.5,11.75s4,12.5,4,12.5"/>
-			<path fill="none" stroke="#C9D87B" stroke-width="0.75" stroke-miterlimit="10" d="M327.127,464.916
-				c-0.828,9.02-2.242,19.327-4.627,26.084c-0.328,0.931-0.58,3.063-0.774,5.825"/>
+				l4.75,27.75c0,0-0.682,30.393-5.75,44.75c-1.5,4.25-1.416,33.584-1.416,33.584l-3.75,4.75L302.25,596.75
+				c0,0-5.25,24.916-4.583,31.248C291.75,677.25,297.333,685,296,690s-1.167,6.418-1.5,11.75c-0.333,5.334,4,12.5,4,12.5"/>
+			<path fill="none" stroke="#C9D87B" stroke-width="0.75" stroke-miterlimit="10" d="M327.126,464.916
+				c-0.828,9.02-2.242,19.328-4.627,26.084c-0.328,0.932-0.58,3.064-0.773,5.826"/>
 		</g>
-		<g id="Chong-1_1_" display="inline">
+		<g id="Chong-1" display="inline">
 			<polyline fill="none" stroke="#FFF100" stroke-width="0.75" stroke-miterlimit="10" points="308.5,530 298.5,530 298.5,478.375 
 							"/>
 			
 				<line fill="none" stroke="#FBF7C6" stroke-width="0.75" stroke-miterlimit="10" x1="298.5" y1="513.375" x2="298.5" y2="485.875"/>
 		</g>
-		<g id="TripleEnergizer-1_2_" display="inline">
+		<g id="TripleEnergizer-1" display="inline">
 			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="M355,242.5c0,0,13,4.5,18.5,18"/>
-			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="M367.667,441.337c0,0-1,11.333,2.333,16
-				c-4.428,3.029-17.333,11.333-19.333,21.667L347,474.67l-39.333,27"/>
+			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="M367.667,441.337c0,0-1,11.332,2.332,16
+				c-4.428,3.029-17.332,11.332-19.332,21.666L347,474.669l-39.332,27"/>
 		</g>
 		
 			<path id="Lung-1" display="inline" fill="none" stroke="#85B12E" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
-			M323.75,408.25l-1-7.25c0,0,20.583,12.003,21.583,28.67c0.53,8.841,1.649,15.703,0.667,23c-1.167,8.67-28,29.667-28,29.667"/>
-		<g id="SmallIntestine-1_1_" display="inline">
+			M323.75,408.25l-1-7.25c0,0,20.584,12.003,21.584,28.669c0.529,8.842,1.648,15.703,0.666,23c-1.166,8.67-28,29.668-28,29.668"/>
+		<g id="SmallIntestine-1" display="inline">
 			<path fill="none" stroke="#E4007F" stroke-miterlimit="10" stroke-dasharray="5,5" d="M370.667,281.5
-				c-6,13.5-25.167,13-25.167,13s22,10.5,6,33.5"/>
+				c-6,13.5-25.168,13-25.168,13s22,10.5,6,33.5"/>
 		</g>
 		<g id="Kidney-1" display="inline">
-			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M307.834,394.667c0,0,0,60.75,0,71
-				c-2.5,10.75-10.209,12-10.209,12s0,43.583,0,52.333c12.708,5,1.625,17.333-0.875,32.333"/>
-			<path fill="none" stroke="#9DD7F0" stroke-width="0.75" stroke-miterlimit="10" d="M297.625,486c0,7.15,0,17.72,0,26.875"/>
+			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M307.833,394.667c0,0,0,60.75,0,71
+				c-2.5,10.75-10.208,12-10.208,12s0,43.582,0,52.332c12.708,5,1.625,17.334-0.875,32.334"/>
+			<path fill="none" stroke="#9DD7F0" stroke-width="0.75" stroke-miterlimit="10" d="M297.625,486c0,7.15,0,17.721,0,26.875"/>
 			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M292.75,687
 				c-0.001,3.545-0.323,3.826,0.25,6.125c0.5,2-1,3.875-1,3.875"/>
-			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M292.75,690.125c0,0,2.094,1.314,0.734,6.22
+			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M292.75,690.125c0,0,2.094,1.314,0.734,6.221
 				s0.391,8.697,0.391,8.697"/>
 		</g>
 		<g id="Gallbladder-2" display="inline">
@@ -341,7 +341,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 				l-2.001,16.5"/>
 			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" d="M250.583,458.5c0,0,2.25,15,10.5,21c-6.75,2-8.5,5.5-9.5,10.25
 				s2.75,10.5,2.75,10.5l2.5,14c0,0-12.5,2.5-15.75,9.25"/>
-			<path fill="none" stroke="#F9D793" stroke-miterlimit="10" d="M251.29,461.888c1.179,4.785,4.013,13.408,9.794,17.612
+			<path fill="none" stroke="#F9D793" stroke-miterlimit="10" d="M251.29,461.888c1.179,4.785,4.013,13.408,9.794,17.611
 				c-6.75,2-8.5,5.5-9.5,10.25s2.75,10.5,2.75,10.5"/>
 		</g>
 		<polyline id="Bladder-2" display="inline" fill="none" stroke="#E4007F" stroke-miterlimit="10" points="280.833,267.667 
@@ -350,35 +350,35 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 			<polyline fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" points="255.833,283.5 255.833,318 
 				238.833,329 227.333,317 214.833,279.5 219.75,183.75 			"/>
 			<path fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" d="M247.333,324.333c0,0,19.666,24.668,32,30.334
-				c8.667,6,5.333,16.667,5.333,16.667L282.333,385h-12c0,0-6.667,71.834-6.667,82.334s9.667,10.667,9.667,10.667s-1,23.3-1,31.501
-				c0,5.006,0,7.261,0,13.083c0,0,0,7.096,0,11.665c0,10.5-10,21.75-10,21.75l8.25,64l4.75,35l-3-4.333c0,0,8.25,33.333,9.75,40.833
+				c8.667,6,5.333,16.667,5.333,16.667L282.333,385h-12c0,0-6.667,71.833-6.667,82.333s9.667,10.668,9.667,10.668s-1,23.299-1,31.5
+				c0,5.006,0,7.262,0,13.084c0,0,0,7.096,0,11.664c0,10.5-10,21.75-10,21.75l8.25,64l4.75,35l-3-4.332c0,0,8.25,33.332,9.75,40.832
 				s-4.25,18.25-5.25,25.25"/>
-			<path fill="none" stroke="#F197A5" stroke-width="0.75" stroke-miterlimit="10" d="M273,484.252
-				c0,5.006-0.666,21.593-0.666,27.415"/>
+			<path fill="none" stroke="#F197A5" stroke-width="0.75" stroke-miterlimit="10" d="M273,484.251
+				c0,5.006-0.666,21.594-0.666,27.416"/>
 		</g>
 		
 			<path id="LargeIntestine-2" display="inline" fill="none" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
 			M314.667,297c0,0-18,10-25.333,12c-7.334,2-23.943,1.525-33.5,5c-5.5,2-20.5,8.5-21.5,16c20,16.5,40.5,24,45.5,25
-			c0,12-1,22.5-10.5,29s-23.5,3.5-23.5,3.5s-0.5,10.5-13.25,11.75c0,0-9.25,48.42-13.917,53.754
-			c14.667,7.333,31.668,26.332,38.334,29.666s23.333,5.667,23.333,5.667"/>
+			c0,12-1,22.5-10.5,29s-23.5,3.5-23.5,3.5s-0.5,10.5-13.25,11.75c0,0-9.25,48.419-13.917,53.753
+			c14.667,7.334,31.668,26.332,38.334,29.666s23.333,5.668,23.333,5.668"/>
 		<g id="Liver-2" display="inline">
 			<g>
-				<path fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" d="M289.833,645.75c0,0-3.25,6.581-5.5,6.581
-					c-0.75,3.5-0.667,11-0.667,11s1.59,14.406,1.167,26.919c-0.407,12.042-2.788,22.145-4.75,25.25"/>
+				<path fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" d="M289.833,645.75c0,0-3.25,6.582-5.5,6.582
+					c-0.75,3.5-0.667,11-0.667,11s1.59,14.406,1.167,26.918c-0.407,12.043-2.788,22.146-4.75,25.25"/>
 				<path fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" d="M262.833,470.5c0,0-7.25,5.25-6.25,21.25
-					c1.515,28.962,10.5,34.25,13.5,42.75c3.25,6.25,9,69,17,65.75"/>
+					c1.515,28.963,10.5,34.25,13.5,42.75c3.25,6.25,9,69,17,65.75"/>
 			</g>
 			<g>
 				<path fill="none" stroke="#D193BF" stroke-width="0.75" stroke-miterlimit="10" d="M262.833,470.75
-					c-2.75,1.333-6.25,9.5-6.333,16.083c-0.084,5.667,0.666,13.417,0.666,13.417"/>
+					c-2.75,1.334-6.25,9.5-6.333,16.084c-0.084,5.666,0.666,13.416,0.666,13.416"/>
 			</g>
 		</g>
 		<g id="Spleen-2" display="inline">
 			<path fill="none" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" d="M249.833,432.25c0.75-7.5,9-13.75,9-13.75
-				l-4.75,27.75c0,0,0.683,30.393,5.75,44.75c1.5,4.25,1.417,33.583,1.417,33.583l3.75,4.75l15.083,67.417
-				c0,0,5.25,24.915,4.583,31.248C290.583,677.25,285,685,286.333,690s1.167,6.417,1.5,11.75s-4,12.5-4,12.5"/>
+				l-4.75,27.75c0,0,0.683,30.393,5.75,44.75c1.5,4.25,1.417,33.584,1.417,33.584l3.75,4.75l15.083,67.416
+				c0,0,5.25,24.916,4.583,31.248C290.583,677.25,285,685,286.333,690s1.167,6.418,1.5,11.75c0.333,5.334-4,12.5-4,12.5"/>
 			<path fill="none" stroke="#C9D87B" stroke-width="0.75" stroke-miterlimit="10" d="M255.207,464.916
-				c0.828,9.02,2.242,19.327,4.627,26.084c0.328,0.931,0.58,3.063,0.774,5.825"/>
+				c0.828,9.02,2.242,19.328,4.627,26.084c0.328,0.932,0.58,3.064,0.774,5.826"/>
 		</g>
 		<g id="Chong-2" display="inline">
 			<polyline fill="none" stroke="#FFF100" stroke-width="0.75" stroke-miterlimit="10" points="273.833,530 283.833,530 
@@ -388,28 +388,28 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		</g>
 		<g id="TripleEnergizer-2" display="inline">
 			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="M227.333,242.5c0,0-13,4.5-18.5,18"/>
-			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="M214.667,441.337c0,0,1,11.333-2.333,16
-				c4.428,3.029,17.333,11.333,19.333,21.667l3.667-4.334l39.333,27"/>
+			<path fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="M214.667,441.337c0,0,1,11.332-2.333,16
+				c4.428,3.029,17.333,11.332,19.333,21.666l3.667-4.334l39.333,27"/>
 		</g>
 		
 			<path id="Lung-2" display="inline" fill="none" stroke="#85B12E" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
-			M258.583,408.25l1-7.25c0,0-20.583,12.003-21.583,28.67c-0.53,8.841-1.649,15.703-0.667,23c1.167,8.67,28,29.667,28,29.667"/>
+			M258.583,408.25l1-7.25c0,0-20.583,12.003-21.583,28.669c-0.53,8.842-1.649,15.703-0.667,23c1.167,8.67,28,29.668,28,29.668"/>
 		<g id="SmallIntestine-2" display="inline">
 			<path fill="none" stroke="#E4007F" stroke-miterlimit="10" stroke-dasharray="5,5" d="M211.667,281.5c6,13.5,25.167,13,25.167,13
 				s-22,10.5-6,33.5"/>
 		</g>
 		<g id="Kidney-2" display="inline">
 			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M274.5,394.667c0,0,0,60.75,0,71
-				c2.5,10.75,10.209,12,10.209,12s0,43.583,0,52.333c-12.708,5-1.625,17.333,0.875,32.333"/>
-			<path fill="none" stroke="#9DD7F0" stroke-width="0.75" stroke-miterlimit="10" d="M284.708,486c0,7.15,0,17.72,0,26.875"/>
+				c2.5,10.75,10.209,12,10.209,12s0,43.582,0,52.332c-12.708,5-1.625,17.334,0.875,32.334"/>
+			<path fill="none" stroke="#9DD7F0" stroke-width="0.75" stroke-miterlimit="10" d="M284.708,486c0,7.15,0,17.721,0,26.875"/>
 			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M289.583,687
 				c0.001,3.545,0.323,3.826-0.25,6.125c-0.5,2,1,3.875,1,3.875"/>
-			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M289.583,690.125c0,0-2.094,1.314-0.734,6.22
+			<path fill="none" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" d="M289.583,690.125c0,0-2.094,1.314-0.734,6.221
 				s-0.391,8.697-0.391,8.697"/>
 		</g>
 		
-			<path id="Pericardium-1_2_" display="inline" fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
-			M324.334,441c0,0-8.334-24.333-2-27.663c7.399-3.891,18.333,32.997,18.333,32.997"/>
+			<path id="Pericardium-1" display="inline" fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
+			M324.333,441c0,0-8.334-24.333-2-27.663c7.4-3.891,18.334,32.997,18.334,32.997"/>
 		
 			<path id="Pericardium-2" display="inline" fill="none" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="5,5" d="
 			M257.624,441c0,0,8.334-24.333,2-27.663c-7.399-3.891-18.333,32.997-18.333,32.997"/>
@@ -424,11 +424,11 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="CV21" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="400.137" r="1.891"/>
 		
-			<circle id="CV19_1_" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="417.026" r="1.891"/>
+			<circle id="CV19" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="417.026" r="1.891"/>
 		
-			<circle id="CV18" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="425.471" r="1.891"/>
+			<circle id="CV18" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="425.471" r="1.892"/>
 		
-			<circle id="CV20_1_" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="408.582" r="1.891"/>
+			<circle id="CV20" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="408.582" r="1.891"/>
 		
 			<circle id="CV17" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="448.498" r="1.891"/>
 		
@@ -436,7 +436,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="CV15" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="471.195" r="1.891"/>
 		
-			<circle id="CV14" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="478.352" r="1.891"/>
+			<circle id="CV14" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="478.352" r="1.892"/>
 		<circle id="CV13" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="484" r="1.891"/>
 		
 			<circle id="CV12" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="489.25" r="1.891"/>
@@ -452,11 +452,11 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="CV6" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="512.25" r="1.891"/>
 		
-			<circle id="CV5" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="515.129" r="1.891"/>
+			<circle id="CV5" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="515.129" r="1.892"/>
 		
 			<circle id="CV4" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="520.25" r="1.891"/>
 		
-			<circle id="CV3" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="525.387" r="1.891"/>
+			<circle id="CV3" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="525.387" r="1.892"/>
 		
 			<circle id="CV2" display="inline" stroke="#000000" stroke-width="0.75" stroke-miterlimit="10" cx="291.5" cy="530.5" r="1.891"/>
 		
@@ -480,31 +480,31 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="EX-HN4-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="334" cy="231" r="1.891"/>
 		
-			<circle id="EX-HN5-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="359.334" cy="249.25" r="1.891"/>
+			<circle id="EX-HN5-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="359.333" cy="249.25" r="1.891"/>
 		
 			<circle id="EX-HN2-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="338.5" cy="165.25" r="1.891"/>
 		
 			<circle id="EX-LE3-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="302.5" cy="596.75" r="1.891"/>
 		
-			<circle id="EX-LE1-2_2_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="308.25" cy="602.5" r="1.891"/>
+			<circle id="EX-LE1-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="308.25" cy="602.5" r="1.891"/>
 		
 			<circle id="EX-LE2-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="304.75" cy="610" r="1.891"/>
 		
 			<circle id="EX-LE4-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="302" cy="617.25" r="1.891"/>
 		
-			<circle id="EX-LE1-1_1_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="320.25" cy="602.5" r="1.891"/>
+			<circle id="EX-LE1-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="320.25" cy="602.5" r="1.891"/>
 		
 			<circle id="EX-LE10-3" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="304.359" cy="711.25" r="1.891"/>
 		
 			<circle id="EX-LE10-4" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="307.185" cy="709.332" r="1.891"/>
 		
-			<circle id="EX-LE12-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="302.391" cy="719" r="1.891"/>
+			<circle id="EX-LE12-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="302.39" cy="719" r="1.891"/>
 		
-			<circle id="EX-LE12-2_5_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="304.768" cy="719.041" r="1.891"/>
+			<circle id="EX-LE12-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="304.767" cy="719.041" r="1.891"/>
 		
-			<circle id="EX-LE12-3" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="306.516" cy="718.25" r="1.891"/>
+			<circle id="EX-LE12-3" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="306.515" cy="718.25" r="1.891"/>
 		
-			<circle id="EX-LE12-4" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="308.334" cy="717.164" r="1.891"/>
+			<circle id="EX-LE12-4" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="308.333" cy="717.164" r="1.891"/>
 		
 			<circle id="EX-LE12-5" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="309" cy="714.75" r="1.891"/>
 		
@@ -532,7 +532,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="EX-LE10-7" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="281.25" cy="709" r="1.891"/>
 		
-			<circle id="EX-LE10-8" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="278.689" cy="708.563" r="1.891"/>
+			<circle id="EX-LE10-8" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="278.689" cy="708.563" r="1.892"/>
 		
 			<circle id="EX-LE12-6" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="283.984" cy="717" r="1.891"/>
 		
@@ -560,7 +560,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="GB14-1" display="inline" stroke="#F5A517" stroke-width="0.75" stroke-miterlimit="10" cx="334.667" cy="205.667" r="1.647"/>
 		
-			<circle id="GB15-1" display="inline" stroke="#F5A517" stroke-width="0.75" stroke-miterlimit="10" cx="336.334" cy="172.667" r="1.875"/>
+			<circle id="GB15-1" display="inline" stroke="#F5A517" stroke-width="0.75" stroke-miterlimit="10" cx="336.333" cy="172.667" r="1.875"/>
 		
 			<circle id="GB13-1" display="inline" stroke="#F5A517" stroke-width="0.75" stroke-miterlimit="10" cx="348" cy="178.667" r="1.647"/>
 		
@@ -590,7 +590,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="ST7-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="367.667" cy="280" r="1.647"/>
 		
-			<circle id="ST8-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="364.02" cy="183" r="1.647"/>
+			<circle id="ST8-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="364.019" cy="183" r="1.647"/>
 		
 			<circle id="ST9-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="297.686" cy="371.666" r="1.647"/>
 		
@@ -608,65 +608,65 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="ST16-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="315.667" cy="422.333" r="1.647"/>
 		
-			<circle id="ST17-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="317.687" cy="448.998" r="1.647"/>
+			<circle id="ST17-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="317.687" cy="448.998" r="1.646"/>
 		
 			<circle id="ST18-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="319" cy="467.997" r="1.647"/>
 		
-			<circle id="ST19-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="478.455" r="1.647"/>
+			<circle id="ST19-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="478.455" r="1.646"/>
 		
-			<circle id="ST20-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="483.942" r="1.647"/>
+			<circle id="ST20-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="483.942" r="1.647"/>
 		
-			<circle id="ST21-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="489.094" r="1.647"/>
+			<circle id="ST21-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="489.094" r="1.647"/>
 		
-			<circle id="ST22-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="494.248" r="1.647"/>
+			<circle id="ST22-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="494.248" r="1.646"/>
 		
-			<circle id="ST23-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="499.403" r="1.647"/>
+			<circle id="ST23-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="499.403" r="1.647"/>
 		
-			<circle id="ST24-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="502.418" r="1.647"/>
+			<circle id="ST24-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="502.418" r="1.647"/>
 		
-			<circle id="ST25-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="505.727" r="1.647"/>
+			<circle id="ST25-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="505.727" r="1.647"/>
 		
-			<circle id="ST26-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="509.71" r="1.647"/>
+			<circle id="ST26-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="509.71" r="1.646"/>
 		
-			<circle id="ST27-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="514.865" r="1.647"/>
+			<circle id="ST27-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="514.865" r="1.646"/>
 		
-			<circle id="ST28-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="520.02" r="1.647"/>
+			<circle id="ST28-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="520.02" r="1.647"/>
 		
-			<circle id="ST29-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="525.171" r="1.647"/>
+			<circle id="ST29-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="525.171" r="1.646"/>
 		
-			<circle id="ST30-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.809" cy="530.327" r="1.647"/>
+			<circle id="ST30-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="309.808" cy="530.327" r="1.647"/>
 		
-			<circle id="ST31-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="320" cy="556.376" r="1.647"/>
+			<circle id="ST31-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="320" cy="556.376" r="1.646"/>
 		
-			<circle id="ST32-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="316.125" cy="585.874" r="1.647"/>
+			<circle id="ST32-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="316.125" cy="585.875" r="1.646"/>
 		
-			<circle id="ST33-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="314.375" cy="597.999" r="1.647"/>
+			<circle id="ST33-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="314.375" cy="598" r="1.646"/>
 		
-			<circle id="ST34-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="314.25" cy="602.374" r="1.647"/>
+			<circle id="ST34-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="314.25" cy="602.375" r="1.646"/>
 		
-			<circle id="ST35-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="312" cy="617.501" r="1.647"/>
+			<circle id="ST35-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="312" cy="617.501" r="1.646"/>
 		
-			<circle id="ST36-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="310.5" cy="629.249" r="1.647"/>
+			<circle id="ST36-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="310.5" cy="629.25" r="1.646"/>
 		
-			<circle id="ST37-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="308.875" cy="640.374" r="1.647"/>
+			<circle id="ST37-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="308.875" cy="640.375" r="1.646"/>
 		
-			<circle id="ST38-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="307.625" cy="649.751" r="1.647"/>
+			<circle id="ST38-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="307.625" cy="649.751" r="1.646"/>
 		
-			<circle id="ST39-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="307" cy="655.626" r="1.647"/>
+			<circle id="ST39-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="307" cy="655.626" r="1.646"/>
 		
-			<circle id="ST40-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="310.625" cy="649.751" r="1.647"/>
+			<circle id="ST40-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="310.625" cy="649.751" r="1.646"/>
 		
-			<circle id="ST41-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="300" cy="694.249" r="1.647"/>
+			<circle id="ST41-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="300" cy="694.25" r="1.646"/>
 		
-			<circle id="ST42-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="300.875" cy="700.501" r="1.647"/>
+			<circle id="ST42-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="300.875" cy="700.501" r="1.646"/>
 		
 			<circle id="ST43-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="302.728" cy="706.375" r="1.647"/>
 		
-			<circle id="ST44-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="304.5" cy="711.374" r="1.647"/>
+			<circle id="ST44-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="304.5" cy="711.375" r="1.646"/>
 		
-			<circle id="EX-LE10-2_1_" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="304.5" cy="711.374" r="1.647"/>
+			<circle id="EX-LE10-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="304.5" cy="711.375" r="1.646"/>
 		
-			<circle id="ST45-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="305.375" cy="716.374" r="1.647"/>
+			<circle id="ST45-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="305.375" cy="716.375" r="1.646"/>
 		
 			<circle id="LI20-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="314.458" cy="297.209" r="1.647"/>
 		
@@ -708,7 +708,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="KI24-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="307.751" cy="423.588" r="1.647"/>
 		
-			<circle id="KI23-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="307.751" cy="448.281" r="1.647"/>
+			<circle id="KI23-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="307.751" cy="448.281" r="1.646"/>
 		
 			<circle id="KI22-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="307.751" cy="465.852" r="1.647"/>
 		
@@ -724,13 +724,13 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="KI16-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="505.725" r="1.647"/>
 		
-			<circle id="KI15-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="509.712" r="1.647"/>
+			<circle id="KI15-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="509.712" r="1.646"/>
 		
-			<circle id="KI14-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="514.863" r="1.647"/>
+			<circle id="KI14-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="514.863" r="1.646"/>
 		
 			<circle id="KI13-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="520.02" r="1.647"/>
 		
-			<circle id="KI12-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="525.173" r="1.647"/>
+			<circle id="KI12-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="525.173" r="1.646"/>
 		
 			<circle id="KI11-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="297.75" cy="530.325" r="1.647"/>
 		
@@ -738,15 +738,15 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="KI2-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="293.375" cy="685.251" r="1.646"/>
 		
-			<circle id="LR12-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="312.25" cy="534.501" r="1.647"/>
+			<circle id="LR12-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="312.25" cy="534.501" r="1.646"/>
 		
-			<circle id="LR11-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="310" cy="543.126" r="1.647"/>
+			<circle id="LR11-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="310" cy="543.126" r="1.646"/>
 		
-			<circle id="LR10-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="308.625" cy="552.251" r="1.647"/>
+			<circle id="LR10-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="308.625" cy="552.251" r="1.646"/>
 		
 			<circle id="LR9-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="299.5" cy="595.876" r="1.646"/>
 		
-			<circle id="LR6-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="298.125" cy="652.501" r="1.647"/>
+			<circle id="LR6-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="298.125" cy="652.501" r="1.646"/>
 		
 			<circle id="LR5-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="298.625" cy="662.626" r="1.646"/>
 		
@@ -758,7 +758,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="LR1-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="301.875" cy="714.876" r="1.646"/>
 		
-			<circle id="EX-LE10-1_1_" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="301.875" cy="714.876" r="1.646"/>
+			<circle id="EX-LE10-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="301.875" cy="714.876" r="1.646"/>
 		
 			<circle id="SP20-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="323.75" cy="418.5" r="1.646"/>
 		
@@ -768,9 +768,9 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="SP17-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="327.25" cy="460.749" r="1.646"/>
 		
-			<circle id="SP15-1_1_" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="321.5" cy="503.251" r="1.646"/>
+			<circle id="SP15-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="321.5" cy="503.251" r="1.646"/>
 		
-			<circle id="SP14-1_1_" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="321.25" cy="509.501" r="1.646"/>
+			<circle id="SP14-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="321.25" cy="509.501" r="1.646"/>
 		
 			<circle id="SP13-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="320.75" cy="524.604" r="1.646"/>
 		
@@ -800,7 +800,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="LU1-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="323.75" cy="409" r="1.646"/>
 		
-			<circle id="LU2-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="322.604" cy="402" r="1.646"/>
+			<circle id="LU2-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="322.603" cy="402" r="1.646"/>
 		
 			<circle id="LU3-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="343.75" cy="427.125" r="1.646"/>
 		
@@ -898,17 +898,17 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="ST16-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="266.792" cy="422.333" r="1.647"/>
 		
-			<circle id="ST17-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="264.771" cy="448.998" r="1.647"/>
+			<circle id="ST17-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="264.771" cy="448.998" r="1.646"/>
 		
 			<circle id="ST18-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="263.458" cy="467.997" r="1.647"/>
 		
-			<circle id="ST19-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="478.455" r="1.647"/>
+			<circle id="ST19-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="478.455" r="1.646"/>
 		
 			<circle id="ST20-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="483.942" r="1.647"/>
 		
 			<circle id="ST21-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="489.094" r="1.647"/>
 		
-			<circle id="ST22-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="494.248" r="1.647"/>
+			<circle id="ST22-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="494.248" r="1.646"/>
 		
 			<circle id="ST23-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="499.403" r="1.647"/>
 		
@@ -916,47 +916,47 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="ST25-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="505.727" r="1.647"/>
 		
-			<circle id="ST26-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="509.71" r="1.647"/>
+			<circle id="ST26-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="509.71" r="1.646"/>
 		
-			<circle id="ST27-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="514.865" r="1.647"/>
+			<circle id="ST27-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="514.865" r="1.646"/>
 		
 			<circle id="ST28-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="520.02" r="1.647"/>
 		
-			<circle id="ST29-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="525.171" r="1.647"/>
+			<circle id="ST29-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="525.171" r="1.646"/>
 		
 			<circle id="ST30-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="272.649" cy="530.327" r="1.647"/>
 		
-			<circle id="ST31-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="262.458" cy="556.376" r="1.647"/>
+			<circle id="ST31-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="262.458" cy="556.376" r="1.646"/>
 		
-			<circle id="ST32-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="266.333" cy="585.874" r="1.647"/>
+			<circle id="ST32-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="266.333" cy="585.875" r="1.646"/>
 		
-			<circle id="ST33-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="268.083" cy="597.999" r="1.647"/>
+			<circle id="ST33-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="268.083" cy="598" r="1.646"/>
 		
-			<circle id="ST34-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="268.209" cy="602.374" r="1.647"/>
+			<circle id="ST34-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="268.209" cy="602.375" r="1.646"/>
 		
-			<circle id="ST35-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="270.458" cy="617.501" r="1.647"/>
+			<circle id="ST35-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="270.458" cy="617.501" r="1.646"/>
 		
-			<circle id="ST36-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="271.959" cy="629.249" r="1.647"/>
+			<circle id="ST36-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="271.959" cy="629.25" r="1.646"/>
 		
-			<circle id="ST37-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="273.583" cy="640.374" r="1.647"/>
+			<circle id="ST37-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="273.583" cy="640.375" r="1.646"/>
 		
-			<circle id="ST38-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="274.833" cy="649.751" r="1.647"/>
+			<circle id="ST38-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="274.833" cy="649.751" r="1.646"/>
 		
-			<circle id="ST39-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="275.458" cy="655.626" r="1.647"/>
+			<circle id="ST39-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="275.458" cy="655.626" r="1.646"/>
 		
-			<circle id="ST40-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="271.833" cy="649.751" r="1.647"/>
+			<circle id="ST40-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="271.833" cy="649.751" r="1.646"/>
 		
-			<circle id="ST41-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="282.459" cy="694.249" r="1.647"/>
+			<circle id="ST41-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="282.459" cy="694.25" r="1.646"/>
 		
-			<circle id="ST42-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="281.583" cy="700.501" r="1.647"/>
+			<circle id="ST42-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="281.583" cy="700.501" r="1.646"/>
 		
 			<circle id="ST43-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="279.73" cy="706.375" r="1.647"/>
 		
-			<circle id="ST44-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="277.959" cy="711.374" r="1.647"/>
+			<circle id="ST44-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="277.959" cy="711.375" r="1.646"/>
 		
-			<circle id="EX-LE10-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="277.959" cy="711.374" r="1.647"/>
+			<circle id="EX-LE10-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="277.959" cy="711.375" r="1.646"/>
 		
-			<circle id="ST45-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="277.083" cy="716.374" r="1.647"/>
+			<circle id="ST45-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="277.083" cy="716.375" r="1.646"/>
 		
 			<circle id="LI20-2" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="268" cy="297.209" r="1.647"/>
 		
@@ -998,7 +998,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="KI24-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="274.708" cy="423.588" r="1.647"/>
 		
-			<circle id="KI23-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="274.708" cy="448.281" r="1.647"/>
+			<circle id="KI23-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="274.708" cy="448.281" r="1.646"/>
 		
 			<circle id="KI22-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="274.708" cy="465.852" r="1.647"/>
 		
@@ -1014,13 +1014,13 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="KI16-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="505.725" r="1.647"/>
 		
-			<circle id="KI15-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="509.712" r="1.647"/>
+			<circle id="KI15-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="509.712" r="1.646"/>
 		
-			<circle id="KI14-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="514.863" r="1.647"/>
+			<circle id="KI14-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="514.863" r="1.646"/>
 		
 			<circle id="KI13-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="520.02" r="1.647"/>
 		
-			<circle id="KI12-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="525.173" r="1.647"/>
+			<circle id="KI12-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="525.173" r="1.646"/>
 		
 			<circle id="KI11-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="284.708" cy="530.325" r="1.647"/>
 		
@@ -1028,15 +1028,15 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="KI2-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="289.083" cy="685.251" r="1.646"/>
 		
-			<circle id="LR12-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="270.208" cy="534.501" r="1.647"/>
+			<circle id="LR12-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="270.208" cy="534.501" r="1.646"/>
 		
-			<circle id="LR11-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="272.458" cy="543.126" r="1.647"/>
+			<circle id="LR11-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="272.458" cy="543.126" r="1.646"/>
 		
-			<circle id="LR10-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="273.833" cy="552.251" r="1.647"/>
+			<circle id="LR10-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="273.833" cy="552.251" r="1.646"/>
 		
 			<circle id="LR9-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="282.958" cy="595.876" r="1.646"/>
 		
-			<circle id="LR6-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="284.333" cy="652.501" r="1.647"/>
+			<circle id="LR6-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="284.333" cy="652.501" r="1.646"/>
 		
 			<circle id="LR5-2" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="283.833" cy="662.626" r="1.646"/>
 		
@@ -1126,7 +1126,7 @@ SqT0Kak+blMqwqpFCDusZcrqpNTErkJ5rLDCgSNBRVFwFgdQhEi3LIhysB0ixkgUtKwoZHOZqbhu
 		
 			<circle id="TE3-2" display="inline" fill="#040000" stroke="#ECA123" stroke-width="0.75" stroke-miterlimit="10" cx="268.083" cy="497.25" r="1.875"/>
 		
-			<circle id="PC1-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="324.334" cy="441.001" r="1.646"/>
+			<circle id="PC1-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="324.333" cy="441.001" r="1.646"/>
 		
 			<circle id="PC2-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="336" cy="433.021" r="1.646"/>
 		

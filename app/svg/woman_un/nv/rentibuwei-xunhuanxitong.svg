@@ -3,7 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" enable-background="new 0 0 595.28 841.89" xml:space="preserve">
-<g id="shenti_1_" display="none">
+<g id="shenti">
 	<g id="kouqiang" display="inline" opacity="0.7">
 		<path fill="#727171" d="M194.297,282.841c-0.295,0,0.087-0.171,0.036-0.172l-1.917-3.688c0,0,11.787,0.097,21.266-4.682
 			l1.801,3.572C206.229,282.536,196.644,282.841,194.297,282.841z"/>
@@ -20,9 +20,9 @@
 		s12,0,12.667-14s-6-16-6-42c-9.333-17.333-22.666-88.667,88.667-110.667c92-13.333,118.667,46,118.667,46s22,28,8,80.667
 		c27.333,30,0.666,100.667,0.666,100.667l-10.666,68.667c0,0-13.333,8.667-38,8.667c-35.333-46.667-24-80.667-24-80.667
 		S304.999,324.668,280.999,326.668z"/>
-	<path id="jing_1_" fill="#FFFFFF" d="M290.999,326.001c0,0,36.667-7.333,47.334-20.667c-2.667,10.667-6.667,35.333,8.666,50.667
+	<path id="jing" fill="#FFFFFF" d="M290.999,326.001c0,0,36.667-7.333,47.334-20.667c-2.667,10.667-6.667,35.333,8.666,50.667
 		c-12,6-31.333,12-56.667-2.667c4.667-10.667,5.333-16,5.333-16v-6l2.667-2L290.999,326.001z"/>
-	<path id="xiong_1_" fill="#FFFFFF" d="M289.666,352.668c0,0-11.333,0-24,8.667c10.667,11.333,9.333,46,9.333,46s-2.667,24,4,29.333
+	<path id="xiong" fill="#FFFFFF" d="M289.666,352.668c0,0-11.333,0-24,8.667c10.667,11.333,9.333,46,9.333,46s-2.667,24,4,29.333
 		s72.666,10.667,78-2s2-23.333,2-23.333s-2.666-18.666,1.334-25.333c-6.667-6-11.334-18-16.667-28.667
 		C314.333,370.001,289.666,352.668,289.666,352.668z"/>
 	<path id="youbi" fill="#FFFFFF" d="M264.999,361.334c0,0,14,22,8.667,52c-0.667,7.333-4.667,8.667-4.667,8.667
@@ -39,14 +39,14 @@
 		c0,0-4-4-14-2C304.999,446.668,287,440.001,287,440.001z"/>
 	<path id="yao" display="inline" fill="#FFFFFF" d="M277.666,467.334l-10,18c0,0,23.333,13.334,54,13.334s42-12,42-12l-6.667-14
 		l-14,5.333l-18.666,10l-20.667-6.667L277.666,467.334z"/>
-	<path id="tun_1_" display="inline" fill="#FFFFFF" d="M267,486.668c0,0-4,6-7.333,23.333S265,544.668,265,544.668
+	<path id="tun" display="inline" fill="#FFFFFF" d="M267,486.668c0,0-4,6-7.333,23.333S265,544.668,265,544.668
 		s19.333,7.333,54,7.333s49.334-7.333,49.334-7.333s6.666-19.334,5.333-35.334s-9.333-24-9.333-24s-14.667,13.334-44,13.334
 		S267,486.668,267,486.668z"/>
 	<path id="datui" fill="#FFFFFF" d="M265,546.001c0,0,18.667,6.667,53.333,6.667s49.333-6.667,49.333-6.667L349,596.668
 		c0,0-10.668,8.667-31.334,8.667c-20.667,0-34-9.334-34-9.334L265,546.001z"/>
 	<path id="xiaotui" fill="#FFFFFF" d="M291,601.335c0,0,22,12,52.667,0c0,14-16.666,60-16.666,60s-8.667,11.333-20,0
 		C299,646.001,291,601.335,291,601.335z"/>
-	<path id="jiao_1_" fill="#FFFFFF" d="M308.333,663.335c0,0-15.333,25.334-6,32s15.333-10,15.333-10s6.667,14,16.667,8
+	<path id="jiao" fill="#FFFFFF" d="M308.333,663.335c0,0-15.333,25.334-6,32s15.333-10,15.333-10s6.667,14,16.667,8
 		s-6.667-29.334-6.667-29.334S314.333,671.335,308.333,663.335z"/>
 </g>
 <g id="rentibuwei">
@@ -199,7 +199,7 @@
 			</g>
 		</g>
 	</g>
-	<g id="wei">
+	<g id="wei"  display="none">
 		<g>
 			<g>
 				<path fill="none" stroke="#0D9785" stroke-width="1.5" stroke-miterlimit="10" d="M320.765,441.319
@@ -226,7 +226,7 @@
 			</g>
 		</g>
 	</g>
-	<g id="shierzhichang">
+	<g id="shierzhichang"  display="none">
 		<g>
 			<g>
 				<path fill="none" stroke="#E60012" stroke-miterlimit="10" d="M320.567,440.938c0,0-0.298-0.259-0.795-0.6"/>
@@ -313,7 +313,7 @@
 				c-1.685-1.544-0.897-5.255-1.46-8.759C342.519,441.216,341.174,435.454,343.42,434.78z"/>
 		</g>
 	</g>
-	<g id="xiaochang">
+	<g id="xiaochang"  display="none">
 		<g>
 			<g>
 				<g>
@@ -346,7 +346,7 @@
 			</g>
 		</g>
 	</g>
-	<g id="lian">
+	<g id="lian"  display="none">
 		<g>
 			<g>
 				<path fill="none" stroke="#C9A063" stroke-miterlimit="10" d="M195.206,254.511c-0.285,0.165-0.576,0.328-0.873,0.489
@@ -713,7 +713,8 @@
 			c-3.244,0.927-8.805-1.854-12.049-0.927c-3.244,0.927-5.792,4.402-8.341,3.707c-3.708-0.231-2.549-6.719-0.463-6.487
 			c19.463-7.646,8.11-29.427,8.341-31.976c1.622-6.72,17.378,0.463,22.244-2.78"/>
 	</g>
-	<path id="pifu" fill="none" stroke="#D9C19B" stroke-width="4" stroke-miterlimit="10" d="M298.333,328c2,0.001,0,3.333,0,3.333
+	<g id="pifu" display="none">
+		<path fill="none" stroke="#D9C19B" stroke-width="4" stroke-miterlimit="10" d="M298.333,328c2,0.001,0,3.333,0,3.333
 		L295.667,332c0,0,0.667,6.665-4,14.667s-17.333,6.666-25.333,15.333s-30.667,59.999-26.667,74.667s38.667,30.666,38.667,30.666
 		S267.667,480,261,505.334s23.333,90,23.333,90l6.667,4c0,0,6.667,40.666,17.333,66c-10,13.334-8.667,26-2.667,28.667
 		s12.667-10,12.667-10s5.334,11.332,14,9.333s-4.667-28.666-4.667-28.666s11.333-42.666,16-66c6-1.333,6.667-4,6.667-4
@@ -721,7 +722,8 @@
 		c26-74,0.667-100.667,0.667-100.667s32-109.333-80-127.333C209.667,72.667,191,146.001,191,146.001s-9.333,20.667,3.333,45.333
 		c-0.667,10,1.333,22,8.667,43.333c-5.333,14.667-15.333,15.333-15.333,15.333s8,61.333,34.667,73.333S282.334,322.667,298.333,328z
 		"/>
-	<g id="bei">
+	</g>
+	<g id="bei"  display="none">
 		<path display="none" fill="none" stroke="#898989" stroke-miterlimit="10" stroke-dasharray="1,1" d="M329.593,357.83
 			c17.608,1.096,32.886,4.701,34.613,10.171c4,12.667-13.334,95.333-24,103.333s-36.668,7.334-44.334-0.333
 			s-32.333-87.667-22.333-103c3.75-5.75,16.875-8.969,32.027-10.078"/>
@@ -734,7 +736,7 @@
 				c-10.666,4.667-16.666,4.667-16.666,4.667"/>
 		</g>
 	</g>
-	<g id="gupen">
+	<g id="gupen"  display="none">
 		<g>
 			<g>
 				<path fill="none" stroke="#727171" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="3,3" d="M313.038,498.299
@@ -762,7 +764,7 @@
 		
 			<ellipse fill="none" stroke="#727171" stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="3,3" cx="318.373" cy="497.037" rx="2.369" ry="1.481"/>
 	</g>
-	<g id="leigu">
+	<g id="leigu"  display="none">
 		<g>
 			<g>
 				<g>
@@ -807,8 +809,8 @@
 		</g>
 	</g>
 </g>
-<g id="xitong" display="none">
-	<g id="shenjing-s">
+<g id="xitong">
+	<g id="shenjing-s" display="none">
 		<g display="inline">
 			<path fill="#FFFFFF" d="M337.933,199.366c-2.81,7.461,0,34.108,28.1,33.042c28.1-1.067,27.438-35.633,27.438-35.633
 				S351.048,184.444,337.933,199.366z"/>
@@ -1062,7 +1064,7 @@
 				<circle fill="none" stroke="#00A0E9" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="5.5554,3.3332" cx="312.332" cy="664.332" r="5.667"/>
 		</g>
 	</g>
-	<g id="xunhuan-s">
+	<g id="xunhuan-s"  display="none">
 		<path display="inline" fill="none" stroke="#E94A34" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M330.471,368.773c15.793-13.3-8.729-64.835-11.222-96.422s3.325-52.367,11.638-58.186c8.313-5.819,19.117-9.975,28.262-2.494
 			c9.143,7.481,19.117,19.118,26.598,6.649"/>
@@ -1100,7 +1102,7 @@
 			M340.436,520.23c0,0-5.818,13.301-14.131,13.301"/>
 		<path display="inline" fill="none" stroke="#E94A34" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M342.523,544.162c0,0,4.986,13.299,9.975,11.637"/>
-		<g id="xinzang_1_" display="inline">
+		<g id="xinzang" display="inline">
 			<path fill="none" stroke="#701B1A" stroke-miterlimit="10" stroke-dasharray="3,3" d="M320.946,376.634
 				c-10.641,1.61-16.079,16.103-10.877,24.384c5.202,8.282,29.085,14.034,30.737,12.194c1.658-1.841,9.459-23.006-13.713-34.738
 				c-1.418-0.46,4.256-6.441,4.256-6.441l-2.836-4.603C328.514,367.431,322.129,372.262,320.946,376.634z"/>
@@ -1191,7 +1193,7 @@
 			<polyline display="inline" fill="none" stroke="#00A0E9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="
 			307.035,244.319 310.878,248.012 314.879,245.127 		"/>
 	</g>
-	<g id="xueye-s">
+	<g id="xueye-s"  display="none">
 		<g display="inline">
 			<path fill="none" stroke="#E94A34" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" d="M319,236.5
 				c0,5.247-6.044,9.5-13.5,9.5s-13.5-4.253-13.5-9.5s6.044-5.5,13.5-5.5S319,231.253,319,236.5z"/>
@@ -1339,8 +1341,8 @@
 		
 			<ellipse display="inline" fill="none" stroke="#E94A34" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" cx="306.25" cy="620.666" rx="2.75" ry="3"/>
 	</g>
-	<g id="huxi-s">
-		<g id="fei_1_" display="inline">
+	<g id="huxi-s"  display="none">
+		<g id="fei" display="inline">
 			<path fill="none" stroke="#A63D6F" stroke-miterlimit="10" stroke-dasharray="3,3" d="M218.192,274.651
 				c1.508-0.301,97.989,2.17,100.102-1.749c2.111-3.92,0.3-12.364-1.509-15.077c-1.81-2.714-24.765-3.908-36.787-3.619
 				c-14.679,0.354-89.547,3.216-89.548,3.067c-0.001-0.426-1.809-4.523-1.439-5.578c10.787,0.754,75.734-2.055,90.987-2.313
@@ -1379,24 +1381,24 @@
 			<path fill="none" stroke="#A63D6F" stroke-miterlimit="10" d="M308.343,385.604c0,0-8.241-6.433-20.304-1.005"/>
 			<path fill="none" stroke="#A63D6F" stroke-miterlimit="10" d="M307.337,391.634c0,0-20.303-1.608-25.529,7.84"/>
 		</g>
-		<g id="gemo_1_" display="inline">
+		<g id="gemo" display="inline">
 			<path fill="none" stroke="#0B328B" stroke-miterlimit="10" stroke-dasharray="3,3" d="M274.37,415.154
 				c0,0,44.023-13.067,91.666,1.607"/>
 		</g>
 	</g>
-	<g id="xiaohua-s">
-		<g id="yi_1_" display="inline">
+	<g id="xiaohua-s"  display="none">
+		<g id="yi" display="inline">
 			<path fill="none" stroke="#101937" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="3,3" d="M328.579,432.055
 				c-0.283,0.354-0.648,1.229-0.896,2.199c-0.034,0.135-1.347,0.18-1.347,0.18v0.914c0,0,1.107,0.162,1.087,0.455
 				c-0.069,1.012,0.114,1.883,0.789,2.107c1.646,0.549,20.858-0.549,20.31-2.379S329.311,431.141,328.579,432.055z"/>
 		</g>
-		<g id="dan_1_" display="inline">
+		<g id="dan" display="inline">
 			<path fill="none" stroke="#3D4420" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="3,3" d="M318.678,431.155
 				c0,0,0.549-3.887-0.137-4.939s-9.423,0.777-9.423,0.777s-3.202-0.777-4.94,0.229c-1.738,1.008-2.149,3.248-1.601,4.621
 				c0.55,1.371,3.704,1.279,5.122,0.32c1.419-0.961,1.968-4.164,1.968-4.164s7.319-1.691,7.913-0.822
 				c0.596,0.869,0.092,4.162,0.092,4.162"/>
 		</g>
-		<g id="wei_1_" display="inline">
+		<g id="wei" display="inline">
 			<path fill="none" stroke="#0D9785" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="3,3" d="M213.199,274.048
 				c0,0,108.355-16.474,113.135,16.617s-2.036,75.141-2.057,77.557c-0.108,12.319,0.225,42.406,6.059,42.705
 				c6.386-5.59,20.265-2.172,18.64,8.994c-2.5,12.52-19.406,15.186-22.279,5.271c-1.096-2.656-4-5.32-5.125-2.816
@@ -1404,18 +1406,18 @@
 				c3.375,2.4,4.361-0.848,5.33-2.088c1.875-2.4-1.91-5.41-3.711-3.369c-9.373-0.807-9.493-33.609-9.412-46.948
 				c0.014-2.193,5.404-48.11,1.996-74.629s-108.398-15.388-108.409-15.52L213.199,274.048z"/>
 		</g>
-		<g id="gan_1_" display="inline">
+		<g id="gan" display="inline">
 			<path fill="none" stroke="#5B3F1C" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="3,3" d="M326.797,412.48
 				c-1.117-1.111-20.463,0.186-20.463,0.186s-11.286-2.502-18.355-1.111s-7.565,7.693-7.193,9.361
 				c0.372,1.67,2.604,10.198,1.488,15.946c4.588,3.43,23.861-8.494,22.694-12.516C311.294,428.24,330.889,415.818,326.797,412.48z"
 				/>
 		</g>
-		<g id="pi_1_" display="inline">
+		<g id="pi" display="inline">
 			<path fill="none" stroke="#2A9AB5" stroke-width="1.5" stroke-miterlimit="10" stroke-dasharray="3,3" d="M351.329,412.006
 				c2.744-0.822,8.508,3.295,8.508,5.49c3.02,7.684-4.117,13.174-7.41,10.154c-1.268-1.16-0.676-3.951-1.098-6.586
 				C350.649,416.846,349.64,412.514,351.329,412.006z"/>
 		</g>
-		<g id="xiaochang_1_" display="inline">
+		<g id="xiaochang" display="inline">
 			<g>
 				<path fill="none" stroke="#330622" stroke-miterlimit="10" stroke-dasharray="3,3" d="M298.83,473.684
 					c-0.109,0-0.198-0.003-0.265-0.008l0.187-3.71c2.299,0.138,37.052-1.013,36.88-2.365c-0.172-1.352-21.326-0.423-35.953-0.428
@@ -1432,7 +1434,7 @@
 					c0.807,1.667,0.615,3.13-0.572,4.347c-0.496,0.508-1.084-0.307-19.711,1.608C311.56,472.668,300.9,473.684,298.83,473.684z"/>
 			</g>
 		</g>
-		<g id="chang_1_" display="inline">
+		<g id="chang" display="inline">
 			<path fill="none" stroke="#494949" stroke-miterlimit="10" stroke-dasharray="3,3" d="M298.406,467.707
 				c0,0-2.693-1.902-5.146-0.682c-0.123-1.891-3.845-2.56-3.845-2.56s1.171-3.832-0.946-4.478c1.326-2.359-0.688-5.788-0.688-5.788
 				s0.871-1.47,0.277-4.006c1.534,0.572,2.462-1.241,2.462-1.241s1.075,0.877,3.922-0.746c2.24,1.488,4.938,0.286,4.938,0.286
@@ -1452,7 +1454,7 @@
 				c-0.304,3.216,3.137,3.987,3.137,3.987s2.956,4.134,6.494,3.129c2.12,2.424,8.299,0.281,8.299,0.281L298.406,467.707z"/>
 		</g>
 	</g>
-	<g id="miniao-s">
+	<g id="miniao-s"  display="none">
 		<path display="inline" fill="none" stroke="#405328" stroke-miterlimit="10" stroke-dasharray="3,3" d="M341.277,465.356
 			c0-1.374-4.244-6.119,0.25-6.369c4.496-0.25,7.867,8.366,4.996,11.113c-2.873,2.748-4.121-0.374-4.621-3.122
 			c-0.998,0.375-12.986,2.497-15.234,3.872c-2.248,1.374-4.495,23.101-4.495,23.101H320.3c0,0,1.374-21.229,4.995-23.976
@@ -1465,7 +1467,7 @@
 			c3.621,0,6.243,1.623,6.243,3.122c0,1.498-4.493,2.373-5.118,4.371c-0.625,1.997,0,16.857,0,16.857h-2.873
 			c0,0,0.873-15.608,0-17.107s-4.496-2.248-4.496-3.996S315.43,491.329,319.051,491.329z"/>
 	</g>
-	<g id="neifenmi-s">
+	<g id="neifenmi-s"  display="none">
 		<g id="shen_x5F_复制" display="inline">
 			<path fill="none" stroke="#791B1C" stroke-miterlimit="10" stroke-dasharray="3,3" d="M331.363,459.854
 				c0-0.788-2.433-3.507,0.144-3.65s4.509,4.795,2.862,6.369c-1.646,1.574-2.361-0.215-2.647-1.789
@@ -1503,7 +1505,7 @@
 			c0,0-3.863-1.288-5.475,1.503c-1.609,2.791-1.18,15.779-1.18,15.779s1.18-11.915,2.576-15.136
 			C321.396,469.587,324.08,470.66,324.08,470.66z"/>
 	</g>
-	<g id="ganguan-s">
+	<g id="ganguan-s"  display="none">
 		
 			<path display="inline" fill="none" stroke="#727171" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M213.5,228.833c0,0,8-14,16,0"/>
@@ -1518,7 +1520,7 @@
 				c0,0-10.829,2.765-15.165,12.882"/>
 		</g>
 	</g>
-	<g id="guge-s">
+	<g id="guge-s"  display="none">
 		<path display="inline" fill="#FFFFFF" stroke="#727171" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M305.195,480.666c-4.48-6.926-10.591-8.556-18.739-8.963c-8.147-0.407-6.518,18.333-2.444,21.998
 			c4.074,3.668,26.072,8.557,28.109,3.26S309.676,487.591,305.195,480.666z"/>
@@ -1786,7 +1788,7 @@
 			<line display="inline" fill="none" stroke="#727171" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" x1="234.616" y1="264.306" x2="238.846" y2="280.936"/>
 		<polygon display="inline" fill="#727171" points="204.704,245.121 214.181,245.582 206.358,252.93 		"/>
 	</g>
-	<g id="jirou-s">
+	<g id="jirou-s"  display="none">
 		
 			<ellipse display="inline" fill="none" stroke="#727171" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" cx="218.333" cy="229.333" rx="6" ry="7"/>
 		<path display="inline" fill="none" stroke="#727171" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="3,3" d="
@@ -1933,7 +1935,7 @@
 			<path display="inline" fill="none" stroke="#727171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M319.833,662.5c0,0,8.999,5.666,5.666,18"/>
 	</g>
-	<g id="linba-s">
+	<g id="linba-s"  display="none">
 		
 			<path display="inline" fill="none" stroke="#F2951A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M338.333,354.668c0,0,8-9.335,11-30.335s13.666-134.997,13.666-160.997s-18-45-18-45"/>
@@ -2047,7 +2049,7 @@
 			<path display="inline" fill="none" stroke="#F2951A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="3,3" d="
 			M313.833,662.001c0,0-7.5,6-5.5,11"/>
 	</g>
-	<g id="nvshengzhi-s_1_" display="inline">
+	<g id="nvshengzhi-s"  display="none">
 		<path fill="none" stroke="#F39800" stroke-miterlimit="10" stroke-dasharray="3,3" d="M326.961,484.614
 			c-0.559,0.559-2.394,0-2.394,0s0.358,2.033,0.12,4.547c-0.24,2.514-1.676,5.266-1.676,5.266s0.718,1.436,0.359,5.266
 			c-0.359,6.462-5.146,3.829-5.146,3.829s-4.787,2.154-5.625-4.188c-0.358-2.273,0.359-5.026,0.121-6.343

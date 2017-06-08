@@ -259,7 +259,7 @@ ZVI+U3+IrTPAkg5FRX/4Yv8ALV9vto4z1KKZSwM7ArHCM7nDIUglwdyXI5X+yiDR3OzZtvNnqQ2r
 RrXcouWsVY7CIt77fxrSujaKc9Av/G9CXfyvuHz75JFBVQKBwAoq6BgeBFGX6fK+3bOyk2rS4Tdq
 OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transform="matrix(1 0 0 1 75.3779 87.2925)">
 	</image>
-	<g id="shenti_1_">
+	<g id="shenti">
 		<path id="tou" display="none" fill="#FFFFFF" d="M186.333,243.333C160,234.667,176,206,184.667,210.333c1.667,4-3,11,2.333,10.333
 			s26.333-49,38.667-58c9.667-10.667,91.667-22,125.333,4c18,14,21.333,55.333,28,58s9-9.667,12-10s18,15.667,2,27.667
 			c4,10.667,2.667,22.333,2.667,22.333s13.667-2.333,16,17.667S391,306.667,391,306.667s4.481,28.5-19,47.667
@@ -280,12 +280,12 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		<path id="jiao" display="none" fill="#FFFFFF" d="M250,651c-22.294,14.217-0.071,31.412,23.333,25
 			c14.667-2.666,18.333-10,18.333-10s5.666,10.667,29.333,10.667c33.667-1.667,14.334-24.333,11.334-26s-30-17.667-40.667,7
 			C282,635.334,253.333,649,250,651z"/>
-		<path id="zuoshou_2_" display="none" fill="#FFFFFF" d="M160,522.333c-6.667,18.667,15.75,44.917,35.333,22.333
+		<path id="zuoshou" display="none" fill="#FFFFFF" d="M160,522.333c-6.667,18.667,15.75,44.917,35.333,22.333
 			c-2.044-7.414-3.122-11.275-4.333-18.166l-31-3.5"/>
 		<path id="zuoshoubi" display="none" fill="#FFFFFF" d="M160,522.333l-0.561-0.677c-10.916-3.2-20.933-9.484-22.773-21.66
 			c-2.667-20,31.667-121.667,75.667-138.667c6.333,15.333,8.917,21.829-12.333,74c-12.214,37.172-14.183,61.508-9.656,87.607
 			C189.5,527,164,525,160,522.333z"/>
-		<path id="youshou_2_" display="none" fill="#FFFFFF" d="M424.667,529.334c-0.667,30.666-37,23.999-36,10.999c2.667-2.667,3-6,3-6
+		<path id="youshou" display="none" fill="#FFFFFF" d="M424.667,529.334c-0.667,30.666-37,23.999-36,10.999c2.667-2.667,3-6,3-6
 			L424.667,529.334z"/>
 		<path id="youshoubi" display="none" fill="#FFFFFF" d="M391.667,534.333c0,0,14.833,2.167,33-4.999
 			c0,0,15.669-6.252,18.333-12.671c4.667-10.333,13-89.667-72-160.334c-5,0.333-2,47.671,15.667,79.667
@@ -310,7 +310,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 				c13.5,9,16.251,12.416,17.584,21.083S365,523.5,365,523.5s-2.5,16-16,23c9.5,7,15,27,15,27"/>
 		</g>
 		
-			<path id="TripleEnergizer-1_1_" display="inline" fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="
+			<path id="TripleEnergizer-1" display="inline" fill="none" stroke="#F5B117" stroke-miterlimit="10" stroke-dasharray="5,5" d="
 			M353.5,263.167c0,0,19.5-0.667,33.5,16.333"/>
 		<polyline id="Bladder-1" display="inline" fill="none" stroke="#E4007F" stroke-miterlimit="10" points="296.5,286.5 296.5,209.5 
 			308.5,209.5 308.5,166 		"/>
@@ -469,9 +469,9 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="EX-CA1-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="337.109" cy="533" r="1.891"/>
 		
-			<circle id="EX-UE2-2_2_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="417.109" cy="497.333" r="1.891"/>
+			<circle id="EX-UE2-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="417.109" cy="497.333" r="1.891"/>
 		
-			<circle id="EX-UE2-1_1_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="410.443" cy="498" r="1.891"/>
+			<circle id="EX-UE2-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="410.443" cy="498" r="1.891"/>
 		
 			<circle id="EX-HN4-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="329" cy="250.333" r="1.891"/>
 		
@@ -613,7 +613,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="LI15-1" display="inline" stroke="#C30D23" stroke-width="0.75" stroke-miterlimit="10" cx="397.25" cy="383.75" r="1.647"/>
 		
-			<circle id="KI27-1_1_" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="323.375" cy="401.333" r="1.647"/>
+			<circle id="KI27-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="323.375" cy="401.333" r="1.647"/>
 		
 			<circle id="KI26-1" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="323.375" cy="414.333" r="1.647"/>
 		
@@ -699,7 +699,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="PC4-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="409" cy="494.75" r="1.646"/>
 		
-			<circle id="PC5-1_1_" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="408.75" cy="503.5" r="1.646"/>
+			<circle id="PC5-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="408.75" cy="503.5" r="1.646"/>
 		
 			<circle id="PC6-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="408.75" cy="511.897" r="1.646"/>
 		
@@ -707,7 +707,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="PC8-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="407" cy="534.75" r="1.646"/>
 		
-			<circle id="PC9-1_1_" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="394.75" cy="541.75" r="1.646"/>
+			<circle id="PC9-1" display="inline" stroke="#920783" stroke-width="0.75" stroke-miterlimit="10" cx="394.75" cy="541.75" r="1.646"/>
 		
 			<circle id="SP20-1" display="inline" stroke="#8FC31F" stroke-width="0.75" stroke-miterlimit="10" cx="368.5" cy="417.5" r="1.646"/>
 		
@@ -781,15 +781,15 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="EX-LE3-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="314.334" cy="592" r="1.891"/>
 		
-			<circle id="EX-LE1-2_2_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="325.109" cy="599.332" r="1.891"/>
+			<circle id="EX-LE1-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="325.109" cy="599.332" r="1.891"/>
 		
 			<circle id="EX-LE2-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="310.443" cy="608.666" r="1.891"/>
 		
 			<circle id="EX-LE4-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="307.109" cy="619.999" r="1.891"/>
 		
-			<circle id="KI6-1_1_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298.568" cy="645.124" r="1.891"/>
+			<circle id="KI6-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="298.568" cy="645.124" r="1.891"/>
 		
-			<circle id="EX-LE1-1_1_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="349.667" cy="599.332" r="1.891"/>
+			<circle id="EX-LE1-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="349.667" cy="599.332" r="1.891"/>
 		
 			<circle id="EX-LE10-3" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="329.667" cy="660.501" r="1.891"/>
 		
@@ -797,7 +797,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="EX-LE12-1" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="319.167" cy="673.167" r="1.891"/>
 		
-			<circle id="EX-LE12-2_5_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="328.167" cy="673.668" r="1.891"/>
+			<circle id="EX-LE12-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="328.167" cy="673.668" r="1.891"/>
 		
 			<circle id="EX-LE12-3" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="334.499" cy="671" r="1.891"/>
 		
@@ -974,7 +974,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="KI17-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="266.813" cy="511.121" r="1.647"/>
 		
-			<circle id="KI16-2_1_" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="266.813" cy="518.855" r="1.647"/>
+			<circle id="KI16-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="266.813" cy="518.855" r="1.647"/>
 		
 			<circle id="KI15-2" display="inline" stroke="#00A0E9" stroke-width="0.75" stroke-miterlimit="10" cx="266.813" cy="526.59" r="1.647"/>
 		
@@ -1126,7 +1126,7 @@ OLi38LVZdhEG54/41oLrtkbMIKG43RM82etzegB9l4isRWQrAVgPTiKxArwisBWA/wDnP//Z" transf
 		
 			<circle id="EX-LE4-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="267.744" cy="619.186" r="1.891"/>
 		
-			<circle id="KI6-2_1_" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="279.91" cy="645.186" r="1.891"/>
+			<circle id="KI6-2" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="279.91" cy="645.186" r="1.891"/>
 		
 			<circle id="EX-LE1-4" display="inline" fill="#FFFFFF" stroke="#956134" stroke-width="0.75" stroke-miterlimit="10" cx="225.186" cy="598.52" r="1.891"/>
 		
