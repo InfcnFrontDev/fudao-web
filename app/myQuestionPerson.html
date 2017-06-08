@@ -27,9 +27,9 @@
 
 <div id="mapDiv" style="width: 100%; height: 100%;margin-top: -20%;">
 </div>
-<div  style="width: 100%; height: 150px;  position: absolute; bottom: 0; left: 0; font-size: 14px";>
+<div  style="width: 100%;  position: absolute; bottom: 0; left: 0; font-size: 14px";>
     <p id="detail" style="padding: 20px"></p>
-    <div id="btn" style="width: 80px; height: 30px; background-color: #A1CC00; border-radius: 5px; margin: 0 auto; text-align: center">
+    <div id="btn" style="width: 80px; height: 30px; background-color: #A1CC00; border-radius: 5px; margin: 0 auto 20px; text-align: center">
         <span style="color: #FFFFFF; line-height: 30px">教我自疗</span>
     </div>
 </div>
@@ -45,21 +45,20 @@
     var disease = getQueryString('disease');
     var token = getQueryString('token');
     var pageKey = getQueryString('type');
-    var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweiid = [], meridians, acupoints, organs, circulatorySystems
-    var url = pageKey == 'disease'?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
+    var diseaseobj,type = '1', jingluomap, jingluoid = [], xueweimap, xueweiid = [], xunhuanmap, xunhuanid = [], buweimap,  buweiid = [], meridians, acupoints, organs, circulatorySystems
+    var url = pageKey === 'disease' ?  urls.DISEASE_RELEVANT :  urls.EXCEPT_RELEVANT
+    var data = pageKey === 'disease' ?  {diseaseType: diseaseType,disease: disease} : {expect: disease}
     $("#btn").on('click',function () {
         window.postMessage(type);
     })
+
     $.ajax({
         type: "get",
         url: url,
         headers: {
             authorization: token
         },
-        data: {
-            diseaseType: diseaseType,
-            disease: disease,
-        },
+        data: data,
         success: function (msg) {
             if (msg.ok) {
                 diseaseobj = msg.obj
@@ -68,9 +67,17 @@
                 b = diseaseobj.acupoints
                 c = diseaseobj.organs
                 d = diseaseobj.circulatorysystems
+                console.log(c)
+                if(c.length == 0 || c[0].list.length == 0) {
+                    $("#bwbtn").css('display','none')
+                }
+                if(d.length == 0 || d[0].list.length == 0) {
+                    $("#xhbtn").css('display','none')
+                }
                 jingluomap = a[0] && a[0].list[0] ?  a[0].list[0].map : 'svg/aged/nan/qian.svg'
                 xueweimap = b[0] && b[0].list[0] ?  b[0].list[0].map : 'svg/aged/nan/qian.svg'
-                xunhuanmap =d[0] && d[0].list[0] ?  d[0].list[0].map : 'svg/aged/nan/qian.svg'
+				buweimap =c[0] && c[0].list[0] ?  c[0].list[0].map : 'svg/aged/nan/qian.svg'
+				xunhuanmap =d[0] && d[0].list[0] ?  d[0].list[0].map : 'svg/aged/nan/qian.svg'
                 Object.keys(a).forEach(function (item) {
                     a[item].list.forEach(function (items) {
                         jingluoid.push(items.code)
@@ -138,7 +145,7 @@
         $("button.start").removeClass('start');
         $(this).addClass('start');
         var map = new RentiMap("#mapDiv", {
-            map: xunhuanmap,
+            map: buweimap,
             buweiid: buweiid,
             noshow: true
         });

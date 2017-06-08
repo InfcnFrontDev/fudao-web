@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
     <link rel="stylesheet" href="js/swiper/swiper-3.4.2.min.css">
     <script src="js/hidpi-canvas.js"></script>
     <script src="js/picker/picker.js"></script>
@@ -240,14 +240,7 @@
      $('#abc').css({top:-220-(daWidth-320)/2,left:100+(daWidth-320)/2});//
      $('.dongzuo').css({top:-210-(daWidth-320)/2,left:125+(daWidth-320)/2});*/
 
-    $(document).click(function(e){
-        e.preventDefault();
-        $('.bigimg').hide();
-    });
-    $('#myCanvas').click(function(e){
-        e.preventDefault();
-        $('.bigimg').hide();
-    });
+
 
     var data1 = [
 
@@ -493,20 +486,7 @@
         nextTime(num,arr[index].startTime,arr[index].endTime,arr[index].name)
     }
 
-    /*
-     function grayTimeDuan(startTime1){
-     var startTime,endTime;
-     for(i=0; i<arr.length; i++){
-     if(startTime1==arr[i].startTime){
-     startTime=arr[i].startTime
-     endTime=arr[i].endTime;
 
-     }
-     }
-     drawTime
-     console.log(startTime+"+"+endTime);
-     }
-     */
 
 
     //黄色时间段

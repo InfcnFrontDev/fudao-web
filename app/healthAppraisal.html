@@ -87,7 +87,7 @@
 
 <script>
     var token = getQueryString('token');
-//        token = "6fb9fec2-6162-416f-b98f-b5a45608aa19";
+//        token = "ab33d328-c022-41b4-8316-559447b1b081";
     var allAnswer = JSON.parse(localStorage.getItem('allAnswer')) || [];
 
     localStorage.setItem('zizhen_token', token);
@@ -262,7 +262,6 @@
         var new_cur_pre = Math.ceil((index - 1) / _json.length * 100);
 
         if (index != 1 && (isNaN(before_cur_pre) || before_cur_pre < new_cur_pre)) {
-            console.log(before_cur_pre + "       " + new_cur_pre)
             localStorage.setItem(questionnaireType[2], new_cur_pre + "%");
             $("." + questionnaireType[2] + " span").html(new_cur_pre + "%");
             $("." + questionnaireType[2] + " cite").css('width', 1.3 * new_cur_pre);
@@ -316,7 +315,7 @@
 
     // 生成单选按钮
     function fun_createRadio(question, answer, order) {
-        var _radio = '<input class="iradio_square-blue" type="radio" style="-webkit-appearance: none;left:20px;" name="' + question.id + '&' + order + '"';
+        var _radio = '<input class="iradio_square-blue" type="radio" style="-webkit-appearance: none;left:20px;" name="' + question.id + '&' + order + '&' + question.title +'"';
         _radio += ' value="' + question.asnwerScore[answer] + '"';
         if (answers[question.id] == question.asnwerScore[answer]) {
             _radio += ' checked="checked"';
@@ -335,7 +334,9 @@
             answers[index - 1] = {
                 id: order[0],
                 score: obj.value,
-                answer: order[1]
+                answer: order[1],
+                type:questionnaireType[0]==0?_json[index-1].type:questionnaireType[0],
+                title:order[2]
             };
             localStorage.setItem(key, JSON.stringify(answers));
             fun_submit();
@@ -344,7 +345,9 @@
         answers[index - 1] = {
             id: order[0],
             score: obj.value,
-            answer: order[1]
+            answer: order[1],
+            type:questionnaireType[0]==0?_json[index-1].type:questionnaireType[0],
+            title:order[2]
         };
         localStorage.setItem(key, JSON.stringify(answers));
 
@@ -383,7 +386,9 @@
                     answers[i] = {
                         id: _json[i].id,
                         score: _json[i].asnwerScore[0],
-                        answer: 'A'
+                        answer: 'A',
+                        type:questionnaireType[0]==0?_json[i].type:questionnaireType[0],
+                        title:_json[i].title,
                     }
                 }
             }
@@ -419,6 +424,8 @@
                 }
             }
         }
+        console.log("提交结果")
+        console.log(arr)
         $.ajax({
             url: urls.DIAGNOSIS_SUBMITQUESTIONNAIRERESULT,
             headers: {
