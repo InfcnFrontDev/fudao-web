@@ -87,8 +87,8 @@
 
 <script>
     var token = getQueryString('token');
-//        token = "ab33d328-c022-41b4-8316-559447b1b081";
-    var allAnswer = JSON.parse(localStorage.getItem('allAnswer')) || [];
+//        token = "d2b615ea-d057-41ec-9c0c-a43314c09792";
+    var answers = JSON.parse(localStorage.getItem('healthappra_Answer')) || [];
 
     localStorage.setItem('zizhen_token', token);
     var index = 1;
@@ -204,8 +204,8 @@
 //        $("#myModal2").html("");
         $("#myModal2").load(url, null);
         index = 1;
-        key = questionnaireType[2] + "answer";
-        answers = JSON.parse(localStorage.getItem(key)) || [];
+//        key = questionnaireType[2] + "answer";
+        answers = JSON.parse(localStorage.getItem('healthappra_Answer')) || [];
         _json = [];
         $.ajax({
             type: "post",
@@ -331,25 +331,25 @@
         $(obj).addClass('checked');
         if (index == _json.length) {
             fun_showProgress(index + 1);
-            answers[index - 1] = {
+            answers[parseInt(order[0]) - 43] = {
                 id: order[0],
                 score: obj.value,
                 answer: order[1],
                 type:questionnaireType[0]==0?_json[index-1].type:questionnaireType[0],
                 title:order[2]
             };
-            localStorage.setItem(key, JSON.stringify(answers));
+            localStorage.setItem('healthappra_Answer', JSON.stringify(answers));
             fun_submit();
             return false;
         }
-        answers[index - 1] = {
+        answers[parseInt(order[0]) - 43] = {
             id: order[0],
             score: obj.value,
             answer: order[1],
             type:questionnaireType[0]==0?_json[index-1].type:questionnaireType[0],
             title:order[2]
         };
-        localStorage.setItem(key, JSON.stringify(answers));
+        localStorage.setItem('healthappra_Answer', JSON.stringify(answers));
 
         index++;
         fun_getCurQuestion();
@@ -382,8 +382,8 @@
         mui.confirm('是否提交问卷', '温馨提示', btnArray, function (e) {
 
             for (var i in _json) {
-                if (!answers[i]) {
-                    answers[i] = {
+                if (!answers[parseInt(_json[i].id)-43]) {
+                    answers[parseInt(_json[i].id)-43] = {
                         id: _json[i].id,
                         score: _json[i].asnwerScore[0],
                         answer: 'A',
@@ -393,7 +393,7 @@
                 }
             }
             if (e.index == 1) {
-                countScore(answers);
+                countScore();
                 var appraisalsl = localStorage.getItem("appraisalsl");
                 var appraisalxl = localStorage.getItem("appraisalxl");
                 var appraisalsj = localStorage.getItem("appraisalsj");
@@ -415,15 +415,15 @@
     }
 
     //提交问卷
-    function countScore(answers) {
+    function countScore() {
         var arr = answers;
-        if (questionnaireType[0] != 0) {
-            for (var i = 0; i < 4; i++) {
-                if (i + 1 != questionnaireType[0] && allAnswer[i]) {
-                    arr = arr.concat(allAnswer[i]);
+            for (var i = 0; i < arr.length; i++) {
+                if (!arr[i]) {
+                    console.log(arr[i])
+                    arr.splice(i,1);
+                    i--;
                 }
             }
-        }
         console.log("提交结果")
         console.log(arr)
         $.ajax({
@@ -438,12 +438,14 @@
             type: 'post',
             timeout: 20000, //超时时间设置为20秒
             success: function (data) {
-                allAnswer[questionnaireType[0] - 1] = answers;
-                localStorage.setItem('allAnswer', JSON.stringify(allAnswer));
+//                allAnswer[questionnaireType[0] - 1] = answers;
+//                localStorage.setItem('allAnswer', JSON.stringify(allAnswer));
                 window.location.href = "assessmentResult.html";
             },
             error: function (xhr, type, errorThrown) {
+                window.location.href = "assessmentResult.html";
             }
+
         });
 
 
