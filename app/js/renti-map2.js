@@ -22,7 +22,7 @@ var $popover;
             var $rentibuwei = $('#rentibuwei');
 
 
-            $("image").css('display','none')
+            // $("image").css('display','none')
 
 
 			function clickXuewei() {
