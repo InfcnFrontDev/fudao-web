@@ -433,16 +433,16 @@ function emotionSel(){
         });
     } else {
         $('[name=emo_22]').each(function(){
-            $(this).css('display','block');
+            $(this).attr('style','');
         });
         $('[name=emo_23]').each(function(){
-            $(this).css('display','block');
+            $(this).attr('style','');
         });
         $('[name=emo_24]').each(function(){
-            $(this).css('display','block');
+            $(this).attr('style','');
         });
         $('[name=emo_25]').each(function(){
-            $(this).css('display','block');
+            $(this).attr('style','');
         });
     }
 }
