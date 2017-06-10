@@ -15,7 +15,7 @@ $(document).ready(function(){
     if(isNotBlank(Trim(decodeURI(getQueryString('weather'))))) weather = Trim(decodeURI(getQueryString('weather')));
     if(isNotBlank(Trim(decodeURI(getQueryString('winp'))))) winp = Trim(decodeURI(getQueryString('winp')));
     if(isNotBlank(Trim(decodeURI(getQueryString('air_scope'))))) air_scope = Trim(decodeURI(getQueryString('air_scope')));
-    alert(city+'-'+weather+'-'+winp+'-'+air_scope);
+    // alert(city+'-'+weather+'-'+winp+'-'+air_scope);
 
     ii = layer.load();
     $.ajax({
