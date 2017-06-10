@@ -10,7 +10,10 @@ var air_scope = "50-100";
 var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2; // （自然、人文、日常、情感）平均得分
 var result_personal = null,result_emotion = null; // 问卷结果
 var ii;
-$(document).ready(function(){
+// $(document).ready(function(){
+//
+// });
+function energy_init(){
     if(isNotBlank(Trim(decodeURI(getQueryString('province'))))) province = Trim(decodeURI(getQueryString('province')));
     if(isNotBlank(Trim(decodeURI(getQueryString('city'))))) city = Trim(decodeURI(getQueryString('city')));
     if(isNotBlank(Trim(decodeURI(getQueryString('weather'))))) weather = Trim(decodeURI(getQueryString('weather')));
@@ -31,20 +34,19 @@ $(document).ready(function(){
                     setTimeout(function(){
                         preInitEchart(data.obj);
                         layer.close(ii);
-                    },500);
+                    },1000);
                 } else {
+                    layer.close(ii);
                     // initEchart_bar(xAxis,datas,colorList); //　默认初始化
                 }
-            } else {
-                alert(JSON.stringify(data));
             }
         },error: function(data){
             layer.close(ii);
-            // alert(JSON.stringify(data));
             // initEchart_bar(xAxis,datas,colorList); //　默认初始化
         }
     });
-});
+}
+
 //
 function preInitEchart(result){
     var xAxis = ["自然","人文","日常","情感"];
