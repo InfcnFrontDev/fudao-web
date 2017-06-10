@@ -7,13 +7,15 @@ var city = "北京市";
 var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
-var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2;
+var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2; // （自然、人文、日常、情感）平均得分
+var result_personal = null,result_emotion = null; // 问卷结果
 var ii;
 $(document).ready(function(){
-    if(isNotBlank(getQueryString('city'))) city = getQueryString('city');
-    if(isNotBlank(getQueryString('weather'))) weather = getQueryString('weather');
-    if(isNotBlank(getQueryString('winp'))) winp = getQueryString('winp');
-    if(isNotBlank(getQueryString('air_scope'))) air_scope = getQueryString('air_scope');
+    if(isNotBlank(Trim(getQueryString('city')))) city = Trim(getQueryString('city'));
+    if(isNotBlank(Trim(getQueryString('weather')))) weather = Trim(getQueryString('weather'));
+    if(isNotBlank(Trim(getQueryString('winp')))) winp = Trim(getQueryString('winp'));
+    if(isNotBlank(Trim(getQueryString('air_scope')))) air_scope = Trim(getQueryString('air_scope'));
+    // alert(city+'-'+weather+'-'+winp+'-'+air_scope);
     ii = layer.load();
     $.ajax({
         url: urls.ENERGY_GET,
@@ -46,12 +48,15 @@ $(document).ready(function(){
 //
 function preInitEchart(result){
     var xAxis = ["自然","人文","日常","情感"];
-    avg_gr = result.avg_personal;
-    avg_qg = result.avg_emotion;
+    avg_gr = result.avg_personal; // 日常平均分
+    avg_qg = result.avg_emotion; // 情感平均分
+    result_personal = JSON.parse(result.result_personal); // 日常得分
+    result_emotion = JSON.parse(result.result_emotion); // 情感得分
     if(!isNotBlank(avg_gr)) avg_gr = 2;
     if(!isNotBlank(avg_qg)) avg_qg = 2;
     var i = 0;
     var sum = 0;
+
     // 自然环境平均值
     getPeoDatas().forEach(function(data){
         i++;
@@ -84,7 +89,7 @@ function initEchart_scatter(result){
                 [6,getSandScore(weather),"沙尘"],[7,getAirScore(air_scope),"空气"],[8,getSunScore(weather),"日"],
                 [11,getStarsScore(weather),"星辰"]];
     // 人文
-    data_1 = [[1,getLocationScore(city),"地区魅力"]];
+    data_1 = [[1,getLocationScore(city),"城市魅力"]];
     var i = 1;
     $.getJSON("json/indexScore.json",function(data){
         _.forEach(data, function(n, key) { // 循环对象
@@ -296,17 +301,13 @@ function initEchart_bar(xAxis,datas,colorList,result){
         $('#backBar').css('display','block');
         var xAxis = new Array();
         var datas = new Array();
-        var colorList = [];
-        var colorList_ = [];
         if(param.name.indexOf("自然") != -1){
             xAxis = ['山川','河流','风','雨','雪','沙尘','空气','日','星辰'];
             datas = getPeoDatas();
             $("#lowerDiv_detail").css('width','100%');
-            colorList = [ '#03B3D4'];
-            colorList_ = [ '#AED1D8'];
-            initEchart_bar_detail(xAxis,datas,colorList);
+            initEchart_bar_detail(xAxis,datas,'#03B3D4','#AED1D8');
         } else if (param.name.indexOf("人文") != -1){
-            xAxis.push('地区魅力');
+            xAxis.push('城市魅力');
             datas.push(getLocationScore(city));
             $.getJSON("json/indexScore.json",function(data){
                 _.forEach(data, function(n, key) { // 循环对象
@@ -314,14 +315,12 @@ function initEchart_bar(xAxis,datas,colorList,result){
                         _.forEach(n.context, function(n, key) { // 循环对象
                             xAxis.push(key)
                             if(n.score == 0) n.score = 1;
-                            datas.push(n.score);
+                            datas.push(parseInt(n.score));
                         });
                     }
                 });
                 $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
-                colorList = [ '#D49306' ];
-                colorList_ = [ '#D9C597' ];
-                initEchart_bar_detail(xAxis,datas,colorList);
+                initEchart_bar_detail(xAxis,datas,'#D49306','#D9C597');
             }); 
         } else if (param.name.indexOf("日常") != -1){
             _.forEach(JSON.parse(result.result_personal), function(n, key) { // 循环对象
@@ -330,9 +329,7 @@ function initEchart_bar(xAxis,datas,colorList,result){
                 datas.push(n);
             });
             $("#lowerDiv_detail").css('width','100%');
-            colorList = [ '#99CB06' ];
-            colorList_ = [ '#C0CF99' ];
-            initEchart_bar_detail(xAxis,datas,colorList);
+            initEchart_bar_detail(xAxis,datas,'#99CB06','#C0CF99');
         } else { // 情感关系
             _.forEach(JSON.parse(result.result_emotion), function(n, key) { // 循环对象
                 xAxis.push(key);
@@ -344,9 +341,7 @@ function initEchart_bar(xAxis,datas,colorList,result){
             } else {
                 $("#lowerDiv_detail").css('width',(datas.length)*30+'px');
             }
-            colorList = [ '#7A91D6' ];
-            colorList_ = [ '#D3D8E4' ];
-            initEchart_bar_detail(xAxis,datas,colorList);
+            initEchart_bar_detail(xAxis,datas,'#7A91D6','#D3D8E4');
         }
     });
 }
@@ -356,7 +351,7 @@ function getPeoDatas(){
         getSnowScore(weather),getSandScore(weather),getAirScore(air_scope),getSunScore(weather),getStarsScore(weather)];
 }
 
-function initEchart_bar_detail(xAxis,datas,colorList){
+function initEchart_bar_detail(xAxis,datas,colorList,colorList_){
     // 根据展示柱状图个数初始化容器宽度
     var myChart = echarts.init(document.getElementById('lowerDiv_detail'));
     var option = {
@@ -396,7 +391,7 @@ function initEchart_bar_detail(xAxis,datas,colorList){
                         color: colorList
                     }
                 },
-                show: true
+                show: false
             }
         ],
         series: [
@@ -407,7 +402,19 @@ function initEchart_bar_detail(xAxis,datas,colorList){
                 itemStyle: {
                     normal: {
                         barBorderRadius: 6,
-                        color: colorList
+                        // color: colorList
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: colorList
+                        }, {
+                            offset: 1,
+                            color: colorList_
+                        }]),
+                        label: {
+                            show: true,
+                            position: 'top',
+                            formatter: '{c}'
+                        }
                     }
                 },
                 data: datas
@@ -504,11 +511,10 @@ function save(){
     result_emo.感情状态 = $("#emotionSel").val();
     ii = layer.load();
     if($('#peoForm').css('display') == 'block'){
-        setResult(result_peo,result_emo,0);
+        setResult(result_peo,result_emotion,0);
     } else {
-        setResult(result_peo,result_emo,1);
+        setResult(result_personal,result_emo,1);
     }
-    closeTance();
 }
 
 function setResult(result_peo,result_emo,type){
@@ -548,6 +554,7 @@ function setResult(result_peo,result_emo,type){
                 +parseInt($("#industrySel").val())+parseInt($("#occupationSel").val());
             i+=5;
             avg_gr = JSON.stringify(parseInt(sum/i));
+            result_personal = result_peo;
             $.ajax({
                 url: urls.ENERGY_SUBMITSYMPTOM,
                 headers: {
@@ -557,6 +564,21 @@ function setResult(result_peo,result_emo,type){
                 type: "POST",
                 dataType: "JSON",
                 success: function(data){
+                    if(result_emotion == null) {
+                        layer.close(ii);
+                        quesTab_Nav_click('emotion','peo');
+                        return;
+                    }
+                    $('#bar_loading').css('display','none');
+                    $('#lowerDiv').css('display','block');
+                    var result = new Object();
+                    result['result_personal'] = JSON.stringify(result_peo);
+                    result['result_emotion'] = JSON.stringify(result_emo);
+                    result['avg_personal'] = avg_gr;
+                    result['avg_emotion'] = avg_qg;
+                    layer.close(ii);
+                    preInitEchart(result);
+                    closeTance();
                     if(undefined == data.ok || data.ok == false){
                         alert(JSON.stringify(data));
                     }
@@ -595,6 +617,7 @@ function setResult(result_peo,result_emo,type){
                 +parseInt($("#religionSel").val())+parseInt($("#emotionSel").val());
             i+=4;
             avg_qg = JSON.stringify(parseInt(sum/i));
+            result_emotion = result_emo;
             $.ajax({
                 url: urls.ENERGY_SUBMITSYMPTOM,
                 headers: {
@@ -604,6 +627,21 @@ function setResult(result_peo,result_emo,type){
                 type: "POST",
                 dataType: "JSON",
                 success: function(data){
+                    if(result_personal == null) {
+                        layer.close(ii);
+                        quesTab_Nav_click('peo','emotion');
+                        return;
+                    }
+                    $('#bar_loading').css('display','none');
+                    $('#lowerDiv').css('display','block');
+                    var result = new Object();
+                    result['result_personal'] = JSON.stringify(result_peo);
+                    result['result_emotion'] = JSON.stringify(result_emo);
+                    result['avg_personal'] = avg_gr;
+                    result['avg_emotion'] = avg_qg;
+                    layer.close(ii);
+                    preInitEchart(result);
+                    closeTance();
                     if(undefined == data.ok || data.ok == false){
                         alert(JSON.stringify(data));
                     }
@@ -611,21 +649,23 @@ function setResult(result_peo,result_emo,type){
             });
         });
     }
-    //提示层
-    // layer.msg('玩命提示中');
-    setTimeout(function(){
-        $('#bar_loading').css('display','none');
-        $('#lowerDiv').css('display','block');
-        var result = new Object();
-        // avg_zr = 0,avg_rw = 0,avg_gr = 0,avg_qg = 0;
-        result['result_personal'] = JSON.stringify(result_peo);
-        result['result_emotion'] = JSON.stringify(result_emo);
-        result['avg_personal'] = avg_gr;
-        result['avg_emotion'] = avg_qg;
-        layer.close(ii);
-        preInitEchart(result);
-    },2000);
+    // getJSON 为实现同步，so 代码啰嗦 （ 时间紧，
+    // ii = layer.load();
+    // //提示层
+    // setTimeout(function(){
+    //     $('#bar_loading').css('display','none');
+    //     $('#lowerDiv').css('display','block');
+    //     var result = new Object();
+    //     result['result_personal'] = JSON.stringify(result_peo);
+    //     result['result_emotion'] = JSON.stringify(result_emo);
+    //     result['avg_personal'] = avg_gr;
+    //     result['avg_emotion'] = avg_qg;
+    //     layer.close(ii);
+    //     preInitEchart(result);
+    // },2000);
+    // closeTance();
 }
+
 /**
  * 读取民族json
  * @return {[type]} [description]
@@ -713,34 +753,11 @@ function backBar(){
     $('#backBar').css('display','none');
 }
 
-function getColor(name_){
-    var v = {
-        "山川":"#25C1C3","河流":"#25C1C3",
-        "风":"#C0B0E1","雨":"#C0B0E1","雪":"#C0B0E1","沙尘":"#C0B0E1","空气":"#C0B0E1","日":"#C0B0E1","月相":"#C0B0E1","星辰":"#C0B0E1",
-        "动植物":"#4FA9ED",
-        "固定场所":"#FFB275",
-        "性别":"#dd7e6b","民族":"#dd7e6b","姓氏":"#dd7e6b",
-        "感情状态":"#28A7E1","婚姻幸福度":"#28A7E1","健康程度":"#28A7E1","健康习惯":"#28A7E1","重视程度":"#28A7E1","双亲情况":"#28A7E1","家庭状况":"#28A7E1",
-        "文艺生活":"#FAD860",
-        "宠物":"#F3A43B",
-        "旅游":"#E67D00","运动":"#E67D00","花茶艺":"#E67D00","电脑活动":"#E67D00","棋牌":"#E67D00","收藏":"#E67D00",
-        "行业":"#D7504B","职业":"#D7504B",
-        "专业":"#C6E579","学历":"#C6E579","高校类型":"#C6E579","学习意愿":"#C6E579","学习能力":"#C6E579","学习渠道":"#C6E579","学习类型":"#C6E579",
-        "个人态度":"#F4E001","个人心境":"#F4E001","语气":"#F4E001","声音":"#F4E001","语调":"#F4E001","语言":"#F4E001","对人应激":"#F4E001","对事应激":"#F4E001","约束力":"#F4E001",
-        "爱国情":"#F0805A","乡情":"#F0805A","家庭情况":"#F0805A","家庭情感":"#F0805A","友情空间":"#F0805A","友情时间":"#F0805A","友情价值":"#F0805A","友情目的":"#F0805A",
-            "关系维度":"#F0805A","爱情亲密度":"#F0805A","爱情承诺度":"#F0805A","爱情类型":"#F0805A",
-        "道德感":"#26C0C0","教育理智感":"#26C0C0","事物理智感":"#26C0C0","政治理智感":"#26C0C0","宗教":"#26C0C0","社会群体":"#26C0C0"
-    };
-    if(undefined == v[name_]) return "#A0522D";
-    return v[name_];
-}
-
 /**
  * 获取山川河流得分
  */
 function getMountainsScore(city_,type){
     var val;
-    city_ = "北京市";
     $.ajaxSettings.async = false;
     $.getJSON("json/mountain.json",function(data) {
         _.find(data, function (n, key) { // 循环对象
@@ -770,6 +787,11 @@ function getStarsScore(weather){
 function isNotBlank(v){
     if(null == v || undefined == v || '' == v || 'null' == v) return false;
     return true;
+}
+
+function Trim(str)
+{
+    return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
 function getQueryString(name) {
