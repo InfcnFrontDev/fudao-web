@@ -86,8 +86,8 @@
 	var token = getQueryString('token');
 
 	// 默认经纬度
-	x = x || 116.33939;
-	y = y || 39.991599;
+	x = x||116.33939;
+	y = y||39.991599;
 
 	// 百度地图API功能
 	//谷歌坐标
@@ -101,11 +101,12 @@
 	map.enableAutoResize(); // 启用自动适应容器尺寸变化，默认启用
 
 	// 原始坐标转成百度坐标
-	//	var translateCallback = function (data) {
-	//		if (data.status === 0) {
-	//			startLocation(data.points[0]);
-	//		}
-	//	};
+		var translateCallback = function (data) {
+			if (data.status === 0) {
+			    console.log(data)
+				startLocation(data.points[0]);
+			}
+		};
 
 	// 开始定位
 	var marker;
@@ -201,11 +202,11 @@
 	}
 
 
-	//	var convertor = new BMap.Convertor();
-	//	var pointArr = [];
-	//	pointArr.push(ggPoint);
-	//	convertor.translate(pointArr, 1, 5, translateCallback)
+		var convertor = new BMap.Convertor();
+		var pointArr = [];
+		pointArr.push(ggPoint);
+		convertor.translate(pointArr, 1, 5,translateCallback)
 
-	startLocation(ggPoint);
+
 
 </script>
