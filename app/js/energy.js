@@ -11,11 +11,12 @@ var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2; // （自然、人文、日常�
 var result_personal = null,result_emotion = null; // 问卷结果
 var ii;
 $(document).ready(function(){
-    if(isNotBlank(Trim(decodeURI(getQueryString('city'))))) city = Trim(decodeURI(getQueryString('city')));
+	if(isNotBlank(Trim(decodeURI(getQueryString('province'))))) province = Trim(decodeURI(getQueryString('province')));
+	if(isNotBlank(Trim(decodeURI(getQueryString('city'))))) city = Trim(decodeURI(getQueryString('city')));
     if(isNotBlank(Trim(decodeURI(getQueryString('weather'))))) weather = Trim(decodeURI(getQueryString('weather')));
     if(isNotBlank(Trim(decodeURI(getQueryString('winp'))))) winp = Trim(decodeURI(getQueryString('winp')));
     if(isNotBlank(Trim(decodeURI(getQueryString('air_scope'))))) air_scope = Trim(decodeURI(getQueryString('air_scope')));
-    alert(city+'-'+weather+'-'+winp+'-'+air_scope);
+    // alert(province+ '-' +city+'-'+weather+'-'+winp+'-'+air_scope);
 
     ii = layer.load();
     $.ajax({
