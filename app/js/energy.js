@@ -10,12 +10,13 @@ var air_scope = "50-100";
 var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2; // （自然、人文、日常、情感）平均得分
 var result_personal = null,result_emotion = null; // 问卷结果
 var ii;
-$(document).ready(function(){
-    if(isNotBlank(Trim(getQueryString('city')))) city = Trim(getQueryString('city'));
-    if(isNotBlank(Trim(getQueryString('weather')))) weather = Trim(getQueryString('weather'));
-    if(isNotBlank(Trim(getQueryString('winp')))) winp = Trim(getQueryString('winp'));
-    if(isNotBlank(Trim(getQueryString('air_scope')))) air_scope = Trim(getQueryString('air_scope'));
-    // alert(city+'-'+weather+'-'+winp+'-'+air_scope);
+
+    if(isNotBlank(Trim(decodeURI(getQueryString('city'))))) city = Trim(decodeURI(getQueryString('city')));
+    if(isNotBlank(Trim(decodeURI(getQueryString('weather'))))) weather = Trim(decodeURI(getQueryString('weather')));
+    if(isNotBlank(Trim(decodeURI(getQueryString('winp'))))) winp = Trim(decodeURI(getQueryString('winp')));
+    if(isNotBlank(Trim(decodeURI(getQueryString('air_scope'))))) air_scope = Trim(decodeURI(getQueryString('air_scope')));
+
+
     ii = layer.load();
     $.ajax({
         url: urls.ENERGY_GET,
@@ -44,7 +45,7 @@ $(document).ready(function(){
             // initEchart_bar(xAxis,datas,colorList); //　默认初始化
         }
     });
-});
+
 //
 function preInitEchart(result){
     var xAxis = ["自然","人文","日常","情感"];
@@ -794,8 +795,3 @@ function Trim(str)
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-function getQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]); return null;
-}
