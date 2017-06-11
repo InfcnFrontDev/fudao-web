@@ -10,13 +10,15 @@ var air_scope = "50-100";
 var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2; // （自然、人文、日常、情感）平均得分
 var result_personal = null,result_emotion = null; // 问卷结果
 var ii;
-$(document).ready(function(){
+// $(document).ready(function(){
+//
+// });
+function energy_init(){
+    if(isNotBlank(Trim(decodeURI(getQueryString('province'))))) province = Trim(decodeURI(getQueryString('province')));
     if(isNotBlank(Trim(decodeURI(getQueryString('city'))))) city = Trim(decodeURI(getQueryString('city')));
     if(isNotBlank(Trim(decodeURI(getQueryString('weather'))))) weather = Trim(decodeURI(getQueryString('weather')));
     if(isNotBlank(Trim(decodeURI(getQueryString('winp'))))) winp = Trim(decodeURI(getQueryString('winp')));
     if(isNotBlank(Trim(decodeURI(getQueryString('air_scope'))))) air_scope = Trim(decodeURI(getQueryString('air_scope')));
-    // alert(city+'-'+weather+'-'+winp+'-'+air_scope);
-
     ii = layer.load();
     $.ajax({
         url: urls.ENERGY_GET,
@@ -24,7 +26,6 @@ $(document).ready(function(){
         type: "post",
         dataType: "JSON",
         success: function(data){
-            layer.close(ii);
             // alert(JSON.stringify(data));
             if(undefined != data.ok && data.ok == true){
                 if("" != data.obj){
@@ -32,20 +33,20 @@ $(document).ready(function(){
                     $('#lowerDiv').css('display','block');
                     setTimeout(function(){
                         preInitEchart(data.obj);
-                    },500);
+                        layer.close(ii);
+                    },1000);
                 } else {
+                    layer.close(ii);
                     // initEchart_bar(xAxis,datas,colorList); //　默认初始化
                 }
-            } else {
-                alert(JSON.stringify(data));
             }
         },error: function(data){
             layer.close(ii);
-            // alert(JSON.stringify(data));
             // initEchart_bar(xAxis,datas,colorList); //　默认初始化
         }
     });
-});
+}
+
 //
 function preInitEchart(result){
     var xAxis = ["自然","人文","日常","情感"];
@@ -786,7 +787,7 @@ function getStarsScore(weather){
 }
 
 function isNotBlank(v){
-    if(null == v || undefined == v || '' == v || 'null' == v) return false;
+    if(null == v || undefined == v || '' == v || 'null' == v || 'undefined' == v) return false;
     return true;
 }
 
