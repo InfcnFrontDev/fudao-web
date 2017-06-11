@@ -1,4 +1,4 @@
-var apiPath = 'http://103.254.113.11:9191/api/';
+var apiPath = 'http://103.254.113.10:9090/api/';
 // var apiPath = 'http://192.168.10.69:9191/api/';
 // var apiPath = 'http://192.168.3.110:9191/api/';
 var urls = {

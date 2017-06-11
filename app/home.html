@@ -851,6 +851,14 @@
             console.log(weizhi)
             var img=yundongObj.obj[weizhi].img
             $(".dongzuo").find('img').attr('src',urls.IMGSRC+yundongObj.obj[weizhi].img);
+            $(".dongzuo").find('img').attr('name',weizhi);
+            //$(".dongzuo").find('img').attr('src',urls.IMGSRC+img);
+           $(".dongzuo").find('img').click(function(){
+                var num=parseInt($(this).attr('name'))
+               console.log(num)
+               window.postMessage('获取运动'+JSON.stringify(yundongObj.obj[num]));
+                //window.postMessage('获取运动'+JSON.stringify(yundongObj.obj[weizhi]));
+            })
             $('.swiper-wrapper').html(str);
             if(status)
                 $(".swiper-wrapper div:eq("+weizhi+")").css({'color':'#fff'})
@@ -863,11 +871,13 @@
                 centeredSlides: true,
                 watchSlidesProgress : true,
                 onTransitionStart: function(swiper){
+                    $(".dongzuo").find('img').attr('name',swiper.activeIndex);
                     var img=yundongObj.obj[swiper.activeIndex].img
                     $(".dongzuo").find('img').attr('src',urls.IMGSRC+img);
-                    $(".dongzuo").find('img').click(function(){
+                    /*$(".dongzuo").find('img').click(function(){
+                        console.log(yundongObj.obj[swiper.activeIndex]);
                         window.postMessage('获取运动'+JSON.stringify(yundongObj.obj[swiper.activeIndex]));
-                    })
+                    })*/
 
 
                 }
