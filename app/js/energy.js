@@ -8,7 +8,7 @@ var weather = "晴";
 var winp = "5级";
 var air_scope = "50-100";
 var avg_zr = 2,avg_rw = 2,avg_gr = 2,avg_qg = 2; // （自然、人文、日常、情感）平均得分
-var result_personal = null,result_emotion = null; // 问卷结果
+var result_personal = null,result_emotion = null,result_comm = null; // 问卷结果
 var ii;
 // $(document).ready(function(){
 //
@@ -19,6 +19,7 @@ function energy_init(){
     if(isNotBlank(Trim(decodeURI(getQueryString('weather'))))) weather = Trim(decodeURI(getQueryString('weather')));
     if(isNotBlank(Trim(decodeURI(getQueryString('winp'))))) winp = Trim(decodeURI(getQueryString('winp')));
     if(isNotBlank(Trim(decodeURI(getQueryString('air_scope'))))) air_scope = Trim(decodeURI(getQueryString('air_scope')));
+    //alert(weather+"-"+winp+"-"+air_scope);
     ii = layer.load();
     $.ajax({
         url: urls.ENERGY_GET,
@@ -62,8 +63,10 @@ function preInitEchart(result){
     // 自然环境平均值
     getPeoDatas().forEach(function(data){
         i++;
+        // alert(data);
         sum = sum + Number(data);
     });
+    // alert(sum);
     avg_zr = parseInt(sum/i);
     // 人文环境平均值
     sum = Number(getLocationScore(city));
@@ -99,6 +102,7 @@ function initEchart_scatter(result){
                 _.forEach(n.context, function(n, key) { // 循环对象
                     i++;
                     data_1.push([i,n.score,key]);
+                    // result_comm[key] = n.score;
                 });
             }
         });
@@ -511,6 +515,18 @@ function save(){
     result_emo.姓氏 = $("#surnameSel").val();
     result_emo.宗教 = $("#religionSel").val();
     result_emo.感情状态 = $("#emotionSel").val();
+    result_comm = {};
+    result_comm.山川 = getMountainsScore(city,0);
+    result_comm.河流 = getMountainsScore(city,1);
+    result_comm[city] = getLocationScore(city);
+    result_comm.风 = getWindScore(winp);
+    result_comm.雨 = getRainScore(weather);
+    result_comm.雪 = getSnowScore(weather);
+    result_comm.沙尘 = getSandScore(weather);
+    result_comm.空气 = getAirScore(air_scope);
+    result_comm.日 = getSunScore(weather);
+    result_comm.星辰 = getStarsScore(weather);
+    result_comm.城市魅力 = getLocationScore(city);
     ii = layer.load();
     if($('#peoForm').css('display') == 'block'){
         setResult(result_peo,result_emotion,0);
@@ -562,7 +578,7 @@ function setResult(result_peo,result_emo,type){
                 headers: {
                     authorization: getQueryString('token')
                 },
-                data: {"result_peo":JSON.stringify(result_peo),"avg_peo":avg_gr},
+                data: {"result_peo":JSON.stringify(result_peo),"avg_peo":avg_gr,"result_comm":JSON.stringify(result_comm)},
                 type: "POST",
                 dataType: "JSON",
                 success: function(data){
@@ -625,7 +641,7 @@ function setResult(result_peo,result_emo,type){
                 headers: {
                     authorization: getQueryString('token')
                 },
-                data: {"result_emo":JSON.stringify(result_emo),"avg_emo":avg_qg},
+                data: {"result_emo":JSON.stringify(result_emo),"avg_emo":avg_qg,"result_comm":JSON.stringify(result_comm)},
                 type: "POST",
                 dataType: "JSON",
                 success: function(data){
