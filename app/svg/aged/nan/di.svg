@@ -2,10 +2,11 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" enable-background="new 0 0 595.28 841.89" xml:space="preserve">
+	 width="595.281px" height="841.89px" viewBox="0 0 595.281 841.89" enable-background="new 0 0 595.281 841.89"
+	 xml:space="preserve">
 <g id="all">
 	
-		<image overflow="visible" width="436" height="624" id="renwu" xlink:href="data:image/jpeg;base64,/9j/4QrxRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
+		<image overflow="visible" enable-background="new    " width="436" height="624" id="renwu" xlink:href="data:image/jpeg;base64,/9j/4QrxRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
 agEoAAMAAAABAAIAAAExAAIAAAAdAAAAcgEyAAIAAAAUAAAAj4dpAAQAAAABAAAApAAAANAACvyA
 AAAnEAAK/IAAACcQQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKQAyMDE2OjExOjExIDE0OjU5
 OjUwAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABtKADAAQAAAABAAACcAAAAAAAAAAGAQMAAwAA
@@ -1224,19 +1225,19 @@ gfH1lmuTRlr3cu5tcXPMuSPma1zP4iO9zsl1BYTOa4qbWK3BJVF0AAAAEAFAANgB0A/qTD5L8d8c
 u0s2qiCZ0m57lRGtw3O/CfOrdoDQcziuWcKvnNaavkfjXchszI4dGsY0aMb/ABb4yygAA+vi/Kb7
 dr0+WjMpx+2kaEqF02KLxf4zxIeQH3GV8pOuY4wf3nR4rBXErkTZvT7tJyryl4t8fWT3ta9nDsBm
 +ZZiOJSHmC85GcTjWy9iJ3W72gjYjVrnvIl9yjzfyW1cJYLryNkf4nj1nMHOf3Y7htg22wMEXc4k
-RzMuWNNQAa6gsrC1trKytYmQ21paQRW1rbQsCMhgt4WsihiYKBrQAB/84D//2Q==" transform="matrix(1 0 0 1 83 100.8906)">
+RzMuWNNQAa6gsrC1trKytYmQ21paQRW1rbQsCMhgt4WsihiYKBrQAB/84D//2Q==" transform="matrix(1 0 0 1 83 100.8896)">
 	</image>
 	<g id="jingluo">
-		<path id="Kidney-2" fill="none" stroke="#1B96D5" stroke-miterlimit="10" d="M226,413c0,0,18,49,49,48"/>
-		<path id="Kidney-1" fill="none" stroke="#1B96D5" stroke-miterlimit="10" d="M382.672,413c0,0-18,49-49,48"/>
+		<path id="Kidney-2" display="none" fill="none" stroke="#1B96D5" stroke-miterlimit="10" d="M226,413c0,0,18,49,49,48"/>
+		<path id="Kidney-1" display="none" fill="none" stroke="#1B96D5" stroke-miterlimit="10" d="M382.671,413c0,0-18,49-49,48"/>
 	</g>
 	<g id="xuewei">
-		<circle id="KI1-2" fill="#040000" stroke="#1B96D5" stroke-miterlimit="10" cx="226.5" cy="413.329" r="3.329"/>
+		<circle id="KI1-2" display="none" fill="#040000" stroke="#1B96D5" stroke-miterlimit="10" cx="226.5" cy="413.329" r="3.329"/>
 		
-			<circle id="EX-LE11-2" fill="#040000" stroke="#88157B" stroke-width="0.75" stroke-miterlimit="10" cx="231.542" cy="284.75" r="3.583"/>
-		<circle id="KI1-1" fill="#040000" stroke="#1B96D5" stroke-miterlimit="10" cx="382.172" cy="413.328" r="3.328"/>
+			<circle id="EX-LE11-2" display="none" fill="#040000" stroke="#88157B" stroke-width="0.75" stroke-miterlimit="10" cx="231.542" cy="284.75" r="3.583"/>
+		<circle id="KI1-1" display="none" fill="#040000" stroke="#1B96D5" stroke-miterlimit="10" cx="382.171" cy="413.328" r="3.328"/>
 		
-			<circle id="EX-LE11-1" fill="#040000" stroke="#88157B" stroke-width="0.75" stroke-miterlimit="10" cx="377.131" cy="284.75" r="3.584"/>
+			<circle id="EX-LE11-1" display="none" fill="#040000" stroke="#88157B" stroke-width="0.75" stroke-miterlimit="10" cx="377.13" cy="284.75" r="3.584"/>
 	</g>
 </g>
 </svg>
