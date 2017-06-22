@@ -1,6 +1,6 @@
 // var apiPath = 'http://103.254.113.10:9090/api/';
-// var apiPath = 'http://192.168.10.69:9191/api/';
 var apiPath = 'http://192.168.10.69:9191/api/';
+// var apiPath = 'http://192.168.3.110:9191/api/';
 var urls = {
 	//生命周期
 	MYCYCLE_CALCULATECYCLE: apiPath + 'MyCycleApi/calculateCycle',
@@ -24,7 +24,8 @@ var urls = {
 	TIMEPERIODA_GETALLDAYMOTIONLIST: apiPath + 'TimePeriodApi/getAllDayMotionList',
 	//获取时间段的推荐疗法
 	TIMEPERIOD_GETTIMESTAGETHERAPYLIST: apiPath + 'TimePeriodApi/getTimeStageTherapyList',
-
+	//获取所有疗法
+	TIMEPERIOD_GETTIMESTAGETHERAPYALL: apiPath+'TimePeriodApi/getTimeStageTherapyAll',
 	//获取问卷列表
 	DIAGNOSIS_GETQUESTIONNAIRELIST: apiPath + 'DiagnosisApi/getQuestionnaireList',
 	//提交问卷
