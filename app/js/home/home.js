@@ -617,10 +617,10 @@ function yundongList(){
         }
         var str='';
         var status=false;
-        console.log(yundongObj);
+
         for(var i=0; i<yundongObj.obj.length; i++){
             str += '<div class="swiper-slide">'+yundongObj.obj[i].name+'</div>'
-            console.log(yundongObj.obj[i].timePeriod);
+
             if(newname==yundongObj.obj[i].timePeriod){
                 weizhi=i
                 status=true;
