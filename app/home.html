@@ -578,7 +578,7 @@
                 console.log(typeof $('.tishi_' + i + '').attr("data"))
 //                $('.tishi_' + i + '').attr('name', zongduantishiArr[i][0].timePeriod);
                 $('.warn_' + i + '').show();
-                $('.warn_' + i + '').css({top: y + 45 + (i * 35)});
+                $('.warn_' + i + '').css({top: y + 5 + (i * 35)});
                 $('.triangle-up').css({left: x - 25})
                 $('.tishi_' + i + '').html(zongduantishiArr[i].threeCharacterClassic);
             }
@@ -701,7 +701,7 @@
         div.style.background = 'rgba(0,0,0,.3)';
         div.style.position = 'absolute';
         div.style.left = '' + (Math.sin(2 * Math.PI / 360 * startText) * (num + 40) + 144) + 'px'
-        div.style.top = '' + (Math.cos(2 * Math.PI / 360 * startText) * (num + 40) + 195) + 'px'
+        div.style.top = '' + (Math.cos(2 * Math.PI / 360 * startText) * (num + 40) + 155) + 'px'
         div.onclick = function () {
             window.postMessage('修改时间');
         }
@@ -725,7 +725,7 @@
         div.style.background = 'rgba(0,0,0,.3)';
         div.style.position = 'absolute';
         div.style.left = '' + (Math.sin(2 * Math.PI / 360 * overText) * (num + 40) + 144) + 'px';
-        div.style.top = '' + (Math.cos(2 * Math.PI / 360 * overText) * (num + 40) + 195) + 'px';
+        div.style.top = '' + (Math.cos(2 * Math.PI / 360 * overText) * (num + 40) + 155) + 'px';
         div.onclick = function () {
             window.postMessage('修改时间');
         }
