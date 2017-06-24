@@ -170,7 +170,7 @@
 
 </head>
 <body style="background-color:rgba(0,0,0,.0);width:100%; height:100%;">
-<div id='ab'style="width:100%; height:100%;background:#1e6bb8; background-size:100% 100% ;">
+<div id='ab'style="width:100%; height:100%; background-size:100% 100% ;">
 
 
     <div style=" height:100%;width:320px; margin:0 auto; position:relative;" class="warn1">
@@ -268,7 +268,7 @@
     var data1 = [];
     for (var i = 0; i < yundongObj.obj.length; i++) {
         data1.push({
-            text: yundongObj.obj[i].methodName,
+            text: yundongObj.obj[i].name,
             value: i
         })
     }
@@ -828,7 +828,7 @@
             var str = '';
             var status = false;
             for (var i = 0; i < yundongObj.obj.length; i++) {
-                str += '<div class="swiper-slide">' + yundongObj.obj[i].methodName + '</div>'
+                str += '<div class="swiper-slide">' + yundongObj.obj[i].name + '</div>'
                 if (newname == yundongObj.obj[i].timePeriod) {
                     weizhi = i
                     status = true;
