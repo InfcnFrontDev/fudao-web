@@ -416,42 +416,43 @@
         var sta=startTimeRange.split('-')[0]
         var end=startTimeRange.split('-')[1]
 
-        if(sta.split('：')[0]==end.split('：')[0]){
+
+        if(sta.split(':')[0]==end.split(':')[0]){
           timeData=[
             {
-              name: sta.split('：')[0],
+              name: sta.split(':')[0],
               sub:[]
             }
           ]
-          for(var i=sta.split('：')[1]; i<=end.split('：')[1]; i++){
+          for(var i=sta.split(':')[1]; i<=end.split(':')[1]; i++){
             timeData[0].sub.push({name:i})
           }
         }
-        if(sta.split('：')[0]!=end.split('：')[0]){
+        if(sta.split(':')[0]!=end.split(':')[0]){
           timeData=[
             {
-              name: sta.split('：')[0],
+              name: sta.split(':')[0],
               sub:[]
             },{
-              name: end.split('：')[0],
+              name: end.split(':')[0],
               sub:[]
             }
           ]
-          for(var i=0; i<=end.split('：')[1]; i++){
+          for(var i=0; i<=end.split(':')[1]; i++){
             timeData[1].sub.push({name:i})
           }
-          for(var i=sta.split('：')[1]; i<60; i++){
+          for(var i=sta.split(':')[1]; i<60; i++){
             timeData[0].sub.push({name:i})
           }
         }
 
         creatList(timeData,data1);
+        console.log(timeData);
         if (timeData[0].hasOwnProperty('sub')) {
           creatList(timeData[0].sub, data2);
         } else {
           data2 = [{text: '', value: 0}];
         }
-
 
 
         var picker1 = new Picker({
