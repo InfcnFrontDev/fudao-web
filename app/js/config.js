@@ -1,4 +1,5 @@
-var apiPath = 'http://103.254.113.10:9090/api/';
+var apiPath = 'http://fudao.infcn.com.cn/api/';
+// var apiPath = 'http://103.254.113.10:9090/api/';
 // var apiPath = 'http://103.254.113.11:9191/api/';
 var urls = {
 	//生命周期
