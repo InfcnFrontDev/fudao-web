@@ -1,23 +1,14 @@
-// yangkk - 2016年09月26日
-const path = require('path');
-const gulp = require('gulp');
-const browserSync = require('browser-sync').create();
-const bsReload = browserSync.reload;
+//引入插件
+var gulp = require('gulp');
+var connect = require('gulp-connect');
 
-gulp.task('clean', function () {
-});
-
-gulp.task('dev', function () {
-    browserSync.init({
-        startPath: "/",
-        files: ["app/**/*.*"],
-        server: {
-            baseDir: 'app'
-        },
-        open: false,
-        notify: false
+//使用connect启动一个Web服务器
+gulp.task('connect', function () {
+    connect.server({
+        root: 'app',
+        port: 3000
     });
 });
 
-gulp.task('build', function () {
-});
+//运行Gulp时，默认的Task
+gulp.task('default', ['connect']);

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+            color: #343434;
+            font-size: 14px;
+        }
+
+        #allmap {
+            width: 100%;
+            height: 68%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        p {
+            margin-left: 5px;
+            font-size: 14px;
+        }
+
+        .weather-box {
+            width: 100%;
+            height: 30%;
+            position: absolute;
+            top: 0;
+        }
+
+        .weizhi img {
+            vertical-align: middle;
+            margin-left: 20px;
+        }
+
+        .tubiao img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .tubiao, .wendu, .tianqi, .shidu {
+            display: flex;
+            justify-content: center;
+            padding-top: 2%;
+        }
+
+        .weizhi {
+            padding-top: 4%;
+        }
+    </style>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=trLEKMVBCc6MKGemHlUXdyy2"></script>
+    <title>我的位置</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/config.js"></script>
+</head>
+<body>
+<div class="weather-box">
+    <div class="weizhi">
+        <img src="images/dingwei.jpg" alt=""/>&nbsp;
+        <span id="location">中国</span>
+    </div>
+    <div class="tubiao">
+        <img src="" alt="" id="weatherImg">
+    </div>
+    <div class="wendu"></div>
+    <div class="tianqi">
+        <span class="weather"></span>, <span class="wind"></span>
+    </div>
+    <div class="shidu"></div>
+</div>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	//http://localhost:3000/myLocation.html?position={%22lastPosition%22:{%22mocked%22:false,%22timestamp%22:1489645857103,%22coords%22:{%22speed%22:0,%22heading%22:0,%22accuracy%22:35,%22longitude%22:116.32753,%22altitude%22:0,%22latitude%22:39.983471}}};
+
+	var x = getQueryString('x');
+	var y = getQueryString('y');
+	var token = getQueryString('token');
+
+	// 默认经纬度
+	x = x||116.391350;
+	y = y||39.907723;
+
+	// 百度地图API功能
+	//谷歌坐标
+	var ggPoint = new BMap.Point(x,y);
+
+	//地图初始化
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(ggPoint, 15);
+	map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+	map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+	map.enableAutoResize(); // 启用自动适应容器尺寸变化，默认启用
+
+	// 原始坐标转成百度坐标
+		var translateCallback = function (data) {
+			if (data.status === 0) {
+			    console.log(data)
+				startLocation(data.points[0]);
+			}
+		};
+
+	// 开始定位
+	var marker;
+	var startLocation = function (point) {
+		marker = new BMap.Marker(point);
+		map.addOverlay(marker);
+		map.setCenter(point);
+
+		// 获取位置信息
+		getLocInfo(point);
+	};
+
+	// 获取当前位置信息
+	var getLocInfo = function (point) {
+		var gc = new BMap.Geocoder();
+		gc.getLocation(point, function (result) {
+			console.log(result);
+
+			// 添加标记信息窗口
+			addMarkerInfoEventListener(result);
+			// 显示当前地区（省市区）
+			showLocation(result);
+			// 获取当前位置的天气
+			fetchWeather(result);
+		});
+	};
+
+	// 标记当前位置信息
+	var addMarkerInfoEventListener = function (result) {
+		// 信息窗口
+		var infoWindow = new BMap.InfoWindow(result.address, {
+			title: "<b>当前位置</b>", // 信息窗口标题
+			width: 200,     // 信息窗口宽度
+			height: 50,     // 信息窗口高度
+			enableMessage: true//设置允许信息窗发送短息
+		});  // 创建信息窗口对象
+		marker.addEventListener("click", function () {
+			map.openInfoWindow(infoWindow, result.point); //开启信息窗口
+		});
+	}
+
+	// 显示当前完整位置： 中国 > 北京市 > 海淀区
+	var showLocation = function (result) {
+		var addComp = result.addressComponents,
+			province = addComp.province,
+			city = addComp.city,
+			district = addComp.district,
+			location = '中国';
+
+		if (province) {
+			location += ' > ' + province;
+		}
+		if (city && province != city) {
+			location += ' > ' + city;
+		}
+		if (district) {
+			location += ' > ' + district;
+		}
+		$('#location').html(location);
+	}
+
+	// 获取当前位置的天气
+	var fetchWeather = function (result) {
+		var addComp = result.addressComponents,
+			province = addComp.province,
+			city = addComp.city,
+			district = addComp.district;
+
+		city = city.substring(0, city.length - 1);
+
+
+		//var url='http://192.168.3.126:18080/fudao-svc/app/weatherAction!getWeather.action?city=北京';
+		$.ajax({
+			type: "post",
+			url: urls.WEATHER,
+			headers: {
+				authorization: token
+			},
+			data: {
+				weaid: city
+			},
+			success: function (data) {
+				var dataobj = data.obj;
+				console.log(dataobj);
+				$('.wendu').html(dataobj.temperature);
+				$('.weather').html(dataobj.weather_curr);
+				var num = parseInt(dataobj.weatid) - 1;
+				$('#weatherImg').attr('src', 'images/weather/d1/' + num + '.png')
+				$('.wind').html(dataobj.wind);
+				$('.shidu').html('相对湿度' + dataobj.humidity);
+			}
+		});
+	}
+
+
+		var convertor = new BMap.Convertor();
+		var pointArr = [];
+		pointArr.push(ggPoint);
+		convertor.translate(pointArr, 1, 5,translateCallback)
+
+
+
+</script>

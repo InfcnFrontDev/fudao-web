@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/sfq.css">
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/privatejs/self_cultivation_result.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <!--<script type="text/javascript" src="js/source/echarts.simple.min.js"></script>-->
+    <script type="text/javascript" src="js/source/localstorage.js"></script>
+    <script type="text/javascript" src="js/source/public.js"></script>
+    <script type="text/javascript" src="js/source/public_data.js"></script>
+    <script type="text/javascript" src="js/privatejs/check_process.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="diagnosisMap/js/index.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--  <script src="js/privatejs/main.js"></script>-->
+
+    <!-- Demo styles -->
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+        }
+
+        #svgGraph {
+            width: 85%;
+            height: 85%;
+            margin: 0 auto;
+        }
+
+        #opacityNext {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!--slide1-->
+        <div class="swiper-slide swiper-no-swiping" id="deepPage1" style="height: 100%;">
+            <div style="position:absolute;top:10px;right:5px;;height: 100%;width: 38%;overflow: hidden;"
+                 class="container" id="listContain">
+                <div style="width: 106%;height: 100%;overflow-y: scroll;">
+                    <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                    </div>
+                </div>
+            </div>
+            <div id='div_content'
+                 style="height: 70%;width:100%;flex-direction: column;justify-content: center">
+                <img src="./images/click_zhengzhuang.png" style="margin-bottom:-63px;margin-top: 30px;margin-left:-50%" width="40%"
+                     height="20%" id="click_zhengzhuang"/>
+                <div id="renti_xiuyixiu">
+                    <div id="svgGraph"></div>
+                </div>
+                <div width="100%" align="center" id="table_id">
+                </div>
+            </div>
+        </div>
+        <div id="div_list_selected"
+             style="display:none;width:101%;text-align: center;margin-top:5px;height: 20%;position:fixed;bottom:12%;left:0;background: #FAFAFA;overflow-y: scroll;border-top: 1px solid #BFBFBF">
+        </div>
+        <div id="mengban"
+             style="display:none;width:100%;height: 12%;position:fixed;bottom:0;left:0;background: #FAFAFA">
+        </div>
+
+        <div class="swiper-button-next" id="opacityNext"
+             style="width:26%;background:#A0CC00;position:fixed;top:95%;left:37%;height: 36px;color: #fff;text-align: center;line-height: 36px;border-radius: 5px">
+            下一页
+        </div>
+
+        <!--slide2-->
+        <div class="swiper-slide swiper-no-swiping" style="height: 100%">
+            <div style="height: 85%;overflow-y: scroll;overflow-x: hidden">
+                <div>
+                    <p style="font-size: 13px;text-align: left;padding: 8px;padding-left: 20px;background: #F0F0F0;margin: 0;border-bottom: 1px solid #D7D7D7;">
+                        您已选择的症状有</p>
+                    <div id="div_list_selected2"
+                         style="width:90%;padding:0 40px;text-align: center;margin-top:5px;border-bottom: 2px solid #D8D8D8;clear: both">
+                        <div style="height: 30px"></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 13px;text-align: left;padding: 8px;background: #F0F0F0;margin: 0 0 12px 0;border-bottom: 1px solid #D7D7D7;">
+                        <span>您最近做过以下几项事情吗？</span>
+                        <p style="float:right;font-size: 15px;margin: 0;margin-right: 12%">都没有<input type="checkbox"
+                                                                                                     name="category"
+                                                                                                     value="都没有"
+                                                                                                     onclick="my_func()"/>
+                        </p></div>
+                    <div id="checkBox">
+                    </div>
+                </div>
+            </div>
+            <p style="height:15%;width: 100%"><a id="depthSubmit"
+                                                 style="position: relative;z-index:9999999;display:block;margin: 20px auto 30px; height:38px;line-height:38px; background:#a1cc00;width: 60%;text-align: center;color:#fff;border-radius: 5px"
+                                                 onclick="depth_submit()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</a></p>
+
+        </div>
+    </div>
+    <!-- Add Arrows -->
+
+    <div class="swiper-button-prev" id="opacityPre"
+         style="background-image: url('./images/pre.png');background-size: 200%;"></div>
+</div>
+
+
+<!-- Initialize Swiper -->
+
+<script>
+    var type = true;
+
+    var swiper = new Swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 30
+    });
+    var diseasespeople = localStorage.getItem('diseasespeople') || 'quality';
+    var sex = parseInt(localStorage.getItem('sex')) || 1;
+    var svgPath = '';
+
+    //
+        var token = getQueryString('token');
+//    var token = "b60d15f9-add8-44fa-b3fb-0cece296a3db";
+    localStorage.setItem('zizhen_token', token);
+
+
+    if (diseasespeople == 'aged') {
+        if (sex == 1) {
+            svgPath = 'diagnosisMap/images/laoren.svg';
+        } else if (sex == 2) {
+            svgPath = 'diagnosisMap/images/laotaitai.svg'
+        }
+    } else if (diseasespeople == 'quality') {
+        if (sex == 1) {
+            svgPath = 'diagnosisMap/images/nanren.svg';
+        } else if (sex == 2) {
+            svgPath = 'diagnosisMap/images/nvren.svg'
+        }
+    } else if (diseasespeople == 'woman_un' || diseasespeople == 'woman_pre' || diseasespeople == 'woman_ing' || diseasespeople == 'woman_ed' || diseasespeople == 'woman_next') {
+        svgPath = 'diagnosisMap/images/nvren.svg'
+    }
+
+    loadSvg(svgPath);
+    var symptomList = [];
+    //    $.ajax({
+    //        type: "post",
+    //        url: urls.DIAGNOSIS_GETUSERSYMPTOMLIST,
+    //        headers: {
+    //            authorization: token
+    //        },
+    //        success: function (res) {
+    //            if (res.obj.length == 0) {
+    $.ajax({
+        type: "post",
+        url: urls.DIAGNOSIS_GETPARTORGANSYMPTOMLIST,
+        headers: {
+            authorization: token
+        },
+        success: function (res) {
+            symptomList = res.obj;
+        },
+        error: function () {
+            console.log('err')
+        }
+    });
+    //            } else {
+    //                type = false;
+    //                fun_pathogeny('tou', res.obj, false);
+    //            }
+    //        },
+    //        error: function () {
+    //            console.log('err')
+    //        }
+    //    });
+    $('#opacityNext').click(function () {
+        if (document.getElementById("opacityNext").style.opacity != "0") {
+            document.getElementById("opacityNext").style.opacity = 0;
+            fun_choosed_render(token, type);
+            swiper.slideNext();
+        }
+    });
+    $('#opacityPre').click(function () {
+        swiper.slidePrev();
+        document.getElementById("opacityNext").style.opacity = 1;
+    });
+
+    (function ($, doc) {
+
+            mui.init();
+            mui.plusReady(function () {
+                //仅支持竖屏显示
+                plus.screen.lockOrientation("portrait-primary");
+                //数据处理
+                fun_handle_data();
+                //删除本地保存的各向指数
+                localStorage.removeItem("gexiangzhishu_1");
+                localStorage.removeItem("gexiangzhishu_2");
+                localStorage.removeItem("gexiangzhishu_3");
+                localStorage.removeItem("gexiangzhishu_4");
+                //各向指数赋值
+                //刷新main界面
+                var mainView = plus.webview.getWebviewById("main");
+                mui.fire(mainView, 'check_process_event', {});
+//            //人体自定义高度
+//            document.getElementById("svgGraph").style.height = (plus.screen.resolutionHeight - 180) + "px";
+//            console.log(document.getElementById("svgGraph").style.height)
+            });
+
+            mui('body').on('tap', '#toujing', function () {
+                if (type) {
+                    fill_color("toujing");
+                    fun_pathogeny('tou', symptomList["头部"], true);
+                }
+            });
+
+            mui('body').on('tap', '#xiong', function () {
+                if (type) {
+                    fill_color("xiong")
+//                    document.getElementById("xiong").setAttribute("fill","#000")
+//                    document.getElementById("xiong").style.opacity = "0.4";
+                    fun_pathogeny('xiong', symptomList["胸部"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#fu', function () {
+                if (type) {
+                    fill_color("fu")
+                    fun_pathogeny('fu', symptomList["腹部"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#dun', function () {
+                if (type) {
+//                    fun_pathogeny('bei', symptomList["背部"], true);
+                    fill_color("dun")
+                    fun_pathogeny('fu', symptomList["腹部"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#zuoshou', function () {
+                if (type) {
+                    fill_color("zuoshou")
+                    fun_pathogeny('sizhi', symptomList["四肢"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#youshou', function () {
+                if (type) {
+                    fill_color("youshou")
+                    fun_pathogeny('sizhi', symptomList["四肢"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#tui', function () {
+                if (type) {
+                    fill_color("tui")
+                    fun_pathogeny('sizhi', symptomList["四肢"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#quanshen', function () {
+                if (type) {
+                    fun_pathogeny("check_quanshen", symptomList["全身"], true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#xiongtanhao', function () {
+                if (type) {
+                    fun_pathogeny("check_xiong", symptomList, true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#futaihao', function () {
+                if (type) {
+                    fun_pathogeny("check_fu", symptomList, true);
+                    event.stopPropagation();
+                }
+            });
+
+            mui('body').on('tap', '#button', function () {
+                if (type) {
+                    check_process_two_sure();
+                }
+            });
+
+
+            document.getElementById("table_id").style.marginTop = "10px";
+
+            mui('body').on('tap', '#opacityNext', function () {
+                swiper.slideNext();
+                document.getElementById("opacityNext").style.opacity = 0;
+                fun_choosed_render(token, type);
+            });
+            mui('body').on('tap', '#opacityPre', function () {
+                swiper.slidePrev();
+                document.getElementById("opacityNext").style.opacity = 1;
+            });
+        }(mui, document)
+    );
+</script>
+</body>
+</html>

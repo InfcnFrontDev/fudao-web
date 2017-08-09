@@ -1,0 +1,29 @@
+button{
+	outline:none;
+	padding:12px;
+	margin:5px;
+	border-radius: 30px;
+	display: block;
+	border: 0;
+	font-size: 14px;
+	background:#E5E5E5;
+	color:#000;
+	line-height:13px;
+}
+
+.start {
+	background:#A1CC00;
+	color:#fff;
+}
+.notStart {
+	background:#E5E5E5;
+	color:#000;
+}
+.swiper-container {
+	width: 280px;
+	height: 300px;
+}
+/*button:focus{
+	background:#A1CC00;
+	color:#fff;
+}*/

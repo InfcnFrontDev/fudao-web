@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta charset="UTF-8">
+  <title>修改时间</title>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/hidpi-canvas.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/config.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    html,body{
+      height:100%;
+      width:100%;
+      font-size:12px;
+    }
+    .topBox{
+      width:100%;
+      height:45%;
+      border-bottom:1px solid #d9d9d9;
+    }
+    .buttomBox{
+      width:92%;
+      height:47%;
+      padding:4%;
+
+    }
+    .left{
+      width:22%;
+      height:auto;
+    }
+    .left p{
+      text-align: center;
+    }
+    .center{
+      width:2%;
+      height:100%;
+      background:#dcdcdc;
+
+    }
+    .right{
+      width:76%;
+      height:auto;
+      padding:10px 0px;
+    }
+    .left,.center,.right{
+      float:left;
+    }
+    .smallCircle{
+      background: #000000;
+      border-radius:100%;
+      width:100%;
+      margin-top:26px;
+    }
+
+    .duanBox{
+      width:18%;
+      height:auto;
+      float:left;
+      margin-left:2px;
+    }
+    .colorduan{
+      width:100%;
+      height:5px;
+      background: #1d3e81;
+    }
+    .textduan{
+      width:100%;
+      height:auto;
+      text-align: center;
+    }
+    /*.time{
+      width:100%;
+      height:auto;
+      float:left;
+    }
+    .time span{
+      width: 18%;
+      height: auto;
+      float: left;
+      margin-left:2px;
+    }*/
+    .textduan{
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      overflow: hidden;
+
+    }
+    .qiehuanBtn{
+      width:50px;
+      height:80px;
+      margin-top:16%;
+      font-size:25px;
+      font-weight:900;
+      border:none;
+      background-color: #fff;
+      line-height:80px;
+      text-align: center;
+    }
+    .leftBtn{
+      color:#929292;
+      float:left;
+    }
+    .rightBtn{
+      color:#adc857;
+      float:right;
+    }
+
+
+  </style>
+</head>
+<body>
+<div class="topBox">
+  <div style="width:100%; height:40px; border-bottom:1px solid #d9d9d9; line-height:40px; text-align:center;" class="title">工作日</div>
+  <canvas id="myCanvas" style=" position:absolute; left:0; right:0; top:0; bottom:0; margin:7% auto; background-size:290px; background-position: center; " width="240" height="240"></canvas>
+  <div style="position:absolute; width:80px; height:80px; left:0; right:0; top:0; bottom:0; margin:30% auto;">
+    <img id="touxiang" src="" style="width:80px; height:80px;  border-radius: 80px;" alt="">
+  </div>
+  <div class="qiehuanBtn leftBtn"><</div>
+  <div style="" class="qiehuanBtn rightBtn">></div>
+</div>
+
+<div class="buttomBox">
+  <button id="saveBtn" style="width:60px; height:20px; background: #8fd304;  border:none; border-radius: 3px;position: absolute; top:10px; right:20px; color: #ffffff;">保存</button>
+  <div class="bigBox" style="background:#fff;width:100%; height:100%; overflow:hidden; overflow-y: scroll;">
+
+  </div>
+</div>
+
+
+<script src="js/picker.min.js"></script>
+
+
+
+<script>
+    var date=new Date()
+    if(date.getDay()<6){
+
+        $('.leftBtn').css({color:'#929292'});
+        $('.rightBtn').css({color:'#adc857'});
+        $('.title').html('工作日')
+    }else if(date.getDay()>=6){
+        $('.rightBtn').css({color:'#929292'});
+        $('.leftBtn').css({color:'#adc857'});
+        $('.title').html('休息日')
+    }
+  //http://localhost:3000/modificationTime.html?token=6c2c8b51-b20a-40ad-98a4-9e5c8375c4a5
+
+
+  var token=getQueryString('token')
+
+
+
+  xuanran()
+  function xuanran(){
+    $.ajax({
+      type:"post",
+      url:urls.TIMEPERIOD_GETMYTIMESTAGE,//获取我的时间段
+      headers: {
+        authorization: token
+      },
+      success:function(data){
+        timeArr=data;
+
+      },
+      error:function(error){
+
+      }
+
+    });
+
+    console.log(timeArr);
+
+    var touImg;
+    $.ajax({
+      type:"post",
+      url:urls.USER_GETLOGINUSER,//获取我的用户信息
+      headers: {
+        authorization: token
+      },
+      success:function(data){
+        touImg=data.obj.photo
+
+      },
+      error:function(error){
+
+      }
+
+    });
+      $('.leftBtn').click(function(){
+          $(this).css({color:'#929292'});
+          $('.rightBtn').css({color:'#adc857'});
+          $('.title').html('工作日')
+          cut(1);
+
+      })
+      $('.rightBtn').click(function(){
+          $(this).css({color:'#929292'});
+          $('.leftBtn').css({color:'#adc857'});
+          $('.title').html('休息日')
+          cut(2);
+      })
+      function cut(daytype){
+          $.ajax({
+              type:"post",
+              url:urls.TIMEPERIOD_GETMYTIMESTAGE,//获取我的时间段
+              headers: {
+                  authorization: token
+              },
+              data:{
+                  dayType:daytype
+              },
+              success:function(data){
+                  timeArr=data;
+                  layout();
+                  canvasLayout();
+
+              },
+              error:function(error){
+
+              }
+
+          });
+      }
+
+    setTimeout(function(){
+      $('#touxiang').attr('src',urls.IMGSRC+touImg)
+      if(timeArr){
+        layout();
+        canvasLayout();
+      }
+    },300)
+  }
+  var oCanvas=document.getElementById('myCanvas');
+  var context = oCanvas.getContext("2d");
+  var canvas = document.querySelector('canvas');
+    context.translate(120,120);
+  var yanse=[
+    ['#33FFDD','#00FFCC','#00DDAA','#77FFEE'],
+    ['#FFBB66','#FFAA33','#FF8800','#EE7700'],
+    ['#FF88C2','#FF44AA','#FF0088','#C10066'],
+    ['#9F88FF','#7744FF','#5500FF','#4400CC']
+  ]
+  function canvasLayout(){
+
+
+    var num=60;//环的半径
+    //彩色时间段
+    var h=0;
+    for(var j=0; j<timeArr.obj.length; j++){
+      // 遍历所有黄色时间段
+      caiseTimeDuan(num,timeArr.obj[j].startTime,timeArr.obj[j].endTime,yanse[h][0]);
+      h++
+      if(h==4){
+        h=0;
+      }
+    }
+    //内圈数字
+    context.save();
+    context.beginPath();
+    for(var i=-11;i<13;i++){
+      var x1=Math.sin(i*2*Math.PI/24);
+      var y1=-Math.cos(i*2*Math.PI/24);
+      context.fillStyle="#33FFDD";
+      context.font="14px Arial";
+      context.textAlign='center';
+      context.textBaseline='middle';
+      if((i+12)%3==0)
+        context.fillText(i+12,x1*(num+26),y1*(num+26));
+
+    }
+    context.closePath();
+
+    for(var i = 0 ;i<24;i++){
+      context.beginPath();
+      context.lineWidth= 1;
+      context.strokeStyle="#000";
+      context.rotate(-Math.PI/12);
+      context.moveTo(num,0);
+      context.lineTo(num+14,0);
+      context.stroke();
+    }
+    context.save();
+    context.beginPath();
+    context.arc(0,0,num+14,0,360);
+    context.stroke();
+    context.restore();
+    context.save();
+    context.beginPath();
+    context.arc(0,0,num,0,360);
+    context.stroke();
+    context.restore();
+
+  }
+
+
+  function caiseTimeDuan(num,startTime,endTime,yanse){
+    var startDuan=blueDuan_timeToAngle(startTime);
+    var overDuan=blueDuan_timeToAngle(endTime);
+    var gradient;
+    context.save();
+    context.beginPath();
+    context.lineWidth = 14;
+    context.strokeStyle=""+yanse+"";
+    context.arc(0,0,num+7,2*Math.PI/360*startDuan,2*Math.PI/360*overDuan);
+    context.stroke();
+    context.restore();
+  }
+  console.log(NumberToTime(390));
+  function TimeToNumber(time){
+    return time.split(':')[0]*60+parseInt(time.split(':')[1])
+  }
+  function NumberToTime(Number){
+    var hr=parseInt(Number/60)
+    var min=Number%60
+    if(min<10){
+      min='0'+min;
+    }
+    return hr+':'+min;
+  }
+
+
+
+
+
+  //弧度时间转度数
+  function blueDuan_timeToAngle(time){
+    var hr=time.split(':')[0];
+    var min=time.split(':')[1];
+    var angle;
+    if(hr<18){
+      angle=parseInt(hr)*15+90;
+      angle=angle+15/60*min;
+    }else{
+      angle=(parseInt(hr)-18)*15;
+      angle=angle+15/60*min;
+    }
+    return angle;
+  }
+
+
+  function layout(){
+    var str='';
+    var h=0;
+    for(var i=0; i<timeArr.obj.length; i++){
+
+      str += '<div style="width:100%; height:80px;">'+
+              '<div class="left">' +
+              '<p style="margin-top:10px;">'+timeArr.obj[i].startTime+'</p>' +
+              '<p>'+timeArr.obj[i].name+'</p>' +
+              '</div>'+
+              '<div class="center">'+
+              '<div class="smallCircle"></div>'+
+              '</div>'+
+              '<div class="right">'+
+              '<div class="duan" style="width:100%; height:auto;">';
+      for(var a=0; a<timeArr.obj[i].timePeriods.length; a++){
+        if(a==0){
+          str+='<div class="duanBox" style="margin-left:20px;">'+
+                  '<div style="text-align: center;" class="time">'+timeArr.obj[i].timePeriods[a].startTime+'</div>'+
+                  '<div class="colorduan" style="background:'+yanse[h][a]+'"></div>'+
+                  '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
+                  '</div>'
+        }else{
+          str+='<div class="duanBox">'+
+                  '<div style="text-align: center;" class="time">'+timeArr.obj[i].timePeriods[a].startTime+'</div>'+
+                  '<div class="colorduan" style="background:'+yanse[h][a]+'"></div>'+
+                  '<div class="textduan">'+timeArr.obj[i].timePeriods[a].name+'</div>'+
+                  '</div>'
+        }
+      }
+      str +='</div>'+
+              '</div>'+
+              '</div>'
+      h++
+      if(h==4){
+        h=0;
+      }
+    }
+    $('.bigBox').html(str);
+    $('.smallCircle').height($('.smallCircle').width());
+
+
+
+    function creatList(obj, list){
+      obj.forEach(function(item, index, arr){
+        var temp = new Object();
+        temp.text = item.name;
+        temp.value = item.name;
+        list.push(temp);
+      })
+    }
+    //时间修改点击
+
+    $('.left').find('p:first').click(function(){
+      var time=$(this).text();
+      var data1=[];
+      var data2=[];
+      var timeData=[];
+      var startTimeRange;
+      for(var i=0; i<timeArr.obj.length; i++){
+        if(time==timeArr.obj[i].startTime){
+          startTimeRange=timeArr.obj[i].startTimeRange
+          if(startTimeRange==undefined){
+            startTimeRange=timeArr.obj[i-1].endTimeRange
+          }
+        }
+      }
+
+      if(startTimeRange){
+        var sta=startTimeRange.split('-')[0]
+        var end=startTimeRange.split('-')[1]
+
+
+        if(sta.split(':')[0]==end.split(':')[0]){
+          timeData=[
+            {
+              name: sta.split(':')[0],
+              sub:[]
+            }
+          ]
+          for(var i=sta.split(':')[1]; i<=end.split(':')[1]; i++){
+            timeData[0].sub.push({name:i})
+          }
+        }
+        if(sta.split(':')[0]!=end.split(':')[0]){
+          timeData=[
+            {
+              name: sta.split(':')[0],
+              sub:[]
+            },{
+              name: end.split(':')[0],
+              sub:[]
+            }
+          ]
+          for(var i=0; i<=end.split(':')[1]; i++){
+            timeData[1].sub.push({name:i})
+          }
+          for(var i=sta.split(':')[1]; i<60; i++){
+            timeData[0].sub.push({name:i})
+          }
+        }
+
+        creatList(timeData,data1);
+        console.log(timeData);
+        if (timeData[0].hasOwnProperty('sub')) {
+          creatList(timeData[0].sub, data2);
+        } else {
+          data2 = [{text: '', value: 0}];
+        }
+
+
+        var picker1 = new Picker({
+          data: [data1,data2]
+        });
+        var a=$(this);
+        picker1.on('picker.select', function (selectedVal, selectedIndex) {
+          //console.log(JSON.stringify(selectedVal))
+          console.log(selectedVal)
+          var hr=selectedVal[0];
+          var min=selectedVal[1];
+          if(min<=9){
+            min="0"+min
+          }
+          a.text(hr+":"+min);
+          for(var i=0; i<timeArr.obj.length; i++){
+            var dazong=TimeToNumber(timeArr.obj[i].endTime)-TimeToNumber(timeArr.obj[i].startTime);
+            timeArr.obj[i].sum=dazong;
+            for(var j=0; j<timeArr.obj[i].timePeriods.length; j++){
+              var fen=TimeToNumber(timeArr.obj[i].timePeriods[j].endTime)-TimeToNumber(timeArr.obj[i].timePeriods[j].startTime);
+              timeArr.obj[i].timePeriods[j].bili=fen/dazong
+            }
+          }
+
+          for(var i=0; i<timeArr.obj.length; i++){
+            if(timeArr.obj[i].startTime==time){
+              var yuanlaiTime=timeArr.obj[i].startTime;
+              timeArr.obj[i].startTime=hr+":"+min
+              var changeNum=TimeToNumber(yuanlaiTime)-TimeToNumber(hr+":"+min);
+              var nowZong=timeArr.obj[i].sum+changeNum;
+
+              for(var j=0; j<timeArr.obj[i].timePeriods.length; j++){
+                if(j==0){
+                  timeArr.obj[i].timePeriods[0].startTime=hr+":"+min;
+                }else if(j>0){
+                  var index=0;
+                  for(var h=0; h<j; h++){
+                    index+=timeArr.obj[i].timePeriods[h].bili
+
+                  }
+                  var fenNum=nowZong*index;
+
+                  timeArr.obj[i].timePeriods[j].startTime=NumberToTime(parseInt(TimeToNumber(hr+":"+min)+fenNum))
+
+                }
+                if(j>0){
+                  timeArr.obj[i].timePeriods[j-1].endTime=timeArr.obj[i].timePeriods[j].startTime
+                }
+                timeArr.obj[i].timePeriods[timeArr.obj[i].timePeriods.length-1].endTime=NumberToTime(TimeToNumber(hr+":"+min)+nowZong)
+
+              }
+              console.log(timeArr.obj[i].timePeriods);
+            }
+            if(timeArr.obj[i].endTime==time){
+              timeArr.obj[i].endTime=hr+":"+min
+            }
+            console.log(timeArr);
+            layout()
+
+            /* for(var j=0; j<timeArr.obj[i].timePeriods.length; j++){
+             if(timeArr.obj[i].timePeriods[j].startTime==time){
+             timeArr.obj[i].timePeriods[j].startTime=hr+":"+min
+             }
+             if(timeArr.obj[i].timePeriods[j].endTime==time){
+             timeArr.obj[i].timePeriods[j].endTime=hr+":"+min
+             }
+             }*/
+          }
+          for(var i=0; i<$('.time').length; i++){
+
+            if($($('.time')[i]).text()==time){
+              $($('.time')[i]).text(hr+":"+min);
+            }
+          }
+
+
+        });
+
+        picker1.on('picker.change', function (index, selectedIndex) {
+          //console.log(index);
+          if (index === 0){
+            firstChange();
+          }
+          function firstChange() {
+            data2 = [];
+
+            var firstCity = timeData[selectedIndex];
+            if (firstCity.hasOwnProperty('sub')) {
+              creatList(firstCity.sub, data2);
+            } else {
+              data2 = [{text: '', value: 0}];
+            }
+            picker1.refillColumn(1, data2);
+            picker1.scrollColumn(1, 0)
+          }
+        });
+
+
+        picker1.on('picker.valuechange', function (selectedVal, selectedIndex) {
+          console.log(selectedVal);
+        });
+        $('.picker-content').append('<div style="position:absolute; top:75px;  width:100%; text-align: center; font-weight:900;">:</div>')
+        picker1.show();
+
+      }else{
+          window.postMessage('此阶段无法修改')
+      };
+
+
+
+    })
+
+  }
+  $('#saveBtn').click(function(){
+    console.log(timeArr)
+      var title=$('.title').text();
+      var day=date.getDay()
+      if(title=='工作日'){
+          day=1;
+      }else if(title=='休息日'){
+          day=2;
+      }
+      console.log(day);
+    $.ajax({
+      type:"post",
+      url:urls.TIMEPERIOD_SAVEMYTIMEPERIOD,
+      headers: {
+        authorization: token
+      },
+      data:{
+        jsonData:JSON.stringify(timeArr.obj),
+        dayType :day
+      },
+      success:function(data){
+        //alert(JSON.stringify(data));
+        console.log(JSON.stringify(data));
+        window.postMessage('保存成功');
+
+      },
+      error:function(error){
+        console.log(error);
+      }
+
+    });
+  })
+
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

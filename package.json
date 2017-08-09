@@ -1,18 +1,17 @@
 {
-  "name": "fudao-web",
-  "version": "1.0.0",
-  "description": "",
+  "name": "fudao",
+  "version": "1.0.3",
+  "description": "福道健康",
   "main": "",
   "scripts": {
-    "clean": "gulp clean",
-    "dev": "gulp dev",
-    "build": "gulp build"
+    "dev": "gulp"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "browser-sync": "^2.18.8",
-    "gulp": "^3.9.1"
-  },
-  "devDependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-livereload": "^3.8.1"
+  }
 }

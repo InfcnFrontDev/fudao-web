@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="css/global.css">
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+ <!-- <script src="js/renti-map.js"></script>-->
+  <script type="text/javascript" src="js/source/calendar.js"></script>
+  <!--<script src="js/svg-pan-zoom.js"></script>-->
+  <script src="js/hammer.js"></script>
+  <link rel="stylesheet" href="css/all.css">
+  <script src="js/data.js"></script>
+  <script src="js/config.js"></script>
+  <style>
+    .leftTop{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #ccdee4;
+      background: #e9f7fd;
+      top:20px;
+      left: 11px;
+
+    }
+    .leftTop div,.rightTop div,.leftBottom div,.rightBottom div{
+      width:100px;
+      height:80px;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+    .leftTop div p,.rightTop div p,.leftBottom div p,.rightBottom div p{
+      margin:5px;
+      font-size: 12px;
+    }
+    .rightTop{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #ccdee4;
+      background: #e9f7fd;
+      top:20px;
+      right: 11px;
+    }
+    .leftBottom{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #ccdee4;
+      background: #e9f7fd;
+      top:330px; 
+      left: 11px;
+    }
+    .rightBottom{
+      width:100px;
+      height:80px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #ccdee4;
+      background: #e9f7fd;
+      top:330px;
+      right: 11px;
+    }
+  </style>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var RentiMap = function (element, options) {
+
+        var $popover = $('<div class="popover-box popover-hide"><div class="popover" transition="modal"><img src="images/zhishi.png" class="zhishi"><div class="popover-content"></div></div></div>');
+
+        $(element).after($popover);
+
+        var data = options.data;
+
+        var jl_maps = data.jl_map.split(',');
+        showJlInfo(data);
+
+        var renqun=getQueryString('renqun');
+        //alert(renqun);//人群参数；
+
+        $(element).empty();
+        $(element).load('venders/renti_map/app/svg/' + jl_maps[0] + '.svg', function () {
+          var $svg = $("#svg");
+          $svg.attr('style', 'display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;');
+
+          var $jingluo = $('#jingluo');
+          $jingluo.children().hide();
+
+
+          $(data.jl_id.split(',')).each(function () {
+
+            $jingluo.find('#'+ this+'').show();
+            $jingluo.find('#'+ this+'').on('click',function(){
+              showJlInfo(data);
+            })
+            //console.log($jingluo.find('#'+ this+''));
+          });
+
+          // Expose to window namespace for testing purposes
+         /* var panZoom = svgPanZoom("#svg", {
+            zoomEnabled: true,
+            panEnabled: true,
+            controlIconsEnabled: false,
+            zoomScaleSensitivity: 0.5,
+            minZoom: 0,
+            maxZoom: 50,
+            fit: 1,
+            center: 1
+          });*/
+
+
+        });
+
+
+
+        function showJlInfo(data) {
+
+          var title = "<strong>健康提醒：</strong>" + data.tixing;
+          var content1 = "<p><strong>循行经络：</strong>" + data.jl_name + "</p>";
+          content1 += "<p><strong>当令器官：</strong>" + data.qiguan + "</p>";
+          var content2 = "<p><strong>身体状况：</strong>" + data.zhuangkuang + "</p>";
+         /* content2 += "<p><strong>常见症状：</strong>" + data.zhengzhuang + "</p>";*/
+          var content3 = "<p><strong>宜：</strong>" + data.yi + "</p>";
+          content3 += "<p><strong>忌：</strong>" + data.ji + "</p>";
+          var content4 = "<p><strong>养生方法：</strong>" + data.yangsheng + "</p>";
+          /*content += "<p><strong>健康小贴士：</strong>" + data.laonianren + "</p>";*/
+          //showPopover( content);
+          $('.leftTop').find('div').html(content1)
+          $('.leftBottom').find('div').html(content2)
+          $('.rightTop').find('div').html(content3)
+          $('.rightBottom').find('div').html(content4)
+        }
+
+        function showPopover( content) {
+          //$popover.find('.popover-title').html(title);
+          //$popover.find('.popover-title').html(title);
+          $popover.find('.popover-content').html(content);
+          $popover.removeClass('popover-hide').addClass('popover-show');
+          //$popover.removeClass('popover-hide').addClass('popover-show');
+
+        }
+
+        function hidePopover() {
+          $popover.removeClass('popover-show').addClass('popover-hide');
+        }
+
+        function clickPopover() {
+          var ele = event.srcElement || event.target;
+
+          if ($(ele).parents('.popover').length == 0) {
+            hidePopover();
+          }
+        }
+
+        $popover.on("click", clickPopover);
+      };
+
+      window.RentiMap = RentiMap;
+
+    })();
+    window.onload=function(){
+      var item = getItem(new Date());
+      //console.log(item);
+      new RentiMap("#mapDiv", {
+        data: item
+      });
+      function getItem(date) {
+        var h = date.getHours(), m = date.getMinutes();
+        var num = parseInt(((h + 1) * 60 + m) / 120);
+        if (num == 12) num = 0;
+        return sheets.shiershichen[num];
+      }
+
+    }
+  </script>
+</head>
+<body>
+  <div class="topBox">
+    <div style="width:100%; height:100%;float:left;">
+      <div>
+        <span id="ymd" class="mg-left-8"></span>
+        <span id="div_hour" class="mg-left-4"></span>
+        <span id="week" class=" mg-left-4"></span>
+      </div>
+
+      <div>
+        <span id="ymd_yinli" class="mg-left-8"></span>
+        <span id="lunar" class="mg-left-8"></span>
+        <span id="lunarHour" class="mg-left-8"></span>
+      </div>
+    </div>
+
+    <!--<div style="width:30%; height:100%;float:right;">
+      <div style="width:100%; float:right;height:40px;">
+        <div style="width:40%; height:100%; float:left;">
+          <img src="" style="width:100%;height:100%; margin-top:6px;" alt="" id="weatherImg">
+        </div>
+        <div style="width:60%; float:left;">
+          <div id="jieqi"></div>
+          <div class="wendu">1-5</div>
+        </div>
+      </div>
+    </div>-->
+
+  </div>
+  <div class="centerBox">
+    <div class="leftTop">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: 75px; left: 91px; transform: rotate(90deg);">
+    </div>
+    <div class="rightTop">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: 73px; left: -13px; transform: rotate(180deg);">
+    </div>
+    <div class="leftBottom">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: -7px; right: -11px;">
+    </div>
+    <div class="rightBottom">
+      <div></div>
+      <img src="images/zhishi.png" style="position:absolute; top: -10px; left: -9px;transform: rotate(270deg);">
+    </div>
+
+    <!--<div style="width:120px; height:100px; position:absolute;">1</div>
+    <div style="width:120px; height:100px; position:absolute;">1</div>
+    <div style="width:120px; height:100px; position:absolute;">1</div>-->
+    <div id="mapDiv" style="width: 100%; height: 100%">
+  </div>
+  </div>
+  <div class="bottomBox">
+    <div style="width:100%; float:left;border-right:1px solid #d8d8d8;">
+      <div class="mg-left-8">
+        <span id="festival"></span>
+        <span id="days"></span>
+      </div>
+      <div class="mg-left-8">上一节气：<span id="upJieQi"></span></div>
+      <div class="mg-left-8">下一节气：<span id="nextJieQi"></span></div>
+    </div>
+
+    <!--<div style="width:28%; float:right; text-align:center;  line-height: 80px;" id="jie">清明节</div>-->
+  </div>
+  <script>
+    var token=getQueryString('token');
+      fun_time();
+      fun_getUpAndNextJieQi();
+      window.setInterval("fun_time()", 1000);
+
+      $('#jieqi').html($('#upJieQi').text().split('(')[0]);
+    $('.leftTop').click(function(){
+      window.postMessage('1'+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
+    })
+    $('.leftBottom').click(function(){
+      window.postMessage('1'+$(this).find('p').text()+'');
+    })
+    $('.rightTop').click(function(){
+      window.postMessage('2'+$(this).find('p:first').text()+'#'+$(this).find('p:last').text()+'');
+    })
+    $('.rightBottom').click(function(){
+      window.postMessage('1'+$(this).find('p').text()+'');
+    })
+
+
+   /* $.ajax({
+      type:"post",
+      url: urls.HEALTH_GETSOLARTERM,//获取节气信息
+      headers: {
+        authorization: token
+      },
+      success: function (data) {
+        console.log(data);
+        $('#jie').html(data.obj[0].name)
+      }
+    });*/
+
+      $.ajax({
+        type:"post",
+        url: urls.WEATHER,
+        headers: {
+          authorization: token
+        },
+        data: {
+          weaid: 'beijing'
+        },
+        success: function (data) {
+          var dataobj = data.obj;
+          console.log(dataobj);
+          $('.wendu').html(dataobj.temperature);
+          var num = parseInt(dataobj.weatid) - 1;
+          $('#weatherImg').attr('src', 'images/weather/d1/' + num + '.png')
+        }
+      });
+
+  </script>
+
+</body>
+</html>

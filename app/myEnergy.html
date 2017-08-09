@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/global.css" type="text/css" />
+    <title>我的能量场</title>
+    <link rel="stylesheet" href="css/energy.css">
+    <style>
+        html,body { height: 100%; margin: 0; padding: 0;}
+        select {
+            /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+            border: solid 1px #E4E3E3;
+            /*很关键：将默认的select选择框样式清除*/
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            /*在选择框的最右侧中间显示小箭头图片*/
+            background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+            padding-right: 14px;
+            height: 22px;
+            line-height: 22px;
+            padding-left: 6px;
+        }
+        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+        select::-ms-expand { display: none; }
+
+        .mySelect optgroup{font-family:'Trebuchet MS', Arial, Helvetica, sans-serif}
+        .mySelect option{color: #1d3e81;}
+    </style>
+</head>
+<body>
+<div id="shadeDiv" class="shadeCss" @click="closePopupDiv">
+    <div id="HBox" class="peoInfo zoomIn">
+        <div style="height: 45px; line-height: 45px; font-size: 14px;">
+            <div id="quesTab_Nav_peo" class="quesTab_Nav fl " onclick="quesTab_Nav_click('peo','emotion');">日常</div>
+            <div id="quesTab_Nav_emotion" class="quesTab_Nav fr quesTab_Nav_Sel" onclick="quesTab_Nav_click('emotion','peo');">情感</div>
+            <!--<div style="float: right; height: 45px;" onclick="closeTance()">
+                <img style="margin-top: 10px; margin-right: 10px; width: 25px; height: 25px;" src="img/close.png">
+            </div>-->
+        </div>
+        <!-- 个人生活 -->
+        <div id="peoForm" style="border-bottom: 0px solid #ECECEC; overflow-y: auto; width: 100%; display: block;">
+            <!-- 个人生活⑴ -->
+            <table class="peoTab">
+                <tr><td class="t_fr wid_p30">学历：</td><td><select id="educationSel">
+                    <option value="18">高中</option>
+                    <option value="28">专科</option>
+                    <option value="68">本科</option>
+                    <option value="88">硕士</option>
+                    <option value="98">博士</option>
+                    </select></td></tr>
+                <tr><td class="t_fr wid_p30">高校类型：</td><td><select id="collageSel">
+                    <option value="91">留学</option>
+                    <option value="85">一本</option>
+                    <option value="61">二本</option>
+                    <option value="41">三本</option>
+                    <option value="28">专科</option>
+                    </select></td></tr>
+                <tr><td class="t_fr wid_p30">行业：</td>
+                    <td><select id="industrySel"></select></td></tr>
+                <tr><td class="t_fr wid_p30">职业：</td>
+                    <td><select id="occupationSel"></select></td></tr>
+                <tr><td class="t_fr wid_p30">专业：</td>
+                    <td><select id="majorSel"></select></td></tr>
+            </table>
+            <!-- 个人生活⑵ -->
+            <div style="border-top: 1px solid #ECECEC; width: 90%; margin-left: auto; margin-right: auto; padding-top: 8px;">
+                <table id="peoTab_" class="peoTab"></table>
+            </div>
+        </div>
+        <!-- 情感关系 -->
+        <div id="emotionForm" style="border-bottom: 0px solid #ECECEC; overflow-y: auto; width: 100%; display: none;">
+            <!-- 个人信息 -->
+            <table class="peoTab">
+                <tr><td class="t_fr wid_p30">民族：</td>
+                    <td><select id="nationSel"></select></td></tr>
+                <tr><td class="t_fr wid_p30">姓氏：</td>
+                    <td><select class="mySelect" id="surnameSel"></select></td></tr>
+                <tr><td class="t_fr wid_p30">感情状态：</td><td><select id="emotionSel" onchange="emotionSel()" >
+                    <option value="28">单身</option>
+                    <option value="58">恋爱</option>
+                    <option value="78" selected="select">已婚</option>
+                </select></td></tr>
+                <tr><td class="t_fr wid_p30">宗教：</td><td><select id="religionSel">
+                    <option value="50">佛教</option>
+                    <option value="50">基督教</option>
+                    <option value="50">伊斯兰教</option>
+                    <option value="50">印度教</option>
+                    <option value="50">道教</option>
+                    <option value="50">无信仰</option>
+                </select></td></tr>
+            </table>
+            <!-- 问卷调查 -->
+            <div style="border-top: 1px solid #ECECEC; width: 90%; margin-left: auto; margin-right: auto; padding-top: 8px;">
+                <table id="emotionTab" class="peoTab"></table>
+            </div>
+        </div>
+        <div style="height: 50px;">
+            <div class="myBtn" style="width: 60%; float: left;" onclick="save()"><span>完成保存</span></div>
+            <div class="myBtn" style="width: 40%; float: right;" onclick="closeTance()"><span style="background-color: #cccccc;">取消</span></div>
+        </div>
+    </div>
+</div>
+<div class="contentDiv">
+    <div id="circleDiv" class="upperDiv">
+        <div class="tanceDiv"></div>
+        <img class="tanceImg" onclick="tance()" src="img/tance.png">
+    </div>
+    <div id="backBar" style="float: right; z-index: 99; display: none; position: fixed; right: 12px; height: 30px;
+        line-height: 30px; color: #999;" onclick="backBar()">返回</div>
+    <div style="height: 45%; width: 100%; min-height: 200px;  overflow-x: auto; text-align: center;">
+        <img id="bar_loading" src="img/bar_.gif" style="height: 98%; width: 100%; display: block;">
+        <div id="lowerDiv" style="width: 100%; height: 95%; display: none;">
+            <!--<img src="img/bar_.gif">-->
+        </div>
+        <div id="lowerDiv_detail" style="width: 100%; height: 95%; display: none; margin: 0 auto;">
+            <!--<img src="img/bar_.gif">-->
+        </div>
+    </div>
+    <div class="tanceImg_s">
+        <img src="img/tance.png" onclick="tance()"/>
+    </div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/lodash.js"></script>
+<script src="js/energy.js"></script>
+<script src="js/energy_fixed.js"></script>
+<script>
+    $(document).ready(function(){
+        energy_init();
+    });
+</script>
+</body>
+</html>

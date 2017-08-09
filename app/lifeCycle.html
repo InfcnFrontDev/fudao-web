@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的生命周期</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="css/global.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/mui.min.js"></script>
+  <script src="js/config.js"></script>
+  <link rel="stylesheet" href="venders/css/mui.min.css">
+  <style>
+    .box{
+      width:200px;
+      height:60px;
+      position:absolute;
+      border-radius:5px;
+      border:1px solid #b1e1f9;
+      background: #e9f7fd;
+      top:0;
+      left:0;
+      /*right:0;
+      bottom:0;*/
+      margin:auto;
+      z-index: 1000;
+      display:none;
+    }
+    .boxtishi{
+      width:200px;
+      height:60px;
+      line-height:60px;
+      text-align: center;
+    }
+  </style>
+</head>
+  <body style="background: #fff;">
+  <div style="width:100%; height:9%; line-height:54px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的生命周期</div>
+
+  <div class="jieduanlouti" id='div_woniu'>
+    <div class="box">
+      <div class="boxtishi"></div>
+      <img src="images/zhishi.png" style="position:absolute; top: 55px; left: 181px; transform: rotate(90deg);">
+    </div>
+  </div>
+  <script>
+    //http://localhost:3000/lifeCycle.html?userId=867200022156895,86720002215690328312757&birthdate=1991-07-02&sex=0
+    var token=getQueryString('token');
+    var sex=getQueryString('sex');
+    var birthdate=getQueryString('birthdate');
+
+    var cycle;
+
+    $.ajax({
+      type:"post",
+      url:urls.MYCYCLE_CALCULATECYCLE,
+      headers: {
+        authorization: token
+      },
+      success:function(data){
+        cycle=data.obj;
+      },
+      error:function(){
+
+      }
+    });
+    $.ajax({
+      type:"post",
+      url:urls.USER_GETLOGINUSER,
+      headers: {
+        authorization: token
+      },
+      success:function(data){
+        console.log(data);
+        birthdate=dateFormat(new Date(data.obj.birthday),'yyyy-MM-dd');
+        sex=data.obj.sex;
+
+      },
+      error:function(){
+
+      }
+    });
+
+
+     function dateFormat(date, formatStr){
+      var str = formatStr ;
+      var Week = ['日', '一', '二', '三', '四', '五', '六'];
+
+      str = str.replace(/yyyy|YYYY/, date.getFullYear());
+      str = str.replace(/yy|YY/, (date.getYear() % 100) > 9 ? (date.getYear() % 100).toString() : '0' + (date.getYear() % 100));
+
+      str = str.replace(/MM/, date.getMonth() + 1 > 9 ? (date.getMonth() + 1).toString() : '0' + (date.getMonth() + 1));
+      str = str.replace(/M/g, date.getMonth() + 1);
+
+      str = str.replace(/w|W/g, Week[date.getDay()]);
+
+      str = str.replace(/dd|DD/, date.getDate() > 9 ? date.getDate().toString() : '0' + date.getDate());
+      str = str.replace(/d|D/g, date.getDate());
+
+      str = str.replace(/hh|HH/, date.getHours() > 9 ? date.getHours().toString() : '0' + date.getHours());
+      str = str.replace(/h|H/g, date.getHours());
+      str = str.replace(/mm/, date.getMinutes() > 9 ? date.getMinutes().toString() : '0' + date.getMinutes());
+      str = str.replace(/m/g, date.getMinutes());
+
+      str = str.replace(/ss|SS/, date.getSeconds() > 9 ? date.getSeconds().toString() : '0' + date.getSeconds());
+      str = str.replace(/s|S/g, date.getSeconds());
+
+      return str;
+    }
+
+    setTimeout(function(){
+
+      fun_showCycle(cycle, sex, birthdate);
+      var hulu = cycle.renalPeriod + '肾期 ' + cycle.years + '年 ' + cycle.season + '季度 ';
+      hulu += +cycle.month + '月 ' + cycle.weeks + '周 ' + cycle.day + '天';
+      $('.box').show();
+      $('.boxtishi').text(hulu);
+      console.log($('#hulu').offset());
+      $('.box').css({top:$('#hulu').offset().top-200})
+      if($('#hulu').offset().left>200)
+      $('.box').css({left:$('#hulu').offset().left-200})
+      if($('#hulu').offset().left<200)
+        $('.box').css({left:0})
+    },500)
+
+
+
+    // 显示周期
+      function fun_showCycle(cycle, sex, birthdate) {
+          var date = new Date(birthdate.split("-")[0], birthdate.split("-")[1], birthdate.split("-")[2]);
+          var birth_year = date.getFullYear();
+          var move_how = 3;
+          var start_move = -10;
+          //一层多少个格
+          var subsection;
+          if(sex == 2) {
+              subsection = 7;
+          } else {
+              subsection = 8;
+          }
+          var count_height = 0;
+          var img_width = document.getElementById("div_woniu").clientWidth;
+          for(var i = 0; i < cycle.renalPeriod; i++) {
+              for(var j = 0; j < subsection; j++) {
+                  var _div = document.createElement("div");
+                  _div.setAttribute("name", "xiaoge");
+                  _div.style.position = "absolute";
+                  _div.style.zIndex = 10;
+                  _div.style.bottom = (start_move++) * move_how + "px";
+                  count_height = (start_move) * move_how;
+                  if(i != 0 && j == 0) {
+                      start_move++
+                      _div.style.bottom = (start_move++) * move_how + "px";
+                      count_height = (start_move) * move_how;
+                  }
+                  var _div_year = document.createElement("div");
+                  if(i % 2 == 0) {
+                      _div.style.left = j * (100 / subsection) + "%";
+                      _div_year.style.left = "20px";
+                  } else {
+                      _div.style.right = j * (100 / subsection) + "%";
+                      _div_year.style.left = "-20px";
+                  }
+                  var _img = document.createElement("img");
+                  _img.src = "images/nian_quang.png";
+                  _img.style.width = (img_width / subsection) + "px";
+                  _img.style.height = "8px";
+                  _div_year.style.zIndex = 10;
+                  _div_year.style.position = "relative";
+                  _div_year.style.top = "-35px";
+                  if(j == 0 || j == 3) {
+                      _div_year.innerHTML = birth_year++;
+                  } else {
+                      birth_year++;
+                      _div_year.innerHTML = "&nbsp;";
+                  }
+                  if(i + 1 == cycle.renalPeriod && j + 1 == subsection && cycle.years == 0) {
+                      var _img_tongyong = document.createElement("img");
+                      _img_tongyong.src = "images/xingxiang/tongyong.png";
+                      _img_tongyong.style.width = (img_width / subsection) + "px";
+                      _img_tongyong.style.position = "relative";
+                      _img_tongyong.style.top = "-40px";
+                      _img_tongyong.setAttribute('id','hulu')
+
+                      _img_tongyong.style.zIndex = 101;
+                      /*_img_tongyong.setAttribute("onclick", "fun_click()");*/////////////////////////////////////////////////////////dianji
+                      var _div_tongyong = document.createElement("div");
+                      _div_tongyong.style.position = "relative";
+                      _div_tongyong.style.zIndex = 30;
+                      _div_tongyong.style.top = "-40px";
+                      _div_tongyong.innerHTML = birth_year;
+
+                      if(i % 2 == 0) {
+                          _div_tongyong.style.left = "-20px";
+                          _img_tongyong.style.left = "-20px";
+                      } else {
+                          _div_tongyong.style.left = "25px";
+                          _img_tongyong.style.left = "20px";
+                      }
+                      _div_year.innerHTML = _div_tongyong.outerHTML + _img_tongyong.outerHTML;
+                      _div.style.marginBottom = "-50px";
+                      _div.innerHTML = _img.outerHTML + _div_year.outerHTML;
+                  } else {
+                      _div.innerHTML = _img.outerHTML + _div_year.outerHTML;
+                  }
+                  document.getElementById("div_woniu").appendChild(_div);
+              }
+          }
+          if(cycle.years != 0) {
+              for(var i = 0; i < subsection; i++) {
+                  var _div = document.createElement("div");
+                  _div.setAttribute("name", "xiaoge");
+                  _div.style.position = "absolute";
+                  _div.style.zIndex = 10;
+                  _div.style.bottom = (start_move++) * move_how + "px";
+                  var _div_year = document.createElement("div");
+                  if(i == 0) {
+                      start_move++;
+                  }
+                  _div.style.bottom = (start_move++) * move_how + "px";
+                  if(cycle.renalPeriod % 2 == 0) {
+                      _div.style.left = i * (100 / subsection) + "%";
+                  } else {
+                      _div.style.right = i * (100 / subsection) + "%";
+                  }
+                  var _img = document.createElement("img");
+                  if(i < cycle.years) {
+                      birth_year++;
+                      _img.src = "images/nian_quang.png";
+                      count_height = (start_move) * move_how;
+                  } else if(i == cycle.years && cycle.season > 0) { //季度大于0
+                      if(cycle.season == 4) {
+                          _img.src = "images/nian_quang.png";
+                      } else {
+                          _img.src = "images/nian-" + cycle.season + ".png";
+                      }
+                      count_height = (start_move) * move_how;
+                  } else {
+                      _img.src = "images/nian_back.png";
+                  }
+                  _img.style.width = (img_width / subsection) + "px";
+                  _img.style.height = "8px";
+                  _div_year.style.zIndex = 10;
+                  _div_year.style.position = "relative";
+                  _div_year.style.top = "-35px";
+                  if(i + 1 == cycle.years) {
+                      var _img_tongyong = document.createElement("img");
+                      _img_tongyong.style.width = "30px";
+                      _img_tongyong.style.height = "30px";
+                      _img_tongyong.src = "images/xingxiang/tongyong.png";
+                      _img_tongyong.style.position = "relative";
+                      _img_tongyong.style.top = "-30px";
+                      _img_tongyong.setAttribute('id','hulu');
+                      //_img_tongyong.setAttribute("onclick", "fun_click()");
+                      var _div_tongyong = document.createElement("div");
+                      _div_tongyong.style.position = "relative";
+                      _div_tongyong.style.zIndex = 10;
+                      _div_tongyong.style.top = "-20px";
+                      if(cycle.season == 4) {
+                          birth_year++;
+                      }
+                      _div_tongyong.innerHTML = birth_year;
+                      _div_year.innerHTML = _div_tongyong.outerHTML + _img_tongyong.outerHTML;
+                      _div.style.marginBottom = "-36px";
+                  } else {
+                      _div_year.innerHTML = "&nbsp;";
+                  }
+                  _div.innerHTML = _img.outerHTML + _div_year.outerHTML;
+                  document.getElementById("div_woniu").appendChild(_div);
+              }
+          }
+          var div_background = document.createElement("div");
+          div_background.style.position = "absolute";
+          div_background.style.zIndex = 1;
+          div_background.style.background = "rgb(250,237,205)";
+          div_background.style.bottom = "0px";
+          div_background.style.width = "100%";
+          div_background.style.height = (count_height + 32) + "px";
+          document.getElementById("div_woniu").appendChild(div_background);
+          //随机出多少个草
+          var arr_cao = ["images/cao_1.png", "images/cao_2.png", "images/cao_3.png", "images/cao_4.png", "images/cao_5.png"];
+          var xiaoge = document.getElementsByName("xiaoge");
+          var random_cao_count = cycle.renalPeriod * 2;
+          for(var i = 0; i < random_cao_count; i++) {
+              var _idx = Math.floor(Math.random() * xiaoge.length);
+              var _img = document.createElement("img");
+              _img.style.width = "16px";
+              _img.style.height = "16px";
+              _img.style.position = "absolute";
+            _img.style.zIndex=1000;
+              _img.style.bottom = (parseInt(xiaoge[_idx].style.bottom) + 32) + "px";
+              _img.style.marginBottom = xiaoge[_idx].style.marginBottom;
+              if(xiaoge[_idx].style.right == "") {
+                  _img.style.left = (parseFloat(xiaoge[_idx].style.left)) + "%";
+              } else {
+                  _img.style.right = (parseFloat(xiaoge[_idx].style.right)) + "%";
+              }
+              _img.src = arr_cao[Math.floor(Math.random() * 4)];
+              document.getElementById("div_woniu").appendChild(_img);
+          }
+
+      }
+
+
+    document.getElementById("div_woniu").style.fontSize="12px";
+  </script>
+
+</body>
+</html>
